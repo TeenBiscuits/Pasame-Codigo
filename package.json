@@ -21,7 +21,7 @@
     "@vercel/speed-insights": "^1.0.14",
     "astro": "^4.16.16",
     "dotenv": "^16.4.5",
-    "mermaid": "^11.3.0",
+    "mermaid": "^11.4.1",
     "rehype-mathjax": "^6.0.0",
     "remark-math": "^6.0.0",
     "sharp": "^0.32.5",
