@@ -27,8 +27,8 @@ importers:
         specifier: ^7.8.2
         version: 7.8.2(astro@4.16.16(rollup@4.24.0)(typescript@5.6.3))
       '@vercel/analytics':
-        specifier: ^1.3.1
-        version: 1.3.1
+        specifier: ^1.4.1
+        version: 1.4.1
       '@vercel/speed-insights':
         specifier: ^1.0.14
         version: 1.0.14
@@ -844,15 +844,30 @@ packages:
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
 
-  '@vercel/analytics@1.3.1':
-    resolution: {integrity: sha512-xhSlYgAuJ6Q4WQGkzYTLmXwhYl39sWjoMA3nHxfkvG+WdBT25c563a7QhwwKivEOZtPJXifYHR1m2ihoisbWyA==}
+  '@vercel/analytics@1.4.1':
+    resolution: {integrity: sha512-ekpL4ReX2TH3LnrRZTUKjHHNpNy9S1I7QmS+g/RQXoSUQ8ienzosuX7T9djZ/s8zPhBx1mpHP/Rw5875N+zQIQ==}
     peerDependencies:
+      '@remix-run/react': ^2
+      '@sveltejs/kit': ^1 || ^2
       next: '>= 13'
-      react: ^18 || ^19
+      react: ^18 || ^19 || ^19.0.0-rc
+      svelte: '>= 4'
+      vue: ^3
+      vue-router: ^4
     peerDependenciesMeta:
+      '@remix-run/react':
+        optional: true
+      '@sveltejs/kit':
+        optional: true
       next:
         optional: true
       react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
         optional: true
 
   '@vercel/edge@1.1.2':
@@ -2824,9 +2839,6 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  server-only@0.0.1:
-    resolution: {integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==}
-
   set-blocking@2.0.0:
     resolution: {integrity: sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==}
 
@@ -3637,7 +3649,7 @@ snapshots:
   '@astrojs/vercel@7.8.2(astro@4.16.16(rollup@4.24.0)(typescript@5.6.3))':
     dependencies:
       '@astrojs/internal-helpers': 0.4.1
-      '@vercel/analytics': 1.3.1
+      '@vercel/analytics': 1.4.1
       '@vercel/edge': 1.1.2
       '@vercel/nft': 0.27.4
       astro: 4.16.16(rollup@4.24.0)(typescript@5.6.3)
@@ -3645,10 +3657,15 @@ snapshots:
       fast-glob: 3.3.2
       web-vitals: 3.5.2
     transitivePeerDependencies:
+      - '@remix-run/react'
+      - '@sveltejs/kit'
       - encoding
       - next
       - react
       - supports-color
+      - svelte
+      - vue
+      - vue-router
 
   '@astrojs/yaml2ts@0.2.1':
     dependencies:
@@ -4326,9 +4343,7 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@vercel/analytics@1.3.1':
-    dependencies:
-      server-only: 0.0.1
+  '@vercel/analytics@1.4.1': {}
 
   '@vercel/edge@1.1.2': {}
 
@@ -6927,8 +6942,6 @@ snapshots:
   semver@6.3.1: {}
 
   semver@7.6.3: {}
-
-  server-only@0.0.1: {}
 
   set-blocking@2.0.0: {}
 
