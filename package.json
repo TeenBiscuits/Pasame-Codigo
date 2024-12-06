@@ -24,7 +24,7 @@
     "mermaid": "^11.3.0",
     "rehype-mathjax": "^6.0.0",
     "remark-math": "^6.0.0",
-    "sharp": "^0.32.5",
+    "sharp": "^0.33.5",
     "starlight-heading-badges": "^0.3.0",
     "starlight-showcases": "^0.2.0",
     "starlight-sidebar-topics": "^0.2.0",
