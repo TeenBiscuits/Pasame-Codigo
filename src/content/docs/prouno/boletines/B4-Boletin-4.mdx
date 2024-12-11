@@ -9,8 +9,10 @@ import { Aside } from '@astrojs/starlight/components';
 > Arrays, registros y cadenas de caracteres.
 
 <Aside type="caution" title="¡Se necesita tu ayuda!">
-  Faltan soluciones para los ejercicios del 6 al 7, del 12 al 14, del 16 al 19, del 21 al 23, el 26, del 30 al 35 y del 38
-  al 39. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo)
+
+  Faltan soluciones para los ejercicios el 6, del 12 al 14, del 16 al 19, del 22 al 23, el 26, del 30 al 35 y del 38
+  al 39. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/src/content/docs/prouno/boletines/B4-Boletin-4.mdx)
+
 </Aside>
 
 ### Ejercicio 1
@@ -247,13 +249,7 @@ void ordenarDeMayorAMenor(vHorasSemana horas){
 ```
 </details>
 
-<Aside type="caution" title="¡Se necesita tu ayuda!">
 
-Faltan soluciones para los ejercicios del 5 al 7. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo)
-
-</Aside>
-
-{/*
 
 ### Ejercicio 5
 
@@ -265,8 +261,82 @@ alcanzadas.
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_05.c"
+// SPDX-FileCopyrightText: 2024 Maite González Vázquez <maite.gonzalez@udc.es>
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+#include <stdio.h>
+
+#define MAX 24
+
+void pedirTemperatura(float temp[], int n);
+
+void mostrarTemperaturas(float temp[], int n);
+
+float temperaturaMedia(float temp[], int n);
+
+float temperaturaMaxima(float temp[], int n);
+
+float temperaturaMinima(float temp[], int n);
+
+int main() {
+    float temperatura[MAX];
+
+    pedirTemperatura(temperatura, MAX);
+    mostrarTemperaturas(temperatura, MAX);
+    printf("\nTemperatura maxima: %.2f\n", temperaturaMaxima(temperatura, MAX));
+    printf("Temperatura minima: %.2f\n", temperaturaMinima(temperatura, MAX));
+    printf("Temperatura media: %.2f\n", temperaturaMedia(temperatura, MAX));
+}
+
+void pedirTemperatura(float temp[], int n) {
+    printf("Introduce la temperatura de la ciudad:\n");
+    for (int i = 0; i < n; i++) {
+        printf("Hora %d: \n", i + 1);
+        scanf("%f", &temp[i]);
+    }
+}
+
+void mostrarTemperaturas(float temp[], int n) {
+    printf("\nTEMPERATURAS A LO LARGO DEL DIA\n");
+    for (int i = 0; i < n; i++) printf("%d:00 - %.2f C\n", i, temp[i]);
+}
+
+float medioTemperatura(float temp[], int n) {
+    float tempTotal = 0;
+    for (int i = 0; i < n; i++) {
+        tempTotal += temp[i];
+    }
+    return (tempTotal / n);
+}
+
+float temperaturaMaxima(float temp[], int n) {
+    float tempMax = temp[0];
+
+    for (int i = 1; i < n; i++) {
+        if (temp[i] > tempMax) tempMax = i;
+    }
+    return tempMax;
+}
+
+float temperaturaMinima(float temp[], int n) {
+    float tempMin = temp[0];
+
+    for (int i = 1; i < n; i++) {
+        if (temp[i] < tempMin) tempMin = i;
+    }
+    return tempMin;
+}
 ```
 </details>
+
+<Aside type="caution" title="¡Se necesita tu ayuda!">
+
+Falta solución para el ejercicio 6. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/src/content/docs/prouno/boletines/B4-Boletin-4.mdx)
+
+</Aside>
+
+{/*
 
 ### Ejercicio 6
 
@@ -281,6 +351,8 @@ temperaturas medias diarias, las temperaturas medias de cada hora y la temperatu
 ```
 </details>
 
+*/}
+
 ### Ejercicio 7
 
 Plantee e implemente un programa en lenguaje C que solicite al usuario su presupuesto semanal (en euros) y sus gastos
@@ -291,10 +363,84 @@ presupuesto semanal que gastó cada día.
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_07.c"
+// SPDX-FileCopyrightText: 2024 Maite González Vázquez <maite.gonzalez@udc.es>
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+#include <stdio.h>
+
+#define SEMANA 7
+
+void pedirPresupuesto(float *pSemanal);
+
+void pedirGastos(float gasto[], int n);
+
+float totalGastosPorCategoria(float gasto[], int n);
+
+float gastosTotalesSemanales(float transporte[], float alimentacion[],
+                            float ocio[]);
+
+float gastoMedioDiario(float gasto[], int n);
+
+float presupuestoGastado(float gastosTotales, float presupuesto);
+
+int main() {
+    float pSemanal, gTransporte[SEMANA], gAlimentacion[SEMANA], gOcio[SEMANA];
+
+    pedirPresupuesto(&pSemanal);
+    printf("\nGastos semanales en transporte(euros):\n");
+    pedirGastos(gTransporte, SEMANA);
+    printf("\nGastos semanales en alimentacion(euros):\n");
+    pedirGastos(gAlimentacion, SEMANA);
+    printf("\nGastos semanales en ocio(euros):\n");
+    pedirGastos(gOcio, SEMANA);
+
+    printf("\nGasto en transporte: %.2f\n", totalGastosPorCategoria(gTransporte, SEMANA));
+    printf("\nGasto en alimentacion: %.2f\n", totalGastosPorCategoria(gAlimentacion, SEMANA));
+    printf("\nGasto en ocio: %.2f\n", totalGastosPorCategoria(gOcio, SEMANA));
+    printf("\nGASTO TOTAL SEMANAL: %.2f\n", gastosTotalesSemanales(gTransporte, gAlimentacion, gOcio));
+    printf("\nPORCENTAJE GASTADO: %.2f\n",
+        presupuestoGastado(gastosTotalesSemanales(gTransporte, gAlimentacion, gOcio), pSemanal));
+}
+
+void pedirPresupuesto(float *pSemanal) {
+    printf("Presupuesto semanal:\t");
+    scanf("%f", &pSemanal);
+}
+
+void pedirGastos(float gasto[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("Dia %d:\n", i + 1);
+        scanf("%f", &gasto[i]);
+    }
+}
+
+float totalGastosPorCategoria(float gasto[], int n) {
+    float total = 0;
+    for (int i = 0; i < n; i++) {
+        total += gasto[i];
+    }
+    return total;
+}
+
+float gastosTotalesSemanales(float transporte[], float alimentacion[],
+                            float ocio[]) {
+    return totalGastosPorCategoria(transporte, SEMANA)
+            + totalGastosPorCategoria(alimentacion, SEMANA)
+            + totalGastosPorCategoria(ocio, SEMANA);
+}
+
+float gastoMedioDiario(float gasto[], int n) {
+    return (totalGastosPorCategoria(gasto, n) / n);
+}
+
+float presupuestoGastado(float gastosTotales, float presupuesto) {
+    return (gastosTotales / presupuesto) * 100;
+}
 ```
 </details>
 
-*/}
+
 
 ### Ejercicio 8
 
@@ -556,9 +702,10 @@ int main(){
 
 <Aside type="caution" title="¡Se necesita tu ayuda!">
 
-Faltan soluciones para los ejercicios del 11 al 14. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo)
+Faltan soluciones para los ejercicios del 11 al 14. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/src/content/docs/prouno/boletines/B4-Boletin-4.mdx)
 
 </Aside>
+
 
 {/*
 
@@ -574,8 +721,8 @@ Plantee e implemente una función en lenguaje C que indique si un array de enter
 
 ### Ejercicio 13
 
-Plantee e implemente un programa en lenguaje C que permita introducir apropiadamente una matriz NxN de números enteros (
-0<N<20), la visualice apropiadamente por pantalla (formato matricial) y muestre el elemento mayor y el elemento menor de
+Plantee e implemente un programa en lenguaje C que permita introducir apropiadamente una matriz NxN de números enteros (0< N < 20),
+la visualice apropiadamente por pantalla (formato matricial) y muestre el elemento mayor y el elemento menor de
 dicha matriz y sus posiciones.
 
 <details>
@@ -685,10 +832,9 @@ int main()
 ```
 </details>
 
-{/* TODO FALTAN EJERCICIOS 16 - 19 */}
 <Aside type="caution" title="¡Se necesita tu ayuda!">
 
-Faltan soluciones para los ejercicios del 16 al 19. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo)
+Faltan soluciones para los ejercicios del 16 al 19. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/src/content/docs/prouno/boletines/B4-Boletin-4.mdx)
 </Aside>
 
 {/*
@@ -708,7 +854,7 @@ columnas y sus diagonales principales coincide.
 ### Ejercicio 17
 
 Plantee e implemente un programa en lenguaje C que mediante un menú apropiado permita al usuario introducir dos matrices
-NxN de números enteros (0<N<10) y seleccionar la operación (suma, resta o producto) que desea realizar con ellas.
+NxN de números enteros ($$0 < N < 10$$) y seleccionar la operación (suma, resta o producto) que desea realizar con ellas.
 Muestre los resultados de la operación seleccionada por pantalla en formato matricial.
 
 <details>
@@ -719,8 +865,8 @@ Muestre los resultados de la operación seleccionada por pantalla en formato mat
 
 ### Ejercicio 18
 
-Plantee e implemente un programa en lenguaje C que permita introducir apropiadamente una matriz NxN de números enteros (
-0<N<10), la visualice apropiadamente por pantalla (formato matricial) y muestre la posición de un elemento punto de
+Plantee e implemente un programa en lenguaje C que permita introducir apropiadamente una matriz NxN de números enteros ($$0 < N < 10$$),
+la visualice apropiadamente por pantalla (formato matricial) y muestre la posición de un elemento punto de
 silla , si existe. Una matriz presenta un punto de silla si alguna posición de la misma es al mismo tiempo el menor
 valor de su fila y el mayor valor de su columna.
 
@@ -743,6 +889,7 @@ posteriormente muestre por pantalla todos los números conseguidos de forma orde
 
 */}
 
+
 ### Ejercicio 20
 
 Plantee e implemente un programa en lenguaje C que permita almacenar en memoria el nombre y las notas de una asignatura
@@ -752,87 +899,77 @@ calificación. Además muestre a continuación el listado con el nombre y nota d
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_20.c"
-// SPDX-FileCopyrightText: 2023 Miguel Fraga Pico
+// SPDX-FileCopyrightText: 2024 Maite González Vázquez <maite.gonzalez@udc.es>
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include <stdio.h>
-#include <stdlib.h>
 
-struct alumno
-{
-    char nombre[40];
-    int nota;
+#define MAX 3
+
+struct alumno {
+    char nombre[20];
+    float nota;
 };
 
-void introducirAlumno(struct alumno *a)
-{
-    printf("Nombre: ");
-    gets(&a->nombre);
-    printf("Nota: ");
-    char nota[20];
-    gets(nota);
-    a->nota = atoi(nota);
+void introducirAlumno(struct alumno alumnos[], int n);
+
+void mostrarAlumnado(struct alumno alumnos[], int n);
+
+void mejorYPeorNota(struct alumno alumnos[], int n, struct alumno *mejor, struct alumno *peor);
+
+
+
+int main() {
+    struct alumno alumnos[MAX];
+    struct alumno mejor, peor;
+
+    introducirAlumno(alumnos, MAX);
+    mostrarAlumnado(alumnos, MAX);
+    mejorYPeorNota(alumnos, MAX, &mejor, &peor);
+
+    printf("\nMejor nota:\t%s - %.2f\n", mejor.nombre, mejor.nota);
+    printf("Peor nota:\t%s - %.2f\n", peor.nombre, peor.nota);
+
 }
 
-void notaMasAlta(struct alumno *alumnos)
-{
-    int notaMax = 0;
-    int notaMin = 0;
-    int indiceMejorNota;
-    int indicePeorNota;
-    int j = 0;
-    for(int i = 0; i < 15; i++)
-    {
-        if (notaMax < alumnos[i].nota)
-        {
-            notaMax = alumnos[i].nota;
-            indiceMejorNota = i;
+void introducirAlumno(struct alumno alumnos[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("--- Alumno %d ---: \n", i + 1);
+        printf("Nombre: \n");
+        scanf("%s", alumnos[i].nombre);
+        printf("Nota de %s: \n", alumnos[i].nombre);
+        scanf("%f", &alumnos[i].nota);
+    }
+}
+
+void mostrarAlumnado(struct alumno alumnos[], int n) {
+    printf("\nLISTADO DE ALUMNOS\n");
+    for (int i = 0; i < n; i++) {
+        printf("%s: %.2f\n", alumnos[i].nombre, alumnos[i].nota);
+    }
+    printf("\n");
+}
+
+void mejorYPeorNota(struct alumno alumnos[], int n, struct alumno *mejor, struct alumno *peor) {
+    // Inicializamos con el primer estudiante
+    *mejor = alumnos[0];
+    *peor = alumnos[0];
+
+    for (int i = 0; i < n; i++) {
+        if (alumnos[i].nota > mejor->nota) {
+            *mejor = alumnos[i];
         }
-        if(notaMin > alumnos[i].nota)
-        {
-            notaMin = alumnos[i].nota;
-            indicePeorNota = j;
+
+        if (alumnos[i].nota < peor->nota) {
+            *peor = alumnos[i];
         }
-        j++;
-        printf("%d", notaMax);
-        printf("%d", notaMin);
     }
-    printf("El alumno %s tiene la mejor calificiacion.\n", alumnos[indiceMejorNota].nombre);
-    printf("El alumno %s tiene la peor calificiacion.\n", alumnos[indicePeorNota].nombre);
-}
-
-void imprimirAlumno(struct alumno a)
-{
-    printf("El nombre del alumno es: %s\n", a.nombre);
-    printf("El nota del alumno es: %d\n", a.nota);
-}
-
-int main()
-{
-    struct alumno alumnos[15];
-    for(int i = 0; i < 15; i++)
-    {
-        printf("Introduciendo alumno %d:\n",i + 1);
-        introducirAlumno(&alumnos[i]);
-    }
-    for(int i = 0; i < 15; i++)
-    {
-        printf("Imprimiendo alumno %d:\n",i + 1);
-        imprimirAlumno(alumnos[i]);
-    }
-    notaMasAlta(alumnos);
 }
 ```
 </details>
 
-{/* TODO FALTAN EJERCICIOS 21 - 23 */}
-<Aside type="caution" title="¡Se necesita tu ayuda!">
 
-Faltan soluciones para los ejercicios del 21 al 23. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo)
-</Aside>
-
-{/*
 
 ### Ejercicio 21
 
@@ -843,8 +980,41 @@ que cada día no podrá tener más de 20 tareas.
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_21.c"
+// SPDX-FileCopyrightText: 2024 Maite González Vázquez <maite.gonzalez@udc.es>
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+#define MAX_TAREAS 20
+
+// Define una tarea
+typedef struct {
+    int hora;
+    int minutos;
+    char descripcion[150];
+} tTarea;
+
+// Define las tareas de un día
+typedef struct {
+    int dia;
+    int mes;
+    int anio;
+    tTarea tareas[MAX_TAREAS];
+} tDiaTareas;
+
+// Define las tareas de un año
+typedef struct {
+    tDiaTareas dias[365];
+} tListaTareas;
 ```
 </details>
+
+<Aside type="caution" title="¡Se necesita tu ayuda!">
+
+Faltan soluciones para los ejercicios del 22 al 23. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/src/content/docs/prouno/boletines/B4-Boletin-4.mdx)
+
+</Aside>
+
+{/*
 
 ### Ejercicio 22
 
@@ -980,10 +1150,10 @@ int main() {
 ```
 </details>
 
-{/* TODO FALTAN EJERCICIOS 26 */}
 <Aside type="caution" title="¡Se necesita tu ayuda!">
 
-Faltan soluciones para el ejercicio 26. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo)
+Faltan soluciones para el ejercicio 26. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/src/content/docs/prouno/boletines/B4-Boletin-4.mdx)
+
 </Aside>
 
 {/*
@@ -1159,10 +1329,10 @@ int main()
 ```
 </details>
 
-{/* TODO FALTAN EJERCICIOS 30 - 35 */}
 <Aside type="caution" title="¡Se necesita tu ayuda!">
 
-Faltan soluciones para los ejercicios del 30 al 35. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo)
+Faltan soluciones para los ejercicios del 30 al 35. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/src/content/docs/prouno/boletines/B4-Boletin-4.mdx)
+
 </Aside>
 
 {/*
@@ -1361,10 +1531,11 @@ int main(){
 ```
 </details>
 
-{/* TODO FALTAN EJERCICIOS 38 - 39 */}
+
 <Aside type="caution" title="¡Se necesita tu ayuda!">
 
-Faltan soluciones para los ejercicios del 38 al 39. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo)
+Faltan soluciones para los ejercicios del 38 al 39. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/src/content/docs/prouno/boletines/B4-Boletin-4.mdx)
+
 </Aside>
 
 {/*
