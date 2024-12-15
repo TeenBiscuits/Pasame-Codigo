@@ -54,8 +54,8 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0(@astrojs/starlight@0.30.1(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1)))
       starlight-showcases:
-        specifier: ^0.2.0
-        version: 0.2.0(@astrojs/starlight@0.30.1(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1)))(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1))
+        specifier: ^0.3.0
+        version: 0.3.0(@astrojs/starlight@0.30.1(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1)))(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1))
       starlight-sidebar-topics:
         specifier: ^0.2.1
         version: 0.2.1(@astrojs/starlight@0.30.1(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1)))
@@ -91,16 +91,16 @@ packages:
   '@asamuzakjp/dom-selector@2.0.2':
     resolution: {integrity: sha512-x1KXOatwofR6ZAYzXRBL5wrdV0vwNxlTCK9NCuLqAzQYARqGcvFwiJA6A1ERuh+dgeA4Dxm3JBYictIes+SqUQ==}
 
-  '@astro-community/astro-embed-twitter@0.5.6':
-    resolution: {integrity: sha512-ywUjNhYbGW17vAQXj2tMus9JvLw8cwgzMshu6tVkzSRlyOoLFeWSNKwe44sU7REhUgmTCEQOUUfleN1j1Zwd4Q==}
+  '@astro-community/astro-embed-twitter@0.5.8':
+    resolution: {integrity: sha512-O2ptQPw+DfipukK8czjJcTcyVgDsrs3OmrHbc3YmWRglaUTOpSTImzPo076POyNBSWjLaRKloul81DFiAMNjTA==}
     peerDependencies:
       astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta || ^5.0.0-beta
 
   '@astro-community/astro-embed-utils@0.1.3':
     resolution: {integrity: sha512-eiMO+vfCdE9GtW6qE7X5Xl6YCKZDCoXJEWqRofQcoC3GHjqN2/WhJlnaxNVRq3demSO03UNtho57Em5p7o7AOA==}
 
-  '@astro-community/astro-embed-youtube@0.5.5':
-    resolution: {integrity: sha512-pG9uYjyZB1kpW8Ljy/H1Klof2txVXLwQmyoG4XWblZyt9eqFlaa65MdzL7UKzzqdoOsn64TN+Q+zPbx0HJhP4Q==}
+  '@astro-community/astro-embed-youtube@0.5.6':
+    resolution: {integrity: sha512-/mRfCl/eTBUz0kmjD1psOy0qoDDBorVp0QumUacjFcIkBullYtbeFQ2ZGZ+3N/tA6cR/OIyzr2QA4dQXlY6USg==}
     peerDependencies:
       astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta || ^5.0.0-beta
 
@@ -2889,11 +2889,11 @@ packages:
     peerDependencies:
       '@astrojs/starlight': '>=0.28.0'
 
-  starlight-showcases@0.2.0:
-    resolution: {integrity: sha512-YWJuTqArkUdVJV85VKZJ0BvKCQRu1SKtH/Cr5t6G/oIfI4IptWc92E7BmiuNnpuQ2U7TczTRidCYurPrbgQQVA==}
+  starlight-showcases@0.3.0:
+    resolution: {integrity: sha512-jxKVE5IM0TZgRIni4YK1oKDh6C9pBh94oj2pKuhzg2/Cg1wjCrWy39U3i1bXkh6rL+Ly+ypQBPH3AD9cP6TLXA==}
     engines: {node: '>=18'}
     peerDependencies:
-      '@astrojs/starlight': '>=0.23.0'
+      '@astrojs/starlight': '>=0.30.0'
 
   starlight-sidebar-topics@0.2.1:
     resolution: {integrity: sha512-ILbfKLhgvt/X1kkMaVmWyS5Yq36hza4i/LABORBDHyQHtcJb6egqpU9wvycyZHUdPKOTarkASZv6Hgu9Kgs46A==}
@@ -3423,7 +3423,7 @@ snapshots:
       css-tree: 2.3.1
       is-potential-custom-element-name: 1.0.1
 
-  '@astro-community/astro-embed-twitter@0.5.6(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1))':
+  '@astro-community/astro-embed-twitter@0.5.8(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1))':
     dependencies:
       '@astro-community/astro-embed-utils': 0.1.3
       astro: 5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1)
@@ -3432,7 +3432,7 @@ snapshots:
     dependencies:
       linkedom: 0.14.26
 
-  '@astro-community/astro-embed-youtube@0.5.5(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1))':
+  '@astro-community/astro-embed-youtube@0.5.6(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1))':
     dependencies:
       astro: 5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1)
       lite-youtube-embed: 0.3.3
@@ -6852,10 +6852,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  starlight-showcases@0.2.0(@astrojs/starlight@0.30.1(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1)))(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1)):
+  starlight-showcases@0.3.0(@astrojs/starlight@0.30.1(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1)))(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1)):
     dependencies:
-      '@astro-community/astro-embed-twitter': 0.5.6(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1))
-      '@astro-community/astro-embed-youtube': 0.5.5(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1))
+      '@astro-community/astro-embed-twitter': 0.5.8(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1))
+      '@astro-community/astro-embed-youtube': 0.5.6(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1))
       '@astrojs/starlight': 0.30.1(astro@5.0.5(jiti@1.21.6)(rollup@4.24.0)(typescript@5.7.2)(yaml@2.6.1))
     transitivePeerDependencies:
       - astro
