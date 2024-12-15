@@ -12,7 +12,7 @@ import remarkMath from "remark-math";
 import rehypeMathJax from "rehype-mathjax";
 
 // Vercel Adapter
-import vercel from "@astrojs/vercel/static";
+import vercel from "@astrojs/vercel";
 
 // Partytown Integration
 import partytown from "@astrojs/partytown";
