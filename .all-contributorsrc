@@ -9,6 +9,93 @@
   "commitConvention": "gitmoji",
   "contributorsPerLine": 4,
   "contributorsSortAlphabetically": true,
-  "contributors": [],
+  "contributors": [
+    {
+      "login": "TeenBiscuits",
+      "name": "Pablo Portas López",
+      "avatar_url": "https://avatars.githubusercontent.com/u/81629707?v=4",
+      "profile": "https://pablopl.dev/",
+      "contributions": [
+        "code",
+        "content",
+        "doc",
+        "design",
+        "example",
+        "projectManagement",
+        "review",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "Fraagaa",
+      "name": "Miguel Fraga Pico メ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/66569329?v=4",
+      "profile": "https://github.com/Fraagaa",
+      "contributions": ["code"]
+    },
+    {
+      "login": "sneiira",
+      "name": "Santiago Neira Sejean",
+      "avatar_url": "https://avatars.githubusercontent.com/u/151532950?v=4",
+      "profile": "https://github.com/sneiira",
+      "contributions": ["code"]
+    },
+    {
+      "login": "dza205",
+      "name": "Daniel Deza Prieto",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76247222?v=4",
+      "profile": "https://github.com/dza205",
+      "contributions": ["code"]
+    },
+    {
+      "login": "danielfeitopin",
+      "name": "Daniel Feito Pin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71133325?v=4",
+      "profile": "https://www.informaticapau.com/",
+      "contributions": ["content"]
+    },
+    {
+      "login": "Parodper",
+      "name": "Parodper",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12100800?v=4",
+      "profile": "https://github.com/Parodper",
+      "contributions": ["code"]
+    },
+    {
+      "login": "elianarl",
+      "name": "elianarl",
+      "avatar_url": "https://avatars.githubusercontent.com/u/160122335?v=4",
+      "profile": "https://github.com/elianarl",
+      "contributions": ["example"]
+    },
+    {
+      "login": "Nurig04",
+      "name": "Nurig04",
+      "avatar_url": "https://avatars.githubusercontent.com/u/152159453?v=4",
+      "profile": "https://github.com/Nurig04",
+      "contributions": ["code"]
+    },
+    {
+      "login": "Sprinter05",
+      "name": "Sprinter",
+      "avatar_url": "https://avatars.githubusercontent.com/u/69991979?v=4",
+      "profile": "https://www.sprinter.work/",
+      "contributions": ["code"]
+    },
+    {
+      "login": "maiteegonzaalez",
+      "name": "maiteegonzaalez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/151624797?v=4",
+      "profile": "https://github.com/maiteegonzaalez",
+      "contributions": ["code"]
+    },
+    {
+      "login": "FerLS",
+      "name": "Fernando Álvarez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/114153352?v=4",
+      "profile": "https://github.com/FerLS",
+      "contributions": ["example"]
+    }
+  ],
   "linkToUsage": true
 }

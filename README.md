@@ -33,6 +33,37 @@ Gracias a toda esta maravillosa gente ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="25%"><a href="https://github.com/dza205"><img src="https://avatars.githubusercontent.com/u/76247222?v=4?s=100" width="100px;" alt="Daniel Deza Prieto"/><br /><sub><b>Daniel Deza Prieto</b></sub></a><br /><a href="https://github.com/TeenBiscuits/Pasame-Codigo/commits?author=dza205" title="Code">💻</a></td>
+      <td align="center" valign="top" width="25%"><a href="https://www.informaticapau.com/"><img src="https://avatars.githubusercontent.com/u/71133325?v=4?s=100" width="100px;" alt="Daniel Feito Pin"/><br /><sub><b>Daniel Feito Pin</b></sub></a><br /><a href="#content-danielfeitopin" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="25%"><a href="https://github.com/FerLS"><img src="https://avatars.githubusercontent.com/u/114153352?v=4?s=100" width="100px;" alt="Fernando Álvarez"/><br /><sub><b>Fernando Álvarez</b></sub></a><br /><a href="#example-FerLS" title="Examples">💡</a></td>
+      <td align="center" valign="top" width="25%"><a href="https://github.com/Fraagaa"><img src="https://avatars.githubusercontent.com/u/66569329?v=4?s=100" width="100px;" alt="Miguel Fraga Pico メ"/><br /><sub><b>Miguel Fraga Pico メ</b></sub></a><br /><a href="https://github.com/TeenBiscuits/Pasame-Codigo/commits?author=Fraagaa" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="25%"><a href="https://github.com/Nurig04"><img src="https://avatars.githubusercontent.com/u/152159453?v=4?s=100" width="100px;" alt="Nurig04"/><br /><sub><b>Nurig04</b></sub></a><br /><a href="https://github.com/TeenBiscuits/Pasame-Codigo/commits?author=Nurig04" title="Code">💻</a></td>
+      <td align="center" valign="top" width="25%"><a href="https://pablopl.dev/"><img src="https://avatars.githubusercontent.com/u/81629707?v=4?s=100" width="100px;" alt="Pablo Portas López"/><br /><sub><b>Pablo Portas López</b></sub></a><br /><a href="https://github.com/TeenBiscuits/Pasame-Codigo/commits?author=TeenBiscuits" title="Code">💻</a> <a href="#content-TeenBiscuits" title="Content">🖋</a> <a href="https://github.com/TeenBiscuits/Pasame-Codigo/commits?author=TeenBiscuits" title="Documentation">📖</a> <a href="#design-TeenBiscuits" title="Design">🎨</a> <a href="#example-TeenBiscuits" title="Examples">💡</a> <a href="#projectManagement-TeenBiscuits" title="Project Management">📆</a> <a href="https://github.com/TeenBiscuits/Pasame-Codigo/pulls?q=is%3Apr+reviewed-by%3ATeenBiscuits" title="Reviewed Pull Requests">👀</a> <a href="#maintenance-TeenBiscuits" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="25%"><a href="https://github.com/Parodper"><img src="https://avatars.githubusercontent.com/u/12100800?v=4?s=100" width="100px;" alt="Parodper"/><br /><sub><b>Parodper</b></sub></a><br /><a href="https://github.com/TeenBiscuits/Pasame-Codigo/commits?author=Parodper" title="Code">💻</a></td>
+      <td align="center" valign="top" width="25%"><a href="https://github.com/sneiira"><img src="https://avatars.githubusercontent.com/u/151532950?v=4?s=100" width="100px;" alt="Santiago Neira Sejean"/><br /><sub><b>Santiago Neira Sejean</b></sub></a><br /><a href="https://github.com/TeenBiscuits/Pasame-Codigo/commits?author=sneiira" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="25%"><a href="https://www.sprinter.work/"><img src="https://avatars.githubusercontent.com/u/69991979?v=4?s=100" width="100px;" alt="Sprinter"/><br /><sub><b>Sprinter</b></sub></a><br /><a href="https://github.com/TeenBiscuits/Pasame-Codigo/commits?author=Sprinter05" title="Code">💻</a></td>
+      <td align="center" valign="top" width="25%"><a href="https://github.com/elianarl"><img src="https://avatars.githubusercontent.com/u/160122335?v=4?s=100" width="100px;" alt="elianarl"/><br /><sub><b>elianarl</b></sub></a><br /><a href="#example-elianarl" title="Examples">💡</a></td>
+      <td align="center" valign="top" width="25%"><a href="https://github.com/maiteegonzaalez"><img src="https://avatars.githubusercontent.com/u/151624797?v=4?s=100" width="100px;" alt="maiteegonzaalez"/><br /><sub><b>maiteegonzaalez</b></sub></a><br /><a href="https://github.com/TeenBiscuits/Pasame-Codigo/commits?author=maiteegonzaalez" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td align="center" size="13px" colspan="4">
+        <img src="https://raw.githubusercontent.com/all-contributors/all-contributors-cli/1b8533af435da9854653492b1327a23a4dbd0a10/assets/logo-small.svg">
+          <a href="https://all-contributors.js.org/docs/en/bot/usage">Add your contributions</a>
+        </img>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
