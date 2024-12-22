@@ -1,4 +1,4 @@
-[![Pásame el Código](./public/og.jpg)](https://pc.pablopl.dev)
+[![Pásame el Código](./public/og2.jpg)](https://pc.pablopl.dev)
 
 <div align="center">
 
