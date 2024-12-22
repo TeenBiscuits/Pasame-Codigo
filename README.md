@@ -11,7 +11,7 @@
 [![Java](https://img.shields.io/badge/Java-007396.svg?logo=openjdk&logoColor=white)](https://www.oracle.com/es/java/)
 [![Web](https://img.shields.io/website?down_message=offline&up_message=online&label=Web&url=https%3A%2F%2Fpc.pablopl.dev)](https://pc.pablopl.dev)
 [![Pull Request](https://img.shields.io/github/issues-pr-closed/TeenBiscuits/Pasame-Codigo.svg?label=Pull%20Request)](https://github.com/TeenBiscuits/Pasame-Codigo/pulls)
-[![GitHub Contributors](https://img.shields.io/github/contributors/TeenBiscuits/Pasame-Codigo?label=Contributors)](https://github.com/TeenBiscuits/Pasame-Codigo/graphs/contributors)
+[![All Contributors](https://img.shields.io/github/all-contributors/TeenBiscuits/Pasame-Codigo?color=ee8449)](#contribuye)
 [![Stars](https://img.shields.io/github/stars/TeenBiscuits/Pasame-Codigo.svg)](https://github.com/TeenBiscuits/Pasame-Codigo)
 
 </div>
@@ -30,6 +30,15 @@
 
 > [!IMPORTANT]  
 > Este proyecto esta bajo desarrollo activo. Se aceptan contribuciones y se mejorará la experiencia para contribuir.
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 <!-- Repobeats - Stats https://repobeats.axiom.co -->
 <div align="center">

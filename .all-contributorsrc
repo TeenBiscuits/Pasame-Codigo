@@ -1,0 +1,10 @@
+{
+  "projectName": "Pasame-Codigo",
+  "projectOwner": "TeenBiscuits",
+  "repoType": "github",
+  "files": ["README.md"],
+  "contributorsPerLine": 4,
+  "contributorsSortAlphabetically": true,
+  "badgeTemplate": "[![All Contributors](https://img.shields.io/github/all-contributors/TeenBiscuits/Pasame-Codigo?color=ee8449)](#contribuye)",
+  "linkToUsage": true
+}
