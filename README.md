@@ -11,9 +11,7 @@
 [![Java](https://img.shields.io/badge/Java-007396.svg?logo=openjdk&logoColor=white)](https://www.oracle.com/es/java/)
 [![Web](https://img.shields.io/website?down_message=offline&up_message=online&label=Web&url=https%3A%2F%2Fpc.pablopl.dev)](https://pc.pablopl.dev)
 [![Pull Request](https://img.shields.io/github/issues-pr-closed/TeenBiscuits/Pasame-Codigo.svg?label=Pull%20Request)](https://github.com/TeenBiscuits/Pasame-Codigo/pulls)
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/github/all-contributors/TeenBiscuits/Pasame-Codigo?color=ee8449)](#contribuye)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![Stars](https://img.shields.io/github/stars/TeenBiscuits/Pasame-Codigo.svg)](https://github.com/TeenBiscuits/Pasame-Codigo)
 
 </div>
@@ -28,10 +26,9 @@
 <h3><a  href="https://pc.pablopl.dev">👉 pc.pablopl.dev 🌐</a></h3>
 </div>
 
-## Contribuye
+## Contribuye ✨
 
-> [!IMPORTANT]  
-> Este proyecto esta bajo desarrollo activo. Se aceptan contribuciones y se mejorará la experiencia para contribuir.
+Gracias a toda esta maravillosa gente ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -40,6 +37,9 @@
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+> [!IMPORTANT]  
+> Este proyecto sigue la especificación [all-contributors](https://github.com/all-contributors/all-contributors). ¡Se aceptan contribuciones de cualquier tipo!
 
 <!-- Repobeats - Stats https://repobeats.axiom.co -->
 <div align="center">
@@ -75,16 +75,3 @@ Puede encontrar una copia de todas las licencias pertinentes en la carpeta [LICE
 ```
 
 </div>
-
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

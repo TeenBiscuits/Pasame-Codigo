@@ -9,7 +9,9 @@
     "prebuild": "node scripts/indexnow.js",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

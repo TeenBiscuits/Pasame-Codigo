@@ -3,15 +3,12 @@
   "projectOwner": "TeenBiscuits",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "files": [
-    "README.md"
-  ],
+  "files": ["README.md"],
   "imageSize": 100,
   "commit": false,
   "commitConvention": "gitmoji",
   "contributorsPerLine": 4,
   "contributorsSortAlphabetically": true,
-  "badgeTemplate": "[![All Contributors](https://img.shields.io/github/all-contributors/TeenBiscuits/Pasame-Codigo?color=ee8449)](#contribuye)",
   "contributors": [],
   "linkToUsage": true
 }
