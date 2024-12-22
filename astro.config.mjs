@@ -115,10 +115,7 @@ export default defineConfig({
       editLink: {
         baseUrl: "https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/",
       },
-      customCss: [
-        "./src/tailwind.css",
-        process.env.NO_GRADIENTS ? "" : "./src/assets/custom.css",
-      ],
+      customCss: ["./src/tailwind.css", "./src/assets/custom.css"],
       expressiveCode: {
         plugins: [pluginCodeOutput()],
       },
