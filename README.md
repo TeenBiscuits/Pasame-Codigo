@@ -30,6 +30,8 @@
 
 Gracias a toda esta maravillosa gente ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
+<div align="center">
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -68,6 +70,8 @@ Gracias a toda esta maravillosa gente ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+</div>
 
 > [!IMPORTANT]  
 > Este proyecto sigue la especificación [all-contributors](https://github.com/all-contributors/all-contributors). ¡Se aceptan contribuciones de cualquier tipo!
