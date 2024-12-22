@@ -7,6 +7,9 @@ import starlightHeadingBadges from "starlight-heading-badges";
 // Plugin Sidebar Topics
 import starlightSidebarTopics from "starlight-sidebar-topics";
 
+// Expressive Code Plugins
+import { pluginCodeOutput } from "./src/ec-output-plugin.ts";
+
 // Support for MathJax
 import remarkMath from "remark-math";
 import rehypeMathJax from "rehype-mathjax";
@@ -116,6 +119,9 @@ export default defineConfig({
         "./src/tailwind.css",
         process.env.NO_GRADIENTS ? "" : "./src/assets/custom.css",
       ],
+      expressiveCode: {
+        plugins: [pluginCodeOutput()],
+      },
       plugins: [
         starlightHeadingBadges(),
         starlightSidebarTopics([
