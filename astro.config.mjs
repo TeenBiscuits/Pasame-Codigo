@@ -113,6 +113,14 @@ export default defineConfig({
           content:
             "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-JHF258ZVQX');",
         },
+        {
+          tag: "link",
+          attrs: {
+            rel: "preconnect",
+            href: "https://IOKSWSAQ8F-dsn.algolia.net",
+            crossorigin: "",
+          },
+        },
       ],
       editLink: {
         baseUrl: "https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/",
