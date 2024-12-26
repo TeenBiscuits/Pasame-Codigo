@@ -6,6 +6,8 @@ import starlight from "@astrojs/starlight";
 import starlightHeadingBadges from "starlight-heading-badges";
 // Plugin Sidebar Topics
 import starlightSidebarTopics from "starlight-sidebar-topics";
+// Plugin Algolia DocSearch
+import starlightDocSearch from "@astrojs/starlight-docsearch";
 
 // Expressive Code Plugins
 import { pluginCodeOutput } from "./src/ec-output-plugin.ts";
@@ -121,6 +123,11 @@ export default defineConfig({
       },
       plugins: [
         starlightHeadingBadges(),
+        starlightDocSearch({
+          appId: "IOKSWSAQ8F",
+          apiKey: "d2bec8d00c3ced7fc84273265aeab2c1",
+          indexName: "pc",
+        }),
         starlightSidebarTopics([
           {
             label: "Comienza Aquí",
