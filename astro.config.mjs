@@ -128,6 +128,11 @@ export default defineConfig({
       customCss: ["./src/tailwind.css", "./src/assets/custom.css"],
       expressiveCode: {
         plugins: [pluginCodeOutput()],
+        shiki: {
+          langs: [
+            JSON.parse(fs.readFileSync("./src/pseudocodigo.json", "utf-8")),
+          ],
+        },
       },
       plugins: [
         starlightHeadingBadges(),

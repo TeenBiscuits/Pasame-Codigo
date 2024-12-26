@@ -1,0 +1,24 @@
+{
+  "displayName": "Pseudocódigo",
+  "fileTypes": [],
+  "name": "pseudocodigo",
+  "patterns": [
+    {
+      "name": "entity.name.function.pseudocodigo",
+      "match": "\\b[a-zA-Z_áéíóúÁÉÍÓÚñÑ][a-zA-Z0-9_áéíóúÁÉÍÓÚñÑ]*\\s*(?=\\()"
+    },
+    {
+      "name": "keyword.control.pseudocodigo",
+      "match": "\\b(función|si|entonces|sino|mientras|para|hasta|hacer|devolver|fin)\\b"
+    },
+    {
+      "name": "keyword.operator.assignment.pseudocodigo",
+      "match": ":="
+    },
+    {
+      "name": "keyword.operator.arithmetic.pseudocodigo",
+      "match": "(\\+|-|\\*|/|%)"
+    }
+  ],
+  "scopeName": "source.pseudocodigo"
+}
