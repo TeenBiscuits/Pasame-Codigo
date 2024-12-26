@@ -127,6 +127,7 @@ export default defineConfig({
           appId: "IOKSWSAQ8F",
           apiKey: "d2bec8d00c3ced7fc84273265aeab2c1",
           indexName: "pc",
+          insights: true,
         }),
         starlightSidebarTopics([
           {
