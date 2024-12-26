@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import { readFileSync } from "fs";
 
 // Plugin Heading Badges
 import starlightHeadingBadges from "starlight-heading-badges";
@@ -129,9 +130,7 @@ export default defineConfig({
       expressiveCode: {
         plugins: [pluginCodeOutput()],
         shiki: {
-          langs: [
-            JSON.parse(fs.readFileSync("./src/pseudocodigo.json", "utf-8")),
-          ],
+          langs: [JSON.parse(readFileSync("./src/pseudocodigo.json", "utf-8"))],
         },
       },
       plugins: [
