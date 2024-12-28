@@ -1324,23 +1324,31 @@ principal.
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_25.c"
-// SPDX-FileCopyrightText: 2023 Santiago Neira Sejean
+// SPDX-FileCopyrightText: 2024 Angela Costa
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
-#include <stdio.h>
-#include <math.h>
-float nPotencia(float n,float numero){
-    return pow(numero,n);
+#include<stdio.h>
+
+int potencia(int n, int exp){
+
+    if (exp == 0)
+        return 1;
+    else {
+        return (n * potencia(n,exp-1));
+    }
 }
-int main(){
-    float n;
-    float numero;
-    printf("Introduzca el numero que desee elevar:\n ");
-    scanf("%f",&numero);
-    printf("Introduzca a que potencia entera desea elevarlo:\n");
-    scanf("%f",&n);
-    printf("El resultado es %.3f", nPotencia(n,numero));
+
+int main (){
+
+    int n, exp;
+    printf("Introduzca el número: \n");
+    scanf("%d", &n);
+    printf("Introduzca la potencia: \n");
+    scanf("%d", &exp);
+    printf("%d", potencia(n,exp));
+
+    return 0;
 }
 ```
 </details>
