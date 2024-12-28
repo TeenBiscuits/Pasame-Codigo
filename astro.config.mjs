@@ -183,6 +183,13 @@ export default defineConfig({
             ],
           },
           {
+            label: "Algoritmos",
+            link: "/algo/",
+            icon: "seti:clock",
+            items: [],
+            badge: { text: "WIP", variant: "danger" },
+          },
+          {
             label: "Diseño de Software",
             link: "/deese/",
             icon: "seti:java",
