@@ -22,6 +22,7 @@
     "@astrojs/tailwind": "^5.1.4",
     "@astrojs/vercel": "^7.8.2",
     "@expressive-code/core": "^0.38.3",
+    "@expressive-code/plugin-collapsible-sections": "^0.38.3",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
     "astro": "^4.16.18",

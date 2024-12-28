@@ -31,6 +31,9 @@ importers:
       "@expressive-code/core":
         specifier: ^0.38.3
         version: 0.38.3
+      "@expressive-code/plugin-collapsible-sections":
+        specifier: ^0.38.3
+        version: 0.38.3
       "@vercel/analytics":
         specifier: ^1.4.1
         version: 1.4.1
@@ -883,6 +886,12 @@ packages:
     resolution:
       {
         integrity: sha512-s0/OtdRpBONwcn23O8nVwDNQqpBGKscysejkeBkwlIeHRLZWgiTVrusT5Idrdz1d8cW5wRk9iGsAIQmwDPXgJg==,
+      }
+
+  "@expressive-code/plugin-collapsible-sections@0.38.3":
+    resolution:
+      {
+        integrity: sha512-0r1k4k5S7GBLIRBYFkMKeIyD9iYcwM+LBrwoxZtd9TtBYJ3ziWBleFlCoOA3fo/Mj2YcaN7ZRIscMzYY9JBWrA==,
       }
 
   "@expressive-code/plugin-frames@0.38.3":
@@ -7060,6 +7069,10 @@ snapshots:
       postcss-nested: 6.2.0(postcss@8.4.49)
       unist-util-visit: 5.0.0
       unist-util-visit-parents: 6.0.1
+
+  "@expressive-code/plugin-collapsible-sections@0.38.3":
+    dependencies:
+      "@expressive-code/core": 0.38.3
 
   "@expressive-code/plugin-frames@0.38.3":
     dependencies:

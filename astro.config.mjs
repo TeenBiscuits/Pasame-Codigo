@@ -12,6 +12,7 @@ import starlightDocSearch from "@astrojs/starlight-docsearch";
 
 // Expressive Code Plugins
 import { pluginCodeOutput } from "./src/ec-output-plugin.ts";
+import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 
 // Support for MathJax
 import remarkMath from "remark-math";
@@ -128,7 +129,7 @@ export default defineConfig({
       },
       customCss: ["./src/tailwind.css", "./src/assets/custom.css"],
       expressiveCode: {
-        plugins: [pluginCodeOutput()],
+        plugins: [pluginCodeOutput(), pluginCollapsibleSections()],
         shiki: {
           langs: [JSON.parse(readFileSync("./src/pseudocodigo.json", "utf-8"))],
         },
