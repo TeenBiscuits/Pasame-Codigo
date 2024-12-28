@@ -193,8 +193,12 @@ export default defineConfig({
             label: "Diseño de Software",
             link: "/deese/",
             icon: "seti:java",
-            items: [],
-            badge: { text: "WIP", variant: "danger" },
+            items: [
+              {
+                label: "Apuntes",
+                autogenerate: { directory: "deese/apuntes" },
+              },
+            ],
           },
           {
             label: "Paradigmas de la Programación",
