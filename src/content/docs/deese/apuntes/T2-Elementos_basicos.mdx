@@ -1,3 +1,636 @@
 ---
 title: "Tema 2: Elementos básicos"
+description: "Análisis de los elementos fundamentales de la orientación a objetos, incluyendo clases, objetos, identidad, estado y comportamiento, con un enfoque práctico en la implementación en Java mediante el uso de atributos, métodos y constructores."
 ---
+
+import Mermaid from "@components/Mermaid.astro";
+import { ShowcaseProfile } from 'starlight-showcases';
+
+Análisis de los elementos fundamentales de la orientación a objetos, incluyendo clases, objetos, identidad, estado y comportamiento, con un enfoque práctico en la implementación en Java mediante el uso de atributos, métodos y constructores.
+
+## 1. Clases y Objetos
+
+### Definición de clase
+
+![Clases en Java](@assets/java-class.jpg)
+
+:::note
+La definición de Progamación Orientado a Objetos no incluye clases (pero prácticamente todos los lenguajes orientados a objetos tienen clases):
+> Se compone de objetos que se comunican entre sí intercambiando mensajes.
+:::
+
+Una clase es una _plantilla_ que describe la **estructura** y el **comportamiento** de un
+tipo de objeto y permite la **creación** de los mismos.
+
+```java
+[Modificadores] class Nombre [extends clase] [implements interfaz, ...] { 
+    // Atributos // Métodos 
+}
+```
+
+- **Modificadores**:
+    - ``public``: Permite que la clase sea accesible desde otro paquete (no confundir con los especificadores de visibilidad de atributos).
+    - ``abstract``: Define clases que no pueden instanciarse.
+    - ``final``: Define clases que no pueden extenderse con subclases.
+- **Cláusula ``extends``**:
+    - Define la superclase de la clase actual (por defecto Object).
+- **Cláusula ``implements``**:
+    - Define los interfaces que implementa la clase.
+
+Los elementos ``abstract``, ``final``, ``extends`` e ``implements`` se explican en el [Tema 3](/deese/apuntes/t3-propiedades_basicas/).
+
+A lo largo del tema se utilizará esta clase ``Caja`` como ejemplo.
+
+```java title="Caja.java"
+public class Caja {
+    // Atributos - Estado
+    private int valor;
+    
+    // Métodos - Comportamiento
+    public void setValor (int v) {
+        valor = v;
+    }
+    public int getValor () {
+        return valor;
+    }
+
+    // Constructores
+    public Caja() {
+        valor = 0;
+    }
+    public Caja(int v) {
+        valor = v;
+    }
+}
+```
+
+### Definición de objeto
+
+![Objetos en Java](@assets/java-object.jpg)
+
+Elemento **identificable** que contiene **características declarativas** (que determinan su estado) y **características procedimentales** (que modelan su comportamiento).
+
+```java
+[Clase] Nombre = new Constructor();
+```
+
+Para crear un objeto se usa el operador `new` junto con el constructor (`Constructor()`) de la clase (`[Clase]`).
+
+```java
+Caja x = new Caja();  // Un objeto 'x' de clase 'Caja' con 'valor = O'
+Caja y = new Caja(5); // Un objeto 'y' de clase 'Caja' con 'valor = 5'
+Caja z = new Caja(5); // Un objeto 'z' de clase 'Caja' con 'valor = 5'
+```
+
+:::caution
+
+**Todos** los objetos son **PUNTEROS**. Por ejemplo los objetos `y` y `z` pueden parecer _iguales_ pero **NO** són **idénticos**. Són punteros que apuntan a direcciones de memoria **distintas**, que en su interior contienen **valores iguales**. Más sobre esto en [el bloque siguiente](#2-identidad-de-objetos).
+
+No te preocupes, en Java (al contrario que en C), no andaremos jugando ni rompiendo la cabeza con punteros. Pero debes tener en cuenta siempre esta equivalencia.
+
+:::
+
+:::tip
+
+Si quieres comprobar lo aprendido añade a tu clase `Caja` un método `main`, esto te permitirá ejecutarlo y comprobar directamente desde tu editor el resultado.
+
+```java title="Caja.java" collapse={2-20} ins={22-32}
+public class Caja {
+    // Atributos - Estado
+    private int valor;
+    
+    // Métodos - Comportamiento
+    public void setValor (int v) {
+        valor = v;
+    }
+    public int getValor () {
+        return valor;
+    }
+
+    // Constructores
+    public Caja() {
+        valor = 0;
+    }
+    public Caja(int v) {
+        valor = v;
+    }
+
+
+    public static void main(String[] args) {
+        Caja x = new Caja();
+        Caja y = new Caja(5);
+        Caja z = new Caja(5);
+        System.out.println("x.getValor(): " + x.getValor());
+        System.out.println("y.getValor(): " + y.getValor());
+        System.out.println("z.getValor(): " + z.getValor());
+        System.out.println("x = x: " + (x == x));
+        System.out.println("x = y: " + (x == y));
+        System.out.println("y = z: " + (y == z));
+    }
+
+}
+```
+```txt title="Salida por pantalla" frame="terminal" {"Recuerda: Son punteros":6-7}
+x.getValor(): 0
+y.getValor(): 5
+z.getValor(): 5
+x = x: true
+x = y: false
+
+y = z: false
+```
+
+:::
+
+## 2. Identidad de Objetos
+
+La identidad es la propiedad de un objeto que lo distingue de todos los demás de forma independiente al valor de sus atributos.
+
+### Identidad vs. Igualdad
+
+**Identidad**: Dos objetos son idénticos si y solo si son el mismo objeto (es decir, tienen un mismo OID).
+
+> Comparación de identidad: mediante el operador `==`.
+
+```java
+Caja x = new Caja();
+x.setValor(7);
+Caja y = x;
+y.setValor(11);
+```
+
+<Mermaid>
+```mermaid
+flowchart LR
+x
+y
+subgraph Caja
+    valor[Valor: 11]
+end
+x & y --> Caja
+```
+</Mermaid>
+
+**Igualdad**: Dos objetos se consideran iguales si, a pesar de ser objetos distintos (con distinto OID), sus atributos son idénticos.
+
+> Comparación de igualdad: mediante el método `equals`.
+
+```java
+Caja x = new Caja();
+x.setValor(11);
+Caja y = new Caja();
+y.setValor(11);
+```
+
+<Mermaid>
+```mermaid
+flowchart LR
+x
+y
+subgraph Caja1[Caja]
+    valor1[Valor: 11]
+end
+subgraph Caja2[Caja]
+    valor2[Valor: 11]
+end
+x --> Caja1
+y --> Caja2
+```
+</Mermaid>
+
+:::caution
+
+Si `equals` no ha sido definido en la clase (`Caja`) se utiliza _por defecto_: el de la **superclase** `Object` que equivale a hacer `==`.
+
+```java {6-7}
+public static void main(String[] args) {
+    Caja x = new Caja();
+    x.setValor(11);
+    Caja y = new Caja();
+    y.setValor(11);
+    System.out.println(x == y);      // Resultado esperado: false
+    System.out.println(x.equals(y)); // Resultado esperado: true
+}
+```
+```txt frame="terminal" title="Salida por pantalla"
+false
+false
+```
+¿Como solucionamos esto? **Sobrescribiendo** el método `equals`. Veámoslo en el [siguiente apartado](#equals).
+:::
+
+### Equals
+
+Para crear un método equals correcto debemos cumplir el siguiente contrato:
+
+- **Reflexividad**: ``x.equals(x)`` debe devolver true.
+- **Simetría**: ``x.equals(y)`` debe devolver lo mismo que ``y.equals(x)``.
+- **Transitividad**: Si ``x.equals(y)`` devuelve true y ``y.equals(z)`` devuelve true entonces ``x.equals(z)`` debe devolver ``true``.
+- **Consistencia**: Si no se modifica el estado de los objetos que se usa para la comparación repetidas llamadas a ``x.equals(y)`` deberían responder siempre lo mismo.
+- **Uso de nulos**: ``x.equals(null)`` debe devolver ``false`` para cualquier valor x no nulo.
+
+Vamos a **redefinir** mediante `@Override` (`this` es el objeto que realiza la comparación): 
+
+```java title="Caja.java" collapse={2-20,38-47} {"Si los objetos son idénticos entonces son iguales.":23-24} {"Si obj es nulo la comparación es falsa.":26-27} {"Si la clase de obj no es igual a la clase actual (Caja) la comparación es falsa.":29-32} {"Si la clase de obj no es igual a la clase actual (Caja) la comparación es falsa.":34-36}
+public class Caja {
+    // Atributos - Estado
+    private int valor;
+
+    // Métodos - Comportamiento
+    public void setValor(int v) {
+        valor = v;
+    }
+    public int getValor() {
+        return valor;
+    }
+
+    // Constructores
+    public Caja() {
+        valor = 0;
+    }
+    public Caja(int v) {
+        valor = v;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj) { return true; }
+
+
+        if (obj == null) { return false; }
+
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+
+        Caja caja = (Caja) obj;
+        return this.valor == caja.valor;
+    }
+
+    public static void main(String[] args) {
+        Caja x = new Caja();
+        x.setValor(11);
+        Caja y = new Caja();
+        y.setValor(11);
+        System.out.println(x == y);      // Resultado esperado: false
+        System.out.println(x.equals(y)); // Resultado esperado: true
+    }
+
+}
+```
+
+:::tip
+
+Puedes copiar y pegar el código anterior en tu editor y comprobar que funciona ejecutando el `main`. **Usa el botón de la esquina superior derecha.**
+
+:::
+
+### hashCode
+
+> Es una función que mapea datos de un tamaño arbitrario en datos de un tamaño fijo.
+
+:::note
+
+La letra del DNI sería un ejemplo de una función hash usada para implementar un checksum. [Wikipedia](https://es.wikipedia.org/wiki/Documento_nacional_de_identidad_(Espa%C3%B1a)#N%C3%BAmero)
+
+:::
+
+Si dos objetos son **iguales**, de acuerdo con el método `equals(Object)`, entonces llamar al método `hashCode()` sobre ambos objetos debe producir **el mismo resultado**.
+
+:::caution
+
+Por defecto `hashCode()` devuelve la **dirección de memoria del objeto**. Por lo tanto debemos redefinir `hashCode` y `equals` para que funcionen de forma **coordinada**. 
+
+:::
+
+A partir de Java 7 existe un método en `Objects` llamado `hash()`, capaz de calcular de forma consistente valores _hashcode_ con los datos que le pasemos.
+
+En el siguiente ejemplo, acordamos que dos Cajas Extendidas serán iguales, si y solo si, **todas sus variables internas son iguales**. Por lo tanto redefinimos tanto `equals` como `hashCode`.
+
+```java title="CajaExtendida.java" collapse={10-15} {"Para comparar Strings se utiliza equals":21-22}
+public class CajaExtendida {
+    private int valorEntero;
+    private char valorChar;
+    private double valorDouble;
+    private boolean valorBoolean;
+    private String valorString;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) { return true; }
+        if (obj == null) { return false; }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        CajaExtendida caja = (CajaExtendida) obj;
+        return (this.valorEntero == caja.valorEntero)
+                && (this.valorChar == caja.valorChar)
+                && (this.valorDouble == caja.valorDouble)
+                && (this.valorBoolean == caja.valorBoolean)
+
+                && (Objects.equals(this.valorString, caja.valorString));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(valorEntero, valorChar, valorDouble,
+                valorBoolean, valorString);
+    }
+}
+```
+
+
+:::tip
+
+Puedes añadir a la clase **`Caja`** que hemos estado usando de ejemplo hasta ahora este método para utilizar `hashCode()`: 
+
+```java title="Caja.java" ins={1-4}
+@Override
+public int hashCode() {
+    return Objects.hash(valor);
+}
+```
+
+:::
+
+:::note
+
+En Java `hashCode()` fue implementado usando _hash 31_. [Wikipedia](https://es.wikipedia.org/wiki/HashCode()_(Java))
+
+:::
+
+## 3. Estado de Objetos
+
+### Definición de Atributos
+
+```java
+[EspecificadorAcceso][Modificadores] tipo nombreAtributo [= valorInicial];
+```
+
+- **Especificador de Acceso**: Definen desde dónde podemos acceder a ese atributo.
+- **Modificadores**: Permiten definir atributos de clase y atributos constantes.
+- **Valor inicial**:
+    - Todos los atributos se inicializan automáticamente al valor cero (si es numérico), false (si es booleano) o null (si es un objeto).
+    - En la definición se puede definir, si se considera necesario, un valor inicial distinto a dicho atributo.
+
+### Especificadores de Acceso
+
+- **Público (`public`)**: Los atributos son visibles para todas las clases.
+- **Paquete (no se indica especificador)**
+    - Es el que se aplica si no se especifica ningún especificador
+    - Permite que el atributo sea visible a todas las clases que se sitúan en el mismo paquete que la clase original.
+- **Protegido (`protected`)**
+    - Permite que el atributo sea visible a las subclases de la clase original
+    - También permite el acceso a las clases que se encuentren en el mismo paquete (a diferencia de otros leng. de programación).
+- **Privado (`private`)**: Los atributos sólo son visibles dentro de la propia clase.
+
+![Tabla explicando las características explicadas en la anterior descripción](@assets/Java-Especificadores-de-Acceso.png)
+
+\* En `protected` se puede acceder desde una subclase (otro paquete) solo desde objetos declarados del tipo de la **subclase** no de la superclase.
+
+**¿Porque fue diseñado así?** Probablemente para hacerlos contenidos unos en otros. Lo cual provoca que la visibilidad "protegida" sea la más permisiva después de "pública".
+
+![Especificadores de acceso explicado como capas](@assets/Java-Capas-de-Acceso.png)
+
+**Ortodoxia de la Orientación a Objetos**: Los atributos deben declararse privados y su acceso sólo debe ser posible a través de métodos públicos de lectura/escritura.
+
+```java
+class Clase {
+    private int valor; // La propiedad se define privada
+
+    public int getValor() { // Método de lectura
+        return valor;
+    }
+        
+    public void setValor(int valor) { // Método de escritura
+        this.valor=valor;
+    }
+}
+```
+
+#### Acceso a objetos privados mutables
+
+Se crea una clase Cuenta, para guardar y interactuar con una cuenta bancaria.
+
+- Se define un atributo `balance` de tipo primitivo `int` y `privado`. Por lo tanto no es accesible desde fuera de su clase
+- Se define un constructor y métodos de lectura y escritura para modificar el balance.
+
+```java title="Cuenta.java"
+class Cuenta {
+    // Atributos
+    private int balance = 0;
+
+    // Métodos constructores
+    public Cuenta(int cantidad) {
+        balance = cantidad;
+    }
+
+    // Métodos de lectura y escritura
+    public int getBalance() {
+        return balance;
+    }
+    public void retirada(int cantidad) {
+        balance = balance - cantidad;
+    }
+    public void ingreso(int cantidad) {
+        balance = balance + cantidad;
+    }
+}
+```
+
+- La clase `Cliente` se define con dos atributos privados, uno de ellos de tipo `Cuenta`.
+
+- Definimos un constructor y métodos de lectura pero no permitimos el acceso al atributo privado de tipo `Cuenta` desde fuera de esos métodos.
+
+```java title="Cliente.java"
+class Cliente {
+    // Atributos
+    private String nombre;
+    private Cuenta cuenta;
+
+    // Métodos constructores
+    public Cliente(String n, int c) {
+        nombre = n;
+        cuenta = new Cuenta(c);
+    }
+
+    // Métodos de acceso
+    public String getNombre() {
+        return nombre;
+    }
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+}
+```
+
+:::caution
+
+Si devolvemos referencias a objetos privados mutables (que pueden modificarse después de haber sido creados), el contenido de dichos objetos puede ser modificado desde fuera de la clase en la que residen.
+
+```java
+Cliente cJuan = new Cliente ("Juan", 1000); // Cliente con mil euros
+Cuenta c = cJuan.getCuenta(); // Obtenemos referencia a objeto privado
+c.retirada (1000); // Como el objeto es mutable lo modificamos
+// Juan se queda compuesto y sin mil euros
+System.out.println("Saldo de Juan = " + cJuan.getCuenta().getBalance());
+```
+```txt frame="terminal" title="Salida por pantalla"
+Saldo de Juan = 0
+```
+<Mermaid>
+```mermaid
+flowchart LR
+    subgraph Cliente
+        Juan
+        Cuenta
+    end
+    cJuan --> Cliente
+    Cuenta --> Saldo
+    c --> Saldo
+```
+</Mermaid>
+Dos soluciones: **Uso de clones** o **Objetos inmutables**.
+:::
+
+```java title="Uso de clones" frame="terminal" collapse={2-4,14-26,30-44} del={46} ins={"Crea una cuenta nueva a partir de otra":9-13} ins={"Ya no devuelve su propia cuenta sino un clon de la misma":47-48}
+class Cuenta {
+    // Atributos
+    private int balance = 0;
+
+    // Métodos constructor
+    public Cuenta(int cantidad) {
+        balance = cantidad;
+    }
+
+    // Método constructor de copia
+    public Cuenta (Cuenta c) {
+        this.balance = c.balance;
+    }
+
+    // Métodos de lectura y escritura
+    public int getBalance() {
+        return balance;
+    }
+
+    public void retirada(int cantidad) {
+        balance = balance - cantidad;
+    }
+
+    public void ingreso(int cantidad) {
+        balance = balance + cantidad;
+    }
+}
+
+class Cliente {
+    // Atributos
+    private String nombre;
+    private Cuenta cuenta;
+
+    // Métodos constructores
+    public Cliente(String n, int c) {
+        nombre = n;
+        cuenta = new Cuenta(c);
+    }
+
+    // Métodos de acceso
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Cuenta getCuenta() {
+        return cuenta;
+
+        return new Cuenta (cuenta);
+    }
+}
+```
+
+```java title="Objetos inmutables" frame="terminal" del={"Sin métodos de escritura no hay modificación posible":14-20}
+class Cuenta {
+    // Atributos
+    private int balance = 0;
+
+    // Métodos constructores
+    public Cuenta(int cantidad) {
+        balance = cantidad;
+    }
+
+    // Métodos de lectura y escritura
+    public int getBalance() {
+        return balance;
+    }
+
+    public void retirada(int cantidad) {
+        balance = balance - cantidad;
+    }
+    public void ingreso(int cantidad) {
+        balance = balance + cantidad;
+    }
+}
+```
+
+### Modificadores de Atributos
+
+- **`static`**:
+    - Los atributos pertenecen **a la clase** y no a una instancia en particular.
+    - **Pueden ser modificados** sin que exista una instancia creada de la clase.
+    ```java title="Persona.java" {"Acceder mediante la clase":6-7} {"O mediante un objeto de esa clase":8-9}
+    public class Persona {
+        public int edad;
+        public static int edadVoto = 18;
+        public static void main (String[] args) {
+            Persona p1 = new Persona();
+
+            System.out.println("Edad de voto = " + Persona.edadVoto);
+            
+            System.out.println("Edad de voto = " + p1.edadVoto);
+        }
+    }
+    ```
+- **`final`**:
+    - Atributos **constantes**.
+    - Una vez que le hemos asignado un valor **no es posible cambiarlo**.
+    ```java title="Constante de clase" frame="terminal" {"PI es una constante, es static y final":3-4}
+    public class Circulo {
+        public int radio;
+
+        public static final double PI = 3.1416;
+        public Circulo(int r) {
+            radio = r;
+        }
+        public double areaCirculo() {
+            return PI * radio * radio;
+        }
+    }
+    ```
+    ```java title="Blank Finals (constantes de instancia)" frame="terminal" {"Cada persona tiene un DNI diferente por eso no es static":7-8}
+    public class Persona {
+        // Definimos la constante, pero no le damos valor
+        public final String DNI;
+
+        // El valor debe asignarse en el constructor
+        public Persona(String identificador) {
+            
+            DNI = identificador;
+        }
+    }
+    ```
+- **Otros atributos**:
+    - `transient` o `volatile` son particulares de Java y menos usados.
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "Copyright © 2025",
+    },
+  ]}
+/>
