@@ -199,6 +199,16 @@ export default defineConfig({
                 label: "Apuntes",
                 autogenerate: { directory: "deese/apuntes" },
               },
+              {
+                label: "Ejercicios Resueltos",
+                items: [
+                  {
+                    label: "emosqueira/Ejercicios-DS",
+                    link: "https://github.com/emosqueira/Ejercicios-DS",
+                    badge: { text: 'GitHub', variant: 'tip' },
+                  },
+                ]
+              },
             ],
           },
           {
