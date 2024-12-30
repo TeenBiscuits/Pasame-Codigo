@@ -181,6 +181,16 @@ export default defineConfig({
                 label: "Apuntes",
                 autogenerate: { directory: "prodos/apuntes" },
               },
+              {
+                label: "Código",
+                items: [
+                  {
+                    label: "FerLS/PRO2",
+                    link: "https://github.com/FerLS/PRO2",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
+                ],
+              },
             ],
           },
           {
