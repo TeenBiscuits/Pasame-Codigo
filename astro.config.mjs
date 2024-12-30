@@ -12,6 +12,7 @@ import starlightDocSearch from "@astrojs/starlight-docsearch";
 
 // Expressive Code Plugins
 import { pluginCodeOutput } from "./src/ec-output-plugin.ts";
+import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 
 // Support for MathJax
 import remarkMath from "remark-math";
@@ -128,7 +129,7 @@ export default defineConfig({
       },
       customCss: ["./src/tailwind.css", "./src/assets/custom.css"],
       expressiveCode: {
-        plugins: [pluginCodeOutput()],
+        plugins: [pluginCodeOutput(), pluginCollapsibleSections()],
         shiki: {
           langs: [JSON.parse(readFileSync("./src/pseudocodigo.json", "utf-8"))],
         },
@@ -183,11 +184,32 @@ export default defineConfig({
             ],
           },
           {
+            label: "Algoritmos",
+            link: "/algo/",
+            icon: "seti:clock",
+            items: [],
+            badge: { text: "WIP", variant: "danger" },
+          },
+          {
             label: "Diseño de Software",
             link: "/deese/",
             icon: "seti:java",
-            items: [],
-            badge: { text: "WIP", variant: "danger" },
+            items: [
+              {
+                label: "Apuntes",
+                autogenerate: { directory: "deese/apuntes" },
+              },
+              {
+                label: "Ejercicios Resueltos",
+                items: [
+                  {
+                    label: "emosqueira/Ejercicios-DS",
+                    link: "https://github.com/emosqueira/Ejercicios-DS",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
+                ],
+              },
+            ],
           },
           {
             label: "Paradigmas de la Programación",
