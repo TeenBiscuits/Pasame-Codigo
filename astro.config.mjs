@@ -205,9 +205,9 @@ export default defineConfig({
                   {
                     label: "emosqueira/Ejercicios-DS",
                     link: "https://github.com/emosqueira/Ejercicios-DS",
-                    badge: { text: 'GitHub', variant: 'tip' },
+                    badge: { text: "GitHub", variant: "tip" },
                   },
-                ]
+                ],
               },
             ],
           },
