@@ -623,6 +623,328 @@ class Cuenta {
 - **Otros atributos**:
     - `transient` o `volatile` son particulares de Java y menos usados.
 
+## 4. Comportamiento de Objetos
+
+### Definición de Métodos
+
+```java
+[EspecificadorAcceso][Modificadores] tipoRetorno nombreMetodo ([parametro1, parametro2, ...]) { cuerpoMetodo }
+```
+
+- **Especificadores de Acesso**: Iguales que los atributos
+- **Modificadores**: Permiten definir métodos de clase (``static``), métodos diseñados para ser sobrescritos (``abstract``), métodos que no pueden sobrescribirse (``final``), etc.
+
+:::caution
+
+En Java **todos los parámetros** se pasan por valor. Es decir el valor de los parámetros se **copia** al parámetro formal.
+
+Ya que los objetos son punteros, una copia de una dirección de memoria **sigue apuntando al mismo sitio que el objeto original**. 
+
+Un ejercicio para ver este comportamiento es este:
+
+```java title="¿Cuál es el resultado de este código?" frame="terminal"
+public class Parametros {
+    public static void manipularCuenta(Cuenta c1) {
+        c1.ingreso(500);
+        Cuenta c2 = new Cuenta(500);
+        c1 = c2;
+    }
+    public static void main(String[] args) {
+        Cuenta c = new Cuenta(1000);
+        manipularCuenta(c);
+        System.out.println("Saldo = " + c.getBalance());
+    }
+}
+```
+<details>
+<summary>Mostrar Solución</summary>
+```txt title="Salida por pantalla" frame="terminal"
+Saldo = 1500
+```
+<Mermaid>
+```mermaid
+---
+title: "Tras realizar c1.ingreso(500)"
+---
+flowchart LR
+    c --> 1500
+    c1 --> 1500
+```
+</Mermaid>
+<Mermaid>
+```mermaid
+---
+title: "Tras realizar c1 = c2"
+---
+flowchart LR
+    c --> 1500
+    c1 --> 500
+    c2 --> 500
+```
+</Mermaid>
+</details>
+
+Poner `final` en `public static void manipularCuenta(final Cuenta c1)` **no es una solución** al problema, solo provoca un **error de compilación** en `c1 = c2`
+
+:::
+
+En Java los atributos _ensombrecen_ a los atributos dentro de los métodos. Para evitar conflictos se emplea el puntero `this`:
+
+```java
+public class Parametros {
+    private int valor;
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
+}
+```
+
+### Modificadores de Métodos
+
+- **``static``**: Métodos de clase.
+- **``abstract``**:
+    - Métodos no definidos destinados a ser implementados por una subclase.
+    - Se tratarán con más detalle al hablar de la herencia: [Tema 3](/deese/apuntes/t3-propiedades_basicas/).
+- **``final``**:
+    - Evita que un método sea sobreescrito
+    - Si una clase es final todos sus métodos son implícitamente final.
+    - Se tratarán con ms ádetalle al hablar del polimorfismo: [Tema 3](/deese/apuntes/t3-propiedades_basicas/).
+
+#### Métodos de clase (`static`)
+
+Són útiles cuando no se necesita acceder a al estado del objetos. Un ejemplo es en la API de Java, en la libería `Math` el método `max`.
+
+```java "static"
+// API de Java
+public class Math {
+    public static int max(int a, int b) { /* ... */ }
+    // ...
+}
+// Nuestro código
+System.out.println("El mayor de " + a + " y " + b + ": " + Math.max(a,b));
+```
+
+:::caution
+
+En los métodos estáticos no se puede usar el puntero `this`.
+
+:::
+
+### Métodos Constructores
+
+> Son los métodos que se utilizan para crear e inicializar instancias.
+
+```java title="Caja.java" {5-8}
+public class Caja {
+    private int valor;
+    public void setValor(int v) {valor = v;}
+    public int getValor() { return valor; }
+    // Método constructor
+    public Caja(int valor) {
+        this.valor = valor;
+    }
+    public static void main(String[] args) {
+        Caja c = new Caja(5);
+        System.out.println("Valor = " + c.getValor());
+    }
+}
+```
+
+En la creación de un objeto hay dos fases diferentes:
+
+- `new`: Creación del objeto en el montículo.
+- `Caja(5)`: Inicialización del objeto usando un constructor.
+
+```java
+Caja c = new Caja(5);
+```
+
+:::note
+
+Si se utiliza un constructor `Caja()` **sin tener ningún constructor definido**. Lo que hará es inicializar los estados **a cero**.
+
+```java
+Caja c = new Caja(); // valor = 0
+```
+
+:::
+
+#### ¿Tiene sentido utilizar constructores `private`?
+
+**Pues si**. Un constructor privado permite controlar la creación de instancias. **Nadie podrá crear objetos usando ``new``**, fuera de tu clase.
+
+Tiene utilidad a la hora de usar distintos patrones como [enumerados](#tipos-de-enumerados), singleton, etc.
+
+### Tipos de Enumerados
+
+> Es un tipo de datos que consiste en un conjunto de valores con nombre llamados elementos que se comportan como constantes en el lenguaje.
+
+:::note
+
+Antiguamente los enumerados en java eran creados de la siguiente manera:
+
+```java title="Calificaciones.java" collapse={8-9,12-14} {"Todas estas llamadas al constructor son válidas":15-19}
+public class Calificacion {
+    public static final int MATRICULA = 4;
+    public static final int SOBRESALIENTE = 3;
+    public static final int NOTABLE = 2;
+    public static final int APROBADO = 1;
+    public static final int SUSPENSO = 0;
+    public static final int NO_PRESENTADO = -1;
+
+
+    // El tipo del parámetro no aclara el objetivo
+    public static void introduceCalificacion(int calificacion) { /* ... */ }
+
+    public static void main(String[] args) {
+
+
+        Calificacion.introduceCalificacion(Calificacion.MATRICULA);
+        Calificacion.introduceCalificacion(Calificacion.APROBADO);
+        Calificacion.introduceCalificacion(257); // WTF
+        Calificacion.introduceCalificacion(7);
+    }
+}
+```
+
+Como se puede observar los enumerados pueden ser fuente de errores. Para evitar esto se creó [el patrón de diseño](/deese/apuntes/t6-patrones_diseno/): **Enumerados de Tipos Seguros (TypeSafe Enum)**.
+
+Existen varias formas de aplicarlo, como el siguiente código de ejemplo, pero la forma más sencilla es emplear `enum`.
+
+```java title="Calificaciones.java" collapse={9-10,13-14} ins={2-8} ins={12} del={"Esta linea ahora no compila":17-18}
+public class Calificacion {
+    private Calificacion() {}; // Constructor definido privado
+    public static final Calificacion MATRICULA = new Calificacion();
+    public static final Calificacion SOBRESALIENTE = new Calificacion();
+    public static final Calificacion NOTABLE = new Calificacion();
+    public static final Calificacion APROBADO = new Calificacion();
+    public static final Calificacion SUSPENSO = new Calificacion();
+    public static final Calificacion NO_PRESENTADO = new Calificacion();
+
+
+    // El tipo del parámetro no aclara el objetivo
+    public static void introduceCalificacion(Calificacion c) { /* ... */ }
+
+    public static void main(String[] args) {
+        Calificacion.introduceCalificacion(Calificacion.MATRICULA);
+        Calificacion.introduceCalificacion(Calificacion.APROBADO);
+        
+        Calificacion.introduceCalificacion(257); // WTF
+        Calificacion.introduceCalificacion(7);
+    }
+}
+```
+
+:::
+
+Podemos simplificar el enum (Cumpliendo el TypeSafe enum) de la siguiente manera.
+
+```java title="Calificacion.java"
+enum Calificacion {
+    MATRICULA(10),
+    SOBRESALIENTE(9),
+    NOTABLE(7),
+    APROBADO(5),
+    SUSPENSO(0),
+    NO_PRESENTADO(0);
+
+    private int valor;
+    public int getValor() { return valor; }
+    
+    Calificacion(int valor) { this.valor = valor; }
+}
+```
+
+:::tip
+
+Puedes hacer comparaciones entre enumerados con `==`, `equals` o `CompareTo`.
+
+Puedes recorrer todos los elementos del enumerado utilizando el método `values`:
+
+```java
+for (Calificacion cc : Calificacion.values()) {
+    System.out.println(cc)// Por ejemplo imprimir por pantalla
+}
+```
+
+Puedes obtener el nombre del elemento con un `toString`. También puedes extraer su valor ordinal mediante `ordinal` o utilizando el nombre del elemento con `valueOf`.
+
+```java
+Calificacion.NOTABLE.toString(); // "NOTABLE"
+Calificacion.valueOf("NOTABLE"); // 7
+Calificacion.NOTABLE.ordinal();  // 7
+```
+
+:::
+
+### Registros
+
+> Un registro es un tipo de clase restringida que se crea de forma sencilla y eficiente para actuar como portadora de datos.
+
+Los registros añaden automáticamente automáticamente varios métodos:
+
+```java title="Registros en Java" frame="terminal"
+public record Caja(int valor) { }
+// ...
+public class UsaCaja {
+    public static void main(String[] args) {
+        Caja c1 = new Caja(5); // llamadas al constructor canónico
+        Caja c2 = new Caja(5);
+        System.out.println(c1.valor()); // llamada a "valor()"
+        System.out.println(c1); // llamada a "toString()"
+        System.out.println(c1.equals(c2)); // llamada a "equals(...)"
+        // También se implementan los métodos equals y hashCode
+    }
+}
+```
+
+#### Registros y constructores
+
+Podemos modificar **el constructor canónico** mediante el **constructor compacto** (obtienes los parámetros de la declaración del registro, en este caso solamente `valor`).
+
+Podemos añadir otros constructores pero tendremos que hacer **obligatoriamente** referencia al canónico.
+
+```java title="Registro.java" del={"Devolverá un error en tiempo de ejecución":12-13}
+public record Registro(int valor) {
+    public Registro { // Constructor compacto
+        if (valor < 0) // Cambia el constructor canónico
+            throw new IllegalArgumentException();
+    }
+    public Registro(String numero) {
+        this(Integer.decode(numero)); // Llamada al constructor canónico
+    }
+    public static void main(String[] args) {
+        Registro r1 = new Registro("1");
+        System.out.println("r1 = " + r1); // r1 = Registro[valor=1]
+        
+        Registro r2 = new Registro(-3); // throws IllegalArgumentException
+    }
+}
+```
+
+#### Registros y métodos
+
+Es posible añadir a los registros **atributos estáticos** (no de instancia) y **métodos de instancia o estáticos** si fuera necesario. También podemos darle una **nueva implementación** a los métodos de lectura y/o escritura.
+
+```java title="Registro.java" {"Atributo estático":2-3} {"Método de instancia":4-5} {"Método estático":6-7} {"Reimplementación del método de lectura del atributo":8-9}
+public record Registro(int valor) {
+
+    public static final int sentidoVida = 69;
+    
+    public int valorAlCuadrado() { return valor * valor; }
+    
+    public static int getSentidoVida() { return sentidoVida; }
+    
+    public int valor() { return valor * 2; }
+    public static void main(String[] args) {
+        Registro c = new Registro(5);
+        System.out.println(r.valorAlCuadrado()); // 25
+        System.out.println(Registro.getSentidoVida()); // 69
+        System.out.println(r.valor()); // 10
+    }
+}
+```
+
 <ShowcaseProfile
   entries={[
     {
