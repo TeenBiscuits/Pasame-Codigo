@@ -7,7 +7,6 @@ tableOfContents: false
 
 **Pásame el Código** es una web open source con apuntes y ejercicios resueltos de las diferentes asignaturas que componen el Grado de **Enxeñería Informática da Universidade da Coruña**.
 
-
 ## Contribuye ✨
 
 Gracias a toda esta maravillosa gente ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -60,14 +59,13 @@ Este proyecto sigue la especificación [all-contributors](https://github.com/all
 
 [![Repobeats](https://repobeats.axiom.co/api/embed/a8e143aa3070146b890d78a36acf3f2547e686c1.svg)](https://github.com/TeenBiscuits/Pasame-Codigo/pulse)
 
-
 ## Estrellitas 🌟
 
 [![Star History Chart](https://api.star-history.com/svg?repos=TeenBiscuits/Pasame-Codigo&type=Date)](https://star-history.com/#TeenBiscuits/Pasame-Codigo&Date)
 
 ## Licencias
 
-[Pásame el Código](https://pc.pablopl.dev/)* by [Pablo Portas López](https://github.com/TeenBiscuits) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)
+[Pásame el Código](https://pc.pablopl.dev/)\* by [Pablo Portas López](https://github.com/TeenBiscuits) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)
 
 \* Esto aplica a apuntes, tutoriales, logos y otros materiales que sean distribuidos en la web y este repositorio bajo la contribución de cualquiera siempre que no se especifique lo contrario por el autor.
 
