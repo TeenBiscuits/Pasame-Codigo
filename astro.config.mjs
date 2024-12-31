@@ -153,6 +153,7 @@ export default defineConfig({
             items: [
               "intro/readme",
               "intro/contribuir",
+              "intro/code_of_conduct",
               {
                 label: "Licencias",
                 autogenerate: { directory: "intro/licencias" },

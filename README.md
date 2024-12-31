@@ -12,6 +12,9 @@
 [![Web](https://img.shields.io/website?down_message=offline&up_message=online&label=Web&url=https%3A%2F%2Fpc.pablopl.dev)](https://pc.pablopl.dev)
 [![Pull Request](https://img.shields.io/github/issues-pr-closed/TeenBiscuits/Pasame-Codigo.svg?label=Pull%20Request)](https://github.com/TeenBiscuits/Pasame-Codigo/pulls)
 [![All Contributors](https://img.shields.io/github/all-contributors/TeenBiscuits/Pasame-Codigo?color=ee8449)](#contribuye)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](./LICENSES/GPL-3.0-only.txt)
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey.svg)](./LICENSE.md)
 [![Stars](https://img.shields.io/github/stars/TeenBiscuits/Pasame-Codigo.svg)](https://github.com/TeenBiscuits/Pasame-Codigo)
 
 </div>
