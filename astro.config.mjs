@@ -115,8 +115,38 @@ export default defineConfig({
           attrs: {
             type: "text/partytown",
           },
-          content:
-            "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-JHF258ZVQX');",
+          content: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("consent", "default", {
+                ad_storage: "denied",
+                ad_user_data: "denied",
+                ad_personalization: "denied",
+                analytics_storage: "denied",
+            });
+
+            gtag("config", "G-JHF258ZVQX");  
+          `,
+        },
+        {
+          tag: "script",
+          attrs: {
+            'data-category': 'analytics',
+          },
+          content: `
+            function updateConsents() {
+              gtag("consent", "update", {
+                ad_storage: "granted",
+                ad_user_data: "granted",
+                ad_personalization: "granted",
+                analytics_storage: "granted",
+              });
+            }
+          `,
         },
         {
           tag: "link",
@@ -124,6 +154,13 @@ export default defineConfig({
             rel: "preconnect",
             href: "https://IOKSWSAQ8F-dsn.algolia.net",
             crossorigin: "",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "stylesheet",
+            href: "https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css",
           },
         },
       ],
