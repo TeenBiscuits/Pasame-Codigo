@@ -9,8 +9,8 @@ if (myEnvVar) {
   const filePath = join("./public", `${myEnvVar}.txt`);
   const fileContent = `${myEnvVar}`;
   writeFileSync(filePath, fileContent, "utf-8");
-  console.log("Archivo creado correctamente en ./public");
+  console.log("[IndexNow] Archivo creado correctamente en ./public");
 } else {
-  console.error("La variable de entorno no está definida");
+  console.error("[IndexNow] La variable de entorno no está definida");
   process.exit(1);
 }
