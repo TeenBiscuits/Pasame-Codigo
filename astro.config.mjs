@@ -159,6 +159,10 @@ export default defineConfig({
                 autogenerate: { directory: "intro/licencias" },
                 collapsed: true,
               },
+              {
+                label: "Privacidad",
+                autogenerate: { directory: "intro/legal" },
+              },
             ],
           },
           {
