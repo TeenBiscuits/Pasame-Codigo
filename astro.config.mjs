@@ -149,6 +149,14 @@ export default defineConfig({
           `,
         },
         {
+          tag: "script",
+          attrs: {
+            async: true,
+            src: "https://analytics.ahrefs.com/analytics.js",
+            'data-key': '41AHUOkOrsmT26f+Ow8zaQ',
+          },
+        },
+        {
           tag: "link",
           attrs: {
             rel: "preconnect",
