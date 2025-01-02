@@ -1,13 +1,222 @@
 ---
 title: "Tema 4: UML (Unified Modeling Language)"
-sidebar:
-    badge:
-        text: WIP
-        variant: caution
-tableOfContents: false
+description: UML es un lenguaje visual estándar para modelar sistemas software, representando elementos, relaciones y diagramas con extensibilidad para adaptarse a diferentes necesidades.
 ---
 
-import { Aside } from '@astrojs/starlight/components';
 
-<Aside type="caution">Seguimos en obras por aquí. 🏗️</Aside>
 
+UML (_Unified Modeling Language_) es un lenguaje de modelado visual que se usa para visualizar, especificar, construir y documentar artefactos de un sistema software.
+
+Objetivos:
+
+- Convertirse en un lenguaje estándar de modelado de propósito general en el campo de la ingeniería del software orientada a objetos, pero lo suficientemente expresivo para modelar sistemas no-software.
+
+## Bloques Básicos de UML
+
+- **Elementos**: Abstracciones que constituyen los ciudadanos de primera clase de un modelo.
+- **Relaciones**: Se encargan de ligar los elementos entre sí.
+- **Diagramas**: Representaciones gráficas de un conjunto de elementos y relaciones representadas como un grafo conexo.
+
+### Elementos
+
+- **Elementos estructurales**: En su mayoría son las partes estáticas de un modelo y representa conceptos o cosas materiales.
+- **Elementos de comportamiento**: Son las partes dinámicas de los modelos UML (los verbos) que representan un comportamiento sobre el tiempo o el espacio.
+- **Elementos de agrupación**: Son las partes organizativas de los modelos UML. El elemento principal de agrupación de UML es el Paquete.
+- **Elementos de anotación**: Son las partes explicativas de los modelos UML. Se representan como notas que describen, clarifican y/o hacen observaciones sobre cualquier elemento de un modelo.
+
+### Relaciones
+
+- Generalización.
+- Realización.
+- Asociación.
+- Dependencia.
+
+![Relaciones UML](@assets/deese/UML_relaciones.jpg)
+
+### Diagramas
+
+Los diagramas se utilizan para visualizar un sistema desde diferentes perspectivas, de forma que un diagrama es una proyección de un sistema.
+
+- Diagramas Estructurales (Estáticos)
+- Diagramas de Comportamiento (Dinámicos).
+
+## Mecanismos Comunes
+
+### Especificaciones
+
+Detrás de cada elemento gráfico hay una especificación que proporciona una explicación textual de la sintaxis y la semántica de ese bloque de construcción.
+
+### Adornos
+
+Todos los elementos de la notación UML parten de un símbolo básico al cual pueden añadirse una variedad de adornos específicos de ese símbolo.
+
+### Divisiones comunes
+
+Casi todos los bloques de construcción de UML presentan una dicotomía clase/objeto.
+
+UML usa el mismo símbolo para los dos, pero subraya el nombre del objeto y lo separa del nombre de la clase usando `:`.
+
+### Mecanismos de extensibilidad
+
+A pesar de los múltiples elementos y adornos de UML es imposible que sean suficientes para expresar todos los matices posibles que puedan existir, por ello UML proporciona mecanismos de extensibilidad que permiten extender el lenguaje de manera controlada.
+
+Muchos de estos mecanismos de extensibilidad se encuentran en las herramientas de UML en los llamados perfiles, que son extensiones del UML para una tecnología dada.
+
+### Estereotipos
+
+Representan una variación de algún elemento existente del modelo, con la misma forma, pero con una intención diferente. 
+
+La notación del estereotipo consiste en añadirle el término estereotipado entre comillas latinas (`«»`) al elemento.
+
+### Valores etiquetados
+
+Es una pareja formada por un marcador y un valor que se asocia a cualquier elemento para aportar información adicional.
+
+Desde la versión 2.0 de UML los valores etiquetados se asocian a estereotipos.
+
+### Restricciones
+
+Las restricciones extienden la semántica de un bloque de construcción de UML permitiendo añadir nuevas reglas o modificar las existentes.
+
+## Diseño estático
+
+### Representación de clases
+Una clase UML se representa como un rectángulo dividido en tres partes horizontales en donde se representan la cabecera, los atributos y los métodos de la clase.
+
+#### Atributos UML
+
+```
+[Visibilidad] nombre [:tipo] [Multiplicidad] [=valor] [{Modificadores}]
+```
+
+#### Multiplicidad UML
+
+La multiplicidad en UML se representa como un intervalo entre el límite inferior y el superior:
+
+```
+[lim inferior..lim superior].
+```
+
+El límite superior puede ser representado como un `*` indicando que no está limitado.
+
+Algunos casos pueden ser simplificados en un sólo valor.
+
+La multiplicidad por defecto, si no se especifica, es `[1]`.
+
+En el caso de los atributos, la multiplicidad mayor que uno se utiliza para representar arrays.
+
+#### Métodos UML
+
+```
+[Visibilidad] nombre ([listaParametros]) [:tipoRetorno] [{Modificadores}]
+```
+
+En un método UML se pueden incluir diversas restricciones que modifican el funcionamiento del mismo.
+
+- `query`: La operación no cambia el estado del objeto.
+- `ordered`: La operación devuelve los valores ordenados.
+- `unique`: La operación devuelve un conjunto de valores sin duplicados.
+
+#### Parámetros UML
+
+```
+[Dirección] nombre :tipo [Multiplicidad] [=valorDefecto] [propiedades]
+```
+
+Los parámetros pueden ser `in`, `inout`, `out` y `return`.
+
+- `in`: Parámetro de entrada suministrado por el llamador y no modificado por el método (paso por valor).
+- `inout`: Parámetro de entrada suministrado por el llamador que puede ser modificado dentro del método (paso por referencia).
+- `out`: Parámetro de salida que no es suministrado por el llamador sino inicializado dentro del método.
+- `return`: Parámetro de salida que sí es inicializado por el llamador.
+
+Si no se especifica nada se entiende que son `in`.
+
+#### Clases genéricas
+
+Las clases genéricas se representan con un rectángulo discontinuo en la esquina superior derecha en la que se especifica el parámetro genérico.
+
+### Relación de generalización
+
+Relación de herencia en la cual los objetos especializados heredan las características del objeto general y pueden llegar a sustituirlo si fuera necesario.
+
+Representación: Flecha con línea continua terminada en un triángulo hueco en el lado más general. En caso de haber varias subclases pueden combinar sus flechas en una sola.
+
+```plantuml
+@startuml
+Class1 <|-- Class2
+@enduml
+```
+
+### Relación de realización
+
+Relación semántica en donde un clasificador especifica un contrato que otro clasificador garantiza que cumplirá.
+
+Representación: Flecha con línea discontinua terminada en un triángulo hueco en el lado del contrato. También existe una notación alternativa conocida como _lollipop_ (piruleta).
+
+```plantuml
+@startuml
+interface Interface
+Interface <|.. Class
+@enduml
+```
+
+### Relación de asociación
+
+Relación estructural que define conexiones entre objetos. 
+
+Representación: La asociación se representa como una línea continua que conecta las dos clases asociadas. Sobre dicha línea continua pueden disponerse distintos adornos que establecen características de dicha asociación.
+
+Adornos fundamentales: Son aquellos adornos sencillos que deberían ir en prácticamente todas las relaciones de asociación.
+- Nombre.
+- Nombre de rol.
+- Multiplicidad.
+- Navegabilidad.
+- Visibilidad.
+
+Adornos agregación/composición: Son adornos que indican si la asociación es de tipo agregación o composición.
+
+Otros adornos: Son adornos que se utilizan sólo en ocasiones determinadas que no suceden comúnmente.
+- Calificadores.
+- Clases asociación.
+- Asociaciones n-arias.
+
+```plantuml
+@startuml
+Class1 -- Class2
+@enduml
+```
+
+### Relación de dependencia
+
+Relación entre dos elementos, en los cuales un cambio en un elemento (proveedor) puede afectar al otro elemento dependiente (cliente).
+
+Representación: La dependencia se representa como una línea discontinua y dirigida que conecta la clase cliente con la clase proveedora. La dependencia puede estereotiparse para diferenciar los distintos tipos de la misma.
+
+```plantuml
+Class1 <.. Class2
+```
+
+#### Significado
+
+La dependencia es una relación proveedor-cliente, en donde un proveedor ofrece algo para el cliente, y por lo tanto el cliente es, en cierto sentido, incompleto y semántica o estructuralmente dependiente del proveedor.
+
+#### Dependencias y otras relaciones
+
+Todas las relaciones implican una dependencia. La asociación, generalización y realización además de una dependencia implican más cosas (herencia, implementación de interfaces, etc.).
+
+Una relación de dependencia ocurre cuando existe una relación entre las clases que no puede identificarse con ninguna de las otras relaciones.
+
+import { ShowcaseProfile } from 'starlight-showcases'
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Daniel Feito Pin',
+      picture: 'https://avatars.githubusercontent.com/u/71133325?v=4',
+      href: 'https://github.com/danielfeitopin',
+      description:
+        "© 2024 licensed under CC BY-NC 4.0",
+    },
+  ]}
+/>
