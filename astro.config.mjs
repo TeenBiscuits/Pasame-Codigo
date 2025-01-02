@@ -166,6 +166,13 @@ export default defineConfig({
           },
         },
         {
+          tag: "meta",
+          attrs: {
+            name: "google-adsense-account",
+            content: "ca-pub-8724801153903590",
+          },
+        },
+        {
           tag: "link",
           attrs: {
             rel: "preconnect",
