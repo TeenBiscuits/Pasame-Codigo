@@ -135,7 +135,8 @@ export default defineConfig({
         {
           tag: "script",
           attrs: {
-            'data-category': 'analytics',
+            "data-category": "analytics",
+            "data-service": "Google Analytics",
           },
           content: `
             function updateConsents() {
@@ -153,7 +154,15 @@ export default defineConfig({
           attrs: {
             async: true,
             src: "https://analytics.ahrefs.com/analytics.js",
-            'data-key': '41AHUOkOrsmT26f+Ow8zaQ',
+            "data-key": "41AHUOkOrsmT26f+Ow8zaQ",
+          },
+        },
+        {
+          tag: "script",
+          attrs: {
+            async: true,
+            src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8724801153903590",
+            crossorigin: "anonymous",
           },
         },
         {
