@@ -7,9 +7,6 @@ settings:
 importers:
   .:
     dependencies:
-      "@akebifiky/remark-simple-plantuml":
-        specifier: ^1.0.2
-        version: 1.0.2
       "@astrojs/check":
         specifier: ^0.9.4
         version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.4.2)(typescript@5.7.2)
@@ -91,12 +88,6 @@ importers:
         version: 0.6.9(prettier-plugin-astro@0.14.1)(prettier@3.4.2)
 
 packages:
-  "@akebifiky/remark-simple-plantuml@1.0.2":
-    resolution:
-      {
-        integrity: sha512-y5rWgQvU+DMpLKx1KlXCsgUeqVooqQm1S3hePLF9iecZy6YhKRybznFdvAvoAoiV2GoGhObQDHnneAl93llIcg==,
-      }
-
   "@algolia/autocomplete-core@1.17.7":
     resolution:
       {
@@ -4834,12 +4825,6 @@ packages:
         integrity: sha512-kS7yWjVFCkIw9hqdJBoMxDdzEngmkr5FXeWZZfQ6GoYacjVnsW6l2CcYW/0ThD0vF4LPJgVYnrg4d0uuhwYQbg==,
       }
 
-  plantuml-encoder@1.4.0:
-    resolution:
-      {
-        integrity: sha512-sxMwpDw/ySY1WB2CE3+IdMuEcWibJ72DDOsXLkSmEaSzwEUaYBT6DWgOfBiHGCux4q433X6+OEFWjlVqp7gL6g==,
-      }
-
   points-on-curve@0.2.0:
     resolution:
       {
@@ -5865,12 +5850,6 @@ packages:
         integrity: sha512-amQa0Ep2m6hE2g72AugUItjbuM8X8cGQnFoHk0pGfrFeT9GZhzN5SW8nRsiGKK7Aif4CrACPENkA6P/Lw6fHGQ==,
       }
 
-  unist-util-is@4.1.0:
-    resolution:
-      {
-        integrity: sha512-ZOQSsnce92GrxSqlnEEseX0gi7GH9zTJZ0p9dtu87WRb/37mMPO2Ilx1s/t9vBHrFhbgweUwb+t7cIn5dxPhZg==,
-      }
-
   unist-util-is@6.0.0:
     resolution:
       {
@@ -5913,22 +5892,10 @@ packages:
         integrity: sha512-RgmdTfSBOg04sdPcpTSD1jzoNBjt9a80/ZCzp5cI9n1qPzLZWF9YdvWGN2zmTumP1HWhXKdUWexjy/Wy/lJ7tA==,
       }
 
-  unist-util-visit-parents@3.1.1:
-    resolution:
-      {
-        integrity: sha512-1KROIZWo6bcMrZEwiH2UrXDyalAa0uqzWCxCJj6lPOvTve2WkfgCytoDTPaMnodXh1WrXOq0haVYHj99ynJlsg==,
-      }
-
   unist-util-visit-parents@6.0.1:
     resolution:
       {
         integrity: sha512-L/PqWzfTP9lzzEa6CKs0k2nARxTdZduw3zyh8d2NVBnsyvHjSX4TWse388YrrQKbvI8w20fGjGlhgT96WwKykw==,
-      }
-
-  unist-util-visit@2.0.3:
-    resolution:
-      {
-        integrity: sha512-iJ4/RczbJMkD0712mGktuGpm/U4By4FfDonL7N/9tATGIF4imikjOuagyMY53tnZq3NP6BcmlrHhEKAfGWjh7Q==,
       }
 
   unist-util-visit@5.0.0:
@@ -6565,11 +6532,6 @@ packages:
       }
 
 snapshots:
-  "@akebifiky/remark-simple-plantuml@1.0.2":
-    dependencies:
-      plantuml-encoder: 1.4.0
-      unist-util-visit: 2.0.3
-
   "@algolia/autocomplete-core@1.17.7(@algolia/client-search@5.18.0)(algoliasearch@5.18.0)(search-insights@2.17.3)":
     dependencies:
       "@algolia/autocomplete-plugin-algolia-insights": 1.17.7(@algolia/client-search@5.18.0)(algoliasearch@5.18.0)(search-insights@2.17.3)
@@ -9861,8 +9823,6 @@ snapshots:
       mlly: 1.7.3
       pathe: 1.1.2
 
-  plantuml-encoder@1.4.0: {}
-
   points-on-curve@0.2.0: {}
 
   points-on-path@0.2.1:
@@ -10548,8 +10508,6 @@ snapshots:
       "@types/unist": 3.0.3
       unist-util-is: 6.0.0
 
-  unist-util-is@4.1.0: {}
-
   unist-util-is@6.0.0:
     dependencies:
       "@types/unist": 3.0.3
@@ -10580,21 +10538,10 @@ snapshots:
     dependencies:
       "@types/unist": 3.0.3
 
-  unist-util-visit-parents@3.1.1:
-    dependencies:
-      "@types/unist": 2.0.11
-      unist-util-is: 4.1.0
-
   unist-util-visit-parents@6.0.1:
     dependencies:
       "@types/unist": 3.0.3
       unist-util-is: 6.0.0
-
-  unist-util-visit@2.0.3:
-    dependencies:
-      "@types/unist": 2.0.11
-      unist-util-is: 4.1.0
-      unist-util-visit-parents: 3.1.1
 
   unist-util-visit@5.0.0:
     dependencies:
