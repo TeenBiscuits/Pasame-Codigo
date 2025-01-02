@@ -18,6 +18,8 @@ import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-s
 import remarkMath from "remark-math";
 import rehypeMathJax from "rehype-mathjax";
 
+import simplePlantUML from "@akebifiky/remark-simple-plantuml";
+
 // Vercel Adapter
 import vercel from "@astrojs/vercel";
 
@@ -329,7 +331,7 @@ export default defineConfig({
     CopyFilesPlugin(),
   ],
   markdown: {
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [remarkMath, simplePlantUML],
     rehypePlugins: [rehypeMathJax],
   },
 });
