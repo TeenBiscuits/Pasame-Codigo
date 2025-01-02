@@ -294,7 +294,22 @@ export default defineConfig({
             label: "Paradigmas de la Programación",
             link: "/pepe/",
             icon: "seti:ocaml",
-            items: [],
+            items: [
+              {
+                label: "Apuntes",
+                autogenerate: { directory: "pepe/apuntes" },
+              },
+              {
+                label: "Código en OCamel",
+                items: [
+                  {
+                    label: "Xabiguitian/apuntesPP",
+                    link: "https://github.com/Xabiguitian/apuntesPP",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
+                ],
+              },
+            ],
             badge: { text: "WIP", variant: "danger" },
           },
         ]),
