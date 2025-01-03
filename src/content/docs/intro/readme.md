@@ -65,7 +65,7 @@ Este proyecto sigue la especificación [all-contributors](https://github.com/all
 
 ## Licencias
 
-[Pásame el Código](https://pc.pablopl.dev/)\* by [Pablo Portas López](https://github.com/TeenBiscuits) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)
+[Pásame el Código](https://pc.pablopl.dev/)\* by [Pablo Portas López](https://github.com/TeenBiscuits) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1)
 
 \* Esto aplica a apuntes, tutoriales, logos y otros materiales que sean distribuidos en la web y este repositorio bajo la contribución de cualquiera siempre que no se especifique lo contrario por el autor.
 
