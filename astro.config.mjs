@@ -116,24 +116,6 @@ export default defineConfig({
         {
           tag: "script",
           attrs: {
-            "data-category": "analytics",
-            "data-service": "Google Analytics",
-            type: "text/plain",
-          },
-          content: readFileSync("./scripts/consent-gtag-analytics.js", "utf-8"),
-        },
-        {
-          tag: "script",
-          attrs: {
-            "data-category": "marketing",
-            "data-service": "Google AdSense",
-            type: "text/plain",
-          },
-          content: readFileSync("./scripts/consent-gtag-ads.js", "utf-8"),
-        },
-        {
-          tag: "script",
-          attrs: {
             async: true,
             src: "https://analytics.ahrefs.com/analytics.js",
             "data-key": "41AHUOkOrsmT26f+Ow8zaQ",
@@ -167,6 +149,30 @@ export default defineConfig({
           attrs: {
             rel: "stylesheet",
             href: "https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css",
+          },
+        },
+        // iubenda Privacy Controls and Cookie Solution
+        {
+          tag: "script",
+          attrs: {
+            type: "text/javascript",
+          },
+          content: readFileSync("./scripts/iubenda.js", "utf-8"),
+        },
+        {
+          tag: "script",
+          attrs: {
+            type: "text/javascript",
+            src: "https://cs.iubenda.com/autoblocking/3881594.js",
+          },
+        },
+        {
+          tag: "script",
+          attrs: {
+            type: "text/javascript",
+            src: "//cdn.iubenda.com/cs/iubenda_cs.js",
+            charset: "UTF-8",
+            async: true,
           },
         },
         // Contrarrestar el bloqueo de anuncios

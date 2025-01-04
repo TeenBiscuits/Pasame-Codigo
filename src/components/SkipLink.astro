@@ -2,9 +2,7 @@
 import type { Props } from "@astrojs/starlight/props";
 import Default from "@astrojs/starlight/components/SkipLink.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
-import CookieBanner from "@components/CookieBanner.astro";
 ---
 
 <SpeedInsights />
-<CookieBanner />
 <Default {...Astro.props}><slot /></Default>
