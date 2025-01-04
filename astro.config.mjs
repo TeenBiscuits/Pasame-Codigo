@@ -124,7 +124,16 @@ export default defineConfig({
             "data-service": "Google Analytics",
             type: "text/plain",
           },
-          content: readFileSync("./scripts/consent-gtag.js", "utf-8"),
+          content: readFileSync("./scripts/consent-gtag-analytics.js", "utf-8"),
+        },
+        {
+          tag: "script",
+          attrs: {
+            "data-category": "marketing",
+            "data-service": "Google AdSense",
+            type: "text/plain",
+          },
+          content: readFileSync("./scripts/consent-gtag-ads.js", "utf-8"),
         },
         {
           tag: "script",
