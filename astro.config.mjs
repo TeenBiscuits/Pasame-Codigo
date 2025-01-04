@@ -107,14 +107,10 @@ export default defineConfig({
           attrs: {
             async: true,
             src: "https://www.googletagmanager.com/gtag/js?id=G-JHF258ZVQX",
-            type: "text/partytown",
           },
         },
         {
           tag: "script",
-          attrs: {
-            type: "text/partytown",
-          },
           content: readFileSync("./scripts/google-analytics.js", "utf-8"),
         },
         {
@@ -319,11 +315,6 @@ export default defineConfig({
       ],
       components: {
         SkipLink: "./src/components/SkipLink.astro",
-      },
-    }),
-    partytown({
-      config: {
-        forward: ["dataLayer.push", "gtag"],
       },
     }),
     tailwind({

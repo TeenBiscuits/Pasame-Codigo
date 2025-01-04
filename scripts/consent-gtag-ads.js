@@ -1,4 +1,4 @@
-function updateConsents() {
+function updateAdsConsents() {
   gtag("consent", "update", {
     ad_storage: "granted",
     ad_user_data: "granted",
