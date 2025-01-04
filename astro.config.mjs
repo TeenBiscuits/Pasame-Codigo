@@ -122,6 +122,7 @@ export default defineConfig({
           attrs: {
             "data-category": "analytics",
             "data-service": "Google Analytics",
+            type: "text/plain",
           },
           content: readFileSync("./scripts/consent-gtag.js", "utf-8"),
         },
