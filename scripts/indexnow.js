@@ -12,5 +12,4 @@ if (myEnvVar) {
   console.log("[IndexNow] Archivo creado correctamente en ./public");
 } else {
   console.error("[IndexNow] La variable de entorno no está definida");
-  process.exit(1);
 }
