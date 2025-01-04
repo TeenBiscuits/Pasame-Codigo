@@ -116,24 +116,6 @@ export default defineConfig({
         {
           tag: "script",
           attrs: {
-            "data-category": "analytics",
-            "data-service": "Google Analytics",
-            type: "text/plain",
-          },
-          content: readFileSync("./scripts/consent-gtag-analytics.js", "utf-8"),
-        },
-        {
-          tag: "script",
-          attrs: {
-            "data-category": "marketing",
-            "data-service": "Google AdSense",
-            type: "text/plain",
-          },
-          content: readFileSync("./scripts/consent-gtag-ads.js", "utf-8"),
-        },
-        {
-          tag: "script",
-          attrs: {
             async: true,
             src: "https://analytics.ahrefs.com/analytics.js",
             "data-key": "41AHUOkOrsmT26f+Ow8zaQ",
