@@ -136,6 +136,26 @@ export default defineConfig({
             src: "./google-tag.js",
           },
         },
+        // Adblock Detection
+        {
+          tag: "script",
+          attrs: {
+            async: true,
+            src: "https://fundingchoicesmessages.google.com/i/pub-8724801153903590?ers=1",
+          },
+        },
+        {
+          tag: "script",
+          attrs: {
+            src: "./googlefc.js",
+          },
+        },
+        {
+          tag: "script",
+          attrs: {
+            src: "./googlefcerror.js",
+          },
+        },
       ],
       editLink: {
         baseUrl: "https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/",
