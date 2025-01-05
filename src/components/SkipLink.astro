@@ -4,5 +4,12 @@ import Default from "@astrojs/starlight/components/SkipLink.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
+<noscript
+  ><iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-P9F9QBHK"
+    height="0"
+    width="0"
+    style="display:none;visibility:hidden"></iframe></noscript
+>
 <SpeedInsights />
 <Default {...Astro.props}><slot /></Default>
