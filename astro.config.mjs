@@ -144,6 +144,14 @@ export default defineConfig({
             crossorigin: "",
           },
         },
+        {
+          tag: "script",
+          attrs: {
+            id: "cookieyes",
+            type: "text/javascript",
+            src: "https://cdn-cookieyes.com/client_data/33562392e5df2bf8fea23abf/script.js",
+          },
+        },
       ],
       editLink: {
         baseUrl: "https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/",
