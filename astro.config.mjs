@@ -106,17 +106,6 @@ export default defineConfig({
           tag: "script",
           attrs: {
             async: true,
-            src: "https://www.googletagmanager.com/gtag/js?id=G-JHF258ZVQX",
-          },
-        },
-        {
-          tag: "script",
-          content: readFileSync("./scripts/google-analytics.js", "utf-8"),
-        },
-        {
-          tag: "script",
-          attrs: {
-            async: true,
             src: "https://analytics.ahrefs.com/analytics.js",
             "data-key": "41AHUOkOrsmT26f+Ow8zaQ",
           },
