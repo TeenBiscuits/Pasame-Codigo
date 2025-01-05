@@ -144,54 +144,6 @@ export default defineConfig({
             crossorigin: "",
           },
         },
-        {
-          tag: "link",
-          attrs: {
-            rel: "stylesheet",
-            href: "https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css",
-          },
-        },
-        // iubenda Privacy Controls and Cookie Solution
-        {
-          tag: "script",
-          attrs: {
-            type: "text/javascript",
-          },
-          content: readFileSync("./scripts/iubenda.js", "utf-8"),
-        },
-        {
-          tag: "script",
-          attrs: {
-            type: "text/javascript",
-            src: "https://cs.iubenda.com/autoblocking/3881594.js",
-          },
-        },
-        {
-          tag: "script",
-          attrs: {
-            type: "text/javascript",
-            src: "//cdn.iubenda.com/cs/iubenda_cs.js",
-            charset: "UTF-8",
-            async: true,
-          },
-        },
-        // Contrarrestar el bloqueo de anuncios
-        {
-          tag: "script",
-          attrs: {
-            async: true,
-            src: "https://fundingchoicesmessages.google.com/i/pub-8724801153903590?ers=1",
-          },
-        },
-        {
-          tag: "script",
-          content: readFileSync("./scripts/adblock-use.js", "utf-8"),
-        },
-        // Mensaje de protección de errores
-        {
-          tag: "script",
-          content: readFileSync("./scripts/block-adblock.js", "utf-8"),
-        },
       ],
       editLink: {
         baseUrl: "https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/",
