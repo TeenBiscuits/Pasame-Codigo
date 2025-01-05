@@ -24,9 +24,6 @@ import vercel from "@astrojs/vercel";
 // Temporal Script to fix https://github.com/withastro/adapters/issues/445
 import { CopyFilesPlugin } from "./scripts/copy-files.ts";
 
-// Partytown Integration
-import partytown from "@astrojs/partytown";
-
 // Tailwind CSS Support
 import tailwind from "@astrojs/tailwind";
 
