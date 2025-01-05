@@ -135,9 +135,6 @@ export default defineConfig({
         },
         {
           tag: "script",
-          attrs: {
-            type: "text/partytown",
-          },
           content: readFileSync("./scripts/google-tag.js", "utf-8"),
         },
       ],
@@ -269,11 +266,6 @@ export default defineConfig({
       ],
       components: {
         SkipLink: "./src/components/SkipLink.astro",
-      },
-    }),
-    partytown({
-      config: {
-        forward: ["dataLayer.push"],
       },
     }),
     tailwind({
