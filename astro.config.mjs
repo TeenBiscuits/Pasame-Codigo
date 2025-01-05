@@ -132,7 +132,9 @@ export default defineConfig({
         },
         {
           tag: "script",
-          content: readFileSync("./scripts/google-tag.js", "utf-8"),
+          attrs: {
+            src: "./google-tag.js",
+          },
         },
       ],
       editLink: {
