@@ -132,7 +132,9 @@ export default defineConfig({
         },
         {
           tag: "script",
-          content: readFileSync("./public/google-tag.js","utf-8"),
+          attrs: {
+            src: "/google-tag.js",
+          },
         },
         // Adblock Detection
         {
@@ -144,11 +146,15 @@ export default defineConfig({
         },
         {
           tag: "script",
-          content: readFileSync("./public/googlefc.js","utf-8"),
+          attrs: {
+            src: "/googlefc.js",
+          },
         },
         {
           tag: "script",
-          content: readFileSync("./public/googlefcerror.js","utf-8"),
+          attrs: {
+            src: "/googlefcerror.js",
+          },
         },
       ],
       editLink: {
