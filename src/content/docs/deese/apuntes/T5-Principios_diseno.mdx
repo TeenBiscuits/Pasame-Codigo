@@ -5,7 +5,7 @@ description: Identifica problemas como código duplicado, clases grandes o frág
 
 > Identifica problemas como código duplicado, clases grandes o frágiles, y fomenta principios de diseño como SOLID y herencia adecuada para mejorar la calidad del software.
 
-## Código Maloliente y Disño Maloliente
+## El problema: Maloliente
 
 ### Código Maloliente
 
@@ -22,7 +22,7 @@ description: Identifica problemas como código duplicado, clases grandes o frág
 a la función resulten complicadas.
 - **Sentencias switch**: Muchas de las veces que se usa una sentencia switch debería considerarse usar polimorfismo.
 
-### Disño Maloliente
+### Diseño Maloliente
 
 - **Rigidez**: El sistema es difícil de cambiar porque cada cambio fuerza muchos otros cambios en otras partes del sistema.
 - **Fragilidad**: Los cambios causan que el sistema se rompa en lugares que no tienen relación conceptual con la parte que fue cambiada.
@@ -32,16 +32,18 @@ a la función resulten complicadas.
 - **Repetición innecesaria**: El diseño contiene la repetición de estructuras que se podrían unificar en una sola abstracción. Cortar y pegar es una alternativa cuando se edita texto, pero a la hora de editar código puede tener resultados desastrosos.
 - **Opacidad**: Es difícil leer y comprender. No expresa correctamente sus intenciones.
 
-## Principios de Diseño de Software
+## La solución: Principios de Diseño de Software
 
 Guías que, cuando aplicadas conjuntamente, hacen más sencillo al programador desarrollar software que es fácil de mantener y de extender.
 
 Son recomendaciones básicas y genéricas
 que ayudan a los desarrolladores a eliminar los "olores" y crear un mejor diseño.
 
-### Principios SOLID
+## Principios SOLID
 
-#### Single Responsibility Principle (SRP)
+### Single Responsibility Principle (SRP)
+
+![Principio de Responsabilidad Única](@assets/deese/principio-responsabilidad-unica.jpg)
 
 Principio de responsabilidad única:
 - Cada objeto debe tener una responsabilidad única que esté enteramente encapsulada en la clase.
@@ -56,7 +58,7 @@ Si una clase implementa más de una responsabilidad entonces las responsabilidad
 
 Separando responsabilidades se limita la propagación de los cambios.
 
-##### Cohesión
+#### Cohesión
 
 Es a la medida en que las funciones que incluye un objeto están relacionadas funcionalmente entre sí.
 
@@ -68,7 +70,9 @@ Se busca que los objetos presenten una alta cohesión porque así están más ce
 
 Se busca evitar las clases Dios que lo hacen todo en un programa dejando pocas responsabilidades al resto de clases.
 
-#### Open Closed Principle (OCP)
+### Open Closed Principle (OCP)
+
+![Principio Abierto Cerrado](@assets/deese/principio-abierto-cerrado.jpg)
 
 Principio abierto-cerrado: Las entidades software (clases, módulos, etc.) deberían ser abiertas para permitir su extensión, pero cerradas frente a la modificación.
 
@@ -76,7 +80,9 @@ En otras palabras, se busca ser capaces de cambiar lo que hace una clase, sin te
 
 Esto en orientación a objetos puede hacerse fácilmente a través de los mecanismos de herencia.
 
-#### Liskov Substitution Principle (LSP)
+### Liskov Substitution Principle (LSP)
+
+![Principio Sustitución de Liskov](@assets/deese/principio-sustitucion-liskov.jpg)
 
 Principio de sustitución de Liskov: Las clases derivadas deben ser sustituibles por sus clases base.
 
@@ -84,7 +90,9 @@ Una subclase siempre puede ser pasada allá donde se requiera una clase base, pe
 
 Aquellos métodos que utilicen referencias a clases base deben ser capaces de usar objetos de clases derivadas sin saberlo.
 
-#### Interface Segregation Principle (ISP)
+### Interface Segregation Principle (ISP)
+
+![Principio Segregación de Interfaces](@assets/deese/principio-segregacion-interfaces.jpg)
 
 Principio de segregación de interfaces: Muchos interfaces específicos para cada cliente son mejores que un único interfaz de propósito general.
 
@@ -92,7 +100,9 @@ De una clase servidora se puede crear un interfaz con todos los servicios que of
 
 El Principio de Segregación de Interfaces indica que se deben diseñar los interfaces pensando en cómo serán usados y no en cómo serán implementados.
 
-#### Dependency Inversion Principle (DIP)
+### Dependency Inversion Principle (DIP)
+
+![Principio de Inversión de Dependencia](@assets/deese/principio-inversion-dependencia.jpg)
 
 Principio de inversión de la dependencia: Estrategia de depender de interfaces o clases y funciones abstractas, en vez de depender de clases y funciones concretas.
 
@@ -104,7 +114,7 @@ Los módulos de alto nivel no dependen de los módulos de bajo nivel, ambos depe
 
 De esta forma la dependencia entre ellos se ha invertido.
 
-##### Inyección de dependencias
+#### Inyección de dependencias
 
 Una inyección es el paso de una dependencia (un servicio) a un objeto dependiente (un cliente) que podría usarlo, sin permitir que el cliente construya o encuentre dicho servicio.
 
@@ -136,6 +146,13 @@ import { ShowcaseProfile } from 'starlight-showcases'
       href: 'https://github.com/danielfeitopin',
       description:
         "© 2024 licensed under CC BY-NC 4.0",
+    },
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2025 licensed under CC BY 4.0",
     },
   ]}
 />
