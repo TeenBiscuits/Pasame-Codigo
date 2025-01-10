@@ -42,6 +42,9 @@
 <script>
   async function fetchGitHubStars() {
     const url = `https://api.github.com/repos/TeenBiscuits/Pasame-Codigo`;
+    const starsElement = document.getElementById("github-stars");
+
+    if (starsElement === null) return;
 
     try {
       const response = await fetch(url);
@@ -52,10 +55,10 @@
       const data = await response.json();
       const stars = data.stargazers_count;
 
-      document.getElementById("github-stars").textContent = stars;
+      starsElement.textContent = stars;
     } catch (error) {
       console.error("Error fetching GitHub stars:", error);
-      document.getElementById("github-stars").textContent = "Error";
+      starsElement.textContent = "Error";
     }
   }
 
