@@ -1,5 +1,6 @@
 ---
 title: Política de Cookies
+description: Política de Cookies de Pásame el Código, consulta este documento para entender las tecnologías que usamos para acceder a tu información y almacenarla.
 sidebar:
     order: 2
 next: false
