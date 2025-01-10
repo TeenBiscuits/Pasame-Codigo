@@ -276,6 +276,11 @@ export default defineConfig({
                     link: "https://github.com/Xabiguitian/apuntesPP",
                     badge: { text: "GitHub", variant: "tip" },
                   },
+                  {
+                    label: "TeenBiscuits/Practicas-PP",
+                    link: "https://github.com/TeenBiscuits/Practicas-PP",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
                 ],
               },
             ],
