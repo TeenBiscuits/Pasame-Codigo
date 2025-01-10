@@ -281,6 +281,28 @@ export default defineConfig({
             ],
             badge: { text: "WIP", variant: "danger" },
           },
+          {
+            label: "We ♥️ Open Source",
+            link: "/opensource/",
+            icon: "star",
+            items: [
+              {
+                label: "Tutorial Git",
+                autogenerate: { directory: "/opensource/git" },
+                badge: { text: "WIP", variant: "danger" },
+              },
+              {
+                label: "Check this repos!",
+                autogenerate: { directory: "" },
+                badge: { text: "WIP", variant: "danger" },
+              },
+              {
+                label: "¡Danos una ⭐ en GitHub!",
+                link: "https://github.com/TeenBiscuits/Pasame-Codigo",
+              },
+            ],
+            badge: { text: "WIP", variant: "danger" },
+          },
         ]),
       ],
       components: {

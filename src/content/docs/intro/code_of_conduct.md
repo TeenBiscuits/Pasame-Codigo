@@ -1,5 +1,6 @@
 ---
 title: Código de Conducta convenido para Contribuyentes
+description: "Nosotros, como miembros, contribuyentes y administradores nos comprometemos a hacer de la participación en nuestra comunidad sea una experiencia libre de acoso para todo el mundo, independientemente de la edad, dimensión corporal, discapacidad visible o invisible, etnicidad, características sexuales, identidad y expresión de género, nivel de experiencia, educación, nivel socio-económico, nacionalidad, apariencia personal, raza, casta, color, religión, o identidad u orientación sexual."
 sidebar:
   label: Código de Conducta
 editUrl: false

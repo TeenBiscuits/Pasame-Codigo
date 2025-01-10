@@ -24,30 +24,33 @@ hero:
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import Asignaturas from '@components/Asignaturas.astro';
 import AboutMe from '@components/AboutMe.astro';
+import GitStar from '@components/GitStar.astro';
 
 
 ## Nuestras asignaturas
 
 <CardGrid stagger>
 	<Asignaturas title="Programación I" icon="seti:c" href="/prouno">
-		C Explicado de 0. Apuntes, boletines resueltos y ejemplos para dominar el lenguaje de Programación C.
+		C Explicado de 0. Apuntes, boletines resueltos y ejemplos para dominar el lenguaje de Programación C. (y punteros)
 	</Asignaturas>
   <Asignaturas title="Programación II" icon="seti:c" href="/prodos">
-		Tipos abstractos de datos, implementados y con el código. Listas, colas, pilas, árboles...
+		Tipos abstractos de datos y gestión de la memoria. Todas las implementaciones explicadas, con ejemplos y código. Listas, colas, pilas y árboles.
 	</Asignaturas>
   <Asignaturas title="Algoritmos" icon="seti:clock" href="/algo">
-    Implementaciones y pseudocódigos de todos los algoritmos y de las estructuras de datos.
+    Implementaciones y pseudocódigos de todos los algoritmos y de las estructuras de datos. Links a prácticas resueltas.
   </Asignaturas>
 	<Asignaturas title="Diseño de Software" icon="seti:java" href="/deese">
-		Domina Java por fin. Explicado con ejemplos y código para usar.
+		Domina Java por fin. Todos los patrones y principios de diseño explicados (con memes). Ejemplos con código listo para usar y comprobar.
 	</Asignaturas>
 	<Asignaturas title="Paradigmas de la Programación" icon="seti:ocaml" href="/pepe">
-		"OCaml explicado para tontos" Un lenguaje fuertemente tipado no tiene porque ser complicado.
+		"OCaml explicado para tontos" Un lenguaje fuertemente tipado no tiene porque ser complicado. Domina el paradigma funcional y la recursividad.
 	</Asignaturas>
   <Card title="Más que están por venir..." icon="seti:notebook">
     Esta web se encuentra bajo desarrollo activo, muchos más cosas están por venir.
   </Card>
 </CardGrid>
+
+<GitStar/>
 
 <AboutMe>
 

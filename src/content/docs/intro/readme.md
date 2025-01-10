@@ -71,7 +71,7 @@ Este proyecto sigue la especificación [all-contributors](https://github.com/all
 
 Esto **no aplica** a todo el código publicado en la web, cada 'archivo' ha sido correctamente etiquetado con la licencia bajo la que es compartido. Por otra parte el código, propio, de la página web es distribuido bajo una licencia **GNU GPLv3**.
 
-Puede encontrar una copia de todas las licencias pertinentes en la sección [LICENCIAS](./licencias).
+Puede encontrar una copia de todas las licencias pertinentes en la sección [LICENCIAS](/intro/licencias/).
 
 <div align="center">
 

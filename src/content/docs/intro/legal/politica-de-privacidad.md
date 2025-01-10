@@ -1,5 +1,6 @@
 ---
 title: Política de Privacidad
+description: Política de Privacidad de Pásame el Código, consulte este documento para entender que datos personales se recogen de los usuarios que vistan esta web.
 sidebar:
     order: 1
 prev: false
