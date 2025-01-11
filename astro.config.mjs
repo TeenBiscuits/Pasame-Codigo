@@ -298,6 +298,7 @@ export default defineConfig({
               {
                 label: "Apuntes",
                 autogenerate: { directory: "pepe/apuntes" },
+                badge: { text: "WIP", variant: "caution" },
               },
               {
                 label: "Código en OCamel",
