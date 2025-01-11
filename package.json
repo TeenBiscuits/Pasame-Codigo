@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/starlight": "^0.30.5",
+    "@astrojs/starlight": "^0.30.6",
     "@astrojs/starlight-docsearch": "^0.4.0",
     "@astrojs/starlight-tailwind": "^3.0.0",
     "@astrojs/tailwind": "^5.1.4",
@@ -24,7 +24,7 @@
     "@expressive-code/plugin-collapsible-sections": "^0.38.3",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
-    "astro": "^5.1.4",
+    "astro": "^5.1.5",
     "dotenv": "^16.4.7",
     "mermaid": "^11.4.1",
     "rehype-mathjax": "^6.0.0",
