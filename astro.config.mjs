@@ -292,6 +292,11 @@ export default defineConfig({
                     link: "https://github.com/migueldeoleiros/PP",
                     badge: { text: "GitHub", variant: "tip" },
                   },
+                  {
+                    label: "CValle_/gei2/PP",
+                    link: "https://gitlab.com/CValle_/gei2/-/tree/main/PP",
+                    badge: { text: "GitLab", variant: "tip" },
+                  },
                 ],
               },
             ],
