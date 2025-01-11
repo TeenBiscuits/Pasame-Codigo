@@ -130,18 +130,10 @@ export default defineConfig({
             crossorigin: "",
           },
         },
-        // Google Tag
         {
           tag: "script",
           attrs: {
             src: "/google-tag.js",
-          },
-        },
-        // Microsoft Clarity
-        {
-          tag: "script",
-          attrs: {
-            src: "/clarity.js",
           },
         },
         // Adblock Detection
