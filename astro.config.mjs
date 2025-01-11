@@ -236,8 +236,38 @@ export default defineConfig({
             label: "Algoritmos",
             link: "/algo/",
             icon: "seti:clock",
-            items: [],
-            badge: { text: "WIP", variant: "danger" },
+            items: [
+              {
+                label: "Implementaciones",
+                autogenerate: { directory: "algo/implementaciones" },
+                badge: { text: "WIP", variant: "caution" },
+              },
+              {
+                label: "Prácticas y Exámenes",
+                items: [
+                  {
+                    label: "migueldeoleiros/examen-algoritmos",
+                    link: "https://github.com/migueldeoleiros/examen-algoritmos",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
+                  {
+                    label: "migueldeoleiros/Algoritmos",
+                    link: "https://github.com/migueldeoleiros/Algoritmos",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
+                  {
+                    label: "JavierFreireBouzas/Algoritmos-FIC-UDC",
+                    link: "https://github.com/JavierFreireBouzas/Algoritmos-FIC-UDC",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
+                  {
+                    label: "CValle_/gei2/Algo",
+                    link: "https://gitlab.com/CValle_/gei2/-/tree/main/Algo",
+                    badge: { text: "GitLab", variant: "tip" },
+                  },
+                ],
+              },
+            ],
           },
           {
             label: "Diseño de Software",
@@ -268,6 +298,7 @@ export default defineConfig({
               {
                 label: "Apuntes",
                 autogenerate: { directory: "pepe/apuntes" },
+                badge: { text: "WIP", variant: "caution" },
               },
               {
                 label: "Código en OCamel",
@@ -281,6 +312,21 @@ export default defineConfig({
                     label: "TeenBiscuits/Practicas-PP",
                     link: "https://github.com/TeenBiscuits/Practicas-PP",
                     badge: { text: "GitHub", variant: "tip" },
+                  },
+                  {
+                    label: "antonlnz/PP",
+                    link: "https://github.com/antonlnz/PP",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
+                  {
+                    label: "migueldeoleiros/PP",
+                    link: "https://github.com/migueldeoleiros/PP",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
+                  {
+                    label: "CValle_/gei2/PP",
+                    link: "https://gitlab.com/CValle_/gei2/-/tree/main/PP",
+                    badge: { text: "GitLab", variant: "tip" },
                   },
                 ],
               },
