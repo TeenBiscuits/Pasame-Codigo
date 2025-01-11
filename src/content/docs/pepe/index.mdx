@@ -7,22 +7,27 @@ prev:
 tableOfContents: false
 ---
 
+import { LinkCard } from '@astrojs/starlight/components';
+
 > "OCaml explicado para tontos" Un lenguaje fuertemente tipado no tiene porque ser complicado. Domina el paradigma funcional y la recursividad.
 
-import { Aside, LinkButton } from '@astrojs/starlight/components';
+## Apuntes :badge[WIP]{variant=caution}
 
-<Aside type="caution">Seguimos en obras por aquí. 🏗️</Aside>
+<LinkCard
+  title="En Construcción 👷"
+  href="/pepe"
+  description="¡Estamos estudiando!"
+/>
 
-<Aside type="tip">
+## Código en OCaml
 
-Ven a ayudarnos a construir esta página. 👷‍♂️👷‍♀️
-
-<LinkButton href="https://github.com/TeenBiscuits/Pasame-Codigo" variant="secondary" icon="github">
-  ¡Contribuye!
-</LinkButton>
-
-<LinkButton href="/" variant="secondary" icon="right-arrow">
-  Volver al inicio
-</LinkButton>
-
-</Aside>
+<LinkCard
+  title="Xabiguitian/apuntesPP"
+  href="https://github.com/Xabiguitian/apuntesPP"
+  description=""
+/>
+<LinkCard
+  title="TeenBiscuits/Practicas-PP"
+  href="https://github.com/TeenBiscuits/Practicas-PP"
+  description="Prácticas de la asignatura Paradigmas de la Programación en OCaml. No es mucho, pero es trabajo honesto"
+/>
