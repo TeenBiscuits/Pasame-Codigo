@@ -282,6 +282,16 @@ export default defineConfig({
                     link: "https://github.com/TeenBiscuits/Practicas-PP",
                     badge: { text: "GitHub", variant: "tip" },
                   },
+                  {
+                    label: "antonlnz/PP",
+                    link: "https://github.com/antonlnz/PP",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
+                  {
+                    label: "migueldeoleiros/PP",
+                    link: "https://github.com/migueldeoleiros/PP",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
                 ],
               },
             ],
