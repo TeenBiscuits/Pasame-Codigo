@@ -285,7 +285,6 @@ export default defineConfig({
                 ],
               },
             ],
-            badge: { text: "WIP", variant: "danger" },
           },
           {
             label: "We ♥️ Open Source",
