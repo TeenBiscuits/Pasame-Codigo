@@ -236,8 +236,38 @@ export default defineConfig({
             label: "Algoritmos",
             link: "/algo/",
             icon: "seti:clock",
-            items: [],
-            badge: { text: "WIP", variant: "danger" },
+            items: [
+              {
+                label: "Implementaciones",
+                autogenerate: { directory: "algo/implementaciones" },
+                badge: { text: "WIP", variant: "caution" },
+              },
+              {
+                label: "Prácticas y Exámenes",
+                items: [
+                  {
+                    label: "migueldeoleiros/examen-algoritmos",
+                    link: "https://github.com/migueldeoleiros/examen-algoritmos",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
+                  {
+                    label: "migueldeoleiros/Algoritmos",
+                    link: "https://github.com/migueldeoleiros/Algoritmos",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
+                  {
+                    label: "JavierFreireBouzas/Algoritmos-FIC-UDC",
+                    link: "https://github.com/JavierFreireBouzas/Algoritmos-FIC-UDC",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
+                  {
+                    label: "CValle_/gei2/Algo",
+                    link: "https://gitlab.com/CValle_/gei2/-/tree/main/Algo",
+                    badge: { text: "GitLab", variant: "tip" },
+                  },
+                ],
+              },
+            ],
           },
           {
             label: "Diseño de Software",
