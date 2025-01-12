@@ -58,6 +58,9 @@ importers:
       starlight-heading-badges:
         specifier: ^0.4.0
         version: 0.4.0(@astrojs/starlight@0.30.6(astro@5.1.5(jiti@1.21.7)(rollup@4.30.1)(typescript@5.7.3)(yaml@2.7.0)))
+      starlight-links-validator:
+        specifier: ^0.14.1
+        version: 0.14.1(@astrojs/starlight@0.30.6(astro@5.1.5(jiti@1.21.7)(rollup@4.30.1)(typescript@5.7.3)(yaml@2.7.0)))
       starlight-showcases:
         specifier: ^0.3.0
         version: 0.3.0(@astrojs/starlight@0.30.6(astro@5.1.5(jiti@1.21.7)(rollup@4.30.1)(typescript@5.7.3)(yaml@2.7.0)))(astro@5.1.5(jiti@1.21.7)(rollup@4.30.1)(typescript@5.7.3)(yaml@2.7.0))
@@ -1846,6 +1849,12 @@ packages:
     resolution:
       {
         integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==,
+      }
+
+  "@types/picomatch@3.0.1":
+    resolution:
+      {
+        integrity: sha512-1MRgzpzY0hOp9pW/kLRxeQhUWwil6gnrUYd3oEpeYBqp/FexhaCPv3F8LsYr47gtUU45fO2cm1dbwkSrHEo8Uw==,
       }
 
   "@types/sax@1.2.7":
@@ -3717,6 +3726,13 @@ packages:
         integrity: sha512-feOM6FaSr6rEABp/eDfVseKyTMDt+KGpeB35SkVn9Tyn0CqvVsY3EwI0v5i8nMHyJnzCIQf7nsy3p41TPkJZhg==,
       }
 
+  is-absolute-url@4.0.1:
+    resolution:
+      {
+        integrity: sha512-/51/TKE88Lmm7Gc4/8btclNXWS+g50wXhYJq8HWIBAGUBnoAdRu1aXeh364t/O7wXDAcTJDP8PNuNKWUDWie+A==,
+      }
+    engines: { node: ^12.20.0 || ^14.13.1 || >=16.0.0 }
+
   is-alphabetical@2.0.1:
     resolution:
       {
@@ -5570,6 +5586,15 @@ packages:
     engines: { node: ">=18" }
     peerDependencies:
       "@astrojs/starlight": ">=0.30.0"
+
+  starlight-links-validator@0.14.1:
+    resolution:
+      {
+        integrity: sha512-qd5zMBezFhE3R/RBW2am58jVMK3ydcHs8TqOOBLimjn+iXqWV/ZkLlpcavoIOd//w72cX3L//lN4TA+a7vdaZg==,
+      }
+    engines: { node: ">=18.17.1" }
+    peerDependencies:
+      "@astrojs/starlight": ">=0.15.0"
 
   starlight-showcases@0.3.0:
     resolution:
@@ -7645,6 +7670,8 @@ snapshots:
 
   "@types/node@17.0.45": {}
 
+  "@types/picomatch@3.0.1": {}
+
   "@types/sax@1.2.7":
     dependencies:
       "@types/node": 17.0.45
@@ -8975,6 +9002,8 @@ snapshots:
   internmap@2.0.3: {}
 
   iron-webcrypto@1.2.1: {}
+
+  is-absolute-url@4.0.1: {}
 
   is-alphabetical@2.0.1: {}
 
@@ -10370,6 +10399,19 @@ snapshots:
       unist-util-visit: 5.0.0
     transitivePeerDependencies:
       - supports-color
+
+  starlight-links-validator@0.14.1(@astrojs/starlight@0.30.6(astro@5.1.5(jiti@1.21.7)(rollup@4.30.1)(typescript@5.7.3)(yaml@2.7.0))):
+    dependencies:
+      "@astrojs/starlight": 0.30.6(astro@5.1.5(jiti@1.21.7)(rollup@4.30.1)(typescript@5.7.3)(yaml@2.7.0))
+      "@types/picomatch": 3.0.1
+      github-slugger: 2.0.0
+      hast-util-from-html: 2.0.3
+      hast-util-has-property: 3.0.0
+      is-absolute-url: 4.0.1
+      kleur: 4.1.5
+      mdast-util-to-string: 4.0.0
+      picomatch: 4.0.2
+      unist-util-visit: 5.0.0
 
   starlight-showcases@0.3.0(@astrojs/starlight@0.30.6(astro@5.1.5(jiti@1.21.7)(rollup@4.30.1)(typescript@5.7.3)(yaml@2.7.0)))(astro@5.1.5(jiti@1.21.7)(rollup@4.30.1)(typescript@5.7.3)(yaml@2.7.0)):
     dependencies:

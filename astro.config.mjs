@@ -9,6 +9,8 @@ import starlightHeadingBadges from "starlight-heading-badges";
 import starlightSidebarTopics from "starlight-sidebar-topics";
 // Plugin Algolia DocSearch
 import starlightDocSearch from "@astrojs/starlight-docsearch";
+// Plugin Link Validator
+import starlightLinksValidator from "starlight-links-validator";
 
 // Expressive Code Plugins
 import { pluginCodeOutput } from "./src/ec-output-plugin.ts";
@@ -170,6 +172,9 @@ export default defineConfig({
       },
       plugins: [
         starlightHeadingBadges(),
+        starlightLinksValidator({
+          errorOnInvalidHashes: false,
+        }),
         starlightDocSearch({
           appId: "IOKSWSAQ8F",
           apiKey: "d2bec8d00c3ced7fc84273265aeab2c1",
