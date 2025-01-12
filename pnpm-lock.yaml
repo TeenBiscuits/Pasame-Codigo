@@ -5126,12 +5126,12 @@ packages:
       }
     engines: { node: ">=8.10.0" }
 
-  readdirp@4.0.2:
+  readdirp@4.1.1:
     resolution:
       {
-        integrity: sha512-yDMz9g+VaZkqBYS/ozoBJwaBhTbZo3UNYQHNRw1D3UFQB8oHB4uS/tAODO+ZLjGWmUbKnIlOWO+aaIiAxrUWHA==,
+        integrity: sha512-h80JrZu/MHUZCyHu5ciuoI0+WxsCxzxJTILn6Fs8rxSnFPh+UVHYfeIxK1nVGugMqkfC4vJcBOYbkfkwYK0+gw==,
       }
-    engines: { node: ">= 14.16.0" }
+    engines: { node: ">= 14.18.0" }
 
   recma-build-jsx@1.0.0:
     resolution:
@@ -8085,7 +8085,7 @@ snapshots:
 
   chokidar@4.0.3:
     dependencies:
-      readdirp: 4.0.2
+      readdirp: 4.1.1
 
   chownr@3.0.0: {}
 
@@ -10022,7 +10022,7 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
-  readdirp@4.0.2: {}
+  readdirp@4.1.1: {}
 
   recma-build-jsx@1.0.0:
     dependencies:
