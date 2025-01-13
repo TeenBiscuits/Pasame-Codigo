@@ -169,6 +169,9 @@ export default defineConfig({
         shiki: {
           langs: [JSON.parse(readFileSync("./src/pseudocodigo.json", "utf-8"))],
         },
+        defaultProps: {
+          collapseStyle: "collapsible-auto",
+        },
       },
       plugins: [
         starlightHeadingBadges(),
