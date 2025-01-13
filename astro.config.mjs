@@ -322,6 +322,11 @@ export default defineConfig({
                     badge: { text: "GitHub", variant: "tip" },
                   },
                   {
+                    label: "Xabiguitian/Practicas_PP",
+                    link: "https://github.com/Xabiguitian/Practicas_PP",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
+                  {
                     label: "antonlnz/PP",
                     link: "https://github.com/antonlnz/PP",
                     badge: { text: "GitHub", variant: "tip" },
