@@ -2,3 +2,156 @@
 title: 5. Paradigma Imperativo
 ---
 
+## Punteros en OCaml (``Ref``)
+
+En esencia, con la _palabra reservada_ ``Ref`` podemos crear punteros en OCaml. En esencia una **referencia**, es un puntero que apunta a una celda de referencia, un lugar donde se guardan los cambios que se le aplican al acceder al puntero.
+
+En OCaml un valor (`val`) es inmutable y eso se mantiene. Los valores no guardan la información, si no solo la referencia al lugar donde esta guardando. Puedes pensarlo como que guardan **la dirección de memoria**.
+
+```ocaml withOutput
+> # ref;;
+- : 'a -> 'a ref = <fun>
+```
+
+Podemos declarar un puntero a un tipo entero de la siguiente manera:
+
+```ocaml withOutput
+> # let i = ref 0;;
+val i : int ref = {contents = 0}
+```
+
+Al contrario que con un `int` normal no podemos operar con el:
+
+```ocaml withOutput
+> # i + 1;;
+Line 1, characters 0-1:
+1 | i + 1;;
+    ^
+Error: The value "i" has type "int ref" but an expression was expected of type
+         "int"
+```
+
+Si queremos acceder a el podemos usar tanto el asignador `:=` como el conversor `!`.
+
+```ocaml withOutput
+> # !i + 1;;
+- : int = 1;;
+```
+```ocaml withOutput
+> # !i;;
+- : int = 0
+```
+```ocaml withOutput
+> # i := 5;;
+- : unit = ()
+```
+```ocaml withOutput
+> # !i;;
+- : int = 5
+```
+
+:::note
+
+Las firmas de las funciones `!` y `:=` son:
+
+```ocaml withOutput
+> # (!);;
+- : 'a ref -> 'a = <fun>
+```
+```ocaml withOutput
+> # (:=);; 
+- : 'a ref -> 'a -> unit = <fun>
+```
+
+:::
+
+## Factorial en Imperativo
+
+```ocaml withOutput
+> # let fac n =
+>     let f = ref 1 and i = ref 1 in
+>     while !i <= n do
+>       f := !f * !i;
+>       i := !i + 1
+>     done;
+>     !f
+>   ;;
+val fact : int -> int = <fun>
+```
+
+## Array
+
+En OCaml debemos diferenciar las [listas](/pepe/apuntes/2-listas_y_excepciones/) de los arrays.
+
+- Esto es una lista: 
+    ```ocaml withOutput
+    > # [1; 5; 0];;
+    - : int list = [1; 5; 0]
+    ```
+- Esto es un array: 
+    ```ocaml withOutput
+    > # [|1; 5; 0|];;
+    - : int array = [|1; 5; 0|]
+    ```
+
+Los arrays están ordenados y podemos acceder a cada posición ya sea mediante el método nativo o las funciones del módulo `Array`:
+```ocaml withOutput
+> # ([|1; 5; 0|]).(1);;
+- : int = 5
+```
+```ocaml withOutput
+> # Array.get ([|1; 5; 0|]) 0;;
+- : int = 1
+```
+
+:::caution
+
+Si tratamos de acceder a posiciones fuera del array provocaremos un error.
+
+```ocaml withOutput
+> # ([|1; 5; 0|]).(3);;
+Exception: Invalid_argument "index out of bounds".
+```
+
+:::
+
+### Creación de arrays
+
+- Creación de un array de 10 elementos con números aleatorios entre ``0.`` y ``1.``
+    ```ocaml withOutput
+    > # let v = Array.init 10 (fun _ -> Random.float 1.);;
+    val v : float array =
+    [|0.5838873773256934; 0.76749470818256071; 0.55248827110747356;
+        0.67603695250431994; 0.16163986467304847; 0.43346122387692643;
+        0.14272284143231861; 0.18569275985545408; 0.616357979144595;
+        0.13804818153161535|]
+    ```
+- Creación de un vector resultado del producto vectorial de dos vectores
+    ```ocaml withOutput
+    > # let vprod v1 v2 =
+    >     if Array.length v1 = Array.length v2 then
+    >       let p = ref 0. in
+    >       for i = 0 to (Array.length v1) - 1 do
+    >         p := !p +. v1.(i) *. v2.(i)
+    >       done;
+    >       !p
+    >     else
+    >       raise (Invalid_argument "vprod")
+    >   ;;
+    val vprod : float array -> float array -> float = <fun>
+    ```
+    ```ocaml withOutput
+    > # vprod [|1.;2.|] [|3.;4.|];;              
+    - : float = 11.
+    ```
+        - También podemos implementarlo usando funciones del módulo ``Array``
+        ```ocaml withOutput
+        > # let vprod v1 v2 =
+        >     Array.fold_left (+.) 0. (Array.map2 ( *. ) v1 v2 )
+        > ;;
+        val vprod : float array -> float array -> float = <fun>
+        ```
+        ```ocaml withOutput
+        > # vprod [|1.;2.|] [|3.;4.|];;              
+        - : float = 11.
+        ```
