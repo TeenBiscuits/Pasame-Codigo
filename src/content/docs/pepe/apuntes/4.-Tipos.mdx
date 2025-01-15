@@ -2,3 +2,65 @@
 title: 4. Tipos
 ---
 
+:::caution
+**¡En Construcción! 👷**
+:::
+
+## Definir nuevos tipos
+
+:::note
+
+En este apartado se aplican conceptos del [Paradigma Imperativo](/pepe/apuntes/5-paradigma_imperativo/)
+
+:::
+
+En OCaml la creación de tipos se realiza mediante la palabra reservada `type`. Por ejemplo podemos crear un tipo, persona. Las personas tienen un nombre, que _no cambia_ (Un `string`) y una edad que va cambiando según se envejece (Un `int`, `mutable`).
+
+```ocaml withOutput
+> # type persona = { nombre : string ; mutable edad : int } ;;
+type persona = { nombre : string; mutable edad : int; }
+```
+
+La creación de un valor (`val`) es igual que con otros tipos:
+
+```ocaml withOutput
+> # let p1 = { nombre = "pablo"; edad = 20 };;
+val p1 : persona = {nombre = "pablo"; edad = 20}
+```
+
+Podemos crear entonces un función que haga envejecer a las personas:
+
+```ocaml withOutput
+> # let envejece p = p.edad <- p.edad + 1;;
+val envejece : persona -> unit = <fun>
+```
+
+Si lo aplicamos a la persona que acabaos de crear da el siguiente resultado:
+
+```ocaml withOutput
+> # envejece p1;;
+- : unit = ()
+```
+```ocaml withOutput
+> # p1;;
+- : persona = {nombre = "pablo"; edad = 21}
+```
+
+:::caution
+
+Si definimos `persona` con sus dos valores inmutables no podemos **ni definir** una función que modifique esos valores
+
+```ocaml withOutput
+> # type persona = { nombre : string ; edad : int } ;;     
+type persona = { nombre : string; edad : int; }
+```
+```ocaml withOutput
+> # let envejece p = p.edad <- p.edad +1;;                 
+Line 1, characters 17-36:
+1 | let envejece p = p.edad <- p.edad +1;;
+                     ^^^^^^^^^^^^^^^^^^^
+Error: The record field "edad" is not mutable
+```
+
+:::
+
