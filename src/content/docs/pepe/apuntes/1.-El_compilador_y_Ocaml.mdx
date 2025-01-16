@@ -2,3 +2,734 @@
 title: 1. El compilador y OCaml
 ---
 
+
+## Ejercicios sueltos compilador
+
+- `();;`
+```
+-: unit = ();
+```
+- `2 + 5 * 3;;`
+```
+-: int = 17;
+```
+
+- `1.0;;`
+```
+-: float = 1.;
+```
+
+- `2-2.0;;`
+```
+Error: La expresión se esperaba de tipo int
+```
+
+- `3.0 + 2.0;;` (suma decimal es +.)
+```
+- : Error la expresión se esperaba de tipo int 
+```
+
+- `5/3;;`
+```
+- : int = 1
+```
+
+- `5 mod 3;;`
+```
+- : int = 2
+```
+
+- `2.0 *. 2.0 ** 3.0;;`
+```
+- : float = 16.
+```
+
+- `3.0 = float_of_int 3;;` (comparación)
+```
+- : bool = true
+```
+
+- `sqrt 4` (sqrt es decimal, 4.)
+```
+Error: La expresión se esperaba de tipo float
+```
+
+- `int_of_float 2.1 + int_of_float (-2.9);;`
+```
+- : int = 0
+```
+
+- `truncate 2.1 + truncate (-2.9);;` (truncate es int)
+```
+- : int = 0
+```
+
+- `floor 2.1 +. floor (-2.9);;` (floor es float)
+```
+- : float = -1
+```
+
+- `ceil 2.1 + ceil (-2.9);;` (ceil es float)
+```
+- : Error: la expresión se esperaba de tipo float (+.)
+```
+
+- `2.0 ** 3.0 ** 2.0;;`
+```
+- : float = 512.
+```
+
+- `'B';;`
+```
+- : char = B
+```
+
+- `int_of_char 'A';;`
+```
+- : char = 65
+```
+
+- `char_of_int 66;;`
+```
+- : char = 'B'
+```
+
+- `Char.code 'B';;`
+```
+- : int = 66
+```
+
+- `Char.chr 67;;`
+```
+- : char = 'C'
+```
+
+- `'\067';;`
+```
+- : char = 'C'
+```
+- `Char.chr (Char.code 'a' - Char.code 'A' + Char.code 'M');;` (109)
+```
+- : char = 'm'
+```
+
+- `"This is a string";;`
+```
+- : string = "This is a string"
+```
+
+- `String.length "longitud";;`
+```
+- : int = 8
+```
+
+- `"1999" + "1";;`
+```
+Error: La expresión se esperaba de tipo int
+```
+
+- `"1999" ^ "1";;`
+```
+: - string = 19991
+```
+
+- `int_of_string "1999" + 1;;`
+```
+: - int = 2000
+```
+
+- `"\064\065";;`
+```
+- : string = "@A"
+```
+
+- `string_of_int 010;;`
+```
+- : string = "10"
+```
+- `not true;;`
+```
+- : bool = false
+```
+
+- `true && false;;`
+```
+- : bool = false
+```
+
+- `true || false;;`
+```
+- : bool = true
+```
+
+- `(1 < 2) = false;;`
+```
+- : bool = false
+```
+
+- `"1" < "2";;`
+```
+- :  bool = true
+```
+
+- `2 < 12;;`
+```
+- :  bool = true
+```
+
+- `"2" < "12";;` (compara solo el primer char del string)
+```
+- :  bool = false
+```
+
+- `"uno" < "dos";;`
+```
+- :  bool = false
+```
+
+- `"uno" < "dos";;`
+```
+- :  bool = false
+```
+
+- `if 3 = 4 then 0 else 4;;`
+```
+- :  int = 4
+```
+
+- `if 3 = 4 then "0" else "4";;`
+```
+- :  string = "4"
+```
+
+- `if 3 = 4 then 0 else "4";;` (if solo devuelve un tipo)
+```
+Error: La expresión se esperaba de tipo int
+```
+
+- `(if 3 < 5 then 8 else 10) + 4;;`
+```
+- :  int = 12
+```
+
+- `(if 3 < 5 then 8 else 10) + 4;;`
+```
+- :  int = 12
+```
+
+- `2.0 *. asin 1.0;;`
+```
+- :  float = 3.14159265358979312
+```
+
+- `function x -> 2 * x;;`
+```
+- : int -> int = <fun>
+```
+
+- `(function x -> 2 * x) (2 + 1);;`
+```
+- : int = 6
+```
+
+- `let x = 1;;`
+```
+val x : int = 1
+```
+
+- `let y = 2;;`
+```
+val x : int = 2
+```
+
+- `x-y;;`
+```
+- : int = -1
+```
+
+- `let x = y in x - y;;` (x = 2 in 2 - 2, variable local)
+```
+val x : int = 0
+```
+
+- `x - y;;`
+```
+- : int = -1;
+```
+
+- `z;;`
+```
+Error: variable z no definida
+```
+
+- `let z = x + y;;`
+```
+z = 3
+```
+
+- `let y = 5 in x + y;;` (1 + 5, variable local)
+```
+- : int = 6
+```
+
+- `x + y;;`
+```
+- : int = 3
+```
+
+- `let x = x + y in let y = x * y in x + y + z;;` (x = 3, y = 6, z = 3)
+```
+- : int = 12
+```
+ 
+- `x + y + z;;`
+```
+- : int = 6
+```
+
+- `int_of_float;;`
+```
+- : float -> int = <fun>
+```
+
+- `float_of_int;;`
+```
+- : int -> float = <fun>
+```
+
+- `abs;;`
+```
+- : int -> int = <fun>
+```
+
+- `sqrt;;`
+```
+- : float -> float = <fun>
+```
+
+- `truncate;;`
+```
+- : float -> int = <fun>
+```
+
+- `ceil;;`
+```
+- : float -> float = <fun>
+```
+
+- `floor;;`
+```
+- : float -> float = <fun>
+```
+
+- `Char.code;;`
+```
+- : char -> int = <fun>
+```
+- `let f = function x -> 2 * x;;`
+```
+val f : int -> int = <fun>
+```
+
+- `f (2 + 1);;`
+```
+- : int = 6
+```
+
+- `f 2 + 1;;`
+```
+- : int = 5
+```
+
+- `let n = 1;;`
+```
+val n : int = 1
+```
+
+- `let g x = x + n;;` (x = x + n es una función)
+```
+val g : int -> int = <fun>
+```
+
+- `g 3;;`
+```
+- : int = 4
+```
+
+- `let l = function r -> let pi = 2.0 *. asin 1.0 in 2.0 *. pi *. r;;`
+```
+val l : float -> float <fun>
+```
+
+- `l 3.0;;`
+```
+- : float = 18.8495
+```
+
+- `l 2;;`
+```
+Error: se esperaba una expresión de tipo float
+```
+
+- `pi;;`
+```
+Error: pi no definido
+```
+
+- `let pi = 2.0 *. asin 1.0;;`
+```
+val pi : 3.1415926
+```
+
+- `pi;;`
+```
+-: float = 3.1415926
+```
+
+- `let v = function r -> pi *. r ** 2.0;;`
+```
+val v : float -> float = <fun>
+```
+
+- `v 2.0;;`
+```
+-: float = 12.5663
+```
+
+### Examen enero 2023
+- `let x = let x = 3 in x * x;;`
+```
+val x : int = 9
+```
+
+- `x + let x = x + 1 in x * x;;` (9 + 10 * 10)
+```
+-: int = 109
+```
+
+- `function x -> x;;` (la x no es la variable anterior, es el parámetro de la función)
+```
+-: a' -> a' = <fun>
+```
+
+- `let app x f = f x;;`
+```
+val app : a' -> (a' -> b') -> b' = <fun>
+```
+
+- `let app x f = f x;;` (f = f x es una función)
+```
+val app : a' -> (a' -> b') -> b' = <fun>
+```
+
+- `app 2 (+);;`
+```
+val app : int -> int = <fun>
+```
+
+- `app 2 (+) 4;;`
+```
+- : int = 8
+```
+
+- `let x::y = let _::t = [1;2;3] in t;;` (t = [2,3], x = head = 2, y = tail = [3])
+```
+val x : int = 2
+val y : int list = [3]
+```
+
+- `List.fold_left (fun x f -> f x) 0 [(+) 1; (-)10; fun x -> - x * x];;` (+1-10 = 9, -(9*9))
+```
+- : int = -81
+```
+
+- 
+```
+let rec f op = function
+    (h1::h2::t) -> op h1 h2 :: f op t
+    | _ -> [];;
+```
+(A la h1 y h2 de la lista se le aplica la operación y a esta se le van concatenando los resultados de las siguientes operaciones hasta que solo quede 1 elemento)
+
+```
+val f : ('a -> 'b -> 'a) -> 'a list -> 'b list = <fun>
+```
+
+- `f max [3;2;4;5;1];;` (max 3 y 2 :: [451], max 4 y 5, _)
+```
+- : int list [3,5]
+```
+
+### Examen enero 2021
+- `let f3 f x = (x, f x, f (f x));;` (f es una función con un parámetro x, como le entra x y devuelve x tiene que ser del mismo tipo)
+```
+val f3 = ('a -> 'a) -> 'a -> ('a * 'a * 'a ) = <fun>
+```
+
+- `f3 abs (-2);;` (el primero es el número tal cual, el segundo pasa por la función y el tercero pasa por la función dos veces)
+```
+- : int * int * int = (-2, 2, 2)
+```
+
+- `let g x = x * x in f3 g 2;;` ((2,2 * 2,(2*2)*4))
+```
+- : int * int * int = (2,4,16)
+```
+
+- `let x, y, z = let g x = x * x in f3 g 2;;` ((2,4,16))
+```
+val x : int = 2
+val y : int = 4
+val z : int = 16
+```
+
+- `(function _::_::t -> t) [1;2;3];;` (función anónima)
+```
+-: int list = [3]
+```
+
+- `List.map (function x -> 2 * x + 1);;` (a list map le pasas la función ('a -> 'b) que requiere pero le falta la lista)
+
+> val map : ('a -> 'b) -> 'a list -> 'b list 
+
+```
+-: int list -> int list = <fun>
+```
+
+-
+```
+let rec f = function
+    [] -> 0 |
+    h::[] -> h |
+    h1::h2::t -> h1 + h2 - f t;;
+```
+
+```
+val f : int list -> int = <fun>
+```
+
+- `f [1000; 100; 10], f [1000;10;1];;` (1000+100-10) (1000+10-1)
+```
+- : int * int = 1090, 1009
+```
+
+- `List.fold_right (-) [4;3;2] 1;;` ((4-(3-(2-1))))
+
+> val fold_right : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+
+```
+- : int = 2
+```
+
+- Ejercicio 2
+```
+let rec comb f = function
+    h1::h2::t -> f h1 h2 :: comb f t |
+    l -> l;;
+``` 
+
+```
+val comb : ('a -> 'a -> 'a) -> 'a -> list -> 'a list = <fun>
+```
+
+- `comb (+);;`
+```
+val comb : int list -> int list = <fun>
+```
+
+- `comb (+) [1;2;3;4;5];;` ([1+2,3+4,5])
+```
+- : int list = [3,7,5]
+```
+
+- `let nothing = None;;``
+```
+val nothing : 'a option = None
+```
+- Ejercicio 3 `type 'a tree = T of 'a * 'a tree list;; `
+
+- `let s x = T (x,[]);;`
+
+```
+val s : 'a -> 'a tree = <fun>
+```
+
+- `let t = T (1,[s 2; s 3; s 4]);;`
+
+```
+val t : T (1, [T (2,[]); T (3, []); t (4, [])])
+```
+
+- 
+```
+let rec sum = function
+      T (x, []) -> x
+    | T (r, T(r1, l)::t) -> r + sum (T (r1, l@t));;
+```
+
+```
+    val sum : 'int tree -> int = <fun>
+```
+
+- `sum t;;`
+
+```
+- : int = 10
+```
+
+### Examen enero 2020
+
+- `let f = List.fold_left (fun x y -> 2*x +y) 0;;`
+```
+val f : = int list -> int <fun>
+```
+
+- `f [1;0;1;1],f[1;1;1;1];;`
+```
+- : int * int = (11,15)
+```
+
+-
+```
+let rec base b n =
+    let q = n/b in
+        if q = 0 then [n]
+        else n mod b::base b q;;
+```
+
+```
+val base : int -> int -> int list = <fun>
+```
+
+- `[base 2 1; base 2 16; base 10 2021];;`
+
+```
+- : int list list = [[1]; [0; 0; 0; 0; 1]; [1; 2; 0; 2]]
+```
+
+### Examen enero 2019
+
+- `let x,y = 2+1,0;;`
+```
+val x : int = 3
+val y : int = 0
+```
+
+- `(function x -> function y -> 2*y) y x;;` 
+
+(la y se corresponde con la x de la derecha)
+```
+# (function x -> function y -> 2*y);;
+- : 'a -> int -> int = <fun>
+# (function x -> function y -> 2*y) 'a' 0;;
+- : int = 0
+```
+```
+- : int = 6
+```
+
+- `let f = fun y -> (+) x y;;` (x = 3, y es el nuevo parámetro int)
+```
+val f : int -> int = <fun>
+```
+
+- `let g f x = f (f x) in g f 5;;` (3+(3+5))
+```
+- : int = 11;;
+```
+
+- `let h = fun x y -> y::x;;` (a::a list)
+```
+val h : 'a list -> 'a -> 'a list
+```
+
+- `h ['h'];;`
+```
+val h : 'char -> 'char list
+```
+
+- `h [] [0];;`
+```
+- : int list list = [[0]]
+```
+
+- `let x,y = y,x;;`
+```
+val x : int = 0
+val y : int = 3
+```
+
+- `let v = ref x;;`
+```
+val v : int ref = {contents 0}
+```
+
+- `v+1;;`
+```
+Error: se esperaba una función de tipo int ref
+```
+
+- `let w=v;;`
+```
+val w : int ref = {contents 0}
+```
+
+- `w:=!w+1;!v,!w;;` (copia, al modificar w modificas v)
+```
+-: int * int = (1,1)
+```
+
+### Examen julio 2019
+
+- `List.map (fun x-> x,x) ['a';'e';'i'];;`
+```
+- : char * char list = [('a','a');('e','e');('i','i')]
+```
+- 
+```
+let x = 1 in
+    for i=1 to 3 do
+        let x = 2*x in print_int x
+    done;
+print_int x;;
+```
+
+(se imprime el resultado y x es una variable interna, por lo que no tiene nada)
+
+```
+2221 - : unit = ()
+```
+
+-
+```
+let rec fold op e = function
+    [] -> e
+    | h::t -> fold op (op e h) t;;
+```
+
+```
+val fold : ('a -> 'b -> 'a) -> 'a -> 'b list = <fun>
+```
+
+- `let f = fold (+) 0 in f[1;2;3];;`
+```
+- : int = 6
+```
+
+- 
+```
+let rec repeat n f x=
+    if n > 0 then repeat (n+1) f (f x)
+    else x;;
+```
+
+```
+val repeat : int -> ('a -> 'a) -> 'a -> 'a= <fun>
+```
+
+- `let push f(h::t) = f h::h::t;;
+let succ = (+) 1 in repeat 3 (push succ) [0];;`
+
+```
+Bucle infinito
+```
