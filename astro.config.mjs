@@ -177,6 +177,7 @@ export default defineConfig({
         starlightHeadingBadges(),
         starlightLinksValidator({
           errorOnInvalidHashes: false,
+          exclude: ["/pepe/apuntes/6-*"],
         }),
         starlightDocSearch({
           appId: "IOKSWSAQ8F",
@@ -306,7 +307,6 @@ export default defineConfig({
               {
                 label: "Apuntes",
                 autogenerate: { directory: "pepe/apuntes" },
-                badge: { text: "WIP", variant: "caution" },
               },
               {
                 label: "Código en OCamel",
