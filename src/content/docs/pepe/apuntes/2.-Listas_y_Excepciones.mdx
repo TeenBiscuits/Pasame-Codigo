@@ -2,3 +2,405 @@
 title: 2. Listas y Excepciones
 ---
 
+import { ShowcaseProfile } from 'starlight-showcases';
+import PrintButton from '@components/PrintButton.astro';
+
+<PrintButton/>
+
+:::note
+
+Puedes consultar el módulo de listas nativo de OCaml en [el manual](https://ocaml.org/manual/5.3/api/List.html). (v. 5.3)
+
+:::
+
+## Cabeza de la lista (``hd``)
+
+Devuelve el primer elemento de la lista de ser una lista vacía falla con "empty list".
+
+```ocaml withOutput
+> let hd = function
+>     [] -> failwith "empty list"
+>   | h::_ -> h
+> ;;
+val hd : 'a list -> 'a = <fun>
+```
+
+## Cola de la lista (``tl``)
+
+Devuelve la lista **sin** el primer elemento, de ser una lista vacía falla con "empty list".
+
+```ocaml withOutput
+> let tl = function
+>     [] -> failwith "empty list"
+>   | _::t -> t
+> ;;
+val tl : 'a list -> 'a list = <fun>
+```
+
+## Último elemento (``last``)
+
+```ocaml withOutput
+> let rec last = function
+>      [] -> failwith "empty list"
+>     | [x] -> x
+>     | _::t -> last t
+> ;;
+val last : 'a list -> 'a = <fun>
+```
+
+## Longitud (``length``)
+
+Devuelve el número de elementos que componen la lista, siendo 0 la lista vacía.
+
+- Variante **NO** terminal
+
+    ```ocaml withOutput
+    > let rec length = function
+    >     [] -> 0
+    >   | _::t -> 1 + length t
+    > ;;
+    val length : 'a list -> int = <fun>
+    ```
+
+- Variante **terminal**
+
+    ```ocaml withOutput
+    > let length' l =
+    >   let rec aux n = function
+    >       [] -> n
+    >     | _::t -> aux (n + 1) t
+    >   in aux 0 l
+    > ;;
+    val length' : 'a list -> int = <fun>
+    ```
+
+## Comparar longitudes (``compare_lengths``)
+
+Compara las longitudes de dos listas (sin usar ``length``). De ser iguales se devuelve 0, de ser la primera más larga que la segunda se devuelve 1, en caso contrario -1.
+
+```ocaml withOutput
+> let compare_lengths l1 l2 =
+>   let rec aux x y =
+>     match (x, y) with
+>       ([], []) -> 0 (* EMPATE LAS DOS ESTÁN VACÍAS *)
+>     | ([], _) -> -1 (* X ESTÁ VACÍA Y TODAVÍA QUEDAN ELEMENTOS EN Y *)
+>     | (_, []) -> 1  (* LA INVERSA *)
+>     | (_::t1, _::t2) -> aux t1 t2 (* CONTINUAMOS CON LAS COLAS *)
+>   in aux l1 l2
+> ;;
+val compare_lengths : 'a list -> 'b list -> int = <fun>
+```
+
+## Anexar dos listas (``append``)
+
+Devuelve una lista compuesta de la primera continuada por la segunda. (Sin utilizar ``@``)
+
+```ocaml withOutput
+> let rec append l1 l2 =
+>   match l1 with
+>     [] -> l2 (* Cuando termine de recorrer l1 añado l2 *)
+>   | h::t -> h :: append t l2
+> ;;
+val append : 'a list -> 'a list -> 'a list = <fun>
+```
+
+:::note
+
+Podemos anexar dos listas simplemente usando el operador ``@``
+
+```ocaml withOutput
+> (@);;
+- : 'a list -> 'a list -> 'a list = <fun>
+```
+```ocaml withOutput
+> [1;2]@[3;4];;     
+- : int list = [1; 2; 3; 4]
+```
+
+:::
+
+## Del revés (`rev`)
+
+Darle la vuelta a una lista. Ej: $$[1;2;3] \to [3;2;1]$$
+
+```ocaml withOutput
+> let rev l =
+>   let rec aux acc = function
+>       [] -> acc
+>     | h::t -> aux (h::acc) t
+>   in aux [] l
+> ;;
+val rev : 'a list -> 'a list = <fun>
+```
+
+## Anexar del revés (`rev_append`)
+
+Invierte la lista `l1` y luego se le anexa `l2`.
+
+```ocaml withOutput
+> let rev_append l1 l2 = rev l1 @ l2;;
+val rev_append : 'a list -> 'a list -> 'a list = <fun>
+```
+
+## Concadenar (`concat`) | (`flatten`)
+
+Dada una **lista de listas** devuelve una única lista. Creada a partir de la anexión de las listas en el orden de la lista madre.
+
+```ocaml withOutput
+> let rec concat = function
+>     [] -> []
+>   | h::t -> append h (concat t)
+> ;;
+val concat : 'a list list -> 'a list = <fun>
+```
+```ocaml withOutput
+> let flatten = concat;; 
+val flatten : 'a list list -> 'a list = <fun>
+```
+
+## Inicializar (`init`)
+
+Crea una lista del tamaño especificado aplicando una función `f` de firma `int -> 'a` a cada número de izquierda a derecha. Ej: ``[f 0; f 1; ...; f (len-1)]``
+
+```ocaml withOutput
+> let init n f =
+>   if n < 0 then invalid_arg "nada de números negativos"
+>   else
+>     let rec aux i acc =
+>       if i < 0 then acc
+>       else aux (i - 1) (f i :: acc)
+>     in aux (n - 1) []
+> ;;
+val init : int -> (int -> 'a) -> 'a list = <fun>
+```
+
+## El `n` elemento (`nth`)
+
+Devuelve el `n` elemento de una lista dada. De dar un `n` negativo o más grande que la longitud del la lista se devuelve el error correspondiente. (El primer elemento es el `0`).
+
+```ocaml withOutput
+> let nth l n =
+>   if n < 0 then invalid_arg "nada de números negativos"
+>   else
+>     let rec aux i = function 
+>       (* En cada iteración se resta i hasta llegar 
+>          a 0, de llegarse antes de tiempo error      *)
+>         [] -> failwith "lista demasiado corta"
+>       | h::t -> if i = 0 then h else aux (i - 1) t
+>     in aux n l
+> ;;
+val nth : 'a list -> int -> 'a = <fun>
+```
+
+## "Mapear" (`map`)
+
+Aplica a cada elemento de una lista una función de firma `'a -> 'b`. El resultado dado `[a1; ...; an]` es `[f a1; ...; f an]`.
+
+```ocaml withOutput
+> let rec map f = function (* Aplico la función de manera recursiva *)
+>     [] -> []
+>   | h::t -> f h :: map f t (* Evidentemente no es terminal *)
+> ;;
+val map : ('a -> 'b) -> 'a list -> 'b list = <fun>
+```
+
+## "Mapear x 2"(`map2`)
+
+Aplica a cada elemento de las dos listas, conjuntamente, una función de firma `'a -> 'b -> 'c`. El resultado dado `[a1; ...; an] [b1; ...; bn]` es `[f a1 b1; ...; f an bn]`.
+
+Las dos listas deben tener la misma longitud, de no ser así se devolverá un error.
+
+```ocaml withOutput
+> let rec map2 f l1 l2 =
+>   match (l1, l2) with
+>     ([], []) -> []
+>   (* con dos listas iguales la siguiente situación es imposible *)
+>   | ([], _) | (_, []) -> invalid_arg "tamaños diferentes de listas"
+>   | (h1::t1, h2::t2) -> f h1 h2 :: map2 f l1 l2
+> ;;
+val map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list = <fun>
+```
+
+## Combinar (`combine`)
+
+Dadas dos listas iguales crea una lista con pares formados de los elementos parejos de cada lista. Dados $$[a;b] \wedge [c;d] \to [(a,c);(b,d)]$$
+
+```ocaml withOutput
+> let rec combine l1 l2 =
+>  match (l1, l2) with
+>    ([], []) -> []
+>  | ([], _) | (_, []) -> invalid_arg "tamaños diferentes de listas"
+>  | (h1::t1, h2::t2) -> (h1, h2) :: combine t1 t2
+> ;;
+val combine : 'a list -> 'b list -> ('a * 'b) list = <fun>
+```
+
+## Separar (`split`)
+
+Dado una lista de pares, separarlo en dos listas con los elementos de cada par. La operación contraria a `combine`. Dado $$[(a,c);(b,d)] \to ([a;b],[c;d])$$
+
+```ocaml withOutput
+> let rec split = function
+>   [] -> ([], [])
+> | (h1, h2)::t -> let (l1, l2) = split t in (h1::t1, h2::t2)
+> ;;
+val split : ('a * 'b) list -> 'a list * 'b list = <fun>
+```
+
+## Buscar (`find`)
+
+Busca un elemento que cumpla la condición `f`, de **no** encontrarse devuelve un fallo.
+
+```ocaml withOutput
+> let rec find f = function
+>   [] -> failwith "elemento no encontrado"
+> | h::t -> if f h then h else find f t
+> ;;
+val find : ('a -> bool) -> 'a list -> 'a = <fun>
+```
+
+## Filtrar (`filter`)
+
+- Variante **NO** terminal
+
+  ```ocaml withOutput
+  > let rec filter f = function
+  >     [] -> []
+  >   | h::t -> 
+  >       (* Si el elemento cumple la condición se añade a a la lista *)
+  >       if f h then h :: filter f t
+  >       (* De no ser así, se continua filtrando la cola *)
+  >       else filter f t
+  > ;;
+  val filter : ('a -> bool) -> 'a list -> 'a list = <fun>
+  ```
+
+- Variante **terminal**
+
+  ```ocaml withOutput
+  > let filter' f l =
+  >   let rec aux acc = function
+  >     (* Al ir añadiendo los elementos según 
+  >        se encuentran debemos darle la  
+  >        vuelta al acumulador                *)
+  >       [] -> rev acc
+  >     | h::t -> aux (if f h then h :: acc else acc) t
+  >   in aux [] l
+  > ;;
+  val filter' : ('a -> bool) -> 'a list -> 'a list = <fun>
+  ```
+
+## Partición (`partition`)
+
+Dada una lista se devuelve un par de listas, una con todos los elementos que cumplieron `f` y otra con los que no.
+
+- Variante **NO** terminal
+
+  ```ocaml withOutput
+  > let rec partition f = function
+  >   [] -> ([], [])
+  > | h::t -> let (yes, no) = partition f t in
+  >     if f h then (h::yes, no) (* Si cumple se añade a la lista del si (yes) *)
+  >     else (yes, h::no) (* Y viceversa *)
+  > ;;
+  val partition : ('a -> bool) -> 'a list -> 'a list * 'a list = <fun>
+  ```
+
+- Variante **terminal** ("Literalmente" lo mismo pero con acumuladores)
+
+  ```ocaml withOutput
+  > let partition' f l =
+  >   let rec aux yes no = function
+  >       [] -> (rev yes, rev no) (* Les damos la vuelta a los acumuladores *)
+  >     | h::t -> if f h then aux (h::yes) no t (* Añadimos al acumulador del si *)
+  >               else aux yes (h::no) t (* Viceversa *)
+  >   in aux [] [] l
+  > ;;
+  val partition' : ('a -> bool) -> 'a list -> 'a list * 'a list = <fun>
+  ```
+
+## Para todos (`for_all`)
+
+Dada una lista comprobar si todos sus elementos cumplen una condición `f`.
+
+```ocaml withOutput
+> let for_all f l =
+>   let rec aux = function
+>       [] -> true
+>     | h::t -> if f h then aux t else false
+>   in aux l
+> ;;
+val for_all : ('a -> bool) -> 'a list -> bool = <fun>
+```
+
+## ¿Existe? (`exists`)
+
+Dada una lista, comprobar si existe algún elemento que cumpla la condición `f`.
+
+```ocaml withOutput
+> #
+val exists : ('a -> bool) -> 'a list -> bool = <fun>
+```
+
+## ¿Está presente? (`mem`)
+
+Dada una lista busca un elemento y devuelve si está presente o no.
+
+```ocaml withOutput
+> let mem elem l =
+>   let rec aux = function
+>       [] -> false
+>     | h::t -> if h = elem then true else aux t
+>   in aux l
+> ;;
+val mem : 'a -> 'a list -> bool = <fun>
+```
+
+## Plegar izquierda (`fold_left`)
+
+Aplica recursivamente una función `f` de firma `'a -> 'b -> 'a`, sobre un elemento y el resultado de la operación anterior. Ejemplo: 
+
+$$
+f \wedge init \wedge [b1; ...; bn] \to f\;(... (f\;(f\;init\;b1)\;b2) ...)\;bn
+$$
+
+```ocaml withOutput
+> let fold_left f init l =
+>   let rec aux acc = function
+>      [] -> acc
+>     | h::t -> aux (f acc h) t
+>   in aux init l
+> ;;
+val fold_left : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a = <fun>
+```
+
+## Plegar derecha (`fold_right`)
+
+La operación contraria a `fold_left`. Esta operación al contrario que `fold_left` **no es recursiva**.
+
+$$
+f \wedge [a1; ...; an] \wedge init \to f\;a1\;(f\;a2\;(... (f\;an\;init) ...))
+$$
+
+```ocaml withOutput
+> let rec fold_right f l init =
+>   match l with
+>    [] -> init
+>   | h::t -> f h (fold_right f t init)
+> ;;
+val fold_right : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b = <fun>
+```
+
+
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2025 licensed under CC BY 4.0",
+    },
+  ]}
+/>
