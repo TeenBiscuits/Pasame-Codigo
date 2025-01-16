@@ -3,6 +3,7 @@ title: 1. El compilador y OCaml
 ---
 
 import { Aside } from '@astrojs/starlight/components';
+import { ShowcaseProfile } from 'starlight-showcases';
 
 <Aside type="caution" title="¡En Construcción! 👷">
   En este bloque dispongo una serie de ejemplos de expresiones y que devuelven en el compilador.
@@ -790,3 +791,22 @@ let succ = (+) 1 in repeat 3 (push succ) [0];;`
 ```
 Bucle infinito
 ```
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2025 licensed under CC BY 4.0",
+    },
+    {
+      name: 'Clara Valle',
+      picture: 'https://gitlab.com/uploads/-/system/user/avatar/6021942/avatar.png',
+      href: 'https://gitlab.com/CValle_',
+      description:
+        "Código - © 2022",
+    },
+  ]}
+/>
