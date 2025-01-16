@@ -2,15 +2,13 @@
 title: 1. El compilador y OCaml
 ---
 
-:::caution
+import { Aside } from '@astrojs/starlight/components';
 
-#### **¡En Construcción! 👷**
+<Aside type="caution" title="¡En Construcción! 👷">
+  En este bloque dispongo una serie de ejemplos de expresiones y que devuelven en el compilador.
 
-En este bloque dispongo una serie de ejemplos de expresiones y que devuelven en el compilador.
-
-Este ejercicio es el principal del examen y se conoce como: **Predicción del compilador**
-
-:::
+  Este ejercicio es el principal del examen y se conoce como: **Predicción del compilador**
+</Aside>
 
 ## Ejercicios sueltos compilador
 
@@ -405,7 +403,57 @@ val v : float -> float = <fun>
 -: float = 12.5663
 ```
 
-### Examen enero 2023
+## Examen enero 2024
+
+- `let print_newline () = print_endline " ";;`
+```
+val print_newline : unit -> unit = <fun>
+```
+- `let lista = (1, 2) :: (3, 4) :: (5, 6) :: [];;`
+```
+val lista : (int * int ) list = [(1,2); (3, 4); (5, 6)]
+```
+- `let _ :: lista = lista in List.tl lista;;`
+```
+- : (int * int) list = [(5, 6)]
+```
+- `let x, y = List.hd lista;;`
+```
+val x : int = 1
+val y : int = 2
+```
+- `let fst (x, _) = x and snd (_, x) = x;;`
+```
+val fst : 'a * 'b -> 'a = <fun>
+val snd : 'a * 'b -> 'b = <fun>
+```
+- `let map_pair (f1, f2) l = List.map f1 l, List.map f2 l;;`
+```
+val map_pair : ('a -> 'b) * ('a -> 'c) -> 'a list -> 'b list -> 'c list = <fun>
+```
+- `let l1, l2 = map_pair (snd, fst) lista;;`
+```
+val l1 : int list = [2; 4; 6 ]
+val l2 : int list = [1; 3; 5]
+```
+- `(2 < 2 / 1) && (1 < 1 / 0);;`
+```
+- : bool = false
+```
+- `let iter f v = for i = 0 to Array.length v - 1 do f v.(i) done;;`
+```
+val iter : ('a -> 'b) -> 'a array -> unit = <fun>
+```
+- `let v = Array.init 3(fun i -> object method number = i end);;`
+```
+val v : < number : int > array = [|<obj>; <obj>; <obj>|]
+```
+- `let pr_number v = iter (fun e -> print_int e#number) v;;`
+```
+val pr_number : < number : int; .. > array -> unit = <fun>
+```
+
+## Examen enero 2023
 - `let x = let x = 3 in x * x;;`
 ```
 val x : int = 9
@@ -469,7 +517,7 @@ val f : ('a -> 'b -> 'a) -> 'a list -> 'b list = <fun>
 - : int list [3,5]
 ```
 
-### Examen enero 2021
+## Examen enero 2021
 - `let f3 f x = (x, f x, f (f x));;` (f es una función con un parámetro x, como le entra x y devuelve x tiene que ser del mismo tipo)
 ```
 val f3 = ('a -> 'a) -> 'a -> ('a * 'a * 'a ) = <fun>
@@ -586,7 +634,7 @@ let rec sum = function
 - : int = 10
 ```
 
-### Examen enero 2020
+## Examen enero 2020
 
 - `let f = List.fold_left (fun x y -> 2*x +y) 0;;`
 ```
@@ -616,7 +664,7 @@ val base : int -> int -> int list = <fun>
 - : int list list = [[1]; [0; 0; 0; 0; 1]; [1; 2; 0; 2]]
 ```
 
-### Examen enero 2019
+## Examen enero 2019
 
 - `let x,y = 2+1,0;;`
 ```
@@ -688,7 +736,7 @@ val w : int ref = {contents 0}
 -: int * int = (1,1)
 ```
 
-### Examen julio 2019
+## Examen julio 2019
 
 - `List.map (fun x-> x,x) ['a';'e';'i'];;`
 ```
