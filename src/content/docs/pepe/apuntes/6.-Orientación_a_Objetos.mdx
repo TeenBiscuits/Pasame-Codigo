@@ -7,6 +7,8 @@ sidebar:
 ---
 
 import { Aside } from '@astrojs/starlight/components';
+import { ShowcaseProfile } from 'starlight-showcases';
+import PrintButton from '@components/PrintButton.astro';
 
 <Aside type="caution" title="¡En Construcción! 👷">
 
@@ -16,3 +18,150 @@ import { Aside } from '@astrojs/starlight/components';
 
 </Aside>
 
+<PrintButton/>
+
+```ocaml
+let c1 = object
+  val mutable n = 0
+  method next = n <- n + 1; n
+  method reset = n <- 0
+end;;
+
+let double_next c =
+  c#next * 2
+;;
+
+let double c = object
+  method next = c#next * 2
+  method reset = c#reset
+end;;
+
+
+class counter = object
+  val mutable n = 0
+  method next = n <- n+1; n
+  method reset = n <- 0
+end;;
+
+(* CLASES 09/12 *)
+
+let double_next o = 
+  o#next * 2
+;;
+
+let c1 = object
+  val mutable n = 0
+  method next = n <- n + 1; n
+  method reset = n <- 0
+end;;
+
+class counter = object
+  val mutable n = 0
+  method next = n <- n+1; n
+  method reset = n <- 0
+end;;
+
+type counter = < next : int; reset : unit >
+
+let new_counter () : counter = object
+  val mutable n = 0
+  method next = n <- n+1; n
+  method reset = n <- 0
+end;;
+
+let c3 = new_counter ()
+
+class counter_with_set = object
+  inherit counter
+  method set x = n <- x
+end;;
+
+class counter_with_set_add_init n0 = object (self)
+  inherit counter_with_set
+  initializer self#set n0
+end;;
+
+(*
+class counter_with_limit n0 max = object (this)
+  inherit counter_with_set_add_init n0 as ancestor
+  method next =
+    let n = ancestor#next in
+    if n <= max then n
+    else (this#reset; ancestor#reset) (* MAL COPIADO ESTA LINEA NO COMPILA *)
+end;;
+*)
+
+class counter_with_set_and_init n0 = object (self)
+  inherit counter_with_set
+  initializer self#set n0
+end;;
+
+class counter_with_limit n0 max = object (this)
+  inherit counter_with_set_and_init n0 as ancestor
+  method next =
+    let n = ancestor#next in
+    if n <= max then n
+    else (this#reset; ancestor#next)
+end;;
+
+(* CLASES 10/12 *)
+
+class ['a] queue = object (self)
+  val mutable front = []
+  val mutable back = []
+  method push (e : 'a) =
+    back <- e :: back
+  method top =
+    match front, back with
+      h::_, _ -> Some h
+    | [], [] -> None
+    | [], _ ->  front <- List.rev back;
+                back  <- [];
+                self#top
+  method pop =
+    match front, back with
+      h::t, _ -> front <- t; Some h
+    | [], [] -> None
+    | [], _ ->  front <- List.rev back;
+                back  <- [];
+                self#pop
+end;;
+
+class ['a] queue' = object (self)
+  inherit ['a] queue
+  method copy = Oo.copy self
+end;;
+
+(* CLASES 16/12 *)
+
+let _ = print_char 'A' in
+let _ = print_char 'B' in
+print_char 'C'
+;;
+
+let rec output_string_list c = function
+    [] -> ()
+  | h::t ->
+    output_string c (h ^ "\n");
+    output_string_list c t
+;;
+
+let rec input_string_list c =
+  try
+    let s = input_line c in s :: input_string_list c
+  with
+    End_of_file -> []
+;;
+```
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2025 licensed under CC BY 4.0",
+    },
+  ]}
+/>
