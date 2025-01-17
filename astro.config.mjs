@@ -177,7 +177,6 @@ export default defineConfig({
         starlightHeadingBadges(),
         starlightLinksValidator({
           errorOnInvalidHashes: false,
-          exclude: ["/pepe/apuntes/6-*"],
         }),
         starlightDocSearch({
           appId: "IOKSWSAQ8F",
