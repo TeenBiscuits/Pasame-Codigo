@@ -1,18 +1,342 @@
 ---
-title: 3. Árboles
-sidebar:
-  badge:
-    text: WIP
-    variant: caution
+title: 3. Árboles Binarios
 ---
 
-import { Aside } from '@astrojs/starlight/components';
+import { ShowcaseProfile } from 'starlight-showcases';
+import PrintButton from '@components/PrintButton.astro';
 
-<Aside type="caution" title="¡En Construcción! 👷">
+<PrintButton/>
 
->Por petición personal iré actualizando en producción los apuntes según los acabe.
->
->_Pablo Portas López_
+## Tipos Árbol
 
-</Aside>
+Un árbol puede ser un árbol vacío (`Empty`) o un árbol binario compuesto de: ``(Árbol Binario) - (Elemento) - (Árbol Binario)``.
 
+```ocaml withOutput
+> type 'a bintree = Empty | BT of 'a bintree * 'a * 'a bintree;;
+type 'a bintree = Empty | BT of 'a bintree * 'a * 'a bintree
+```
+
+El tipo para representar árboles binarios con nodos etiquetados con valores de tipo 'a.
+
+```ocaml withOutput
+> type 'a t = 'a bintree;;
+type 'a t = 'a bintree
+```
+
+El árbol vacío.
+
+```ocaml withOutput
+> let empty = Empty;;
+val empty : 'a bintree = Empty
+```
+
+## ¿Está vacío? (`is_empty`)
+
+```ocaml withOutput
+> let is_empty = function
+>   Empty -> true
+> | _ -> false
+> ;;
+val is_empty : 'a t -> bool
+```
+
+## Árbol Hoja (`leaftree`)
+
+Dado un elemento crear un árbol con un sólo nodo  (árbol hoja).
+
+```ocaml withOutput
+> let leaftree nodo =
+>   BT (Empty, nodo, Empty)
+> ;;
+val leaftree : 'a -> 'a t
+```
+
+## Raíz (`root`)
+
+Etiqueta o valor de la raíz. Devuelve un error si está vacío.
+
+```ocaml withOutput
+> let root = function
+>   BT (_, x, _) -> x
+> | Empty -> raise (Failure "root")
+> ;;
+val root : 'a t -> 'a
+```
+
+## Rama izquierda (`left_b`)
+
+```ocaml withOutput
+> let left_b = function
+>   Empty -> raise (Failure "left_b") 
+> | BT (left, _, _) -> left
+> ;;
+val left_b : 'a t -> 'a t
+```
+
+## Rama derecha (`right_b`)
+
+```ocaml withOutput
+> let right_b = function
+>  Empty -> raise (Failure "right_b") 
+> | BT (_, _, right) -> right
+> ;;
+val right_b : 'a t -> 'a t
+```
+
+## Remplazar la raíz (`root_replacement`)
+
+```ocaml withOutput
+> let root_replacement t x =
+> match t with
+>   Empty -> raise (Failure "root_replacement")
+> | BT (left, _, right) -> BT (left, x, right)
+> ;;
+val root_replacement : 'a t -> 'a -> 'a t
+```
+
+## Remplazar rama izquierda (`left_replacement`)
+
+```ocaml withOutput
+> let left_replacement t l =
+> match t with
+>   Empty -> raise (Failure "left_replacement")
+> | BT (_, root, right) -> BT (l, root, right)
+> ;;
+val left_replacement : 'a t -> 'a t -> 'a t
+```
+
+## Remplazar rama derecha (`right_replacement`)
+
+```ocaml withOutput
+> let right_replacement t r =
+>   match t with
+>     Empty -> raise (Failure "right_replacement")
+>   | BT (left, root, _) -> BT (left, root, r)
+> ;;
+val right_replacement : 'a t -> 'a t -> 'a t
+```
+
+## Tamaño (`size`)
+
+El número de nodos del árbol.
+
+```ocaml withOutput
+> let rec size = function
+>   Empty -> 0
+> | BT (left, _, right) -> 1 + size left + size right
+> ;;
+val size : 'a t -> int
+```
+
+## Altura (`height`)
+
+Altura 0 para un árbol vacío y 1 para un único nodo.
+
+```ocaml withOutput
+> let rec height = function
+>   Empty -> 0
+> | BT (left, _, right) -> 1 + max (height left) (height right)
+> ;;
+val height : 'a t -> int (* altura; 0 para el árbol vacío; 1 si tiene solo un nodo *)
+```
+
+## Recorridos
+
+### Recorrido en preorden (`preorder`)
+
+Primero la raíz, luego la rama izquierda y por último, la rama derecha.
+
+```ocaml withOutput
+> let rec preorder = function
+>   Empty -> []
+> | BT (left, root, right) -> [root] @ preorder left @ preorder right
+> ;;
+val preorder : 'a t -> 'a list
+```
+
+### Recorrido en inorden (`inorder`)
+
+Primero la rama izquierda, luego la raíz y por último, la rama derecha.
+
+```ocaml withOutput
+> let rec inorder = function
+>   Empty -> []
+> | BT (left, root, right) -> inorder left @ [root] @ inorder right
+> ;;
+val inorder : 'a t -> 'a list
+```
+
+### Recorrido en postorden (`postorder`)
+
+Primero la rama izquierda, luego la rama derecha y por último, la raíz.
+
+```ocaml withOutput
+> let rec postorder = function
+>   Empty -> []
+> | BT (left, root, right) -> postorder left @ postorder right @ [root]
+> ;;
+val postorder : 'a t -> 'a list
+```
+
+### Recorrido en anchura (`breadth`)
+
+Enumeración de los nodos del árbol recorrido por niveles de izquierda a derecha.
+
+```ocaml withOutput
+> let breadth a =
+>   let rec aux = function
+>       [] -> []
+>     | Empty::t -> aux t
+>     | BT (l,x,r) :: t -> x :: aux (t @ [l;r]) (* ineficiente *)
+>   in aux [a]
+> ;;
+val breadth : 'a t -> 'a list 
+(* enumeración de los nodos del árbol recorrido por niveles de izda a dcha ("en anchura") *)
+```
+
+## Lista de hojas (`leaves`)
+
+Lista de hojas de izquierda a derecha.
+
+```ocaml withOutput
+> let rec leaves = function
+>   Empty -> [] 
+>   (*  Esto es innecesario, porque no se va a dar el 
+>       caso pero si no es un weak pattern matching *)
+> | BT (Empty, x, Empty) -> [x]
+> | BT (l, _,r) -> leaves l @ leaves r
+> ;;
+val leaves : 'a t -> 'a list
+```
+
+## Búsqueda en profundidad (`find_in_depth`)
+
+Busca en profundidad (priorizando las ramas izquierdas) un nodo que satisfaga el predicado.
+
+```ocaml withOutput
+> let find_in_depth p t =
+>   let rec aux = function
+>     [] -> raise Not_found
+>   | Empty::t -> aux t
+>   | BT (l,x,r) :: t -> if p x then x else aux ([l] @ [r] @ t)
+>   in 
+>     aux [t]
+> ;;
+val find_in_depth : ('a -> bool) -> 'a t -> 'a 
+```
+
+### Búsqueda en profundidad OPT (`find_in_depth_opt`)
+
+Lo mismo que `find_in_depth` pero en vez de devolver un error si no se encuentra devuelve `None`.
+
+```ocaml withOutput
+> let find_in_depth_opt p t =
+>   let rec aux = function
+>     [] -> None
+>   | Empty::t -> aux t
+>   | BT (l,x,r) :: t -> if p x then Some x else aux ([l] @ [r] @ t)
+>   in 
+>     aux [t]
+> ;;
+val find_in_depth_opt : ('a -> bool) -> 'a t -> 'a option
+```
+
+## ¿Existe? (`exists`)
+
+
+```ocaml withOutput
+> let exists p t =
+>   let rec aux = function
+>     [] -> false
+>   | Empty::t -> aux t
+>   | BT (l,x,r) :: t -> if p x then true else aux ([l] @ [r] @ t)
+>   in 
+>     aux [t]
+> ;;
+val exists : ('a -> bool) -> 'a t -> bool
+```
+
+## Para todos (`for_all`)
+
+```ocaml withOutput
+> let for_all p t =
+>   let rec aux = function
+>     [] -> true
+>   | Empty::t -> aux t
+>   | BT (l,x,r) :: t -> if p x then aux ([l] @ [r] @ t) else false
+>   in 
+>     aux [t]
+> ;;
+val for_all : ('a -> bool) -> 'a t -> bool
+```
+
+## "Mapear" (`map`)
+
+```ocaml withOutput
+> let rec map p = function 
+>   Empty -> Empty
+> | BT (l,x,r) -> BT (map p l, p x, map p r)
+> ;;
+val map : ('a -> 'b) -> 'a t -> 'b t
+```
+
+## Imagen Especular (`mirror`)
+
+```ocaml withOutput
+> let rec mirror = function
+>   Empty -> Empty
+> | BT (l,x,r) -> BT (mirror r, x, mirror l)
+> ;;
+val mirror : 'a t -> 'a t
+```
+
+## Remplaza cuando se cumpla (`replace_when`)
+
+Remplazar los nodos que satisfacen p (con todos sus descendientes) por el árbol r.
+
+```ocaml withOutput
+> let rec replace_when p t r =
+>   match t with
+>     Empty -> Empty
+>   | BT (left,x,right) -> if p x then r else BT (replace_when p left r,x, replace_when p right r)
+> ;;
+val replace_when : ('a -> bool) -> 'a t -> 'a t -> 'a t
+```
+
+## Cortar por la raíz (`cut_above`)
+
+Eliminar todos los nodos que satisfacen p (con todos sus descendientes).
+
+```ocaml withOutput
+> let rec cut_above p t =
+> match t with
+>   Empty -> Empty
+> | BT (left,x,right) -> if p x then Empty else BT (cut_above p left,x, cut_above p right)
+> ;;
+val cut_above : ('a -> bool) -> 'a t -> 'a t
+```
+
+## Cortar por debajo de la raíz (`cut_below`)
+
+Eliminar todos las ramas de los nodos que satisfacen p (con todos sus descendientes).
+
+```ocaml withOutput
+> let rec cut_below p t =
+>   match t with
+>     Empty -> Empty
+>   | BT (left,x,right) -> if p x then BT(Empty,x,Empty) else BT (cut_below p left,x, cut_below p right) 
+> ;;
+val cut_below : ('a -> bool) -> 'a t -> 'a t
+```
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2025 licensed under CC BY 4.0",
+    },
+  ]}
+/>
