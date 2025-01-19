@@ -18,7 +18,7 @@ jobs:
         # tj-actions
         # MIT
         # https://github.com/tj-actions/vercel-wait
-        uses: tj-actions/vercel-wait@v1
+        uses: tj-actions/vercel-wait@v1.2.1
         with:
           project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           token: ${{ secrets.VERCEL_TOKEN }}
@@ -34,7 +34,7 @@ jobs:
         # Bojie Yang
         # MIT
         # https://github.com/bojieyang/indexnow-action
-        uses: bojieyang/indexnow-action@v2
+        uses: bojieyang/indexnow-action@v2.1.0
         with:
           sitemap-location: "https://pc.pablopl.dev/sitemap-index.xml"
           key: ${{ secrets.INDEXNOW_KEY }}
@@ -51,7 +51,7 @@ jobs:
         # Robin Genz
         # MIT
         # https://github.com/robingenz/google-indexing-action
-        uses: robingenz/action-google-indexing@v1.0.1
+        uses: robingenz/action-google-indexing@v1.0.2
         with:
           siteUrl: "pc.pablopl.dev"
           gcpServiceAccountKey: ${{ secrets.GCP_SA_KEY }}
