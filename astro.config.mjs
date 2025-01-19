@@ -254,6 +254,11 @@ export default defineConfig({
                 label: "Prácticas y Exámenes",
                 items: [
                   {
+                    label: "TeenBiscuits/Practicas-Algo",
+                    link: "https://github.com/TeenBiscuits/Practicas-Algo",
+                    badge: { text: "GitHub", variant: "tip" },
+                  },
+                  {
                     label: "migueldeoleiros/examen-algoritmos",
                     link: "https://github.com/migueldeoleiros/examen-algoritmos",
                     badge: { text: "GitHub", variant: "tip" },
