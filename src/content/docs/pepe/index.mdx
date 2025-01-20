@@ -8,6 +8,7 @@ tableOfContents: false
 ---
 
 import { LinkCard } from '@astrojs/starlight/components';
+import { ShowcaseImage } from 'starlight-showcases';
 
 > "OCaml explicado para tontos" Un lenguaje fuertemente tipado no tiene porque ser complicado. Domina el paradigma funcional y la recursividad.
 
@@ -46,33 +47,47 @@ import { LinkCard } from '@astrojs/starlight/components';
 
 ## Código en OCaml
 
-<LinkCard
-  title="Xabiguitian/apuntesPP"
-  href="https://github.com/Xabiguitian/apuntesPP"
-  description=""
-/>
-<LinkCard
-  title="TeenBiscuits/Practicas-PP"
-  href="https://github.com/TeenBiscuits/Practicas-PP"
-  description="Prácticas de la asignatura Paradigmas de la Programación en OCaml. Curso 2024/2025. No es mucho, pero es trabajo honesto"
-/>
-<LinkCard
-  title="Xabiguitian/Practicas_PP"
-  href="https://github.com/Xabiguitian/Practicas_PP"
-  description=""
-/>
-<LinkCard
-  title="antonlnz/PP"
-  href="https://github.com/antonlnz/PP"
-  description="Práctica de la asignatura de Paradigmas de Programación de la Universidad De A Coruña (UDC) en el grado de ingeniería informática curso 2021/2022 GEI-PP 614G010142122"
-/>
-<LinkCard
-  title="migueldeoleiros/PP"
-  href="https://github.com/migueldeoleiros/PP"
-  description="Práctica de la asignatura de Paradigmas de Programación de la Universidad De A Coruña (UDC) en el grado de ingeniería informática curso 2021/2022 GEI-PP 614G010142122"
-/>
-<LinkCard
-  title="CValle_/gei2/PP"
-  href="https://gitlab.com/CValle_/gei2/-/tree/main/PP"
-  description="Apuntes, entregas y exámenes de Clara Valle | Notes for my second year of university at UDC"
+<ShowcaseImage
+  entries={[
+    {
+      thumbnail: import('@assets/pepe/repos/apuntesPP.png'),
+      href: 'https://github.com/Xabiguitian/apuntesPP',
+      title: 'Xabiguitian/apuntesPP',
+    },
+    {
+      thumbnail: import('@assets/pepe/repos/Practicas-PP.png'),
+      href: 'https://github.com/TeenBiscuits/Practicas-PP',
+      title: 'TeenBiscuits/Practicas-PP',
+      description: 'Prácticas de la asignatura Paradigmas de la Programación en OCaml. Curso 2024/2025. No es mucho, pero es trabajo honesto',
+    },
+    {
+      thumbnail: import('@assets/pepe/repos/Practicas_PP.png'),
+      href: 'https://github.com/Xabiguitian/Practicas_PP',
+      title: 'Xabiguitian/Practicas_PP',
+    },
+    {
+      thumbnail: import('@assets/pepe/repos/antonlnz_PP.png'),
+      href: 'https://github.com/antonlnz/PP',
+      title: 'antonlnz/PP',
+      description: 'Práctica de la asignatura de Paradigmas de Programación de la Universidad De A Coruña (UDC) en el grado de ingeniería informática curso 2021/2022 GEI-PP 614G010142122',
+    },
+    {
+      thumbnail: import('@assets/pepe/repos/migueldeoleiros_PP.png'),
+      href: 'https://github.com/migueldeoleiros/PP',
+      title: 'migueldeoleiros/PP',
+      description: 'Práctica de la asignatura de Paradigmas de Programación de la Universidad De A Coruña (UDC) en el grado de ingeniería informática curso 2021/2022 GEI-PP 614G010142122',
+    },
+    {
+      thumbnail: import('@assets/open-graph-gitlab.png'),
+      href: 'https://gitlab.com/CValle_/gei2/-/tree/main/PP',
+      title: 'CValle_/gei2/PP',
+      description: 'Apuntes, entregas y exámenes de Clara Valle | Notes for my second year of university at UDC',
+    },
+    {
+      thumbnail: import('@assets/contribute-github.jpg'),
+      href: 'https://github.com/TeenBiscuits/Pasame-Codigo/issues/new',
+      title: '¿Tienes un repo que molaría aquí?',
+      description: '¡Abre un issue en el repositorio y lo añadiremos en cuanto podamos!',
+    },
+  ]}
 />

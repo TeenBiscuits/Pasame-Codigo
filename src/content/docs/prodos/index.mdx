@@ -8,6 +8,7 @@ tableOfContents: false
 ---
 
 import { LinkCard } from '@astrojs/starlight/components';
+import { ShowcaseImage } from 'starlight-showcases';
 
 
 > Tipos abstractos de datos y gestión de la memoria. Todas las implementaciones explicadas, con ejemplos y código. Listas, colas, pilas y árboles.
@@ -47,8 +48,19 @@ import { LinkCard } from '@astrojs/starlight/components';
 
 ## Código
 
-<LinkCard
-  title="FerLS/PRO2"
-  href="https://github.com/FerLS/PRO2"
-  description="Asignatura de Programación 2 - UDC 2023 por Fernando Álvarez"
+<ShowcaseImage
+  entries={[
+    {
+      thumbnail: import('@assets/prodos/repos/PRO2.png'),
+      href: 'https://github.com/FerLS/PRO2',
+      title: 'FerLS/PRO2',
+      description: 'Asignatura de Programación 2 - UDC 2023 por Fernando Álvarez',
+    },
+    {
+      thumbnail: import('@assets/contribute-github.jpg'),
+      href: 'https://github.com/TeenBiscuits/Pasame-Codigo/issues/new',
+      title: '¿Tienes un repo que molaría aquí?',
+      description: '¡Abre un issue en el repositorio y lo añadiremos en cuanto podamos!',
+    },
+  ]}
 />

@@ -8,6 +8,7 @@ tableOfContents: false
 ---
 
 import { LinkCard } from '@astrojs/starlight/components';
+import { ShowcaseImage } from 'starlight-showcases';
 
 
 > Domina Java por fin. Todos los patrones y principios de diseño explicados (con memes). Ejemplos con código listo para usar y comprobar.
@@ -47,10 +48,19 @@ import { LinkCard } from '@astrojs/starlight/components';
 
 ## Ejercicios Resueltos
 
-<LinkCard
-  title="emosqueira/Ejercicios-DS"
-  href="https://github.com/emosqueira/Ejercicios-DS"
-  description="Ejercicios de la asignatura de Diseño Software del Grado en Ingeniería Informática de la UDC por Eduardo Mosqueira Rey"
+<ShowcaseImage
+  entries={[
+    {
+      thumbnail: import('@assets/deese/repos/Ejercicios-DS.png'),
+      href: 'https://github.com/emosqueira/Ejercicios-DS',
+      title: 'emosqueira/Ejercicios-DS',
+      description: 'Ejercicios de la asignatura de Diseño Software del Grado en Ingeniería Informática de la UDC por Eduardo Mosqueira Rey',
+    },
+    {
+      thumbnail: import('@assets/contribute-github.jpg'),
+      href: 'https://github.com/TeenBiscuits/Pasame-Codigo/issues/new',
+      title: '¿Tienes un repo que molaría aquí?',
+      description: '¡Abre un issue en el repositorio y lo añadiremos en cuanto podamos!',
+    },
+  ]}
 />
-
-
