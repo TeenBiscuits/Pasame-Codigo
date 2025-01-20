@@ -47,8 +47,15 @@ import { LinkCard } from '@astrojs/starlight/components';
 
 ## Código
 
-<LinkCard
-  title="FerLS/PRO2"
-  href="https://github.com/FerLS/PRO2"
-  description="Asignatura de Programación 2 - UDC 2023 por Fernando Álvarez"
+import { ShowcaseImage } from 'starlight-showcases'
+
+<ShowcaseImage
+  entries={[
+    {
+      thumbnail: import('@assets/prodos/repos/PRO2.png'),
+      href: 'https://github.com/FerLS/PRO2',
+      title: 'FerLS/PRO2',
+      description: 'Asignatura de Programación 2 - UDC 2023 por Fernando Álvarez',
+    },
+  ]}
 />
