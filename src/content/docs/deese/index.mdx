@@ -46,11 +46,15 @@ import { LinkCard } from '@astrojs/starlight/components';
 />
 
 ## Ejercicios Resueltos
+import { ShowcaseImage } from 'starlight-showcases'
 
-<LinkCard
-  title="emosqueira/Ejercicios-DS"
-  href="https://github.com/emosqueira/Ejercicios-DS"
-  description="Ejercicios de la asignatura de Diseño Software del Grado en Ingeniería Informática de la UDC por Eduardo Mosqueira Rey"
+<ShowcaseImage
+  entries={[
+    {
+      thumbnail: import('@assets/deese/repos/Ejercicios-DS.png'),
+      href: 'https://github.com/emosqueira/Ejercicios-DS',
+      title: 'emosqueira/Ejercicios-DS',
+      description: 'Ejercicios de la asignatura de Diseño Software del Grado en Ingeniería Informática de la UDC por Eduardo Mosqueira Rey',
+    },
+  ]}
 />
-
-
