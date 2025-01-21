@@ -1,0 +1,129 @@
+---
+title: Pilas
+---
+
+import { ShowcaseProfile } from 'starlight-showcases';
+
+- Acceso limitado al último elemento insertado
+- Operaciones básicas: ``apilar``, ``desapilar`` y ``cima``.
+- Cada operación debería tardar una cantidad constante de tiempo en ejecutarse.
+- Con independencia del número de elementos apiladas.
+
+## Tipo Pila
+
+```pseudocodigo
+tipo Pila = registro
+    Cima_de_pila : 0..Tamaño_máximo_de_pila
+    Vector_de_pila : vector [1..Tamaño_máximo_de_pila] de Tipo_de_Elemento
+fin registro
+```
+
+```c title="pilas.h"
+#define TAMANO_MAXIMO_PILA 10
+typedef int tipo_elemento;
+
+typedef struct {
+    int cima;
+    tipo_elemento vector[TAMANO_MAXIMO_PILA];
+} pila;
+```
+
+## Crear Pila ( P ) -- O(1)
+
+```pseudocodigo
+procedimiento Crear Pila ( P ) // O(1)
+    P.Cima_de_pila := 0
+fin procedimiento
+```
+
+```c title="pila.c"
+void crear_pila(pila *p) {
+    p->cima = -1;
+}
+```
+
+## Pila Vacía ( P ) -- O(1)
+
+```pseudocodigo
+función Pila Vacía ( P ) : test // O(1)
+    devolver P.Cima_de_pila = 0
+fin función
+```
+
+```c title="pila.c"
+int pila_vacia(pila p) {
+    return (p.cima == -1);
+}
+```
+
+## Apilar ( x, P ) -- O(1)
+
+```pseudocodigo
+procedimiento Apilar ( x, P ) // O(1)
+    si P.Cima_de_pila = Tamaño_máximo_de_pila entonces
+        error Pila llena
+    sino
+        P.Cima_de_pila := P.Cima_de_pila + 1;
+        P.Vector_de_pila[P.Cima_de_pila] := x
+fin procedimiento
+```
+
+```c title="pila.c"
+void apilar(tipo_elemento x, pila *p) {
+    if (++p->cima == TAMANO_MAXIMO_PILA) {
+        printf("Error: pila llena\n");
+        exit(EXIT_FAILURE);
+    }
+    p->vector[p->cima] = x;
+}
+```
+
+## Cima ( P ) -- O(1)
+
+```pseudocodigo
+función Cima ( P ) : Tipo_de_Elemento // O(1)
+    si Pila Vacía (P)  entonces error Pila vacía
+    sino devolver P.Vector_de_pila[P.Cima de Pila]
+fin función
+```
+
+```c title="pila.c"
+tipo_elemento cima(pila p) {
+    if (pila_vacia(p)) {
+        printf("Error: pila vacía\n");
+        exit(EXIT_FAILURE);
+    }
+    return p.vector[p.cima];
+}
+```
+
+## Desapilar ( P ) -- O(1)
+
+```pseudocodigo
+función Desapilar ( P ) // O(1)
+    si Pila Vacía (P) entonces error Pila vacía
+    sino P.Cima_de_pila := P.Cima_de_pila - 1
+fin procedimiento
+```
+
+```c title="pila.c"
+void desapilar(pila *p) {
+    if (pila_vacia(*p)) {
+        printf("Error: pila vacía\n");
+        exit(EXIT_FAILURE);
+    }
+    p->cima--;
+}
+```
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2025 licensed under CC BY 4.0",
+    },
+  ]}
+/>
