@@ -1,0 +1,173 @@
+---
+title: Colas
+---
+
+import { ShowcaseProfile } from 'starlight-showcases';
+
+- Operaciones básicas: ``insertar``, ``quitarPrimero`` y ``primero``.
+- Cada rutina debería ejecutarse en tiempo constante.
+
+:::caution
+
+Con una implementación en base a punteros, resulta obvio; pero usando vectores, no es tan obvio.
+
+:::
+
+## Tipo Colas
+
+```pseudocodigo
+tipo Cola = registro
+    Cabeza_de_cola, Final_de_cola : 1..Tamaño_máximo_de_cola
+    Tamaño_de_cola : 0..Tamaño_máximo_de_cola
+    Vector_de_cola : vector [1..Tamaño_de_máximo_de_cola] de Tipo_de_elemento
+fin registro
+```
+
+```c title="colas.h"
+#define TAMANO_MAXIMO_COLA 5
+typedef int tipo_elemento;
+
+typedef struct {
+    int cabeza, final, tamano;
+    tipo_elemento vector[TAMANO_MAXIMO_COLA];
+} cola;
+```
+
+## Crear Cola ( C ) -- O(1)
+
+```pseudocodigo
+procedimiento Crear Cola ( C ) // O(1)
+    C.Tamaño_de_cola := 0;
+    C.Cabeza_de_cola := 1;
+    C.Final_de_cola := Tamaño_de_máximo_de_cola
+fin procedimiento
+```
+
+```c title="cola.c"
+void crear_cola(cola *c) {
+    c->tamano = 0;
+    c->cabeza = 0;
+    c->final = -1;
+}
+```
+
+## Cola Vacía ( C ) -- O(1)
+
+```pseudocodigo
+función Cola_Vacía ( C ) : test // O(1)
+    devolver C.Tamaño_de_cola = 0
+fin función
+```
+
+```c title="cola.c"
+int cola_vacia(cola c) {
+    return (c.tamano == 0);
+}
+```
+
+## incrementar ( x ) (privado) -- O(1)
+
+```pseudocodigo
+procedimiento Incrementar ( x ) (* privado *) // O(1)
+    si C.Tamaño_de_cola = Tamaño_de_máximo_de_cola entonces
+        error Cola llena
+    sino
+        C.Tamaño_de_cola := C.Tamaño_de_cola + 1;
+        incrementar(C.Final_de_cola);
+        C.Vector_de_cola[C.Final_de_cola] := x;
+fin procedimiento
+```
+
+```c title="cola.c"
+void incrementar(int *x) {
+    /* privado */
+    if (++(*x) == TAMANO_MAXIMO_COLA)
+        *x = 0;
+}
+```
+
+## Insertar en Cola ( x, C ) -- O (1)
+
+```pseudocodigo
+procedimiento Insertar_en_Cola ( x, C ) // O(1)
+    si C.Tamaño_de_cola = Tamaño_de_máximo_de_cola entonces
+        error Cola llena
+    sino
+        C.Tamaño_de_cola := C.Tamaño_de_cola + 1;
+        incrementar(C.Final_de_cola);
+        C.Vector_de_cola[C.Final_de_cola];
+fin procedimiento
+```
+
+```c title="cola.c"
+void insertar(tipo_elemento x, cola *c) {
+    if (c->tamano == TAMANO_MAXIMO_COLA) {
+        printf("error: cola llena: %d\n", c->tamano);
+        exit(EXIT_FAILURE);
+    }
+    c->tamano++;
+    incrementar(&(c->final));
+    c->vector[c->final] = x;
+}
+```
+
+## Quitar Primero ( C ) -- O(1)
+
+```pseudocodigo
+función Quitar_Primero ( C ) : Tipo_de_elemento // O(1)
+    si Cola_Vacía ( C ) entonces
+        error Cola vacía
+    sino
+        C.Tamaño_de_cola := C.Tamaño_de_cola - 1;
+        x := C.Vector_de_cola[C.Cabeza_de_cola];
+        incrementar(C.Cabeza_de_cola);
+        devolver x
+fin función
+```
+
+```c title="cola.c"
+tipo_elemento quitar_primero(cola *c) {
+    tipo_elemento x;
+    if (cola_vacia(*c)) {
+        printf("error: cola vacia\n");
+        exit(EXIT_FAILURE);
+    }
+    c->tamano--;
+    x = c->vector[c->cabeza];
+    incrementar(&(c->cabeza));
+    return x;
+}
+```
+
+## Primero ( C ) -- O(1)
+
+```pseudocodigo
+función Primero ( C ) : Tipo_de_elemento // O(1)
+    si Cola_Vacía ( C ) entonces
+        error Cola vacía
+    sino
+        devolver C.Vector_de_cola[C.Cabeza_de_cola]
+fin función
+```
+
+```c title="cola.c"
+tipo_elemento primero(cola c) {
+    if (cola_vacia(c)) {
+        printf("error: cola vacia\n");
+        exit(EXIT_FAILURE);
+    }
+    return (c.vector[c.cabeza]);
+}
+```
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2025 licensed under CC BY 4.0",
+    },
+  ]}
+/>

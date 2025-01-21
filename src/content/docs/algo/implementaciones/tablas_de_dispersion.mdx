@@ -1,0 +1,157 @@
+---
+title: Tablas de dispersión
+---
+
+import { ShowcaseProfile } from 'starlight-showcases';
+
+## Función de dispersión
+
+Toda función de dispersión debe:
+- Calcularse de forma sencilla
+- Distribuir uniformemente las calves
+
+Un ejemplo de una función de dispersión:
+
+```pseudocodigo
+función Dispersión1 (Clave, TamañoClave): Índice
+    valor := ascii(Clave[1]);
+    para i := 2 hasta TamañoClave hacer
+        valor := valor + ascii(Clave[i])
+    fin para
+    devolver valor mod N
+fin función
+```
+
+## Dispersión abierta
+
+### Tipo Tabla Dispersión
+
+```pseudocodigo
+tipo Índice = 0..N-1
+tipo Posición = ^Nodo
+tipo Lista = Posición
+
+tipo Nodo = registro
+    Elemento : TipoElemento
+    Siguiente : Posición
+fin registro
+
+tipo TablaDispersión = vector [Índice] de Lista
+```
+
+### Inicializar Tabla ( T )
+
+```pseudocodigo
+procedimiento InicializarTabla (T)
+    para i := 0 hasta N-1 hacer
+        CrearLista(T[i])
+    fin para
+fin procedimiento
+```
+
+### Buscar ( Elem, Tabla )
+
+```pseudocodigo
+función Buscar (Elem, Tabla) : Posición
+    i := Dispersión(Elem);
+    devolver BuscarLista(Elem, Tabla[i])
+fin función
+```
+
+### Insertar ( Elem, Tabla )
+
+```pseudocodigo
+procedimiento Insertar (Elem, Tabla)
+    pos := Buscar(Elem, Tabla); (* No inserta repetidos *)
+    si pos = nil entonces
+        i := Dispersión(Elem);
+        InsertarLista(Elem, Tabla[i])
+fin procedimiento
+```
+
+## Dispersión cerrada
+
+### Tipo Tabla Dispersión
+
+Los cambios a realizar respecto a la dispersión abierta:
+
+```pseudocodigo  ins={1,3,9,13} del={4-5,10,14}
+tipo ClaseDeEntrada = (legítima, vacía, eliminada)
+tipo Índice = 0..N-1
+tipo Posición = Índice
+tipo Posición = ^Nodo
+tipo Lista = Posición
+
+tipo Entrada = registro
+    Elemento : TipoElemento
+    Información : ClaseDeEntrada
+    Siguiente : Posición
+fin registro
+
+tipo TablaDispersión = vector[Índice] de Entrada
+tipo TablaDispersión = vector [Índice] de Lista
+```
+
+### InicializarTabla (D)
+
+```pseudocodigo
+procedimiento InicializarTabla (D)
+    para i := 0 hasta N-1 hacer
+        D[i].Información := vacía
+    fin para
+fin procedimiento
+```
+
+### Buscar (Elem, D)
+
+```pseudocodigo
+función  Buscar (Elem, D): Posición
+    i := 0;
+    x = Dispersión(Elem);
+    PosActual = x;
+    mientras D[PosActual].Información <> vacía y D[PosActual].Elemento <> Elem hacer
+        i := i + 1:
+        PosActual := (x + FunResoluciónColisión(x, i)) mod N
+    fin mientras;
+    devolver PosActual
+fin función
+
+(* La búsqueda finaliza al caer en una celda vacía *)
+(* o al encontrar el elemento (legítimo o borrado) *)
+```
+
+### Insertar (Elem, D)
+
+```pseudocodigo
+procedimiento Insertar (Elem, D)
+    pos = Buscar(Elem, D);
+    si D[pos].Información <> legítima
+    entonces (* Bueno para insertar *)
+        D[pos].Elemento := Elem;
+        D[pos].Información := Legítima
+fin procedimiento
+```
+
+### Eliminar (Elem, D)
+
+```pseudocodigo
+procedimiento Eliminar (Elem, D)
+    pos = Buscar(Elem, D);
+    si D[pos].Información = legítima
+    entonces
+        D[pos].Información := eliminada
+fin procedimiento
+```
+
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2025 licensed under CC BY 4.0",
+    },
+  ]}
+/>

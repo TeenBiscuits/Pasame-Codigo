@@ -1,0 +1,110 @@
+---
+title: Montículos
+---
+
+import { ShowcaseProfile } from 'starlight-showcases';
+
+
+## Tipo Montículo
+
+```pseudocodigo
+tipo Montículo = registro
+    Tamaño_montículo : 0..Tamaño_máximo
+    Vector_montículo : vector [1..Tamaño_máximo] de Tipo_Elemento
+fin registro
+```
+
+## Inicializar Montículo ( M )
+
+```pseudocodigo
+procedimiento Inicializar_Montículo ( M )
+    M.Tamaño_montículo := 0
+fin procedimiento
+```
+
+## Montículo Vacío ( M )
+
+```pseudocodigo
+función Montículo_Vacío ( M ) : test
+    return M.Tamaño_montículo = 0
+fin función
+```
+
+## Flotar ( M, i ) (privado)
+
+```pseudocodigo
+procedimiento Flotar ( M, i ) (* privado *)
+    mientras i > 1 y M.Vector_montículo[i div 2] < M.Vector_montículo[i]
+    hacer intercambiar M.Vector_montículo[i div 2] y M.Vector_montículo[i];
+        i := i div 2
+    fin mientras
+fin procedimiento
+```
+
+## Insertar ( x, M )
+
+```pseudocodigo
+procedimiento Insertar ( x, M )
+    si M.Tamaño_montículo = Tamaño_máximo entonces
+        error Monticulo lleno
+    sino
+        M.Tamaño_montículo := M.Tamaño_montículo + 1;
+        M.Vector_montículo[M.Tamaño_montículo] := x;
+        Flotar ( M, M.Tamaño_montículo )
+fin procedimiento
+```
+
+## Hundir ( M, i ) (privado)
+
+```pseudocodigo
+procedimiento Hundir ( M, i ) (* privado *)
+    repetir
+        HijoIzq := 2*i;
+        HijoDer := 2*i+1;
+        j := i;
+        si HijoDer <= M.Tamaño_montículo y M.Vector_montículo[HijoIzq] > M.Vector_montículo[i]
+        entonces i := HijoIzq;
+        intercambiar M.Vector_montículo[j] y M.Vector_montículo[i];
+    hasta j = i (* Si j=i el nodo alcanzó su posición final *)
+fin procedimiento
+```
+
+## EliminarMax ( M ) 
+
+```pseudocodigo
+función EliminarMax ( M ) : Tipo_Elemento
+    si Montículo_Vacío ( M ) entonces
+        error Montículo vacío
+    sino
+        x := M.Vector_montículo[1];
+        M.Vector_montículo[1] := M.Vector_montículo[M.Tamaño_montículo];
+        M.Tamaño_montículo := M.Tamaño_montículo - 1;
+        si M.Tamaño_montículo > 0 entonces
+            Hundir ( M, 1);
+        devolver x
+fin función
+```
+
+## Creación de montículos -- O(n)
+
+```pseudocodigo
+procedimiento Crear_Montículo ( V[1..n], M )
+    Copiar V en M.Vector_montículo;
+    M.Tamaño_montículo := n;
+    para i := M.Tamaño_montículo div 2 hasta 1 paso -1
+        Hundir(M, i);
+    fin para
+fin procedimiento
+```
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2025 licensed under CC BY 4.0",
+    },
+  ]}
+/>
