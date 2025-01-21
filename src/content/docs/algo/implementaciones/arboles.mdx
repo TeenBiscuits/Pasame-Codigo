@@ -1,0 +1,162 @@
+---
+title: Árboles binarios de búsqueda
+---
+
+import { ShowcaseProfile } from 'starlight-showcases';
+
+
+## Tipo ABB
+
+```pseudocodigo
+tipo PNodo = ^Nodo
+tipo Nodo = registro
+    Elemento : TipoElemento
+    Izquierdo, Derecho : PNodo
+fin registro
+tipo ABB = PNodo
+```
+
+## Crear un ABB -- O(1)
+
+```pseudocodigo
+procedimiento CrearABB(var A) // O(1)
+    A := nil
+fin procedimiento
+```
+
+## Buscar (x, A) -- medio:O(log n) peor:O(n)
+
+```pseudocodigo
+función Buscar (x, A) : PNodo // c.medio:O(log n) c.peor:O(n)
+    si A = nil entonces devolver nil
+    sino si x = A^.Elemento entonces devolver A
+    sino si x < A^.Elemento entonces
+        devolver Buscar (x, A^.Izquierdo)
+    sino devolver Buscar (x, A^.Derecho)
+fin función
+```
+
+## BuscarMin(A) -- medio:O(log n) peor:O(n)
+
+```pseudocodigo
+función BuscarMin(A) : PNodo // c.medio:O(log n) c.peor:O(n)
+    si A = nil entonces devolver nil
+    sino si A^.Izquierdo = nil entonces devolver A
+    sino devolver BuscarMin(A^.Izquierdo)
+fin función
+```
+
+## Insertar(x, var A) -- medio:O(log n) peor:O(n)
+
+```pseudocodigo
+procedimiento Insertar(x, var A) // c.medio:O(log n) c.peor:O(n)
+    si A = nil entonces
+        nuevo (A);
+        si A = nil entonces error sin memoria
+        sino
+            A^.Elemento := x;
+            A^.Izquierdo := nil;
+            A^.Derecho := nil
+    sino si x < A^.Elemento entonces
+        Insertar (x, A^.Izquierdo)
+    sino si x > A^.Elemento entonces
+        Insertar (x, A^.Derecho)
+    // si x = A^.Elemento : nada
+fin procedimiento
+```
+
+## Eliminar (x, var A) -- medio:O(log n) peor:O(n)
+
+```pseudocodigo
+procedimiento Eliminar(x, var A) // c.medio:O(log n) c.peor:O(n)
+    si A = nil entonces error no encontrado
+    sino si x < A^.Elemento entonces
+        Eliminar (x, A^.Izquierdo)
+    sino si x > A^.Elemento entonces
+        Eliminar (x, A^.Derecho)
+    sino // x = A^.Elemento
+        si A^.Izquierdo = nil entonces
+            tmp := A; A := A^.Derecho; liberar (tmp)
+        sino si A^.Derecho = nil entonces
+            tmp := A; A := A^.Izquierdo; liberar (tmp)
+        sino tmp := BuscarMin (A^.Derecho);
+            A^.Elemento := tmp^.Elemento;
+            Eliminar (A^.Elemento, A^.Derecho)
+fin procedimiento
+```
+
+## Recorridos de un árbol
+
+### En orden -- O(n)
+
+Se procesa el subárbol izquierdo, el nodo actual y, por último, el subárbol derecho.
+
+```pseudocodigo
+procedimiento Visualizar (A)
+    si A <> nil entonces
+        Visualizar (A^.Izquierdo);
+        Escribir (A^.Elemento);
+        Visualizar (A^.Derecho)
+fin procedimiento
+```
+
+### Post-orden -- O(n)
+
+Ambos subárboles primero.
+
+```pseudocodigo
+función Altura (A) : número
+    si A = nil entonces devolver - 1
+    sino devolver 1 + max (Altura (A^.Izquierdo), Altura (A^.Derecho))
+fin función
+```
+
+### Pre-orden -- O(n)
+
+El nodo se procesa antes. Ej: una función que marcase cada nodo con su profundidad.
+
+```pseudocodigo
+procedimiento Aux_Profundidad (A, var p)
+    si A <> nil entonces
+        A^.Elemento.Profundidad := p;
+        Aux_Profundidad(A^.Izquierdo, p + 1);
+        Aux_Profundidad(A^.Derecho, p + 1)
+fin procedimiento
+
+procedimiento Profundidad (A)
+    Aux_Profundidad (A, 0)
+fin procedimiento
+```
+
+### Orden de nivel -- O(n)
+
+:::note
+
+En este algoritmo se utilizan llamadas a una Cola, para ver las implementaciones de la cola ir a: [Colas](/algo/implementaciones/colas).
+
+:::
+
+```pseudocodigo
+procedimiento OrdenDeNivel (A)
+    CrearCola(C);
+    si A <> nil entonces InsertarEnCola(A, C);
+    mientras no ColaVacía(C) hacer
+        p := QuitarPrimero(C);
+        Visualizar(p^.Elemento); // Operación principal
+        si p^.Izq <> nil entonces InsertarEnCola(p^.Izq, C);
+        si p^.Der <> nil entonces InsertarEnCola(p^.Der, C);
+    fin mientras
+fin procedimiento
+```
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2025 licensed under CC BY 4.0",
+    },
+  ]}
+/>
