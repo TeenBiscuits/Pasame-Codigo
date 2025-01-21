@@ -4,20 +4,40 @@
   "name": "pseudocodigo",
   "patterns": [
     {
+      "name": "comment.line.double-slash.pseudocodigo",
+      "match": "//.*$"
+    },
+    {
+      "name": "comment.block.parentheses.pseudocodigo",
+      "match": "\\(\\*.*?\\*\\)"
+    },
+    {
       "name": "entity.name.function.pseudocodigo",
       "match": "\\b[a-zA-Z_áéíóúÁÉÍÓÚñÑ][a-zA-Z0-9_áéíóúÁÉÍÓÚñÑ]*\\s*(?=\\()"
     },
     {
       "name": "keyword.control.pseudocodigo",
-      "match": "\\b(función|si|entonces|sino|mientras|para|hasta|hacer|devolver|fin)\\b"
+      "match": "\\b(procedimiento|función|si|entonces|sino|mientras|para|hasta|hacer|devolver|fin)\\b"
     },
     {
       "name": "keyword.operator.assignment.pseudocodigo",
-      "match": ":="
+      "match": "(:=|:)"
     },
     {
       "name": "keyword.operator.arithmetic.pseudocodigo",
       "match": "(\\+|-|\\*|/|%)"
+    },
+    {
+      "name": "keyword.operator.comparison.pseudocodigo",
+      "match": "(=|<|>|<>)"
+    },
+    {
+      "name": "storage.type.pseudocodigo",
+      "match": "\\b(tipo|registro|vector)\\b"
+    },
+    {
+      "name": "constant.language.error.pseudocodigo",
+      "match": "\\berror\\b"
     }
   ],
   "scopeName": "source.pseudocodigo"
