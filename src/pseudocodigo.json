@@ -30,7 +30,7 @@
     {
       "name": "keyword.operator.module.pseudocodigo",
       "match": "\\b(%|mod)\\b"
-    }, 
+    },
     {
       "name": "keyword.operator.comparison.pseudocodigo",
       "match": "(=|<|>|<>)"
