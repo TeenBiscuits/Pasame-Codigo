@@ -1,0 +1,238 @@
+---
+title: Listas
+---
+
+import { ShowcaseProfile } from 'starlight-showcases';
+
+- Operaciones básicas:
+    - ``Visualizar`` su contenido.
+    - ``Buscar`` la posición de la primera ocurrencia de un elemento.
+    - ``Insertar`` y ``Eliminar`` un elemento en alguna posición.
+    - ``Buscar_k_esimo,`` que devuelve el elemento de la posición indicada
+
+## Implementación de listas a base de vectores
+
+- Tiene que declararse el tamaño de la lista.
+    - Exige sobrevaloración.
+    - Consume mucho espacio.
+- Complejidad computacional de las operaciones:
+    - ``Buscar_k_esimo``, tiempo constante O(1)
+    - ``Visualizar`` y ``Buscar``, tiempo lineal O(n).
+    - ``Insertar`` y ``Eliminar`` son costosas.
+        - Insertar o eliminar un elemento exige, en promedio, desplazar la mitad de los valores, O(n).
+        - La construcción de una lista o la eliminación de todos sus elementos podría exigir un tiempo cuadrático.
+
+## Implementación de listas a base de punteros
+
+- Cada nodo apunta al siguiente; el último no apunta a nada.
+- La lista es un puntero al primer nodo (y al último).
+- Complejidad computacional de las operaciones:
+    - Visualizar y Buscar, tiempo lineal.
+    - Buscar k esimo, tiempo lineal.
+    - Eliminar realiza un cambio de apuntadores y una orden dispose, O(1).
+        - Usa Buscar anterior cuyo tiempo de ejecución es lineal.
+    - Insertar tras una posición p require una llamada a new y dos maniobras con apuntadores, O(1).
+        - Buscar la posición p podría llevar tiempo lineal.
+    - Un nodo cabecera facilita la inserción y la eliminación al comienzo de la lista.
+
+## Implementación de listas doblemente enlazadas
+
+- Cada nodo apunta al siguiente y al anterior.
+- Duplica el uso de la memoria necesaria para los punteros.
+- Duplica el coste de manejo de punteros al insertar y eliminar.
+- La eliminación se simplifica.
+    - No es necesario buscar el elemento anterior.
+
+## Implementación con un nodo cabecera
+
+![Listas con un nodo cabecera](@assets/algo/Lista-nodo-cabecera.jpg)
+
+### Tipo PNodo
+
+```pseudocodigo
+tipo PNodo = puntero a Nodo
+tipo Lista = PNodo
+tipo Posición = PNodo
+tipo Nodo = registro
+    Elemento : Tipo_de_elemento
+    Siguiente : PNodo
+fin registro
+```
+
+```c title="listas.h"
+struct nodo {
+    void *elem; /* 'void *' es un apuntador 'genérico' */
+    struct nodo *sig;
+};
+
+typedef struct nodo *posicion;
+typedef struct nodo *lista;
+```
+
+### Crear Lista ( L ) -- O(1)
+
+```pseudocodigo
+procedimiento Crear Lista ( L ) // O(1)
+    nuevo ( tmp );
+    si tmp = nil entonces error Memoria agotada
+    sino
+        tmp^.Elemento := { nodo cabecera };
+        tmp^.Siguiente := nil;
+        L := tmp
+fin procedimiento
+```
+
+```c title="listas.c" {"El equivalente a nuevo(tmp)":1-2}
+.
+static struct nodo *crearnodo() {
+    struct nodo *tmp = malloc(sizeof(struct nodo));
+    if (tmp == NULL) {
+        printf("memoria agotada\n");
+        exit(EXIT_FAILURE);
+    }
+    return tmp;
+}
+
+lista crearlista() {
+    struct nodo *l = crearnodo();
+    l->sig = NULL;
+    return l;
+}
+```
+
+### Lista Vacía ( L ) -- O(1)
+
+```pseudocodigo
+función Lista Vacía ( L ) : test // O(1)
+    devolver L^.Siguiente = nil
+fin función
+```
+
+```c title="listas.c"
+int eslistavacia(lista l) {
+    return (l->sig == NULL);
+}
+```
+
+### Buscar ( x, L ) -- O(1)
+
+```pseudocodigo
+función Buscar ( x, L ) : posición de la 1ª ocurrencia o nil // O(n)
+    p := L^.Siguiente;
+    mientras p <> nil y p^.Elemento <> x hacer
+        p := p^.Siguiente;
+    devolver p
+fin función
+```
+
+```c title="listas.c"
+posicion buscar(lista l, void *e, int (*comp)(const void *x, const void *y)) {
+    struct nodo *p = l->sig;
+    while (p != NULL && 0 != (*comp)(p->elem, e))
+        p = p->sig;
+    return p;
+}
+```
+
+### Último Elemento ( p ) -- O(1)
+
+```pseudocodigo
+función Último Elemento ( p ) : test (* privada *) // O(1)
+    devolver p^.Siguiente = nil
+fin función
+```
+
+```c title="listas.c"
+static int esultimoelemento(struct nodo *p) {
+    return (p->sig == NULL);
+}
+```
+
+### Buscar anterior ( x, L ) (privada) -- O(n)
+
+```pseudocodigo
+función Buscar Anterior ( x, L ) : posición anterior a x o a nil (* privada *) // O(n)
+    p:= L;
+    mientras p^.Siguiente <> nil y p^.Siguiente^.Elemento <> x hacer
+        p := p^.Siguiente;
+    devolver p
+fin función
+```
+
+```c title="listas.c"
+static posicion buscarant(lista l, void *x, int (*comp)(const void *, const void *)) {
+    struct nodo *p = l;
+    while (p->sig != NULL && 0 != (*comp)(p->sig->elem, x))
+        p = p->sig;
+    return p;
+}
+```
+
+### Eliminar ( x, L ) -- O(n)
+
+```pseudocodigo
+procedimiento Eliminar ( x, L ) // O(n)
+    p := Buscar Anterior ( x, L);
+    si Último Elemento ( p ) entonces error No encontrado
+    sino tmp := p^.Siguiente;
+        p^.Siguiente := tmp.^Siguiente;
+        liberar(tmp)
+fin procedimiento
+```
+
+```c title="listas.c"
+void borrar(lista l, void *x, int (*comp)(const void *, const void *)) {
+    struct nodo *tmp, *p = buscarant(l, x, comp);
+    if (!esultimoelemento(p)) {
+        tmp = p->sig;
+        p->sig = tmp->sig;
+        free(tmp);
+    }
+}
+```
+
+### Insertar ( x, L, p ) -- O(1)
+
+![Insertar en lista con nodo cabecera](@assets/algo/Insertar-lista-nodo.jpg)
+
+```pseudocodigo
+procedimiento Insertar ( x, L, p ) // O(1)
+    nuevo ( tmp ); (* Creamos nodo en memoria *)
+    si tmp = nil entonces
+        error Memoria agotada
+    sino (* Inserta después de la posición p *)
+        tmp^.Elemento := x;
+        tmp^.Siguiente := p^.Siguiente;
+        p^.Siguiente := tmp
+fin procedimiento
+```
+
+```c title="listas.c"
+void insertar(void *x, posicion p) {
+    struct nodo *tmp = crearnodo();
+    tmp->elem = x;
+    tmp->sig = p->sig;
+    p->sig = tmp;
+}
+```
+
+### Extras (Solo Código)
+
+```c title="listas.c"
+posicion primero(lista l) { return l->sig; }
+posicion siguiente(posicion p) { return p->sig; }
+int esfindelista(posicion p) { return (p == NULL); }
+void *elemento(posicion p) { return p->elem; }
+```
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2025 licensed under CC BY 4.0",
+    },
+  ]}
+/>
