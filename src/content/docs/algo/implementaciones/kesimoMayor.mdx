@@ -1,0 +1,72 @@
+---
+title: Determinar el k-ésimo mayor de n números
+---
+
+import { ShowcaseProfile } from 'starlight-showcases';
+import { Steps } from '@astrojs/starlight/components';
+
+## Primera Solución -- O(n^2)
+
+<Steps>
+
+1. Ordenar decrecientemente los ``n`` números. $$O(n^2)$$
+
+2. Devolver el `k`-ésimo. $$O(1)$$
+
+</Steps>
+
+## Segunda Solución -- O(n^2)
+
+<Steps>
+
+1. Ordenar decrecientemente los ``k`` primeros números. $$O(k^2)$$
+
+2. Para cada número en ``(k...n]``, $$O((n-k)k)$$
+
+3. insertar si procede. $$O(k)$$
+
+</Steps>
+
+$$
+O(k^2+(n-k)k)\:\:Si\:k=\frac{n}{2}\:entonces\:O(n^2)
+$$
+
+## Tercera Solución -- O(n*log(n))
+
+<Steps>
+
+1. Crear un montículo de máximos con los `n` números $$O(n)$$
+
+2. Realizar ``k-1`` eliminaciones $$O(k(log(n)))$$
+
+3. Obtener el mayor $$O(1)$$
+
+</Steps>
+
+## Cuarta Solución -- O(n*log(n))
+
+<Steps>
+
+1. Crear montículo de mínimos con los ``k`` primeros números $$O(k)$$
+
+2. Para cada número en ``(k...n]``, $$O((n-k)log(k)))$$
+
+3. Determina si insertar en montículo $$O(1)$$
+
+4. Eliminar mínimo $$O(log(k))$$
+
+5. Insertar nuevo número $$O(log(k))$$
+
+</Steps>
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2025 licensed under CC BY 4.0",
+    },
+  ]}
+/>
