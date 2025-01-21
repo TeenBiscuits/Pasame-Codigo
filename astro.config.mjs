@@ -248,7 +248,6 @@ export default defineConfig({
               {
                 label: "Implementaciones",
                 autogenerate: { directory: "algo/implementaciones" },
-                badge: { text: "WIP", variant: "caution" },
               },
               {
                 label: "Prácticas y Exámenes",
