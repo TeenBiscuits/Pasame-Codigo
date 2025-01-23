@@ -23,9 +23,6 @@ import rehypeMathJax from "rehype-mathjax";
 // Vercel Adapter
 import vercel from "@astrojs/vercel";
 
-// Temporal Script to fix https://github.com/withastro/adapters/issues/445
-import { CopyFilesPlugin } from "./scripts/copy-files.ts";
-
 // Tailwind CSS Support
 import tailwind from "@astrojs/tailwind";
 
@@ -379,7 +376,6 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    CopyFilesPlugin(),
   ],
   markdown: {
     remarkPlugins: [remarkMath],
