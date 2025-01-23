@@ -24,7 +24,7 @@
     "@expressive-code/plugin-collapsible-sections": "^0.40.1",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
-    "astro": "^5.1.8",
+    "astro": "^5.1.9",
     "dotenv": "^16.4.7",
     "mermaid": "^11.4.1",
     "rehype-mathjax": "^6.0.0",
