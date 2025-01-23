@@ -1,5 +1,7 @@
 [![Pásame el Código](./public/og2.png)](https://pc.pablopl.dev)
 
+# <img src="https://raw.githubusercontent.com/TeenBiscuits/Pasame-Codigo/refs/heads/main/src/assets/logo.png" alt="" align="left" width="40" height="40"> Pásame el Código
+
 <div align="center">
 
 [![Astro](https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=white)](https://astro.build/)
