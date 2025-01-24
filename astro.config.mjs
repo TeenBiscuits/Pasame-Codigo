@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import { readFileSync } from "fs";
 
 // Plugin Heading Badges
 import starlightHeadingBadges from "starlight-heading-badges";
@@ -11,10 +10,6 @@ import starlightSidebarTopics from "starlight-sidebar-topics";
 import starlightDocSearch from "@astrojs/starlight-docsearch";
 // Plugin Link Validator
 import starlightLinksValidator from "starlight-links-validator";
-
-// Expressive Code Plugins
-import { pluginCodeOutput } from "./src/ec-output-plugin.ts";
-import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 
 // Support for MathJax
 import remarkMath from "remark-math";
@@ -161,15 +156,6 @@ export default defineConfig({
         baseUrl: "https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/",
       },
       customCss: ["./src/tailwind.css", "./src/assets/custom.css"],
-      expressiveCode: {
-        plugins: [pluginCodeOutput(), pluginCollapsibleSections()],
-        shiki: {
-          langs: [JSON.parse(readFileSync("./src/pseudocodigo.json", "utf-8"))],
-        },
-        defaultProps: {
-          collapseStyle: "collapsible-auto",
-        },
-      },
       plugins: [
         starlightHeadingBadges(),
         starlightLinksValidator({
