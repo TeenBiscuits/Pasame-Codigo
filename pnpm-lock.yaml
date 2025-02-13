@@ -9,22 +9,22 @@ importers:
     dependencies:
       "@astrojs/check":
         specifier: ^0.9.4
-        version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.5.0)(typescript@5.7.3)
+        version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.5.1)(typescript@5.7.3)
       "@astrojs/starlight":
         specifier: ^0.31.1
-        version: 0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
+        version: 0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
       "@astrojs/starlight-docsearch":
         specifier: ^0.5.0
-        version: 0.5.0(@algolia/client-search@5.20.2)(@astrojs/starlight@0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))(search-insights@2.17.3)
+        version: 0.5.0(@algolia/client-search@5.20.2)(@astrojs/starlight@0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))(search-insights@2.17.3)
       "@astrojs/starlight-tailwind":
         specifier: ^3.0.0
-        version: 3.0.0(@astrojs/starlight@0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))(@astrojs/tailwind@5.1.5(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))(tailwindcss@3.4.17))(tailwindcss@3.4.17)
+        version: 3.0.0(@astrojs/starlight@0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))(@astrojs/tailwind@5.1.5(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))(tailwindcss@3.4.17))(tailwindcss@3.4.17)
       "@astrojs/tailwind":
         specifier: ^5.1.5
-        version: 5.1.5(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))(tailwindcss@3.4.17)
+        version: 5.1.5(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))(tailwindcss@3.4.17)
       "@astrojs/vercel":
         specifier: ^8.0.7
-        version: 8.0.7(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))(rollup@4.34.6)
+        version: 8.0.7(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))(rollup@4.34.6)
       "@expressive-code/core":
         specifier: ^0.40.2
         version: 0.40.2
@@ -38,8 +38,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       astro:
-        specifier: ^5.2.6
-        version: 5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
+        specifier: ^5.3.0
+        version: 5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
@@ -57,16 +57,16 @@ importers:
         version: 0.33.5
       starlight-heading-badges:
         specifier: ^0.4.0
-        version: 0.4.0(@astrojs/starlight@0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))
+        version: 0.4.0(@astrojs/starlight@0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))
       starlight-links-validator:
         specifier: ^0.14.2
-        version: 0.14.2(@astrojs/starlight@0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))
+        version: 0.14.2(@astrojs/starlight@0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))
       starlight-showcases:
         specifier: ^0.3.0
-        version: 0.3.0(@astrojs/starlight@0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
+        version: 0.3.0(@astrojs/starlight@0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
       starlight-sidebar-topics:
         specifier: ^0.3.0
-        version: 0.3.0(@astrojs/starlight@0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))
+        version: 0.3.0(@astrojs/starlight@0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))
       tailwindcss:
         specifier: ^3.4.17
         version: 3.4.17
@@ -78,14 +78,14 @@ importers:
         specifier: ^6.26.1
         version: 6.26.1
       prettier:
-        specifier: ^3.5.0
-        version: 3.5.0
+        specifier: ^3.5.1
+        version: 3.5.1
       prettier-plugin-astro:
         specifier: ^0.14.1
         version: 0.14.1
       prettier-plugin-tailwindcss:
         specifier: ^0.6.11
-        version: 0.6.11(prettier-plugin-astro@0.14.1)(prettier@3.5.0)
+        version: 0.6.11(prettier-plugin-astro@0.14.1)(prettier@3.5.1)
 
 packages:
   "@algolia/autocomplete-core@1.17.9":
@@ -1970,10 +1970,10 @@ packages:
     peerDependencies:
       astro: ^4.0.0-beta || ^5.0.0-beta || ^3.3.0
 
-  astro@5.2.6:
+  astro@5.3.0:
     resolution:
       {
-        integrity: sha512-CrTuJMwpWF9kmOhX+cl6uPqNbTRrHO7eXggFP9SK7+Bsen/7FpJtA6k1p/ALleuV5ndJLqn/9tpmP3qACHPjYA==,
+        integrity: sha512-e88l/Yk/6enR/ZDddLbqtM+oblBFk5mneNSmNesyVYGL/6Dj4UA67GPAZOk79VxT5dbLlclZSyyw/wlxN1aj3A==,
       }
     engines:
       { node: ^18.17.1 || ^20.3.0 || >=22.0.0, npm: ">=9.6.5", pnpm: ">=7.1.0" }
@@ -2898,10 +2898,10 @@ packages:
         integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==,
       }
 
-  electron-to-chromium@1.5.97:
+  electron-to-chromium@1.5.98:
     resolution:
       {
-        integrity: sha512-HKLtaH02augM7ZOdYRuO19rWDeY+QSJ1VxnXFa/XDFLf07HvM90pALIJFgrO+UVaajI3+aJMMpojoUTLZyQ7JQ==,
+        integrity: sha512-bI/LbtRBxU2GzK7KK5xxFd2y9Lf9XguHooPYbcXWy6wUoT8NMnffsvRhPmSeUHLSDKAEtKuTaEtK4Ms15zkIEA==,
       }
 
   emmet@2.4.11:
@@ -3242,10 +3242,10 @@ packages:
       }
     deprecated: Glob versions prior to v9 are no longer supported
 
-  globals@15.14.0:
+  globals@15.15.0:
     resolution:
       {
-        integrity: sha512-OkToC372DtlQeje9/zHIo5CT8lRP/FUgEOKBEhU4e0abL7J7CD24fD9ohiLN5hagG/kWCYj4K5oaxxtj2Z0Dig==,
+        integrity: sha512-7ACyT3wmyp3I61S4fG682L0VA2RGD9otkqGJIwNUMF1SWUombIIk+af1unuDYgMm082aHYwD+mzJvv9Iu8dsgg==,
       }
     engines: { node: ">=18" }
 
@@ -4866,10 +4866,10 @@ packages:
     engines: { node: ">=10.13.0" }
     hasBin: true
 
-  prettier@3.5.0:
+  prettier@3.5.1:
     resolution:
       {
-        integrity: sha512-quyMrVt6svPS7CjQ9gKb3GLEX/rl3BCL2oa/QkNcXv4YNVBC9olt3s+H7ukto06q7B1Qz46PbrKLO34PR6vXcA==,
+        integrity: sha512-hPpFQvHwL3Qv5AdRvBFMhnKo4tYxp0ReXiPn2bxkiohEX6mBeBwEpBSQTkD458RaaDKQMYSp4hX4UtfUTA5wDw==,
       }
     engines: { node: ">=14" }
     hasBin: true
@@ -6549,23 +6549,23 @@ snapshots:
       css-tree: 2.3.1
       is-potential-custom-element-name: 1.0.1
 
-  "@astro-community/astro-embed-twitter@0.5.8(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))":
+  "@astro-community/astro-embed-twitter@0.5.8(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))":
     dependencies:
       "@astro-community/astro-embed-utils": 0.1.3
-      astro: 5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
+      astro: 5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
 
   "@astro-community/astro-embed-utils@0.1.3":
     dependencies:
       linkedom: 0.14.26
 
-  "@astro-community/astro-embed-youtube@0.5.6(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))":
+  "@astro-community/astro-embed-youtube@0.5.6(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))":
     dependencies:
-      astro: 5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
+      astro: 5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
       lite-youtube-embed: 0.3.3
 
-  "@astrojs/check@0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.5.0)(typescript@5.7.3)":
+  "@astrojs/check@0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.5.1)(typescript@5.7.3)":
     dependencies:
-      "@astrojs/language-server": 2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.5.0)(typescript@5.7.3)
+      "@astrojs/language-server": 2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.5.1)(typescript@5.7.3)
       chokidar: 4.0.3
       kleur: 4.1.5
       typescript: 5.7.3
@@ -6578,7 +6578,7 @@ snapshots:
 
   "@astrojs/internal-helpers@0.5.1": {}
 
-  "@astrojs/language-server@2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.5.0)(typescript@5.7.3)":
+  "@astrojs/language-server@2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.5.1)(typescript@5.7.3)":
     dependencies:
       "@astrojs/compiler": 2.10.4
       "@astrojs/yaml2ts": 0.2.2
@@ -6592,14 +6592,14 @@ snapshots:
       volar-service-css: 0.0.62(@volar/language-service@2.4.11)
       volar-service-emmet: 0.0.62(@volar/language-service@2.4.11)
       volar-service-html: 0.0.62(@volar/language-service@2.4.11)
-      volar-service-prettier: 0.0.62(@volar/language-service@2.4.11)(prettier@3.5.0)
+      volar-service-prettier: 0.0.62(@volar/language-service@2.4.11)(prettier@3.5.1)
       volar-service-typescript: 0.0.62(@volar/language-service@2.4.11)
       volar-service-typescript-twoslash-queries: 0.0.62(@volar/language-service@2.4.11)
       volar-service-yaml: 0.0.62(@volar/language-service@2.4.11)
       vscode-html-languageservice: 5.3.1
       vscode-uri: 3.1.0
     optionalDependencies:
-      prettier: 3.5.0
+      prettier: 3.5.1
       prettier-plugin-astro: 0.14.1
     transitivePeerDependencies:
       - typescript
@@ -6629,12 +6629,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  "@astrojs/mdx@4.0.8(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))":
+  "@astrojs/mdx@4.0.8(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))":
     dependencies:
       "@astrojs/markdown-remark": 6.1.0
       "@mdx-js/mdx": 3.1.0(acorn@8.14.0)
       acorn: 8.14.0
-      astro: 5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
+      astro: 5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
       es-module-lexer: 1.6.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.4
@@ -6658,9 +6658,9 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.24.2
 
-  "@astrojs/starlight-docsearch@0.5.0(@algolia/client-search@5.20.2)(@astrojs/starlight@0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))(search-insights@2.17.3)":
+  "@astrojs/starlight-docsearch@0.5.0(@algolia/client-search@5.20.2)(@astrojs/starlight@0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))(search-insights@2.17.3)":
     dependencies:
-      "@astrojs/starlight": 0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
+      "@astrojs/starlight": 0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
       "@docsearch/css": 3.8.3
       "@docsearch/js": 3.8.3(@algolia/client-search@5.20.2)(search-insights@2.17.3)
     transitivePeerDependencies:
@@ -6670,22 +6670,22 @@ snapshots:
       - react-dom
       - search-insights
 
-  "@astrojs/starlight-tailwind@3.0.0(@astrojs/starlight@0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))(@astrojs/tailwind@5.1.5(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))(tailwindcss@3.4.17))(tailwindcss@3.4.17)":
+  "@astrojs/starlight-tailwind@3.0.0(@astrojs/starlight@0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))(@astrojs/tailwind@5.1.5(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))(tailwindcss@3.4.17))(tailwindcss@3.4.17)":
     dependencies:
-      "@astrojs/starlight": 0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
-      "@astrojs/tailwind": 5.1.5(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))(tailwindcss@3.4.17)
+      "@astrojs/starlight": 0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
+      "@astrojs/tailwind": 5.1.5(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))(tailwindcss@3.4.17)
       tailwindcss: 3.4.17
 
-  "@astrojs/starlight@0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))":
+  "@astrojs/starlight@0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))":
     dependencies:
-      "@astrojs/mdx": 4.0.8(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
+      "@astrojs/mdx": 4.0.8(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
       "@astrojs/sitemap": 3.2.1
       "@pagefind/default-ui": 1.3.0
       "@types/hast": 3.0.4
       "@types/js-yaml": 4.0.9
       "@types/mdast": 4.0.4
-      astro: 5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
-      astro-expressive-code: 0.40.2(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
+      astro: 5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
+      astro-expressive-code: 0.40.2(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
       bcp-47: 2.1.0
       hast-util-from-html: 2.0.3
       hast-util-select: 6.0.3
@@ -6706,9 +6706,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  "@astrojs/tailwind@5.1.5(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))(tailwindcss@3.4.17)":
+  "@astrojs/tailwind@5.1.5(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))(tailwindcss@3.4.17)":
     dependencies:
-      astro: 5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
+      astro: 5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
       autoprefixer: 10.4.20(postcss@8.5.2)
       postcss: 8.5.2
       postcss-load-config: 4.0.2(postcss@8.5.2)
@@ -6728,14 +6728,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  "@astrojs/vercel@8.0.7(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))(rollup@4.34.6)":
+  "@astrojs/vercel@8.0.7(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))(rollup@4.34.6)":
     dependencies:
       "@astrojs/internal-helpers": 0.5.1
       "@vercel/analytics": 1.5.0
       "@vercel/edge": 1.2.1
       "@vercel/nft": 0.29.1(rollup@4.34.6)
       "@vercel/routing-utils": 5.0.4
-      astro: 5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
+      astro: 5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
       esbuild: 0.24.2
       fast-glob: 3.3.3
     transitivePeerDependencies:
@@ -6976,7 +6976,7 @@ snapshots:
       "@antfu/utils": 8.1.0
       "@iconify/types": 2.0.0
       debug: 4.4.0
-      globals: 15.14.0
+      globals: 15.15.0
       kolorist: 1.8.0
       local-pkg: 1.0.0
       mlly: 1.7.4
@@ -7626,12 +7626,12 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-expressive-code@0.40.2(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)):
+  astro-expressive-code@0.40.2(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)):
     dependencies:
-      astro: 5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
+      astro: 5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)
       rehype-expressive-code: 0.40.2
 
-  astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0):
+  astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0):
     dependencies:
       "@astrojs/compiler": 2.10.4
       "@astrojs/internal-helpers": 0.5.1
@@ -7799,7 +7799,7 @@ snapshots:
   browserslist@4.24.4:
     dependencies:
       caniuse-lite: 1.0.30001699
-      electron-to-chromium: 1.5.97
+      electron-to-chromium: 1.5.98
       node-releases: 2.0.19
       update-browserslist-db: 1.1.2(browserslist@4.24.4)
 
@@ -8237,7 +8237,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.5.97: {}
+  electron-to-chromium@1.5.98: {}
 
   emmet@2.4.11:
     dependencies:
@@ -8455,7 +8455,7 @@ snapshots:
       once: 1.4.0
       path-is-absolute: 1.0.1
 
-  globals@15.14.0: {}
+  globals@15.15.0: {}
 
   graceful-fs@4.2.11: {}
 
@@ -9732,12 +9732,12 @@ snapshots:
   prettier-plugin-astro@0.14.1:
     dependencies:
       "@astrojs/compiler": 2.10.4
-      prettier: 3.5.0
+      prettier: 3.5.1
       sass-formatter: 0.7.9
 
-  prettier-plugin-tailwindcss@0.6.11(prettier-plugin-astro@0.14.1)(prettier@3.5.0):
+  prettier-plugin-tailwindcss@0.6.11(prettier-plugin-astro@0.14.1)(prettier@3.5.1):
     dependencies:
-      prettier: 3.5.0
+      prettier: 3.5.1
     optionalDependencies:
       prettier-plugin-astro: 0.14.1
 
@@ -9747,7 +9747,7 @@ snapshots:
   prettier@2.8.8:
     optional: true
 
-  prettier@3.5.0: {}
+  prettier@3.5.1: {}
 
   prismjs@1.29.0: {}
 
@@ -10149,18 +10149,18 @@ snapshots:
 
   sprintf-js@1.0.3: {}
 
-  starlight-heading-badges@0.4.0(@astrojs/starlight@0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))):
+  starlight-heading-badges@0.4.0(@astrojs/starlight@0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))):
     dependencies:
       "@astrojs/markdown-remark": 6.1.0
-      "@astrojs/starlight": 0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
+      "@astrojs/starlight": 0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
       github-slugger: 2.0.0
       unist-util-visit: 5.0.0
     transitivePeerDependencies:
       - supports-color
 
-  starlight-links-validator@0.14.2(@astrojs/starlight@0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))):
+  starlight-links-validator@0.14.2(@astrojs/starlight@0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))):
     dependencies:
-      "@astrojs/starlight": 0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
+      "@astrojs/starlight": 0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
       "@types/picomatch": 3.0.2
       github-slugger: 2.0.0
       hast-util-from-html: 2.0.3
@@ -10171,17 +10171,17 @@ snapshots:
       picomatch: 4.0.2
       unist-util-visit: 5.0.0
 
-  starlight-showcases@0.3.0(@astrojs/starlight@0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)):
+  starlight-showcases@0.3.0(@astrojs/starlight@0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)))(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0)):
     dependencies:
-      "@astro-community/astro-embed-twitter": 0.5.8(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
-      "@astro-community/astro-embed-youtube": 0.5.6(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
-      "@astrojs/starlight": 0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
+      "@astro-community/astro-embed-twitter": 0.5.8(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
+      "@astro-community/astro-embed-youtube": 0.5.6(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
+      "@astrojs/starlight": 0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
     transitivePeerDependencies:
       - astro
 
-  starlight-sidebar-topics@0.3.0(@astrojs/starlight@0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))):
+  starlight-sidebar-topics@0.3.0(@astrojs/starlight@0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))):
     dependencies:
-      "@astrojs/starlight": 0.31.1(astro@5.2.6(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
+      "@astrojs/starlight": 0.31.1(astro@5.3.0(jiti@1.21.7)(rollup@4.34.6)(typescript@5.7.3)(yaml@2.7.0))
 
   stream-replace-string@2.0.0: {}
 
@@ -10495,12 +10495,12 @@ snapshots:
     optionalDependencies:
       "@volar/language-service": 2.4.11
 
-  volar-service-prettier@0.0.62(@volar/language-service@2.4.11)(prettier@3.5.0):
+  volar-service-prettier@0.0.62(@volar/language-service@2.4.11)(prettier@3.5.1):
     dependencies:
       vscode-uri: 3.1.0
     optionalDependencies:
       "@volar/language-service": 2.4.11
-      prettier: 3.5.0
+      prettier: 3.5.1
 
   volar-service-typescript-twoslash-queries@0.0.62(@volar/language-service@2.4.11):
     dependencies:
