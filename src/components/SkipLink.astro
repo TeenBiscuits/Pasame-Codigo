@@ -1,5 +1,4 @@
 ---
-import type { Props } from "@astrojs/starlight/props";
 import Default from "@astrojs/starlight/components/SkipLink.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 ---
@@ -12,4 +11,4 @@ import SpeedInsights from "@vercel/speed-insights/astro";
     style="display:none;visibility:hidden"></iframe></noscript
 >
 <SpeedInsights />
-<Default {...Astro.props}><slot /></Default>
+<Default><slot /></Default>
