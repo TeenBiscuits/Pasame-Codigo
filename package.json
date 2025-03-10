@@ -33,7 +33,7 @@
     "starlight-heading-badges": "^0.5.0",
     "starlight-links-validator": "^0.14.3",
     "starlight-showcases": "^0.3.0",
-    "starlight-sidebar-topics": "^0.4.1",
+    "starlight-sidebar-topics": "^0.5.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.2"
   },
