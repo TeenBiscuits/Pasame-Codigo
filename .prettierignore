@@ -1,3 +1,4 @@
 # Ignore all MDX / MD files:
 **/*.mdx
 **/*.md
+pnpm-lock.yaml
