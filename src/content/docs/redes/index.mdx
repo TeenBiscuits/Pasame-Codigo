@@ -1,3 +1,34 @@
 ---
 title: Redes
 ---
+
+import { LinkCard } from '@astrojs/starlight/components';
+import { ShowcaseImage } from 'starlight-showcases';
+
+> Redes.
+
+## Cuestionarios
+
+<LinkCard
+  title="Introducción"
+  href="/redes/cuestionarios/t1-introduccion/"
+  description=""
+/>
+<LinkCard
+  title="Capa de Aplicación"
+  href="/redes/cuestionarios/t2-aplicacion/"
+  description=""
+/>
+
+## Prácticas
+
+<ShowcaseImage
+  entries={[
+    {
+      thumbnail: import('@assets/contribute-github.jpg'),
+      href: 'https://github.com/TeenBiscuits/Pasame-Codigo/issues/new',
+      title: '¿Tienes un repo que molaría aquí?',
+      description: '¡Abre un issue en el repositorio y lo añadiremos en cuanto podamos!',
+    },
+  ]}
+/>

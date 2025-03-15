@@ -314,7 +314,16 @@ export default defineConfig({
             label: "Redes",
             link: "/redes/",
             icon: "rss",
-            items: [],
+            items: [
+              {
+                label: "Cuestionarios",
+                autogenerate: { directory: "redes/cuestionarios" },
+              },
+              {
+                label: "Prácticas",
+                items: [],
+              },
+            ],
           },
           {
             label: "We ♥️ Open Source",
