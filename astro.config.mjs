@@ -311,6 +311,12 @@ export default defineConfig({
             ],
           },
           {
+            label: "Redes",
+            link: "/redes/",
+            icon: "rss",
+            items: [],
+          },
+          {
             label: "We ♥️ Open Source",
             link: "/opensource/",
             icon: "star",
