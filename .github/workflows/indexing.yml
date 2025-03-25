@@ -18,7 +18,7 @@ jobs:
         # tj-actions
         # MIT
         # https://github.com/tj-actions/vercel-wait
-        uses: tj-actions/vercel-wait@v1.2.1
+        uses: tj-actions/vercel-wait@v1.2.2
         with:
           project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           token: ${{ secrets.VERCEL_TOKEN }}
