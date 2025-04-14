@@ -63,12 +63,12 @@ export default defineConfig({
         //  lang: 'gl-ES',
         //},
       },
-      social: {
-        github: "https://github.com/TeenBiscuits/Pasame-Codigo",
-        "x.com": "https://x.com/pabloportasl",
-        linkedin: "https://www.linkedin.com/in/pabloportaslopez/",
-        email: "mailto:pablo.portas@udc.es",
-      },
+      social: [
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/TeenBiscuits/Pasame-Codigo' },
+        { icon: 'x.com', label: 'X', href: 'https://x.com/pabloportasl' },
+        { icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/pabloportaslopez/' },
+        { icon: 'email', label: 'Email', href: 'mailto:pablo.portas@udc.es' },
+      ],
       logo: {
         src: "./src/assets/logo.svg",
       },
