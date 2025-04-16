@@ -24,7 +24,7 @@ import rehypeMathJax from "rehype-mathjax";
 import vercel from "@astrojs/vercel";
 
 // Tailwind CSS Support
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 
 // Og Image Link
 const site = "https://pc.pablopl.dev/";
@@ -133,7 +133,7 @@ export default defineConfig({
       editLink: {
         baseUrl: "https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/",
       },
-      customCss: ["./src/tailwind.css", "./src/assets/custom.css"],
+      customCss: ["./src/styles/global.css", "./src/assets/custom.css"],
       expressiveCode: {
         plugins: [pluginCodeOutput(), pluginCollapsibleSections()],
         shiki: {
@@ -346,12 +346,12 @@ export default defineConfig({
         SkipLink: "./src/components/SkipLink.astro",
       },
     }),
-    tailwind({
-      applyBaseStyles: false,
-    }),
   ],
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeMathJax],
+  },
+  vite: {
+    plugins: [tailwindcss()],
   },
 });
