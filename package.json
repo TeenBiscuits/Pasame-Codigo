@@ -21,10 +21,10 @@
     "@astrojs/vercel": "^8.1.4",
     "@expressive-code/core": "^0.41.2",
     "@expressive-code/plugin-collapsible-sections": "^0.41.2",
-    "@tailwindcss/vite": "^4.1.6",
+    "@tailwindcss/vite": "^4.1.7",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
-    "astro": "^5.7.12",
+    "astro": "^5.7.13",
     "dotenv": "^16.5.0",
     "mermaid": "^11.6.0",
     "rehype-mathjax": "^7.1.0",
@@ -34,7 +34,7 @@
     "starlight-links-validator": "^0.16.0",
     "starlight-showcases": "^0.3.0",
     "starlight-sidebar-topics": "^0.6.0",
-    "tailwindcss": "^4.1.6",
+    "tailwindcss": "^4.1.7",
     "typescript": "^5.8.3"
   },
   "devDependencies": {
