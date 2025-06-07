@@ -327,6 +327,15 @@ export default defineConfig({
                 label: "Apuntes",
                 autogenerate: { directory: "bede/apuntes" },
               },
+              {
+                label: "Otros apuntes y demás",
+                items: [
+                  {
+                    label: "WW3 Schools SQL",
+                    link: "https://www.w3schools.com/sql",
+                  },
+                ],
+              },
             ],
           },
           {
