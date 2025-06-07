@@ -319,6 +319,26 @@ export default defineConfig({
             ],
           },
           {
+            label: "Bases de Datos",
+            link: "/bede/",
+            icon: "seti:db",
+            items: [
+              {
+                label: "Apuntes",
+                autogenerate: { directory: "bede/apuntes" },
+              },
+              {
+                label: "Otros apuntes y demás",
+                items: [
+                  {
+                    label: "WW3 Schools SQL",
+                    link: "https://www.w3schools.com/sql",
+                  },
+                ],
+              },
+            ],
+          },
+          {
             label: "We ♥️ Open Source",
             link: "/opensource/",
             icon: "star",
