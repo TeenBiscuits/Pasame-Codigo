@@ -1,0 +1,185 @@
+---
+title: DML DDL
+description: Breves apuntes para el lenguaje de manipulación de datos o DML (Data Manipulation Language) y para el lenguaje de definición de datos o DDL (Data Definition Language). Comandos como CREATE, DROP, INSERT o UPDATE.
+---
+
+import { ShowcaseProfile } from 'starlight-showcases';
+
+> Breves apuntes para el lenguaje de manipulación de datos o DML (Data Manipulation Language) y para el lenguaje de definición de datos o DDL (Data Definition Language). Comandos como CREATE, DROP, INSERT o UPDATE.
+
+## Crear Tablas y Tipos de Datos
+
+```sql wrap
+CREATE TABLE tabla (
+	oficio VARCHAR(4), -- max. "zzzz"
+  edad NUMERIC(2), -- max. 99
+  altura NUMERIC (2,1), -- max. 9,9
+  fecha DATE, -- formato fecha de oracle, se inserta con to_date("string","formato")
+  dinero NUMERIC(100) DEFAULT 0, -- por defecto todos empiezan sin dinero
+  nombre VARCHAR(15) CONSTRAINT NN_tabla_nombre NOT NULL, -- no puede haber nombres nulos
+  nss VARCHAR(9) CONSTRAINT PK_tabla PRIMARY KEY, -- el numero de la ss es la clave primaria
+  -- PRIMARY KEY (nombre,altura), -- también se pueden hacer combinaciones
+  npasaporte VARCHAR(10) UNIQUE, -- no hay dos numeros iguales, pero puede haber nulos
+  dni VARCHAR(9) UNIQUE NOT NULL, -- no hay dos numeros iguales y todos tienen (c. candidata)
+  departamento NUMERIC(2) DEFAULT 10 REFERENCES departamentos (deptno), -- clave foranea
+  -- También podemos hacerlo global con:
+  -- 		PRIMARY KEY (nombre,departamento),
+  -- 		FOREING KEY (departamento) REFERENCES departamentos
+  -- Que hacer si desaparece un departamento:
+  --		-- Se borran todos los de ese departamento
+  --		[...] REFERENCES departamento (deptno) ON DELETE CASCADE
+  -- 		-- Se dejan sin departamento (a nulos) (aunque hay otras opciones como DEFAULT etc)
+  --		[...] REFERENCES departemento (deptno) ON DELETE SET NULL
+  salario NUMERIC(6,2) CONSTRAINT CK_sal_min CHECK (salario > 1800), /* no puede haber gente
+  bajo el salario mín. */
+  CONSTRAINT CH_no_enanos_pobres (altura < 1.0 AND dinero < 100), -- versión global
+);
+```
+
+## Modificar Tablas (Oracle)
+
+```sql wrap
+-- Modificar Tablas
+ALTER TABLE tabla ADD signo_zodiaco VARCHAR(12) NOT NULL; -- Añadir (signos del zodiaco)
+ALTER TABLE tabla MODIFY dni VARCHAR(9) UNIQUE; -- Modificar (permitir gente sin dni)
+ALTER TABLE tabla DROP COLUMN edad; -- Eliminar (edad)
+-- Eliminar (elimina las claves foráneas en cascada)
+ALTER TABLE tabla DROP COLUMN departamento CASCADE CONSTRAINTS;
+-- Añadir y Eliminar restricciones
+ALTER TABLE tabla ADD CONSTRAINT CK_no_menas (edad > 18 AND dni IS NOT NULL);
+ALTER TABLE tabla DROP CONSTRAINT CK_sal_min;
+```
+
+## Borrar Tablas (Oracle)
+
+```sql wrap
+DROP TABLE tabla1; -- Borrar tabla sin dependencias con otras tablas
+DROP TABLE tabla2 PURGE; -- Borrar tabla sin dejar registros
+DROP TABLE tabla2 CASCADE CONSTRAINTS; -- Borrar tabla y todas las que dependan de ella
+```
+
+## Crear Índices (Oracle)
+
+```sql wrap
+CREATE UNIQUE INDEX dnis ON tabla (dni); -- Índice de valores únicos (clave candidata)
+CREATE INDEX edades ON tabla (edad); -- Índice de valores repetidos (tramos de edades)
+-- Eliminar Índice
+DROP INDEX dni;
+```
+
+## Insertar Datos
+
+```sql wrap
+-- Insertar (fallan dependiendo las restricciones de la tabla)
+INSERT INTO tabla VALUES ("panadero",42,[...]); -- Insertar todos los valores en orden
+INSERT INTO tabla (dni,edad) VALUES ("123456789A",18); -- Solo los seleccionados
+-- Volcar columnas enteras a otras tablas
+INSERT INTO dnisyedades (dni,edad) SELECT dni, edad FROM tabla;
+```
+
+## Actualizar Datos
+
+```sql wrap
+-- Actualizar
+-- Aumentarle el salario a alguien (dado su dni)
+UPDATE tabla
+SET salario = salario + 100
+WHERE dni LIKE "123456789A";
+-- Aumentar a todos los que cobren 1000 o menos
+UPDATE tabla
+SET salario = salario + 10
+WHERE salario <= 1000;
+```
+
+## Borrar Filas
+
+```sql wrap
+-- Borrar filas
+DELETE FROM tabla WHERE dni LIKE "123456789A"; -- Borrar una fila en específico
+DELETE FROM tabla WHERE altura < 1.0; -- Borrar a todos los enanos
+```
+
+## Seguridad
+
+```sql wrap
+-- Seguridad
+/*
+| PARA MI USUARIO SOLO |    PARA TODOS    |
+| -------------------- | ---------------- |
+| CREATE TABLE				 | CREATE ANY TABLE |
+| CREATE VIEW					 | CREATE ANY VIEW  |
+*/
+
+-- Creación de Roles
+CREATE ROLE usuario_basico; -- Crear un rol
+GRANT usuario_basico TO pringados; -- Asignamos rol al rol pringados
+GRANT usuario_basico TO "pepe.perez"; -- Asignamos el rol a un usuario
+-- En Oracle existen varios roles por defecto
+-- | PUBLIC (por defecto) | CONNECT (lectura) | RESOURCE (escritura) | DBA (administrador) |
+GRANT usuario_basico TO PUBLIC; -- Ahora todos pueden hacer lo que haga un usuario_basico
+GRANT RESOURCE TO "pepe.perez"; -- Ahora puede escribir
+GRANT RESOURCE TO "pepe.perez" WITH ADMIN OPTIONS; -- Y puede ascender a otros a su mismo rol
+REVOKE CREATE ANY TABLE FROM "pepe.perez"; -- Ya no puede crear tablas públicas
+REVOKE RESOURCE FROM "pepe.perez"; -- Ya no puede escribir
+REVOKE ALL_PRIVILEGES FROM "pepe.perez"; -- Ya no puede hacer nada
+
+-- Operaciones sobre objetos
+GRANT SELECT, UPDATE(salario) ON banco TO "el_jefe"; -- Actualizar la columna salario y leer
+REVOKE UPDATE(salario) ON banco TO "el_jefe"; -- Ya no puede dar aumentos
+REVOKE ALL ON banco TO "el_jefe"; -- Ya no puede hacer nada en la tabla "banco"
+
+-- ¿Como dar permisos solo a partes de una tabla? La solución son las vistas
+CREATE VIEW departmento2 AS SELECT * FROM tabla WHERE departamento = 2; -- El departamento 2
+GRANT ALL ON departamento2 TO "manager_del_dept_2"; -- Que controla el manager del dept. 2
+REPLACE VIEW departemeto2 AS SELECT * FROM tabla WHERE departemento <= 2; -- El "departamento
+-- 2" a absorbido a todos los departamentos inferiores a el
+DROP VIEW departemento2; -- Se borra la vista
+```
+
+## Transacciones
+
+```sql wrap
+-- Transacciones (sqlplus)
+ROLLBACK; -- Desache todos los camios desde que comenzó la transacción
+SAVEPOINT punto_guardado_1; -- Guarda el estado de la base de datos
+ROLLBACK TO punto_guardado_1; -- Retrocede hasta dicho punto de salvado
+COMMIT; -- Finalizamos la transacción correctamente
+```
+
+## Concurrencia (Oracle)
+
+```sql wrap
+-- Concurrencia (Oracle)
+SET TRANSACTION READ ONLY; -- Declaramos una transacción solo de lectura (mejora rendimiento)
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE; -- Serializable
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED; -- Estado por defecto
+-- Por defecto el SGDB realiza bloqueos automáticos
+-- Pero podemos realizar bloqueos manuales
+LOCK TABLE tabla IN [SHARE|EXCLUSIVE] MODE [NOWAIT|WAIT n]; -- Bloquear una tabla y opciones
+SELECT [...] FOR UPDATE OF dni [NOWAIT|WAIT n]; -- Bloque una fila en específico
+```
+
+## Catálogos o Metadatos
+
+```sql wrap
+-- Catálogo
+-- Existen tablas con metadatos del SGDB
+-- Para las tablas existe TABLES con algunos datos como nombre, nº de bloques, nº de columnas
+SELECT * FROM USER_TABLES; -- Todas las tablas que el usuario a creado
+SELECT * FROM ALL_TABLES; -- Todas las tablas a las que el usuario tiene acceso
+SELECT * FROM DBA_TABLES; -- Para administradores
+-- Para las restricciones existen los equivaleantes con CONSTRAINTS
+-- Algunos datos como: nombres, condición de búsqueda o dueño
+```
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2025 licensed under CC BY 4.0",
+    },
+  ]}
+/>
