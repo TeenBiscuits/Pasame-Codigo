@@ -1,15 +1,109 @@
 ---
 title: Conjuntos Disjuntos
-sidebar:
-    badge:
-        text: WIP
-        variant: caution
 ---
 
-import { Aside } from '@astrojs/starlight/components';
+import { ShowcaseProfile } from 'starlight-showcases';
 
-<Aside type="caution" title="¡En Construcción! 👷">
+## Primer enfoque
 
-¡Estamos estudiando!
+- Todos los elementos se numera de 1 a n.
+- Cada subconjunto tomará su nombre de uno de sus elementos, su **representante**. (Ej: el valor más pequeño)
+- Mantenemos en un vector el nombre del subconjunto disjunto de cada elemento.
 
-</Aside>
+### Tipo de dato
+
+```pseudocodigo
+tipo
+    Elemento = entero;
+    Conj = entero;
+    ConjDisj = vector [1..N] de entero
+```
+
+### Buscar (C, x) -- O(1)
+
+```pseudocodigo
+función Buscar1 (C, x) : Conj
+    devolver C[x]
+fin función
+```
+
+### Unir1 (C, a, b) -- O(n)
+
+```pseudocodigo
+procedimiento Unir1 (C, a, b)
+    i := min (C[a], C[b]);
+    j := max (C[a], C[b]);
+    para k := 1 hasta N hacer
+        si C[k] := j entonces C[k] := i
+    fin para
+fin procedimiento
+```
+
+## Segundo enfoque
+
+- Se utiliza un árbol para caracterizar cada subconjunto
+    - La raíz nombra al subconjunto
+    - La representación de los árboles es fácil porque la única información necesaria es un apuntador al padre.
+    - Cada entrada p[i] en el vector contiene el padre del elemento _i_. ( Si _i_ es una raíz, entonces p[i] = i)
+
+### Buscar2 (C, x) : Conj -- O(n)
+
+```pseudocodigo
+función Buscar2 (C, x) : Conj
+    r := x;
+    mientras C[r] <> r hacer
+        r := C[r]
+    fin mientras;
+    devolver r
+fin función
+```
+
+### Unir2 (C, raíz1, raíz2) -- O(1)
+
+Apuntar la raíz de uno al otro.
+
+```pseudocodigo wrap
+procedimiento Unir2 (C, raíz1, raíz2) { supone que raíz1 y raíz2 son raíces }
+    si raíz1 < raíz2 entonces C[raíz2] := raíz1
+    sino C[raíz1] := raíz2
+fin procedimiento
+```
+
+### Unir3 (C, A, raíz1, raíz2)
+
+```pseudocodigo wrap
+procedimiento Unir3 (C, A, raíz1, raíz2) { supone que raíz1 y raíz2 son raíces }
+    si A[raíz1] := A[raíz1] + 1;
+    C[raíz2] := raíz1
+    sino si A[raíz1] > A[raíz2] entonces C[raíz2] := raíz1
+    sino C[raíz1] := raíz2
+fin procedimiento
+```
+
+### Buscar3 (C, x) -- O(log(n))
+
+```pseudocodigo
+función Buscar3 (C, x) : Conj
+    r := x;
+    mientras C[r] <> r hacer
+        r := C[r]
+    fin mientras;
+    i := x;
+    mientras i <> r hacer
+        j := C[i]; C[i] := r; i := j
+    fin mientras;
+    devolver r
+fin función
+```
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2025 licensed under CC BY 4.0",
+    },
+  ]}
+/>
