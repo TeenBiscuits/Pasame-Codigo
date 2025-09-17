@@ -339,6 +339,22 @@ export default defineConfig({
             ],
           },
           {
+            label: "Sistemas Operativos",
+            link: "/so/",
+            icon: "laptop",
+            items: [
+              {
+                label: "Prácticas y más",
+                items: [
+                  {
+                    label: "TeenBiscuits/Practicas-SO",
+                    link: "https://github.com/TeenBiscuits/Practicas-SO",
+                  },
+                ],
+              },
+            ],
+          },
+          {
             label: "We ♥️ Open Source",
             link: "/opensource/",
             icon: "star",
