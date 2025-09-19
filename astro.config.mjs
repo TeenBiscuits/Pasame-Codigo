@@ -340,7 +340,7 @@ export default defineConfig({
           },
           {
             label: "Sistemas Operativos",
-            link: "/so/",
+            link: "/eseo/",
             icon: "laptop",
             items: [
               {
