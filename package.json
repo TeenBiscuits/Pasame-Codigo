@@ -24,7 +24,7 @@
     "@tailwindcss/vite": "^4.1.13",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
-    "astro": "^5.13.10",
+    "astro": "^5.14.3",
     "dotenv": "^17.2.2",
     "mermaid": "^11.12.0",
     "rehype-mathjax": "^7.1.0",
