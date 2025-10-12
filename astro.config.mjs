@@ -82,13 +82,51 @@ export default defineConfig({
       },
       favicon: "/favicon.svg",
       head: [
-        // Agregar un favicon ICO de respaldo para Safari.
+        // Favicon and Meta Tags
         {
           tag: "link",
           attrs: {
             rel: "icon",
+            type: "image/png",
+            href: "/favicon-96x96.png",
+            sizes: "96x96",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "icon",
+            type: "image/svg+xml",
+            href: "/favicon.svg",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "shortcut icon",
             href: "/favicon.ico",
-            sizes: "32x32",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "apple-touch-icon",
+            href: "/apple-touch-icon.png",
+            sizes: "180x180",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            name: "apple-mobile-web-app-title",
+            content: "Pásame el Código",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "manifest",
+            href: "/site.webmanifest",
           },
         },
         {
