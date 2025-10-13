@@ -8,7 +8,7 @@ tableOfContents: false
 ---
 
 import { LinkCard } from '@astrojs/starlight/components';
-import { ShowcaseImage } from 'starlight-showcases';
+import Repos from '@components/Repos.astro';
 
 > Entiende la esencia de la pieza de código más importante de tu ordenador.
 
@@ -16,7 +16,7 @@ import { ShowcaseImage } from 'starlight-showcases';
 
 :::note
 
-En la [Wiki](https://github.com/TeenBiscuits/Practicas-SO/wiki) del repositorio TeenBiscuits/Practicas-SO tienes una guía completa para ayudarte a entender la práctica. 
+En la [Wiki](https://github.com/TeenBiscuits/Practicas-SO/wiki) del repositorio TeenBiscuits/Practicas-SO tienes una guía completa para ayudarte a entender la práctica.
 
 <LinkCard
   title="Guía para empezar tu práctica"
@@ -26,19 +26,12 @@ En la [Wiki](https://github.com/TeenBiscuits/Practicas-SO/wiki) del repositorio 
 
 :::
 
-<ShowcaseImage
+<Repos
   entries={[
     {
-      thumbnail: import('@assets/so/repos/Practicas-SO.png'),
       href: 'https://github.com/TeenBiscuits/Practicas-SO',
       title: 'TeenBiscuits/Practicas-SO',
       description: 'Un shell con un set de comandos para interactuar con tu sistema operativo. Práctica de Sistemas Operativos en la FIC',
-    },
-    {
-      thumbnail: import('@assets/contribute-github.jpg'),
-      href: 'https://github.com/TeenBiscuits/Pasame-Codigo/issues/new',
-      title: '¿Tienes un repo que molaría aquí?',
-      description: '¡Abre un issue en el repositorio y lo añadiremos en cuanto podamos!',
     },
   ]}
 />

@@ -8,7 +8,7 @@ tableOfContents: false
 ---
 
 import { LinkCard } from '@astrojs/starlight/components';
-import { ShowcaseImage } from 'starlight-showcases';
+import Repos from '@components/Repos.astro';
 
 > Implementaciones y pseudocódigos de todos los algoritmos y de las estructuras de datos. Links a prácticas resueltas.
 
@@ -49,43 +49,32 @@ import { ShowcaseImage } from 'starlight-showcases';
 
 ## Prácticas y Exámenes
 
-<ShowcaseImage
+<Repos
   entries={[
     {
-      thumbnail: import('@assets/algo/repos/Practicas-Algo.png'),
       href: 'https://github.com/TeenBiscuits/Practicas-Algo',
       title: 'TeenBiscuits/Practicas-Algo',
       description: 'Prácticas de la asignatura de Algoritmos, curso 2024/25, GEI-UDC. Por Pablo Portas López, Pablo Míguez Muiño y Maite González Vázquez.',
     },
     {
-      thumbnail: import('@assets/algo/repos/examen-algoritmos.png'),
       href: 'https://github.com/migueldeoleiros/examen-algoritmos',
       title: 'migueldeoleiros/examen-algoritmos',
       description: 'Ejemplos de las posibles variaciones de las prácticas de la asigatura de Algoritmos de la Universidad De A Coruña en el grado de ingeniería informática de 2021/2022. Con el objetivo de hacer todos los posibles exámenes.',
     },
     {
-      thumbnail: import('@assets/algo/repos/Algoritmos.png'),
       href: 'https://github.com/migueldeoleiros/Algoritmos',
       title: 'migueldeoleiros/Algoritmos',
       description: 'Prácticas de la asignatura de Algoritmos de la Universidad De A Coruña (UDC) en el grado de ingeniería informática curso 2021/2022 GEI-Algo 614G010112122',
     },
     {
-      thumbnail: import('@assets/algo/repos/Algoritmos-FIC-UDC.png'),
       href: 'https://github.com/JavierFreireBouzas/Algoritmos-FIC-UDC',
       title: 'JavierFreireBouzas/Algoritmos-FIC-UDC',
       description: 'Prácticas de Algoritmos | Code generated during the "Algoritmos" subject (Universidade da Coruña)',
     },
     {
-      thumbnail: import('@assets/open-graph-gitlab.png'),
       href: 'https://gitlab.com/CValle_/gei2/-/tree/main/Algo',
       title: 'CValle_/gei2/Algo',
       description: 'Apuntes y Prácticas de Clara Valle | Notes for my second year of university at UDC',
-    },
-    {
-      thumbnail: import('@assets/contribute-github.jpg'),
-      href: 'https://github.com/TeenBiscuits/Pasame-Codigo/issues/new',
-      title: '¿Tienes un repo que molaría aquí?',
-      description: '¡Abre un issue en el repositorio y lo añadiremos en cuanto podamos!',
     },
   ]}
 />
