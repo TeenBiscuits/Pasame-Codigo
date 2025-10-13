@@ -3,10 +3,7 @@
   "projectOwner": "TeenBiscuits",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "files": [
-    "README.md",
-    "./src/content/docs/intro/readme.md"
-  ],
+  "files": ["README.md", "./src/content/docs/intro/readme.md"],
   "imageSize": 100,
   "commit": false,
   "commitConvention": "gitmoji",
@@ -34,126 +31,98 @@
       "name": "Miguel Fraga Pico メ",
       "avatar_url": "https://avatars.githubusercontent.com/u/66569329?v=4",
       "profile": "https://github.com/Fraagaa",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "sneiira",
       "name": "Santiago Neira Sejean",
       "avatar_url": "https://avatars.githubusercontent.com/u/151532950?v=4",
       "profile": "https://github.com/sneiira",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "dza205",
       "name": "Daniel Deza Prieto",
       "avatar_url": "https://avatars.githubusercontent.com/u/76247222?v=4",
       "profile": "https://github.com/dza205",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "danielfeitopin",
       "name": "Daniel Feito Pin",
       "avatar_url": "https://avatars.githubusercontent.com/u/71133325?v=4",
       "profile": "https://www.informaticapau.com/",
-      "contributions": [
-        "content"
-      ]
+      "contributions": ["content"]
     },
     {
       "login": "Parodper",
       "name": "Parodper",
       "avatar_url": "https://avatars.githubusercontent.com/u/12100800?v=4",
       "profile": "https://github.com/Parodper",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "elianarl",
       "name": "elianarl",
       "avatar_url": "https://avatars.githubusercontent.com/u/160122335?v=4",
       "profile": "https://github.com/elianarl",
-      "contributions": [
-        "example"
-      ]
+      "contributions": ["example"]
     },
     {
       "login": "Nurig04",
       "name": "Nurig04",
       "avatar_url": "https://avatars.githubusercontent.com/u/152159453?v=4",
       "profile": "https://github.com/Nurig04",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "Sprinter05",
       "name": "Sprinter",
       "avatar_url": "https://avatars.githubusercontent.com/u/69991979?v=4",
       "profile": "https://www.sprinter.work/",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "maiteegonzaalez",
       "name": "maiteegonzaalez",
       "avatar_url": "https://avatars.githubusercontent.com/u/151624797?v=4",
       "profile": "https://github.com/maiteegonzaalez",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "FerLS",
       "name": "Fernando Álvarez",
       "avatar_url": "https://avatars.githubusercontent.com/u/114153352?v=4",
       "profile": "https://github.com/FerLS",
-      "contributions": [
-        "example"
-      ]
+      "contributions": ["example"]
     },
     {
       "login": "angelacoust",
       "name": "ángela",
       "avatar_url": "https://avatars.githubusercontent.com/u/151532597?v=4",
       "profile": "https://github.com/angelacoust",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "Xabiguitian",
       "name": "Xabi",
       "avatar_url": "https://avatars.githubusercontent.com/u/114141049?v=4",
       "profile": "https://github.com/Xabiguitian",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "CValle_",
       "name": "Clara Valle",
       "avatar_url": "https://gitlab.com/uploads/-/system/user/avatar/6021942/avatar.png",
       "profile": "https://gitlab.com/CValle_",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "danicallero",
       "name": "Daniel Callero",
       "avatar_url": "https://avatars.githubusercontent.com/u/81188779?v=4",
       "profile": "https://github.com/danicallero",
-      "contributions": [
-        "design"
-      ]
+      "contributions": ["design"]
     }
   ],
   "linkToUsage": true
