@@ -114,7 +114,15 @@ flowchart LR
 <summary>Mostrar implementación</summary>
 
 ```c title="createEmptyTree.c"
-// Ver archivo: ./Ejemplos/Tema_6/createEmptyTree.c
+// SPDX-FileCopyrightText: 2023 Fernando Álvarez
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+void createEmptyTree(tBinTree *T){
+
+    *T = TNULL;
+
+}
 ```
 </details>
 
@@ -162,7 +170,23 @@ flowchart TB
 <summary>Mostrar implementación</summary>
 
 ```c title="buildTree.c"
-// Ver archivo: ./Ejemplos/Tema_6/buildTree.c
+// SPDX-FileCopyrightText: 2023 Fernando Álvarez
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+bool BuildTree(tBinTree LT,tItemT itemT,tBinTree RT,tBinTree *T){
+
+    if(createNode(T)){
+
+        (*T)->data=itemT;
+        (*T)->left=LT;
+        (*T)->right=RT;
+        return true;
+    }
+    else return false;
+
+
+}
 ```
 </details>
 
@@ -191,7 +215,15 @@ flowchart TB
 <summary>Mostrar implementación</summary>
 
 ```c title="leftChild.c"
-// Ver archivo: ./Ejemplos/Tema_6/leftChild.c
+// SPDX-FileCopyrightText: 2023 Fernando Álvarez
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+tBinTree LeftChild(tBinTree T){
+
+    return T->left;
+
+}
 ```
 </details>
 
@@ -218,7 +250,15 @@ flowchart TB
 <summary>Mostrar implementación</summary>
 
 ```c title="rightChild.c"
-// Ver archivo: ./Ejemplos/Tema_6/rightChild.c
+// SPDX-FileCopyrightText: 2023 Fernando Álvarez
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+tBinTree RightChild(tBinTree T){
+
+    return T->right;ç
+
+}
 ```
 </details>
 
@@ -246,7 +286,15 @@ flowchart TB
 <summary>Mostrar implementación</summary>
 
 ```c title="root.c"
-// Ver archivo: ./Ejemplos/Tema_6/root.c
+// SPDX-FileCopyrightText: 2023 Fernando Álvarez
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+tItemT Root(tBinTree T){
+
+    return  T->data;
+
+}
 ```
 </details>
 
@@ -274,7 +322,15 @@ flowchart TB
 <summary>Mostrar implementación</summary>
 
 ```c title="isEmptyTree.c"
-// Ver archivo: ./Ejemplos/Tema_6/isEmptyTree.c
+// SPDX-FileCopyrightText: 2023 Fernando Álvarez
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+bool isEmptyTree(tBinTree T){
+
+    return (T==TNULL);
+
+}
 ```
 </details>
 
@@ -402,6 +458,13 @@ flowchart TB
 
 <ShowcaseProfile
   entries={[
+    {
+      name: 'Fernando Álvarez',
+      picture: 'https://avatars.githubusercontent.com/u/114153352?v=4',
+      href: 'https://github.com/FerLS',
+      description:
+        "Código - © 2023",
+    },
     {
       name: 'Pablo Portas López',
       picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',

@@ -74,7 +74,16 @@ createEmptyQueue \rightarrow Queue
 <summary>Mostrar implementación</summary>
 
 ```c title="createEmptyQueue.c"
-// Ver archivo: ./Ejemplos/Tema_4/createEmptyQueue.c
+// SPDX-FileCopyrightText: 2023 Fernando Álvarez
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+void createEmptyQueue(tQueue *cola){
+
+    cola->front = QNULL;
+    cola->rear = QNULL;
+
+}
 ```
 </details>
 
@@ -94,7 +103,36 @@ enqueue (Item, Queue) \rightarrow Queue, bool
 <summary>Mostrar implementación</summary>
 
 ```c title="enqueue.c"
-// Ver archivo: ./Ejemplos/Tema_4/enqueue.c
+// SPDX-FileCopyrightText: 2023 Fernando Álvarez
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+bool enqueue(tItemQ item,tQueue *cola){
+
+    tPosQ aux;
+
+    if(!createNode(&aux)){
+
+        return false;
+    }
+    else{
+
+        aux->data=item;
+        aux->next=QNULL;
+
+        if(cola->front == QNULL){
+            cola->front = aux;
+
+        }
+        else{
+            cola->rear->next = aux;
+        }
+        cola->rear = aux;
+
+        return true;
+    }
+
+}
 ```
 </details>
 
@@ -115,7 +153,22 @@ dequeue(Queue) \rightarrow Queue
 <summary>Mostrar implementación</summary>
 
 ```c title="dequeue.c"
-// Ver archivo: ./Ejemplos/Tema_4/dequeue.c
+// SPDX-FileCopyrightText: 2023 Fernando Álvarez
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+void dequeue(tQueue *cola){
+
+    tPosQ aux;
+    aux = cola->front;
+    cola->front = aux->next;
+    if(cola->front == QNULL){
+
+        cola->rear = QNULL;
+    }
+    free(aux);
+
+}
 ```
 </details>
 
@@ -136,7 +189,14 @@ front(Queue) \rightarrow Item
 <summary>Mostrar implementación</summary>
 
 ```c title="front.c"
-// Ver archivo: ./Ejemplos/Tema_4/front.c
+// SPDX-FileCopyrightText: 2023 Fernando Álvarez
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+tItemQ front(tQueue cola){
+
+    return cola.front->data;
+}
 ```
 </details>
 
@@ -154,7 +214,15 @@ isEmptyQueue(Queue) \rightarrow bool
 <summary>Mostrar implementación</summary>
 
 ```c title="isEmptyQueue.c"
-// Ver archivo: ./Ejemplos/Tema_4/isEmptyQueue.c
+// SPDX-FileCopyrightText: 2023 Fernando Álvarez
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+bool isEmptyQueue(tQueue cola){
+
+    return(cola.front == QNULL);
+
+}
 ```
 </details>
 
@@ -241,7 +309,8 @@ createEmptyStack \rightarrow Stack
 <summary>Mostrar implementación</summary>
 
 ```c title="createEmptyStack.c"
-// Ver archivo: ./Ejemplos/Tema_5/createEmptyStack.c
+// EN CONSTRUCCIÓN
+// COLABORA https://github.com/TeenBiscuits/Pasame-Codigo
 ```
 </details>
 
@@ -261,7 +330,8 @@ push (Item, Stack) \rightarrow Stack, bool
 <summary>Mostrar implementación</summary>
 
 ```c title="push.c"
-// Ver archivo: ./Ejemplos/Tema_5/push.c
+// EN CONSTRUCCIÓN
+// COLABORA https://github.com/TeenBiscuits/Pasame-Codigo
 ```
 </details>
 
@@ -282,7 +352,8 @@ pop(Stack) \rightarrow Stack
 <summary>Mostrar implementación</summary>
 
 ```c title="pop.c"
-// Ver archivo: ./Ejemplos/Tema_5/pop.c
+// EN CONSTRUCCIÓN
+// COLABORA https://github.com/TeenBiscuits/Pasame-Codigo
 ```
 </details>
 
@@ -303,7 +374,8 @@ peek(Stack) \rightarrow Item
 <summary>Mostrar implementación</summary>
 
 ```c title="peek.c"
-// Ver archivo: ./Ejemplos/Tema_5/peek.c
+// EN CONSTRUCCIÓN
+// COLABORA https://github.com/TeenBiscuits/Pasame-Codigo
 ```
 </details>
 
@@ -321,7 +393,8 @@ isEmptyStack(Stack) \rightarrow bool
 <summary>Mostrar implementación</summary>
 
 ```c title="isEmptyStack.c"
-// Ver archivo: ./Ejemplos/Tema_5/isEmptyStack.c
+// EN CONSTRUCCIÓN
+// COLABORA https://github.com/TeenBiscuits/Pasame-Codigo
 ```
 </details>
 
@@ -369,6 +442,13 @@ flowchart TB
 
 <ShowcaseProfile
   entries={[
+      {
+      name: 'Fernando Álvarez',
+      picture: 'https://avatars.githubusercontent.com/u/114153352?v=4',
+      href: 'https://github.com/FerLS',
+      description:
+        "Código - © 2023",
+    },
     {
       name: 'Pablo Portas López',
       picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
