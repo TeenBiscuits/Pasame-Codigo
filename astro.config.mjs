@@ -234,11 +234,17 @@ export default defineConfig({
             items: [
               {
                 label: "Apuntes",
+                badge: { text: "Descontinuados", variant: "caution" },
                 autogenerate: { directory: "prodos/apuntes" },
               },
               {
-                label: "Código",
+                label: "Código y más",
                 items: [
+                  {
+                    label: "Wiki de Dani Callero",
+                    link: "https://wiki.danicallero.es/Universidad/Programación-2/",
+                    badge: { text: "Apuntes", variant: "note" },
+                  },
                   {
                     label: "FerLS/PRO2",
                     link: "https://github.com/FerLS/PRO2",

@@ -1,30 +1,331 @@
 ---
 title: Tema 7 y 8 - Árboles Binarios de Búsqueda ABB y Equilibrados AVL
 description: El TAD Árbol Binario de Búsqueda ABB y el TAD Árbol Binario de Búsqueda AVL, especificación informal, implementación y descripción gráfica. Operaciones explicadas de forma gráfica e implementadas. Rotaciones (LL, RR, LR y RL) y factor de equilibrio.
-tableOfContents: false
-sidebar:
-  badge:
-    text: Migración
-    variant: caution
 next: false
 ---
 
-import { Aside, LinkButton } from '@astrojs/starlight/components';
+import Mermaid from "@components/Mermaid.astro";
+import { ShowcaseProfile } from 'starlight-showcases';
 
-<Aside type="caution">
+> El TAD Árbol Binario de Búsqueda ABB y el TAD Árbol Binario de Búsqueda AVL, especificación informal, implementación y descripción gráfica. Operaciones explicadas de forma gráfica e implementadas. Rotaciones (LL, RR, LR y RL) y factor de equilibrio.
 
-Migración en progreso 📦
+## TAD Árbol Binario de Búsqueda ABB
 
-<LinkButton href="https://github.com/TeenBiscuits/Pasame-Codigo" variant="secondary" icon="github">
-  ¡Hecha un ojo!
-</LinkButton>
+### Definición
 
-<LinkButton href="https://pro2324.pablopl.dev/tema-7-y-8-arboles-binarios-de-busqueda.html" variant="primary" icon="open-book">
-  Ver el Original - Pro2324
-</LinkButton>
+- Es un árbol binario.
+- Tiene asociada una clave de ordenación _k_.
+- Cumple para cualquier nodo _T_ del árbol:
+    - los valores de los nodos del subárbol **izquierdo** de _T_ son **menores** que el valor de _T_.
+    - los valores de los nodos del subárbol **derecho** son _T_ mayores que el valor de _T_.
 
-<LinkButton href="/" variant="secondary" icon="right-arrow">
-  Volver al inicio
-</LinkButton>
+- **Mayor eficiencia** frente a...
+    - estructuras **estáticas** en operaciones de **inserción** y **eliminación**.
+    - estructuras **dinámicas** en la operación de **búsqueda**.
 
-</Aside>
+<Mermaid>
+```mermaid
+---
+title: Árbol binario de búsqueda (ABB)
+---
+flowchart TB
+    k(((k))) --> A[/claves < k\] & B[/claves > k\]
+```
+</Mermaid>
+
+### Pros y contras
+
+**Eficiencia del proceso de búsqueda en árboles equilibrados**
+
+Si los nodos se añaden en un orden aleatorio habrá que equilibrarlo:
+
+<Mermaid>
+```mermaid
+---
+title: Árbol sin equilibrar
+---
+flowchart TB
+    k[[6]] --> 1[[1]] & 8[[8]]
+    1 --> 0[[0]] & 2[[2]]
+    2 --> NULL[[NULL]] & 4[[4]]
+    8 --> 7[[7]]
+```
+</Mermaid>
+
+Si los nodos se añaden en un orden determinado el árbol degenerará en una lista ordenada:
+
+<Mermaid>
+```mermaid
+---
+title: Árbol degenerado en lista
+---
+flowchart TB
+    k[[4]] -->  3[[3]] & NULL1[[NULL]]
+    3 --> 2[[2]] & NULL2[[NULL]]
+    2 --> 1[[1]] & NULL3[[NULL]]
+```
+</Mermaid>
+
+### Operaciones
+
+Basándonos en el [TAD Árbol](/prodos/apuntes/t6-arboles/#operaciones) definimos las operaciones del árbol de búsqueda a cambiar.
+
+:::note
+Para más información: [TAD Árbol](/prodos/apuntes/t6-arboles/#tad-árbol-binario) y [Tema 1 - Especificación de un TAD](/prodos/apuntes/t1-tipos-abstractos-de-datos-tad/#especificación-de-un-tad)
+:::
+
+#### Generadoras
+
+**createEmptyTree → Tree**
+
+```tex
+createEmptyTree \rightarrow Tree
+```
+
+**insertKey(Tree, Key) → Tree, bool**
+
+```tex
+insertKey(Tree, Key) \rightarrow Tree, bool
+```
+
+- **Objetivo:** Insertar un nodo con información en el árbol, en su lugar correspondiente, de acuerdo al valor de una clave
+- **Entrada:**
+  - `Tree`: Árbol a modificar
+  - `Key`: Dato a insertar
+- **Salida:** `Tree`: Nuevo árbol que resulta de la inserción y verdadero si se ha podido insertar o si la clave existe, falso en caso contrario.
+- **Poscondición:** El árbol incorpora un nuevo nodo con los datos si éstos no existían en el árbol
+
+<Mermaid>
+```mermaid
+flowchart TB
+    Key(Key: 25)
+    K[[30]] --> A[[20]] & B[[40]]
+    A --> NULL[[NULL]] & C[[25]]
+    K -. 25 < 30 .-> A -. 25 > 20 .-> C
+```
+</Mermaid>
+
+<details>
+<summary>Mostrar implementación</summary>
+
+```c title="insertKey.c"
+// Ver archivo: ./Ejemplos/Tema_7/insertKey.c
+```
+</details>
+
+#### Observadoras
+
+**leftChild(Tree) → Tree**
+
+```tex
+leftChild(Tree) \rightarrow Tree
+```
+
+**rightChild(Tree) → Tree**
+
+```tex
+rightChild(Tree) \rightarrow Tree
+```
+
+**root(Tree) → Item**
+
+```tex
+root(Tree) \rightarrow Item
+```
+
+**isEmptyTree(Tree) → bool**
+
+```tex
+isEmptyTree(Tree) \rightarrow bool
+```
+
+**findKey(Key, Tree) → Tree**
+
+```tex
+findKey(Key, Tree) \rightarrow Tree
+```
+
+- **Objetivo:** Devuelve el subárbol cuya raíz contiene la clave
+- **Entrada:**
+  - `Key`: Dato a buscar
+  - `Tree`: Árbol a manipular
+- **Salida:** `Tree`: Acceso al árbol cuya raíz contiene la clave, o nulo si éste no existe (el árbol está vacío o no contiene esa clave)
+
+<Mermaid>
+```mermaid
+flowchart TB
+    key(Key: 25)
+    k[[30]] --> A[[20]] & B[[40]]
+    A --> D[[15]] & E[[25]]
+    B --> F[[35]] & G[[45]]
+    k -. 25 < 30 .-> A -. 25 > 20 .-> E
+```
+</Mermaid>
+
+<details>
+<summary>Mostrar implementación</summary>
+
+```c title="findKey.c"
+// Ver archivo: ./Ejemplos/Tema_7/findKey.c
+```
+</details>
+
+#### Destructoras
+
+**removeKey(Key, Tree) → Tree**
+
+```tex
+removeKey(Key, Tree) \rightarrow Tree
+```
+
+- **Objetivo:** Eliminar el nodo cuyo contenido coincide con la clave
+- **Entrada:**
+  - `Key`: Clave del nodo a eliminar
+  - `Tree`: Árbol a modificar
+- **Salida:** `Tree`: Nuevo árbol sin el nodo eliminado
+- **Precondición:** La clave existe en el árbol
+
+:::note
+Se deben tener en cuenta los hijos del nodo a borrar, ya que deben continuar en el árbol. Si el nodo tienen dos hijos, se sustituye por el mayor de los hijos menores (subárbol izquierdo).
+:::
+
+<Mermaid>
+```mermaid
+flowchart TB
+    key(A eliminar: 87)
+    A[[120]] --> B[[87]] & C[[140]]
+    B --> D[[43]] & E[[93]]
+    D --> NULL1(NULL) & F[[65]]
+    F --> G[[56]] & NULL2(NULL)
+```
+</Mermaid>
+
+<Mermaid>
+```mermaid
+flowchart TB
+    key(A eliminar: 87)
+    A[[120]] --> B[[87]] & C[[140]]
+    B --> D[[43]] & E[[93]]
+    subgraph Subárbol izquierdo
+        D --> NULL1(NULL) & F[[65]]
+        F --> G[[56]] & NULL2(NULL)
+    end
+```
+</Mermaid>
+
+<Mermaid>
+```mermaid
+flowchart TB
+    key(A eliminar: 87)
+    A[[120]] --> B[[87]] & C[[140]]
+    B --> D[[43]] & E[[93]]
+    subgraph Subárbol izquierdo
+        D --> NULL1(NULL) & F[[65]]
+        F --> G[[56]] & NULL2(NULL)
+    end
+    F -. el mayor .-> B
+```
+</Mermaid>
+
+<Mermaid>
+```mermaid
+flowchart TB
+    key(A eliminar: 87)
+    A[[120]] --> B[[65]] & C[[140]]
+    B --> D[[43]] & E[[93]]
+    subgraph Subárbol izquierdo
+        D --> NULL(NULL) & G[[56]]
+    end
+```
+</Mermaid>
+
+<details>
+<summary>Mostrar implementación</summary>
+
+```c title="removeKey.c"
+// Ver archivo: ./Ejemplos/Tema_7/removeKey.c
+```
+</details>
+
+## Árboles Binarios de Búsqueda Equilibrados (AVL)
+
+Un árbol binario de búsqueda equilibrado es un árbol de búsqueda (_redundante ya lo sé_) en el que, para cada
+nodo, se cumple que la diferencia de altura de sus subárboles **nunca es mayor que uno** (las diferencias son en valor
+absoluto, intervalo [-1, 1]).
+
+Estos árboles hacen búsquedas **muy eficientes**, ya que mantienen **una altura mínima** evitando así los [**árboles
+degenerados**](#pros-y-contras).
+
+El **factor de equilibrio** (balance factor) de un nodo se define como la **altura de su subárbol derecho** menos
+**altura de su subárbol izquierdo**. Para ser un AVL debes tener un **factor de equilibrio en cada nodo entre [-1, 1]**.
+
+```tex
+bf(N) = hNDch - hNIzq
+```
+
+<Mermaid>
+```mermaid
+---
+title: Árbol AVL Equilibrado
+---
+flowchart TB
+    k(((_-1_))) --> A((_1_)) & B((_0_))
+    A --> C((_0_)) & D((_0_))
+    D --> F((_0_)) & G((_0_))
+    B --> H((_0_)) & I((_0_))
+```
+</Mermaid>
+
+<Mermaid>
+```mermaid
+---
+title: Árbol ABL No equilibrado
+---
+flowchart TB
+    k(((_-2_))) --> A((_2_)) & B((_0_))
+    A --> C(NULL) & D((_0_))
+    D --> F((_0_)) & G((_0_))
+    B --> H((_0_)) & I((_0_))
+```
+</Mermaid>
+
+:::note
+Se denominan AVL en honor a Adelson, Velskii y Landis, que fueron los primeros en proponer este TAD. [Wikipedia](https://es.wikipedia.org/wiki/Árbol_AVL)
+:::
+
+### Operaciones
+
+Respecto a la [especificación del árbol binario de búsqueda ABB](#abb-operaciones) solo cambian las funciones de
+inserción y borrados, que también deben **mantener equilibrado el árbol**.
+
+Si el árbol está en perfecto equilibrio una inserción o un borrado no romperá el equilibrio. De no estarlo, una
+inserción o un borrado podría romper el equilibrio.
+
+![EqInserción.png](@assets/prodos/EqInserción.png)
+
+Para solucionar esto debemos emplear [rotaciones para restaurar el equilibrio](#rotaciones-para-restaurar-el-equilibrio).
+
+### Rotaciones para restaurar el equilibrio
+
+:::caution[Work in Progress]
+Sección en desarrollo
+:::
+
+- **Rotaciones simples**
+    - Son aquellas que involucran a dos nodos.
+    - La rotación left-left (LL) y la rotación right-right (RR).
+- **Rotaciones complejas**
+    - Son aquellas que involucran a tres nodos.
+    - Tenemos la rotación right-left (RL) y la rotación left-right (LR).
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2024 licensed under CC BY-NC 4.0",
+    },
+  ]}
+/>

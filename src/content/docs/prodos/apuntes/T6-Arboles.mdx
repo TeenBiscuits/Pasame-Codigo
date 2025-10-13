@@ -1,29 +1,413 @@
 ---
 title: Tema 6 - Árboles
 description: El TAD Árbol Binario, definiciones, especificación informal, implementación y descripción gráfica. Operaciones explicadas de forma gráfica e implementadas. Recorridos en profundidad (preorden, inorden y posorden) y recorrido en anchura.
-tableOfContents: false
-sidebar:
-  badge:
-    text: Migración
-    variant: caution
 ---
 
-import { Aside, LinkButton } from '@astrojs/starlight/components';
+import Mermaid from "@components/Mermaid.astro";
+import { ShowcaseProfile } from 'starlight-showcases';
 
-<Aside type="caution">
+> El TAD Árbol Binario, definiciones, especificación informal, implementación y descripción gráfica. Operaciones explicadas de forma gráfica e implementadas. Recorridos en profundidad (preorden, inorden y posorden) y recorrido en anchura.
 
-Migración en progreso 📦
+## ¿Qué es un árbol?
 
-<LinkButton href="https://github.com/TeenBiscuits/Pasame-Codigo" variant="secondary" icon="github">
-  ¡Hecha un ojo!
-</LinkButton>
+<Mermaid>
+```mermaid
+---
+title: Esto es un Árbol
+---
+flowchart TB
+    A(((_A_))) --> B((_B_)) & C((_C_)) & F((_F_))
+    B --> G((_G_)) & H((_H_))
+```
+</Mermaid>
 
-<LinkButton href="https://pro2324.pablopl.dev/tema-6-arboles.html" variant="primary" icon="open-book">
-  Ver el Original - Pro2324
-</LinkButton>
+Definido por:
 
-<LinkButton href="/" variant="secondary" icon="right-arrow">
-  Volver al inicio
-</LinkButton>
+- Una raíz: `A`, padre de `B`, `C` y `F`.
+- `G` hermanos `H`, hijos de `B` y descendientes de `A`.
+- Altura del árbol: `3`
+- Grado del árbol: `3` (Nº de hijos máximo, alcanzado por `A`)
 
-</Aside>
+:::note
+Para más sobre árboles en la informática: [Wikipedia](https://es.wikipedia.org/wiki/Arbol_(informatica))
+:::
+
+Para trabajar con **Árboles Binarios** es importante tener claro el concepto de **árbol lleno** y **árbol completo**.
+
+| Árbol Lleno | Árbol Completo |
+|-------------|----------------|
+| **Todas sus hojas están al mismo nivel** `h` y todos los nodos anteriores tienen el **número máximo de hijos** (en un árbol binario, 2). | **Todas sus hojas llenas hasta** `h-1` y **todos los nodos del nivel** `h` están lo más a la **izquierda** posible. |
+
+**Árbol Lleno:**
+
+<Mermaid>
+```mermaid
+flowchart TB
+    A(((_A_))) --> B((_B_)) & C((_C_))
+    B --> D((_D_)) & E((_E_))
+    C --> F((_F_)) & G((_G_))
+```
+</Mermaid>
+
+**Árbol Completo:**
+
+<Mermaid>
+```mermaid
+flowchart TB
+    A(((_A_))) --> B((_B_)) & C((_C_))
+    B --> D((_D_)) & E((_E_))
+    C --> F((_F_)) & NULL(NULL)
+```
+</Mermaid>
+
+## TAD Árbol Binario
+
+Un árbol binario es un conjunto cero o más de elementos del mismo tipo llamados nodos.
+
+- O bien 0 nodos, en cuyo caso: **árbol vacío**
+- O bien existe un elemento distinguido **llamado raíz**, y el resto de los nodos se distribuyen en dos subconjuntos, y
+  a su vez cada nodo tiene una serie de **hasta dos hijos** los cuales solo pueden tener **hasta dos hijos**. Formando así
+  los subconjuntos siguientes.
+
+<Mermaid>
+```mermaid
+---
+title: TAD Árbol Binario
+---
+flowchart TB
+    TREE[ÁRBOL] --> A[[A]] --> B[[B]] & C[[C]]
+    B --> D[[D]] & E[NULL]
+    D --> H[NULL] & I[NULL]
+    C --> F[NULL] & G[NULL]
+```
+</Mermaid>
+
+### Operaciones
+
+Siguiendo los pasos para la especificación de un TAD, definimos las operaciones del mismo clasificándolas en:
+constructoras, generadoras, modificadoras, observadoras y destructoras.
+
+:::note
+Para más información: [Tema 1 - Especificación de un TAD](/prodos/apuntes/t1-tipos-abstractos-de-datos-tad/#especificación-de-un-tad)
+:::
+
+#### Generadoras
+
+**createEmptyTree → Tree**
+
+```tex
+createEmptyTree \rightarrow Tree
+```
+
+- **Objetivo:** Crea un árbol vacío
+- **Salida:** Un árbol vacío
+- **PosCondición:** El árbol sin datos
+
+<Mermaid>
+```mermaid
+flowchart LR
+    TREE(ÁRBOL) -.-> NULL[[NULL]]
+```
+</Mermaid>
+
+<details>
+<summary>Mostrar implementación</summary>
+
+```c title="createEmptyTree.c"
+// Ver archivo: ./Ejemplos/Tema_6/createEmptyTree.c
+```
+</details>
+
+**BuildTree(Tree, Item, Tree) → Tree, bool**
+
+```tex
+BuildTree (Tree, Item, Tree) \rightarrow Tree, bool
+```
+
+- **Objetivo:** Crea un árbol con cierta información en la raíz y como hijos los árboles que se reciben en las entradas.
+- **Entrada:**
+  - `Tree(1)`: Árbol que constituirá el hijo izquierdo.
+  - `Item`: Contenido del elemento raíz.
+  - `Tree(2)`: Árbol que constituirá el hijo derecho.
+- **Salida:** `Tree`: Nuevo árbol construido y verdadero si se ha podido construir, falso en caso contrario.
+
+<Mermaid>
+```mermaid
+flowchart TB
+    TREE1(ÁRBOL1) -.-> A[[A]] --> B[[B]] & C[[C]]
+    ITEM
+    TREE2(ÁRBOL2) -.-> 1[[1]] --> 2[[2]] & 3[[3]]
+```
+</Mermaid>
+
+<Mermaid>
+```mermaid
+flowchart TB
+    TREE1(ÁRBOL1) -.-> A[[A]] --> B[[B]] & C[[C]]
+    TREE3(ÁRBOL) -.-> ITEM[[ITEM]]
+    TREE2(ÁRBOL2) -.-> 1[[1]] --> 2[[2]] & 3[[3]]
+```
+</Mermaid>
+
+<Mermaid>
+```mermaid
+flowchart TB
+    TREE1(ÁRBOL1) -.-> A[[A]] --> B[[B]] & C[[C]]
+    TREE3(ÁRBOL) -.-> ITEM[[ITEM]] --> A & 1
+    TREE2(ÁRBOL2) -.-> 1[[1]] --> 2[[2]] & 3[[3]]
+```
+</Mermaid>
+
+<details>
+<summary>Mostrar implementación</summary>
+
+```c title="buildTree.c"
+// Ver archivo: ./Ejemplos/Tema_6/buildTree.c
+```
+</details>
+
+#### Observadoras
+
+**leftChild(Tree) → Tree**
+
+```tex
+leftChild(Tree) \rightarrow Tree
+```
+
+- **Objetivo:** Devuelve el árbol que constituye el hijo izquierdo del árbol
+- **Entrada:** `Tree`: Árbol a manipular
+- **Salida:** `Tree`: Árbol que constituye el hijo izquierdo o nulo del árbol
+- **Precondición:** El árbol no está vacío
+
+<Mermaid>
+```mermaid
+flowchart TB
+    A[[A]] --> B[[B]] & C[[C]]
+    LEFT(leftChild) -.-> B
+```
+</Mermaid>
+
+<details>
+<summary>Mostrar implementación</summary>
+
+```c title="leftChild.c"
+// Ver archivo: ./Ejemplos/Tema_6/leftChild.c
+```
+</details>
+
+**rightChild(Tree) → Tree**
+
+```tex
+rightChild(Tree) \rightarrow Tree
+```
+
+- **Objetivo:** Devuelve el árbol que constituye el hijo derecho del árbol
+- **Entrada:** `Tree`: Árbol a manipular
+- **Salida:** `Tree`: Árbol que constituye el hijo derecho o nulo del árbol
+- **Precondición:** El árbol no está vacío
+
+<Mermaid>
+```mermaid
+flowchart TB
+    A[[A]] --> B[[B]] & C[[C]]
+    RIGHT(rightChild) -.-> C
+```
+</Mermaid>
+
+<details>
+<summary>Mostrar implementación</summary>
+
+```c title="rightChild.c"
+// Ver archivo: ./Ejemplos/Tema_6/rightChild.c
+```
+</details>
+
+**root(Tree) → Item**
+
+```tex
+root(Tree) \rightarrow Item
+```
+
+- **Objetivo:** Devuelve el dato de la raíz del árbol
+- **Entrada:** `Tree`: Árbol a manipular
+- **Salida:** `Item`: Contenido del elemento de la raíz
+- **PreCondición:** El árbol no está vacío
+
+<Mermaid>
+```mermaid
+flowchart TB
+    TREE2(ROOT = B) -.-> B
+    TREE1(ROOT = A) -.-> A[[A]] --> B[[B]] & C[[C]]
+    TREE3(ROOT = C) -.-> C
+```
+</Mermaid>
+
+<details>
+<summary>Mostrar implementación</summary>
+
+```c title="root.c"
+// Ver archivo: ./Ejemplos/Tema_6/root.c
+```
+</details>
+
+**isEmptyTree(Tree) → bool**
+
+```tex
+isEmptyTree(Tree) \rightarrow bool
+```
+
+- **Objetivo:** Determina si el árbol está vacío
+- **Entrada:** `Tree`: Árbol a manipular
+- **Salida:** Verdadero si el árbol está vacío, falso en caso contrario
+
+<Mermaid>
+```mermaid
+flowchart TB
+    A[[A]] --> B[[B]] & C[[C]]
+    B --> NULLB1(NULL) & NULLB2(NULL)
+    EMPTY2(isEmptyTree = false) -.-> C --> NULLC1(NULL) & NULLC2(NULL)
+    EMPTY1(isEmptyTree = true) -.-> NULLC2
+```
+</Mermaid>
+
+<details>
+<summary>Mostrar implementación</summary>
+
+```c title="isEmptyTree.c"
+// Ver archivo: ./Ejemplos/Tema_6/isEmptyTree.c
+```
+</details>
+
+## Recorridos de Árboles
+
+:::note
+Esta es la manera sistemática de recorrer un árbol.
+:::
+
+<Mermaid>
+```mermaid
+---
+title: Árbol de ejemplo
+---
+flowchart TB
+    A((_A_)) --> B((_B_)) & C((_C_))
+    B --> D((_D_)) & E((_E_))
+    C --> G((_G_)) & H((_H_))
+    E --> F((_F_)) & NULL(NULL)
+```
+</Mermaid>
+
+### Recorridos en profundidad
+
+Vídeo explicativo de los recorridos en profundidad.
+
+:::tip
+Vídeo realizado por David Julián Guzmán Cárdenas, estudiante de Ingeniería de Sistemas y Computación de la Universidad Nacional de Colombia
+[Link al vídeo](https://youtu.be/95CgVIsOxLA?si=xT7m6D4k92DadqFb)
+:::
+
+:::note
+En los dibujos no ha sido representado la totalidad del recorrido, solo una idea general del movimiento.
+:::
+
+#### Preorden (R | ID)
+
+- (R) Raíz
+- (I) Izquierdo
+- (D) Derecho
+
+<Mermaid>
+```mermaid
+flowchart TB
+    RECORRIDO[A, B, D, E, F, C, G, H]
+    A((_A_)) --> B((_B_)) & C((_C_))
+    A -. " (R) " .-> A
+    B --> D((_D_)) & E((_E_))
+    D --> NULL3(NULL) & NULL4(NULL)
+    C --> G((_G_)) & H((_H_))
+    E --> F((_F_)) & NULL(NULL)
+    A -. " (I) " .-> B -. " (R) " .-> B -. " (I) " .-> D
+    D -. " (R) " .-> D -. " (I) " .-> NULL3 -.-> D -. " (D) " .-> NULL4
+    NULL4 -.-> D -.-> B -. " (D) " .-> E -. " (R) " .-> E -. " etc " .-> F
+```
+</Mermaid>
+
+#### Inorden (I | R | D)
+
+- (I) Izquierdo
+- (R) Raíz
+- (D) Derecho
+
+<Mermaid>
+```mermaid
+flowchart TB
+    RECORRIDO[D, B, F, E, A, G, C, H]
+    A((_A_)) --> B((_B_)) & C((_C_))
+    B --> D((_D_)) & E((_E_))
+    D --> NULL3(NULL) & NULL4(NULL)
+    C --> G((_G_)) & H((_H_))
+    E --> F((_F_)) & NULL(NULL)
+    A -. " (I) " .-> B -. " (I) " .-> D -. " (R) " .-> D
+    D -. " (I) " .-> NULL3 -.-> D -.-> B -. " (R) " .-> B
+    B -. " (D) " .-> E -. " etc " .-> F
+```
+</Mermaid>
+
+#### Posorden (ID | R)
+
+- (I) Izquierdo
+- (D) Derecho
+- (R) Raíz
+
+<Mermaid>
+```mermaid
+flowchart TB
+    RECORRIDO[D, F, E, B, G, H, C, A]
+    A((_A_)) --> B((_B_)) & C((_C_))
+    B --> D((_D_)) & E((_E_))
+    D --> NULL3(NULL) & NULL4(NULL)
+    C --> G((_G_)) & H((_H_))
+    E --> F((_F_)) & NULL(NULL)
+    A -. " (I) " .-> B -. " (I) " .-> D -. " (I) " .-> NULL3
+    NULL3 -.-> D -. " (D) " .-> NULL4 -.-> D -. " (R) " .-> D
+    D -.-> B -. " (D) " .-> E -. " etc " .-> F
+```
+</Mermaid>
+
+### Recorrido en anchura
+
+<Mermaid>
+```mermaid
+flowchart TB
+    RECORRIDO[A, B, C, D, E, F, G, H, F]
+    A((_A_)) --> B((_B_)) & C((_C_))
+    B --> D((_D_)) & E((_E_))
+    C --> G((_G_)) & H((_H_))
+    E --> F((_F_)) & NULL(NULL)
+
+    subgraph 1
+        A
+    end
+    subgraph 2
+        B & C
+    end
+    subgraph 3
+        D & E & G & H
+    end
+    subgraph 4
+        F & NULL
+    end
+```
+</Mermaid>
+
+<ShowcaseProfile
+  entries={[
+    {
+      name: 'Pablo Portas López',
+      picture: 'https://avatars.githubusercontent.com/u/81629707?v=4',
+      href: 'https://github.com/TeenBiscuits',
+      description:
+        "© 2024 licensed under CC BY-NC 4.0",
+    },
+  ]}
+/>
