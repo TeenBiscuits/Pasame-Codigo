@@ -336,7 +336,6 @@ Falta solución para el ejercicio 6. [Colabora](https://github.com/TeenBiscuits/
 
 </Aside>
 
-{/*
 
 ### Ejercicio 6
 
@@ -348,10 +347,47 @@ temperaturas medias diarias, las temperaturas medias de cada hora y la temperatu
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_06.c"
+// SPDX-FileCopyrightText: 2025 Isabel Villar García <<i.villar@udc.es>>
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+#include <stdio.h>
+
+int main(){
+    float sumdiaria[7],mediadiaria[7];
+    float sumahoraria[24],mediahoraria[24];
+    float sumasemanal, mediasemanal;
+    float temperaturas[7][24];
+    char dias[7][50] = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
+
+    for(int i=0;i<7;i++){
+      sumdiaria[i]=0;
+      printf("\n\n----%s----\n",dias[i]);
+      for(int j=0;j<24;j++){
+        printf("Temperatura a las %d horas:",j);
+        scanf("%f",&temperaturas[i][j]);
+        sumdiaria[i] += temperaturas[i][j];
+        sumasemanal += temperaturas[i][j];
+      }
+      mediadiaria[i] = sumdiaria[i]/24;
+    }
+
+    for(int i=0;i<7;i++){
+      printf("\nTemperatura media del %s: %.2f",dias[i],mediadiaria[i]);
+    }
+
+    for(int i=0;i<24;i++){
+      for(int j=0;j<7;j++) sumahoraria[i] += temperaturas[j][i];
+      mediahoraria[i] = sumahoraria[i]/24;
+      printf("\nTemperatura media de las %d horas: %.2f",i,mediahoraria[i]);
+    }
+
+    mediasemanal = sumasemanal/7/24;
+    printf("\nLa media de temperatura semanal es: %.2f",mediasemanal);
+}
 ```
 </details>
 
-*/}
 
 ### Ejercicio 7
 
@@ -707,7 +743,6 @@ Faltan soluciones para los ejercicios del 11 al 14. [Colabora](https://github.co
 </Aside>
 
 
-{/*
 
 ### Ejercicio 12
 
@@ -716,6 +751,26 @@ Plantee e implemente una función en lenguaje C que indique si un array de enter
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_12.c"
+// SPDX-FileCopyrightText: 2025 Isabel Villar García <<i.villar@udc.es>>
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+#include <stdio.h>
+#include <stdbool.h>
+
+bool esCapicua(int array[], int tamanio) {
+    for (int i = 0; i < tamanio / 2; i++) {
+        if (array[i] != array[tamanio - i - 1]) return false;
+    }
+    return true;
+}
+
+int main() {
+    int array[] = {1, 2, 3, 3, 1};
+    int t = sizeof(array) / sizeof(array[0]);
+    printf("El array %s capicua\n", esCapicua(array, t)? "es" : "no es");
+}
+
 ```
 </details>
 
@@ -728,6 +783,60 @@ dicha matriz y sus posiciones.
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_13.c"
+// SPDX-FileCopyrightText: 2025 Isabel Villar García <<i.villar@udc.es>>
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+#include <stdio.h>
+
+#define MAX 20
+
+int main() {
+    int N;
+    do {
+        printf("Introduzca el tamano de la matriz:");
+        scanf("%d", &N);
+    } while (N <= 0 || N > 20);
+    int matriz[MAX][MAX];
+
+    printf("Introduzca los elementos de la matriz (%dx%d):\n", N, N);
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("Elemento [%d][%d]: ", i + 1, j + 1);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    printf("\nMatriz ingresada:\n");
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("%3d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+
+    int mayor = matriz[0][0], menor = matriz[0][0];
+    int posMayorFila = 0, posMayorColumna = 0;
+    int posMenorFila = 0, posMenorColumna = 0;
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            if (matriz[i][j] > mayor) {
+                mayor = matriz[i][j];
+                posMayorFila = i;
+                posMayorColumna = j;
+            }
+            if (matriz[i][j] < menor) {
+                menor = matriz[i][j];
+                posMenorFila = i;
+                posMenorColumna = j;
+            }
+        }
+    }
+    printf("\nEl mayor elemento es %d en la posicion [%d][%d].\n", mayor, posMayorFila + 1, posMayorColumna + 1);
+    printf("El menor elemento es %d en la posicion [%d][%d].\n", menor, posMenorFila + 1, posMenorColumna + 1);
+}
+
 ```
 </details>
 
@@ -741,10 +850,87 @@ usuario.
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_14.c"
+// SPDX-FileCopyrightText: 2025 Isabel Villar García <i.villar@udc.es>
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+#include <stdio.h>
+
+#define MAX 20
+
+void mostrarMatriz(int matriz[MAX][MAX], int N) {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("%4d", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void Filas(int matriz[MAX][MAX], int N, int fila1, int fila2) {
+    for (int j = 0; j < N; j++) {
+        int temp = matriz[fila1][j];
+        matriz[fila1][j] = matriz[fila2][j];
+        matriz[fila2][j] = temp;
+    }
+}
+
+void Columnas(int matriz[MAX][MAX], int N, int col1, int col2) {
+    for (int i = 0; i < N; i++) {
+        int temp = matriz[i][col1];
+        matriz[i][col1] = matriz[i][col2];
+        matriz[i][col2] = temp;
+    }
+}
+
+int main() {
+    int N;
+    do {
+        printf("Introduzca el tamano de la matriz:");
+        scanf("%d", &N);
+    } while (N <= 0 || N > 20);
+    int matriz[MAX][MAX];
+
+    printf("Introduzca los elementos de la matriz (%dx%d):\n", N, N);
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("Elemento [%d][%d]: ", i + 1, j + 1);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    printf("\nMatriz original:\n");
+    mostrarMatriz(matriz, N);
+
+    int op,i,j;
+    printf("\nSeleccione una opción:\n1. Intercambiar filas\n2. Intercambiar columnas\n");
+    printf("Opcion: ");
+    scanf("%d", &op);
+    if (op == 1) {
+      do{
+        printf("Introduzca las filas a intercambiar (1 <= fila <= %d): ", N);
+        scanf("%d %d", &i, &j);
+      } while(i < 1 || i > N || j < 1 || j > N || i == j);
+       Filas(matriz, N, i - 1, j - 1);
+       printf("\nMatriz despues de intercambiar las filas %d y %d:\n", i, j);
+       mostrarMatriz(matriz, N);
+    }
+
+    else if (op == 2) {
+        do{
+            printf("Introduzca las columnas a intercambiar (1 <= columna <= %d): ", N);
+            scanf("%d %d", &i, &j);
+        } while(i < 1 || i > N || j < 1 || j > N || i == j);
+        Columnas(matriz, N, i - 1, j - 1);
+        printf("\nMatriz despues de intercambiar las columnas %d y %d:\n", i, j);
+        mostrarMatriz(matriz, N);
+    }
+    else printf("Opcion no valida.\n");
+}
+
 ```
 </details>
 
-*/}
 
 ### Ejercicio 15
 
@@ -837,7 +1023,7 @@ int main()
 Faltan soluciones para los ejercicios del 16 al 19. [Colabora](https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/src/content/docs/prouno/boletines/B4-Boletin-4.mdx)
 </Aside>
 
-{/*
+
 
 ### Ejercicio 16
 
@@ -848,6 +1034,67 @@ columnas y sus diagonales principales coincide.
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_16.c"
+// SPDX-FileCopyrightText: 2025 Isabel Villar García <i.villar@udc.es>
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+#include <stdio.h>
+#include <stdbool.h>
+
+#define MAX 20
+
+bool Magico(int matriz[MAX][MAX], int N) {
+    int sumaObjetivo = 0;
+    int suma = 0;
+
+    for (int i = 0; i < N; i++) sumaObjetivo += matriz[0][i];
+
+    // Filas
+    for (int i = 0; i < N; i++) {
+        suma = 0;
+        for (int j = 0; j < N; j++) suma += matriz[i][j];
+        if (suma != sumaObjetivo) return false;
+    }
+
+    // Columna
+    for (int j = 0; j < N; j++) {
+        suma = 0;
+        for (int i = 0; i < N; i++) suma += matriz[i][j];
+        if (suma != sumaObjetivo) return false;
+    }
+
+    // Diagonal principal
+    suma = 0;
+    for (int i = 0; i < N; i++) suma += matriz[i][i];
+    if (suma != sumaObjetivo) return false;
+
+    // Diagonal secundaria
+    suma = 0;
+    for (int i = 0; i < N; i++) suma += matriz[i][N - i - 1];
+    if (suma != sumaObjetivo) return false;
+
+    return true;
+}
+
+int main() {
+    int N;
+    do {
+        printf("Introduzca el tamanho de la matriz (1 <= N < 20): ");
+        scanf("%d", &N);
+    } while (N <= 0 || N > 20);
+    int matriz[MAX][MAX];
+
+    printf("Introduzca los elementos de la matriz (%dx%d):\n", N, N);
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("Elemento [%d][%d]: ", i + 1, j + 1);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    printf("\nLa matriz %s un cuadrado magico\n", Magico(matriz, N)? "es":"no es");
+}
+
 ```
 </details>
 
@@ -860,6 +1107,95 @@ Muestre los resultados de la operación seleccionada por pantalla en formato mat
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_17.c"
+// SPDX-FileCopyrightText: 2025 Isabel Villar García <i.villar@udc.es>
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+#include <stdio.h>
+
+#define MAX 10
+
+void mostrarMatriz(int matriz[MAX][MAX], int N) {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) printf("%3d", matriz[i][j]);
+        printf("\n");
+    }
+}
+
+void sumar(int m1[MAX][MAX], int m2[MAX][MAX], int res[MAX][MAX], int N) {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) res[i][j] = m1[i][j] + m2[i][j];
+    }
+}
+
+// Función para restar dos matrices
+void restar(int m1[MAX][MAX], int m2[MAX][MAX], int res[MAX][MAX], int N) {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) res[i][j] = m1[i][j] - m2[i][j];
+    }
+}
+
+void mult(int m1[MAX][MAX], int m2[MAX][MAX], int res[MAX][MAX], int N) {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            res[i][j] = 0;
+            for (int k = 0; k < N; k++) res[i][j] += m1[i][k] * m2[k][j];
+        }
+    }
+}
+
+int main() {
+    int N;
+    do {
+        printf("Introduzca el tamano de las matrices (1 <= N < 10): ");
+        scanf("%d", &N);
+    } while (N <= 0 || N > 10);
+
+    int m1[MAX][MAX], m2[MAX][MAX], res[MAX][MAX];
+
+    printf("Introduzca los elementos de la primera matriz (%dx%d):\n", N, N);
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("Elemento [%d][%d]: ", i + 1, j + 1);
+            scanf("%d", &m1[i][j]);
+        }
+    }
+
+    printf("Introduzca los elementos de la segunda matriz (%dx%d):\n", N, N);
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("Elemento [%d][%d]: ", i + 1, j + 1);
+            scanf("%d", &m2[i][j]);
+        }
+    }
+
+    int opcion;
+    printf("1. Suma de matrices\n");
+    printf("2. Resta de matrices\n");
+    printf("3. Producto de matrices\n");
+    printf("Opcion: ");
+    scanf("%d", &opcion);
+
+    // Ejecutar la operación seleccionada
+    switch (opcion) {
+        case 1:
+            sumar(m1, m2, res, N);
+            printf("\nResultado de la suma de matrices:\n");
+            mostrarMatriz(res, N);
+            break;
+        case 2:
+            restar(m1, m2, res, N);
+            printf("\nResultado de la resta de matrices:\n");
+            mostrarMatriz(res, N);
+            break;
+        case 3:
+            mult(m1, m2, res, N);
+            printf("\nResultado del producto de matrices:\n");
+            mostrarMatriz(res, N);
+            break;
+    }
+}
+
 ```
 </details>
 
@@ -873,6 +1209,63 @@ valor de su fila y el mayor valor de su columna.
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_18.c"
+// SPDX-FileCopyrightText: 2025 Isabel Villar García <i.villar@udc.es>
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+#include <stdio.h>
+
+#define MAX 10
+
+void buscarPuntoDeSilla(int matriz[MAX][MAX], int N) {
+    int encontrado = 0;
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            int candidato = matriz[i][j];
+            int esMenorEnFila = 1;
+            int esMayorEnColumna = 1;
+
+            for (int k = 0; k < N; k++) {
+                if (matriz[i][k] < candidato) {
+                    esMenorEnFila = 0;
+                    break;
+                }
+            }
+            for (int k = 0; k < N; k++) {
+                if (matriz[k][j] > candidato) {
+                    esMayorEnColumna = 0;
+                    break;
+                }
+            }
+
+            if (esMenorEnFila && esMayorEnColumna) {
+                printf("Punto de silla encontrado en la posicion [%d][%d] con valor %d.\n", i + 1, j + 1, candidato);
+                encontrado = 1;
+            }
+        }
+    }
+    if (!encontrado) printf("No se encontraron puntos de silla en la matriz.\n");
+}
+
+int main() {
+    int N;
+    do {
+        printf("Introduzca el tamano de la matriz (1 <= N < 10): ");
+        scanf("%d", &N);
+    } while (N <= 0 || N >= 10);
+    int matriz[MAX][MAX];
+
+    printf("Introduzca los elementos de la matriz (%dx%d):\n", N, N);
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("Elemento [%d][%d]: ", i + 1, j + 1);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+    buscarPuntoDeSilla(matriz, N);
+}
+
 ```
 </details>
 
@@ -884,10 +1277,65 @@ posteriormente muestre por pantalla todos los números conseguidos de forma orde
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_19.c"
+// SPDX-FileCopyrightText: 2025 Isabel Villar García <i.villar@udc.es>
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define SIZE 500
+#define TOTAL_SIZE (SIZE*3)
+
+void rellenarArray(int arr[], int size) {
+    srand(time(NULL));
+    for (int i = 0; i < size; i++) arr[i] = rand() % 1000;
+}
+
+void combinarArrays(int arr1[], int arr2[], int arr3[], int combinado[], int size) {
+    for (int i = 0; i < size; i++) {
+        combinado[i] = arr1[i];
+        combinado[i + size] = arr2[i];
+        combinado[i + 2 * size] = arr3[i];
+    }
+}
+
+void bubble(int array[], int t) {
+    for (int i = 0; i < t - 1; i++) {
+        for (int j = 0; j < t - i - 1; j++) {
+            if (array[j] > array[j + 1]) {
+                int temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int a1[SIZE], a2[SIZE], a3[SIZE];
+    int res[TOTAL_SIZE];
+
+    rellenarArray(a1, SIZE);
+    rellenarArray(a2, SIZE);
+    rellenarArray(a3, SIZE);
+
+    combinarArrays(a1, a2, a3, res, SIZE);
+    bubble(res, TOTAL_SIZE);
+
+    printf("Números ordenados de menor a mayor:\n");
+    for (int i = 0; i < TOTAL_SIZE; i++) {
+        printf("%d ", res[i]);
+        if ((i + 1) % 10 == 0) {
+            printf("\n"); // Imprimir 10 números por línea para mejor visualización
+        }
+    }
+}
+
 ```
 </details>
 
-*/}
 
 
 ### Ejercicio 20
@@ -1014,7 +1462,6 @@ Faltan soluciones para los ejercicios del 22 al 23. [Colabora](https://github.co
 
 </Aside>
 
-{/*
 
 ### Ejercicio 22
 
@@ -1024,6 +1471,72 @@ devuelva una array ordenado con los elementos de los dos anteriores.
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_22.c"
+// SPDX-FileCopyrightText: 2025 Isabel Villar García <i.villar@udc.es>
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define SIZE 30
+#define MERGED_SIZE (SIZE * 2)
+
+void bubble(int array[], int tamanio) {
+    for (int i = 0; i < tamanio - 1; i++) {
+        for (int j = 0; j < tamanio - i - 1; j++) {
+            if (array[j] > array[j + 1]) {
+                int temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
+        }
+    }
+}
+
+void fusionarYOrdenar(int array1[], int array2[], int resultado[]) {
+    for (int i = 0; i < SIZE; i++) resultado[i] = array1[i];
+    for (int i = 0; i < SIZE; i++) resultado[SIZE + i] = array2[i];
+    bubble(resultado, MERGED_SIZE);
+}
+
+int main() {
+    int array1[SIZE], array2[SIZE], resultado[MERGED_SIZE];
+/*
+    printf("Array 1:\n");
+    for (int i = 0; i < SIZE; i++) scanf("%d", &array1[i]);
+    printf("Array 2:\n");
+    for (int i = 0; i < SIZE; i++) scanf("%d", &array2[i]);
+ */
+
+    // Generar valores aleatorios para los arrays de prueba
+    printf("Generando valores aleatorios para los arrays...\n");
+    for (int i = 0; i < SIZE; i++) {
+        array1[i] = rand() % 100;
+        array2[i] = rand() % 100;
+    }
+
+    // Mostrar los arrays originales
+    printf("Array 1: ");
+    for (int i = 0; i < SIZE; i++) {
+        printf("%d ", array1[i]);
+    }
+    printf("\n");
+
+    printf("Array 2: ");
+    for (int i = 0; i < SIZE; i++) {
+        printf("%d ", array2[i]);
+    }
+    printf("\n");
+
+    fusionarYOrdenar(array1, array2, resultado);
+
+    printf("Array fusionado y ordenado: ");
+    for (int i = 0; i < MERGED_SIZE; i++) printf("%d ", resultado[i]);
+    printf("\n");
+
+    return 0;
+}
+
 ```
 </details>
 
@@ -1036,10 +1549,71 @@ los dos anteriores.
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_23.c"
+// SPDX-FileCopyrightText: 2025 Isabel Villar García <i.villar@udc.es>
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Función de comparación para usar con qsort
+int comparar(const void *a, const void *b) {
+    return (*(char*)a - *(char*)b);
+}
+
+char* combinarYOrdenar(char array1[], char array2[], int t) {
+    char *resultado = (char*)malloc(2 * t * sizeof(char)); // Reservar memoria para el array combinado
+
+    // Copiar los elementos del primer array al resultado
+    for (int i = 0; i < t; i++) {
+        resultado[i] = array1[i];
+    }
+
+    // Copiar los elementos del segundo array al resultado
+    for (int i = 0; i < t; i++) {
+        resultado[t + i] = array2[i];
+    }
+
+    // Ordenar el array combinado
+    qsort(resultado, 2 * t, sizeof(char), comparar);
+
+    return resultado; // Retornar el array combinado y ordenado
+}
+
+int main() {
+    int t;
+    printf("Ingrese el tamaño de los arrays (máximo 100): ");
+    scanf("%d", &t);
+    char array1[t], array2[t];
+
+    printf("Ingrese los %d elementos para el primer array:\n", t);
+    for (int i = 0; i < t; i++) {
+        printf("Elemento %d: ", i + 1);
+        scanf(" %c", &array1[i]);
+    }
+
+    printf("Ingrese los %d elementos para el segundo array:\n", t);
+    for (int i = 0; i < t; i++) {
+        printf("Elemento %d: ", i + 1);
+        scanf(" %c", &array2[i]);
+    }
+
+    char *arrayOrdenado = combinarYOrdenar(array1, array2, t);
+
+    printf("Array combinado y ordenado: ");
+    for (int i = 0; i < 2 * t; i++) {
+        printf("%c ", arrayOrdenado[i]);
+    }
+    printf("\n");
+
+    // Liberar la memoria
+    free(arrayOrdenado);
+}
+
 ```
 </details>
 
-*/}
+
 
 ### Ejercicio 24
 
@@ -1156,7 +1730,7 @@ Faltan soluciones para el ejercicio 26. [Colabora](https://github.com/TeenBiscui
 
 </Aside>
 
-{/*
+
 
 ### Ejercicio 26
 
@@ -1167,10 +1741,100 @@ original y la frase después de llevar a cabo la sustitución.
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_26.c"
+// SPDX-FileCopyrightText: 2025 Isabel Villar García <i.villar@udc.es>
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_LONGITUD 100  // Longitud máxima de la frase
+
+void reemplazarPalabra(char *frase, const char *palabra, const char *sinonimo) {
+    int longitudPalabra = strlen(palabra);
+    int longitudSinonimo = strlen(sinonimo);
+    int longitudFrase = strlen(frase);
+    int palabraEncontrada = 0;
+
+    int lpos;
+
+    for (int i = 0; i <= longitudFrase - longitudPalabra; i++) {
+        int lpos = 0;
+        for (int j = 0; j < longitudPalabra; j++) {
+            if (frase[i + j] == palabra[j]) lpos++;
+        }
+
+        if (lpos == longitudPalabra) {
+            palabraEncontrada = 1;
+
+            // Si el sinónimo es más corto que la palabra original
+            if (longitudSinonimo < longitudPalabra) {
+                // Reemplazar la palabra con el sinónimo
+                for (int k = 0; k < longitudSinonimo; k++) {
+                    frase[i + k] = sinonimo[k];
+                }
+
+                // Mover el resto de la cadena hacia la izquierda
+                int desplazamiento = longitudPalabra - longitudSinonimo;
+                for (int l = i + longitudSinonimo; l < longitudFrase; l++) {
+                    frase[l - desplazamiento] = frase[l];
+                }
+            }
+            // Si el sinónimo es más largo que la palabra original
+            else if (longitudSinonimo > longitudPalabra) {
+                // Mover el resto de la cadena hacia la derecha para hacer espacio
+                int desplazamiento = longitudSinonimo - longitudPalabra;
+                for (int l = longitudFrase; l >= i + longitudPalabra; l--) {
+                    frase[l + desplazamiento] = frase[l];
+                }
+
+                // Reemplazar la palabra con el sinónimo
+                for (int k = 0; k < longitudSinonimo; k++) {
+                    frase[i + k] = sinonimo[k];
+                }
+            }
+            // Si la palabra y el sinónimo tienen la misma longitud
+            else {
+                // Simplemente reemplazar la palabra con el sinónimo
+                for (int k = 0; k < longitudSinonimo; k++) {
+                    frase[i + k] = sinonimo[k];
+                }
+            }
+            break;  // Solo reemplazamos la primera ocurrencia
+        }
+    }
+
+    // Si no se encontró la palabra
+    if (!palabraEncontrada) {
+        printf("La palabra no se encontró en la frase.\n");
+    }
+}
+
+int main() {
+    char frase[500];
+    char palabra[MAX_LONGITUD], sinonimo[MAX_LONGITUD];
+
+    // Leer la frase
+    printf("Ingrese una frase: ");
+    gets(frase);
+
+    printf("Ingrese la palabra que desea reemplazar: ");
+    gets(palabra);
+
+    printf("Ingrese el sinónimo: ");
+    gets(sinonimo);
+
+    printf("\nFrase original: %s\n", frase);
+
+    reemplazarPalabra(frase, palabra, sinonimo);
+    printf("Frase después de la sustitución: %s\n", frase);
+
+}
+
 ```
 </details>
 
-*/}
+
 
 ### Ejercicio 27
 
@@ -1335,7 +1999,7 @@ Faltan soluciones para los ejercicios del 30 al 35. [Colabora](https://github.co
 
 </Aside>
 
-{/*
+
 
 ### Ejercicio 30
 
@@ -1344,8 +2008,38 @@ Diseñe una función que sume dos números de 2500 cifras cada uno.
 <details>
 <summary>Mostrar Solución</summary>
 ```c title="Ejercicio_30.c"
+// SPDX-FileCopyrightText: 2025 Isabel Villar García <<i.villar@udc.es>>
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_LONGITUD 100  // Longitud máxima de la frase
+
+int main() {
+    char frase[MAX_LONGITUD];
+    char palabra[MAX_LONGITUD], sinonimo[MAX_LONGITUD];
+
+    printf("Ingrese una frase: ");
+    gets(frase);
+
+    printf("Ingrese la palabra que desea reemplazar: ");
+    gets(palabra);
+
+    printf("Ingrese el sinónimo: ");
+    gets(sinonimo);
+
+    printf("\nFrase original: %s    %d\n", frase, strlen(frase));
+
+    printf("Palabra: %s    %d\n", palabra,strlen(palabra));
+    printf("Sinonimo: %s    %d", sinonimo,strlen(sinonimo));
+
+}
 ```
 </details>
+
+{/*
 
 ### Ejercicio 31
 
