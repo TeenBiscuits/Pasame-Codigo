@@ -123,6 +123,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/81188779?v=4",
       "profile": "https://github.com/danicallero",
       "contributions": ["design"]
+    },
+    {
+      "login": "QuantikIsa",
+      "name": "QuantikIsa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/200401233?v=4",
+      "profile": "https://github.com/QuantikIsa",
+      "contributions": ["code"]
     }
   ],
   "linkToUsage": true
