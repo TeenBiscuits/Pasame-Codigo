@@ -14,7 +14,7 @@
     "contributors:generate": "all-contributors generate"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.5",
     "@astrojs/starlight": "^0.36.1",
     "@astrojs/starlight-docsearch": "^0.6.0",
     "@astrojs/starlight-tailwind": "^4.0.1",
