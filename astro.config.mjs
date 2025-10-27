@@ -160,21 +160,14 @@ export default defineConfig({
             crossorigin: "",
           },
         },
-        // Plausible Analytics
+        // Self Hosted Umami Analytics
         {
           tag: "script",
           attrs: {
             defer: true,
-            "data-domain": "pc.pablopl.dev",
-            src: "https://analytics.pablopl.dev/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js",
+            "data-website-id": "6a0d1093-b07e-4519-af78-e2c5ba69021b",
+            src: "https://analytics.pablopl.dev/script.js",
           },
-        },
-        {
-          tag: "script",
-          content: `
-            window.plausible = window.plausible || function(){" "}
-            {(window.plausible.q = window.plausible.q || []).push(arguments)}
-          `,
         },
       ],
       editLink: {
