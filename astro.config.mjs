@@ -160,19 +160,21 @@ export default defineConfig({
             crossorigin: "",
           },
         },
-        // Google Tag (CMP + GA4 + Clarity)
-        {
-          tag: "script",
-          attrs: {
-            src: "/google-tag.js",
-          },
-        },
         // Plausible Analytics
         {
           tag: "script",
           attrs: {
-            src: "/plausible.js",
+            defer: true,
+            "data-domain": "pc.pablopl.dev",
+            src: "https://analytics.pablopl.dev/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js",
           },
+        },
+        {
+          tag: "script",
+          content: `
+            window.plausible = window.plausible || function(){" "}
+            {(window.plausible.q = window.plausible.q || []).push(arguments)}
+          `,
         },
       ],
       editLink: {
