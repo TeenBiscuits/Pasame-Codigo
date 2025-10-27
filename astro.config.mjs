@@ -167,6 +167,13 @@ export default defineConfig({
             src: "/google-tag.js",
           },
         },
+        // Plausible Analytics
+        {
+          tag: "script",
+          attrs: {
+            src: "/plausible.js",
+          },
+        },
       ],
       editLink: {
         baseUrl: "https://github.com/TeenBiscuits/Pasame-Codigo/edit/main/",
