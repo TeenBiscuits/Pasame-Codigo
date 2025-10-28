@@ -166,6 +166,7 @@ export default defineConfig({
           attrs: {
             defer: true,
             "data-website-id": "6a0d1093-b07e-4519-af78-e2c5ba69021b",
+            "data-domains": "pc.pablopl.dev",
             src: "https://analytics.pablopl.dev/script.js",
           },
         },
