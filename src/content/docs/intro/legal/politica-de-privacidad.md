@@ -19,9 +19,13 @@ _para las siguientes finalidades y utilizando los siguientes servicios:_
 
 Datos Personales: Cantidad de Usuarios; Datos de uso; Estadísticas de sesión; Identificadores
 
-#### Google Analytics 4
+#### Umami (Self-hosted)
 
-Datos Personales: Cantidad de Usuarios; Datos de uso; Estadísticas de sesión; Rastreadores
+Datos Personales: Cantidad de Usuarios; Datos de uso; Estadísticas de sesión; Identificadores
+
+### Ahrefs Web Analytics
+
+Datos Personales: Cantidad de Usuarios; Datos de uso; Estadísticas de sesión; Identificadores
 
 ### Optimización y distribución del tráfico
 
