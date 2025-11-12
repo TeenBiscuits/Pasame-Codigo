@@ -3,7 +3,6 @@ title: Tema 4 y 5 - Colas y Pilas
 description: El TAD Cola y el TAD Pila, especificación informal, implementación y descripción gráfica. Diferencias entre ambos explicadas. Implementaciones con array circular, lista dinámica circular y a partir del TAD Lista. Operaciones explicadas de forma gráfica.
 ---
 
-import Mermaid from "@components/Mermaid.astro";
 import { ShowcaseProfile } from 'starlight-showcases';
 
 > El TAD Cola y el TAD Pila, especificación informal, implementación y descripción gráfica. Diferencias entre ambos explicadas. Implementaciones con array circular, lista dinámica circular y a partir del TAD Lista. Operaciones explicadas de forma gráfica.
@@ -24,7 +23,6 @@ eliminar el primero, que fue el primero en ser insertado. Este concepto es descr
 Para saber más sobre FIFO: [Wikipedia](https://es.wikipedia.org/wiki/First_in,_first_out)
 :::
 
-<Mermaid>
 ```mermaid
 ---
 title: TAD Cola
@@ -39,7 +37,6 @@ flowchart LR
     FRENTE([Este es el frente de la cola]) -.-> NODO1
     FINAL([Este es el final de la cola]) -.-> NODO3
 ```
-</Mermaid>
 
 El **primero en llegar a una cola**, es el **primero en salir de la cola**, ya que está al principio (_front_) de la
 cola.
@@ -260,7 +257,6 @@ primer elemento, que fue último en añadirse. Este concepto es descrito como **
 Para saber más sobre LIFO: [Wikipedia](https://es.wikipedia.org/wiki/Last_in,_first_out)
 :::
 
-<Mermaid>
 ```mermaid
 ---
 title: TAD Pila
@@ -273,7 +269,6 @@ flowchart LR
     end
     ENTRADA & SALIDA --> NODO1 --> NODO2 --> NODO3
 ```
-</Mermaid>
 
 Cuando agregas libros a una pila, el **primer libro** queda _aplastado_ bajo el peso de todos los demás. **Al fondo de
 la pila**.
@@ -410,7 +405,6 @@ El TAD Cola y el TAD Pila son muy similares, por eso en estos apuntes han sido u
 | `enqueue(Item, Queue)` y `dequeue(Queue)`: Añadir y Eliminar un elemento a la cola | `push(Item, Stack)` y `pop(Stack)`: Añadir y Eliminar un elemento a la pila |
 | `front(Queue)`: Devuelve el elemento `n` de la cola (el primero en entrar). | `peek(Stack)`: Devuelve el elemento `0` de la pila (el último en entrar). |
 
-<Mermaid>
 ```mermaid
 ---
 title: TAD Cola
@@ -423,9 +417,7 @@ flowchart TB
     end
     ENTRADA --> NODO3 --> NODO2 --> NODO1 --> SALIDA
 ```
-</Mermaid>
 
-<Mermaid>
 ```mermaid
 ---
 title: TAD Pila
@@ -438,7 +430,6 @@ flowchart TB
     end
     ENTRADA & SALIDA --> NODO1 --> NODO2 --> NODO3
 ```
-</Mermaid>
 
 <ShowcaseProfile
   entries={[

@@ -3,7 +3,6 @@ title: Tema 3 - Listas
 description: El TAD Lista, especificación informal, implementación y descripción gráfica. Operaciones explicadas de forma gráfica e implementadas. Otros tipos de TAD como Lista Ordenada y Multilistas también explicados.
 ---
 
-import Mermaid from "@components/Mermaid.astro";
 import { ShowcaseProfile } from 'starlight-showcases';
 
 > El TAD Lista, especificación informal, implementación y descripción gráfica. Operaciones explicadas de forma gráfica e implementadas. Otros tipos de TAD como Lista Ordenada y Multilistas también explicados.
@@ -21,7 +20,6 @@ Una lista es por definición un conjunto de cero o más elementos.
 Los elementos están ordenados de forma lineal, no por su contenido, sino simplemente por la posición que ocupan
 relativos unos a otros.
 
-<Mermaid>
 ```mermaid
 ---
 title: TAD Lista enlazada simple
@@ -44,7 +42,6 @@ flowchart LR
     SIGUIENTE2 --> NODO3
     SIGUIENTE3 --> NULL
 ```
-</Mermaid>
 
 Por lo tanto, la lista está formada por ``nodos`` idénticos. Cada nodo está formado por dos elementos, la información
 del propio nodo y un puntero que apunta al siguiente. Además, el inicio de la lista está delimitado por un
@@ -68,15 +65,13 @@ Para más información: [Especificación de un TAD](/prodos/apuntes/t1-tipos-abs
     Objetivo: Crear una lista vacía y la inicializa
 
     Salida: Una lista vacía
-    
+
     Poscondición: La lista sin datos
 
-<Mermaid>
 ```mermaid
 flowchart LR
     LISTA --&gt; NULL
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -109,7 +104,6 @@ Precondición: Position es una posición válida de la lista o es una posición 
 Postcondición: Las posiciones de los elementos de la lista posteriores a la del elemento insertado pueden haber variado
 
 
-<Mermaid>
 ```mermaid
 flowchart LR
     LISTA
@@ -125,8 +119,6 @@ flowchart LR
     SIGUIENTE1 --&gt; NODO3
     SIGUIENTE3 --&gt; NULL
 ```
-</Mermaid>
-<Mermaid>
 ```mermaid
 flowchart LR
     LISTA
@@ -147,7 +139,6 @@ flowchart LR
     SIGUIENTE2 -.-&gt; NODO3
     SIGUIENTE3 --&gt; NULL
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -204,44 +195,34 @@ Salida: List_2: Copia de la lista original y verdadero si se ha podido copiar, f
 
 Precondición: La lista origen está inicializada
 
-<Mermaid>
 ```mermaid
 flowchart LR
     LISTA1[LISTA 1] --&gt; NODO1 --&gt; NODO2 --&gt; NULL
     LISTA2[LISTA 2]
 ```
-</Mermaid>
-<Mermaid>
 ```mermaid
 flowchart LR
     LISTA1[LISTA 1] --&gt; NODO1[NODO 1] --&gt; NODO2[NODO 2] --&gt; NULL
     LISTA2[LISTA 2] --&gt; NODO21[NUEVO NODO]
     LISTA2 -. X .-&gt; NODO1[NODO 1]
 ```
-</Mermaid>
-<Mermaid>
 ```mermaid
 flowchart LR
     LISTA1[LISTA 1] --&gt; NODO1[NODO 1] --&gt; NODO2[NODO 2] --&gt; NULL
     LISTA2[LISTA 2] --&gt; NODO21[NODO 1]
     NODO1 == copiar ==&gt; NODO21[NODO 1]
 ```
-</Mermaid>
-<Mermaid>
 ```mermaid
 flowchart LR
     LISTA1[LISTA 1] --&gt; NODO1[NODO 1] --&gt; NODO2[NODO 2] --&gt; NULL
     LISTA2[LISTA 2] --&gt; NODO21[NODO 1] --&gt; NODO22[NUEVO NODO]
     NODO2 == copiar ==&gt; NODO22[NUEVO NODO]
 ```
-</Mermaid>
-<Mermaid>
 ```mermaid
 flowchart LR
     LISTA1[LISTA 1] --&gt; NODO1[NODO 1] --&gt; NODO2[NODO 2] --&gt; NULL
     LISTA2[LISTA 2] --&gt; NODO21[NODO 1] --&gt; NODO22[NODO 2] --&gt; NULL
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -294,7 +275,6 @@ Salida: List: Lista con el contenido del elemento modificado
 
 Precondición: Position es una posición válida de la lista
 
-<Mermaid>
 ```mermaid
 flowchart LR
     LISTA
@@ -321,7 +301,6 @@ flowchart LR
     INFO -.-&gt; CONTENIDO3
     POS --&gt; NODO3
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -354,7 +333,6 @@ Precondición: Position es una posición válida de la lista
 
 Postcondición: Las posiciones de los elementos de la lista posteriores a la de la posición eliminada pueden haber variado
 
-<Mermaid>
 ```mermaid
 flowchart TB
     LISTA
@@ -376,8 +354,6 @@ flowchart TB
     SIGUIENTE2 -.-&gt; NODO3
     SIGUIENTE3 --&gt; NULL
 ```
-</Mermaid>
-<Mermaid>
 ```mermaid
 flowchart TB
     LISTA
@@ -393,7 +369,6 @@ flowchart TB
     SIGUIENTE1 --&gt; NODO3
     SIGUIENTE3 --&gt; NULL
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -425,7 +400,6 @@ Entrada: List: Lista a borrar
 
 Salida: Lista vacía
 
-<Mermaid>
 ```mermaid
 flowchart TB
     LISTA
@@ -447,8 +421,6 @@ flowchart TB
     SIGUIENTE3 -.-&gt; NULL
     DELETE["FREE ()"] ==&gt; NODO3
 ```
-</Mermaid>
-<Mermaid>
 ```mermaid
 flowchart TB
     LISTA
@@ -466,8 +438,6 @@ flowchart TB
     NULL
     DELETE["FREE ()"] ==&gt; NODO2
 ```
-</Mermaid>
-<Mermaid>
 ```mermaid
 flowchart TB
     LISTA
@@ -480,13 +450,10 @@ flowchart TB
     NULL
     DELETE["FREE ()"] ==&gt; NODO1
 ```
-</Mermaid>
-<Mermaid>
 ```mermaid
 flowchart LR
     LISTA --&gt; NULL
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -519,7 +486,6 @@ Entrada:
 - List: Lista donde realizar la búsqueda
 Salida: Position: Posición del elemento encontrado o nulo si no se encuentra
 
-<Mermaid>
 ```mermaid
 flowchart TB
     LISTA
@@ -541,8 +507,6 @@ flowchart TB
     SIGUIENTE3 --&gt; NULL
     FIND["¿ERES EL USUARIO3?"] -- NO --&gt; NODO1
 ```
-</Mermaid>
-<Mermaid>
 ```mermaid
 flowchart TB
     LISTA
@@ -564,8 +528,6 @@ flowchart TB
     SIGUIENTE3 --&gt; NULL
     FIND["¿ERES EL USUARIO3?"] -- NO --&gt; NODO2
 ```
-</Mermaid>
-<Mermaid>
 ```mermaid
 flowchart TB
     LISTA
@@ -587,7 +549,6 @@ flowchart TB
     SIGUIENTE3 --&gt; NULL
     FIND["¿ERES EL USUARIO3?"] -- SI --&gt; NODO3
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -764,7 +725,6 @@ Los elementos están ordenados de forma lineal por su contenido.
 
 En caso de ordenación alfabética:
 
-<Mermaid>
 ```mermaid
 ---
 title: TAD Lista ordenada enlazada simple
@@ -787,7 +747,6 @@ flowchart LR
     SIGUIENTE2 --> NODO3
     SIGUIENTE3 --> NULL
 ```
-</Mermaid>
 
 ### Operación a cambiar
 
@@ -810,7 +769,6 @@ Precondición: La lista está inicializada
 Postcondición: Las posiciones de los elementos de la lista posteriores a la del elemento insertado pueden haber
 variado
 
-<Mermaid>
 ```mermaid
 flowchart TB
     LISTA
@@ -835,8 +793,6 @@ flowchart TB
     SIGUIENTE2 --&gt; NODO3
     SIGUIENTE3 --&gt; NULL
 ```
-</Mermaid>
-<Mermaid>
 ```mermaid
 flowchart TB
     LISTA
@@ -862,7 +818,6 @@ flowchart TB
     SIGUIENTE4 -.-&gt; NODO3
     SIGUIENTE3 --&gt; NULL
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>

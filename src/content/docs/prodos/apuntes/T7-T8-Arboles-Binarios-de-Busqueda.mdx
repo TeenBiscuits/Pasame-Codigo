@@ -4,7 +4,6 @@ description: El TAD Árbol Binario de Búsqueda ABB y el TAD Árbol Binario de B
 next: false
 ---
 
-import Mermaid from "@components/Mermaid.astro";
 import { ShowcaseProfile } from 'starlight-showcases';
 
 > El TAD Árbol Binario de Búsqueda ABB y el TAD Árbol Binario de Búsqueda AVL, especificación informal, implementación y descripción gráfica. Operaciones explicadas de forma gráfica e implementadas. Rotaciones (LL, RR, LR y RL) y factor de equilibrio.
@@ -23,7 +22,6 @@ import { ShowcaseProfile } from 'starlight-showcases';
     - estructuras **estáticas** en operaciones de **inserción** y **eliminación**.
     - estructuras **dinámicas** en la operación de **búsqueda**.
 
-<Mermaid>
 ```mermaid
 ---
 title: Árbol binario de búsqueda (ABB)
@@ -31,7 +29,6 @@ title: Árbol binario de búsqueda (ABB)
 flowchart TB
     k(((k))) --> A[/claves < k\] & B[/claves > k\]
 ```
-</Mermaid>
 
 ### Pros y contras
 
@@ -39,7 +36,6 @@ flowchart TB
 
 Si los nodos se añaden en un orden aleatorio habrá que equilibrarlo:
 
-<Mermaid>
 ```mermaid
 ---
 title: Árbol sin equilibrar
@@ -50,11 +46,9 @@ flowchart TB
     2 --> NULL[[NULL]] & 4[[4]]
     8 --> 7[[7]]
 ```
-</Mermaid>
 
 Si los nodos se añaden en un orden determinado el árbol degenerará en una lista ordenada:
 
-<Mermaid>
 ```mermaid
 ---
 title: Árbol degenerado en lista
@@ -64,7 +58,6 @@ flowchart TB
     3 --> 2[[2]] & NULL2[[NULL]]
     2 --> 1[[1]] & NULL3[[NULL]]
 ```
-</Mermaid>
 
 ### Operaciones
 
@@ -95,7 +88,6 @@ insertKey(Tree, Key) \rightarrow Tree, bool
 - **Salida:** `Tree`: Nuevo árbol que resulta de la inserción y verdadero si se ha podido insertar o si la clave existe, falso en caso contrario.
 - **Poscondición:** El árbol incorpora un nuevo nodo con los datos si éstos no existían en el árbol
 
-<Mermaid>
 ```mermaid
 flowchart TB
     Key(Key: 25)
@@ -103,7 +95,6 @@ flowchart TB
     A --> NULL[[NULL]] & C[[25]]
     K -. 25 < 30 .-> A -. 25 > 20 .-> C
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -152,7 +143,6 @@ findKey(Key, Tree) \rightarrow Tree
   - `Tree`: Árbol a manipular
 - **Salida:** `Tree`: Acceso al árbol cuya raíz contiene la clave, o nulo si éste no existe (el árbol está vacío o no contiene esa clave)
 
-<Mermaid>
 ```mermaid
 flowchart TB
     key(Key: 25)
@@ -161,7 +151,6 @@ flowchart TB
     B --> F[[35]] & G[[45]]
     k -. 25 < 30 .-> A -. 25 > 20 .-> E
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -191,7 +180,6 @@ removeKey(Key, Tree) \rightarrow Tree
 Se deben tener en cuenta los hijos del nodo a borrar, ya que deben continuar en el árbol. Si el nodo tienen dos hijos, se sustituye por el mayor de los hijos menores (subárbol izquierdo).
 :::
 
-<Mermaid>
 ```mermaid
 flowchart TB
     key(A eliminar: 87)
@@ -200,9 +188,7 @@ flowchart TB
     D --> NULL1(NULL) & F[[65]]
     F --> G[[56]] & NULL2(NULL)
 ```
-</Mermaid>
 
-<Mermaid>
 ```mermaid
 flowchart TB
     key(A eliminar: 87)
@@ -213,9 +199,7 @@ flowchart TB
         F --> G[[56]] & NULL2(NULL)
     end
 ```
-</Mermaid>
 
-<Mermaid>
 ```mermaid
 flowchart TB
     key(A eliminar: 87)
@@ -227,9 +211,7 @@ flowchart TB
     end
     F -. el mayor .-> B
 ```
-</Mermaid>
 
-<Mermaid>
 ```mermaid
 flowchart TB
     key(A eliminar: 87)
@@ -239,7 +221,6 @@ flowchart TB
         D --> NULL(NULL) & G[[56]]
     end
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -266,7 +247,6 @@ El **factor de equilibrio** (balance factor) de un nodo se define como la **altu
 bf(N) = hNDch - hNIzq
 ```
 
-<Mermaid>
 ```mermaid
 ---
 title: Árbol AVL Equilibrado
@@ -277,9 +257,7 @@ flowchart TB
     D --> F((_0_)) & G((_0_))
     B --> H((_0_)) & I((_0_))
 ```
-</Mermaid>
 
-<Mermaid>
 ```mermaid
 ---
 title: Árbol ABL No equilibrado
@@ -290,7 +268,6 @@ flowchart TB
     D --> F((_0_)) & G((_0_))
     B --> H((_0_)) & I((_0_))
 ```
-</Mermaid>
 
 :::note
 Se denominan AVL en honor a Adelson, Velskii y Landis, que fueron los primeros en proponer este TAD. [Wikipedia](https://es.wikipedia.org/wiki/Árbol_AVL)

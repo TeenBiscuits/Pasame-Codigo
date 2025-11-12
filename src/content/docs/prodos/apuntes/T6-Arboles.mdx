@@ -3,14 +3,12 @@ title: Tema 6 - Árboles
 description: El TAD Árbol Binario, definiciones, especificación informal, implementación y descripción gráfica. Operaciones explicadas de forma gráfica e implementadas. Recorridos en profundidad (preorden, inorden y posorden) y recorrido en anchura.
 ---
 
-import Mermaid from "@components/Mermaid.astro";
 import { ShowcaseProfile } from 'starlight-showcases';
 
 > El TAD Árbol Binario, definiciones, especificación informal, implementación y descripción gráfica. Operaciones explicadas de forma gráfica e implementadas. Recorridos en profundidad (preorden, inorden y posorden) y recorrido en anchura.
 
 ## ¿Qué es un árbol?
 
-<Mermaid>
 ```mermaid
 ---
 title: Esto es un Árbol
@@ -19,7 +17,6 @@ flowchart TB
     A(((_A_))) --> B((_B_)) & C((_C_)) & F((_F_))
     B --> G((_G_)) & H((_H_))
 ```
-</Mermaid>
 
 Definido por:
 
@@ -40,25 +37,21 @@ Para trabajar con **Árboles Binarios** es importante tener claro el concepto de
 
 **Árbol Lleno:**
 
-<Mermaid>
 ```mermaid
 flowchart TB
     A(((_A_))) --> B((_B_)) & C((_C_))
     B --> D((_D_)) & E((_E_))
     C --> F((_F_)) & G((_G_))
 ```
-</Mermaid>
 
 **Árbol Completo:**
 
-<Mermaid>
 ```mermaid
 flowchart TB
     A(((_A_))) --> B((_B_)) & C((_C_))
     B --> D((_D_)) & E((_E_))
     C --> F((_F_)) & NULL(NULL)
 ```
-</Mermaid>
 
 ## TAD Árbol Binario
 
@@ -69,7 +62,6 @@ Un árbol binario es un conjunto cero o más de elementos del mismo tipo llamado
   a su vez cada nodo tiene una serie de **hasta dos hijos** los cuales solo pueden tener **hasta dos hijos**. Formando así
   los subconjuntos siguientes.
 
-<Mermaid>
 ```mermaid
 ---
 title: TAD Árbol Binario
@@ -80,7 +72,6 @@ flowchart TB
     D --> H[NULL] & I[NULL]
     C --> F[NULL] & G[NULL]
 ```
-</Mermaid>
 
 ### Operaciones
 
@@ -103,12 +94,10 @@ createEmptyTree \rightarrow Tree
 - **Salida:** Un árbol vacío
 - **PosCondición:** El árbol sin datos
 
-<Mermaid>
 ```mermaid
 flowchart LR
     TREE(ÁRBOL) -.-> NULL[[NULL]]
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -139,32 +128,26 @@ BuildTree (Tree, Item, Tree) \rightarrow Tree, bool
   - `Tree(2)`: Árbol que constituirá el hijo derecho.
 - **Salida:** `Tree`: Nuevo árbol construido y verdadero si se ha podido construir, falso en caso contrario.
 
-<Mermaid>
 ```mermaid
 flowchart TB
     TREE1(ÁRBOL1) -.-> A[[A]] --> B[[B]] & C[[C]]
     ITEM
     TREE2(ÁRBOL2) -.-> 1[[1]] --> 2[[2]] & 3[[3]]
 ```
-</Mermaid>
 
-<Mermaid>
 ```mermaid
 flowchart TB
     TREE1(ÁRBOL1) -.-> A[[A]] --> B[[B]] & C[[C]]
     TREE3(ÁRBOL) -.-> ITEM[[ITEM]]
     TREE2(ÁRBOL2) -.-> 1[[1]] --> 2[[2]] & 3[[3]]
 ```
-</Mermaid>
 
-<Mermaid>
 ```mermaid
 flowchart TB
     TREE1(ÁRBOL1) -.-> A[[A]] --> B[[B]] & C[[C]]
     TREE3(ÁRBOL) -.-> ITEM[[ITEM]] --> A & 1
     TREE2(ÁRBOL2) -.-> 1[[1]] --> 2[[2]] & 3[[3]]
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -203,13 +186,11 @@ leftChild(Tree) \rightarrow Tree
 - **Salida:** `Tree`: Árbol que constituye el hijo izquierdo o nulo del árbol
 - **Precondición:** El árbol no está vacío
 
-<Mermaid>
 ```mermaid
 flowchart TB
     A[[A]] --> B[[B]] & C[[C]]
     LEFT(leftChild) -.-> B
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -238,13 +219,11 @@ rightChild(Tree) \rightarrow Tree
 - **Salida:** `Tree`: Árbol que constituye el hijo derecho o nulo del árbol
 - **Precondición:** El árbol no está vacío
 
-<Mermaid>
 ```mermaid
 flowchart TB
     A[[A]] --> B[[B]] & C[[C]]
     RIGHT(rightChild) -.-> C
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -273,14 +252,12 @@ root(Tree) \rightarrow Item
 - **Salida:** `Item`: Contenido del elemento de la raíz
 - **PreCondición:** El árbol no está vacío
 
-<Mermaid>
 ```mermaid
 flowchart TB
     TREE2(ROOT = B) -.-> B
     TREE1(ROOT = A) -.-> A[[A]] --> B[[B]] & C[[C]]
     TREE3(ROOT = C) -.-> C
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -308,7 +285,6 @@ isEmptyTree(Tree) \rightarrow bool
 - **Entrada:** `Tree`: Árbol a manipular
 - **Salida:** Verdadero si el árbol está vacío, falso en caso contrario
 
-<Mermaid>
 ```mermaid
 flowchart TB
     A[[A]] --> B[[B]] & C[[C]]
@@ -316,7 +292,6 @@ flowchart TB
     EMPTY2(isEmptyTree = false) -.-> C --> NULLC1(NULL) & NULLC2(NULL)
     EMPTY1(isEmptyTree = true) -.-> NULLC2
 ```
-</Mermaid>
 
 <details>
 <summary>Mostrar implementación</summary>
@@ -340,7 +315,6 @@ bool isEmptyTree(tBinTree T){
 Esta es la manera sistemática de recorrer un árbol.
 :::
 
-<Mermaid>
 ```mermaid
 ---
 title: Árbol de ejemplo
@@ -351,7 +325,6 @@ flowchart TB
     C --> G((_G_)) & H((_H_))
     E --> F((_F_)) & NULL(NULL)
 ```
-</Mermaid>
 
 ### Recorridos en profundidad
 
@@ -372,7 +345,6 @@ En los dibujos no ha sido representado la totalidad del recorrido, solo una idea
 - (I) Izquierdo
 - (D) Derecho
 
-<Mermaid>
 ```mermaid
 flowchart TB
     RECORRIDO[A, B, D, E, F, C, G, H]
@@ -386,7 +358,6 @@ flowchart TB
     D -. " (R) " .-> D -. " (I) " .-> NULL3 -.-> D -. " (D) " .-> NULL4
     NULL4 -.-> D -.-> B -. " (D) " .-> E -. " (R) " .-> E -. " etc " .-> F
 ```
-</Mermaid>
 
 #### Inorden (I | R | D)
 
@@ -394,7 +365,6 @@ flowchart TB
 - (R) Raíz
 - (D) Derecho
 
-<Mermaid>
 ```mermaid
 flowchart TB
     RECORRIDO[D, B, F, E, A, G, C, H]
@@ -407,7 +377,6 @@ flowchart TB
     D -. " (I) " .-> NULL3 -.-> D -.-> B -. " (R) " .-> B
     B -. " (D) " .-> E -. " etc " .-> F
 ```
-</Mermaid>
 
 #### Posorden (ID | R)
 
@@ -415,7 +384,6 @@ flowchart TB
 - (D) Derecho
 - (R) Raíz
 
-<Mermaid>
 ```mermaid
 flowchart TB
     RECORRIDO[D, F, E, B, G, H, C, A]
@@ -428,11 +396,9 @@ flowchart TB
     NULL3 -.-> D -. " (D) " .-> NULL4 -.-> D -. " (R) " .-> D
     D -.-> B -. " (D) " .-> E -. " etc " .-> F
 ```
-</Mermaid>
 
 ### Recorrido en anchura
 
-<Mermaid>
 ```mermaid
 flowchart TB
     RECORRIDO[A, B, C, D, E, F, G, H, F]
@@ -454,7 +420,6 @@ flowchart TB
         F & NULL
     end
 ```
-</Mermaid>
 
 <ShowcaseProfile
   entries={[

@@ -3,7 +3,6 @@ title: "Tema 3: Propiedades básicas de la Orientación a Objetos"
 description: Aprende sobre conceptos clave como abstracción, encapsulamiento, modularidad, jerarquía, polimorfismo, tipificación y ligadura dinámica.
 ---
 
-import Mermaid from "@components/Mermaid.astro";
 import { ShowcaseProfile } from 'starlight-showcases';
 import { FileTree, LinkButton } from '@astrojs/starlight/components';
 
@@ -85,7 +84,7 @@ public class Dibujante {
 
 Los paquetes en java se nombran siguiente ciertos esquemas de nombramiento para evitar conflictos, como: `java.awt.List` o `java.util.List`.
 
-En un proyecto sencillo no deberíamos preocuparnos por eso, pero en proyectos grandes el esquema de nombramiento es algo como esto: `gov.whitehouse.socks.mousefinder`. 
+En un proyecto sencillo no deberíamos preocuparnos por eso, pero en proyectos grandes el esquema de nombramiento es algo como esto: `gov.whitehouse.socks.mousefinder`.
 
 _(Usar un dominio de internet, al ser único y de uso exclusivo, evitan conflictos)_
 
@@ -158,7 +157,7 @@ public class Direccion {
 
 ![Herencia en Java](@assets/deese/Java-Herencia.jpg)
 
-En Java una subclase **hereda los métodos y atributos** de su clase padre. 
+En Java una subclase **hereda los métodos y atributos** de su clase padre.
 Por ejemplo tanto un `Estudiante` como un `Profesor` son `Personas` por lo tanto heredan sus características y añaden sus propias.
 
 ```java title="Estudiante.java"
@@ -183,7 +182,6 @@ public class Profesor extends Persona {
 
 Podríamos representarlo como:
 
-<Mermaid>
 ```mermaid
 flowchart TB
     subgraph Estudiante
@@ -199,7 +197,6 @@ flowchart TB
         end
     end
 ```
-</Mermaid>
 
 ### Clases abstractas
 
@@ -303,14 +300,12 @@ class Virus implements Monstruo, Letal {
 }
 ```
 
-<Mermaid>
 ```mermaid
 flowchart BT
     Vampiro --> Letal & MonstruoP[Monstruo Peligroso]
     MonstruoP --> Monstruo
     Virus -.-> Letal & Monstruo
 ```
-</Mermaid>
 
 ### Herencia vs. composición
 
@@ -320,7 +315,7 @@ flowchart BT
 
 Por ejemplo, en la API de Java, `Stack` fué definido como un `Vector`. Pero `ArrayList` es la implementación moderna de `Vector`. Ahora ya no se puede cambiar porqué **romperíamos la retrocompatibilidad de Java**.
 
-Por lo tanto la composición es la **clara vencedora**, ya que una implementación de métodos abstractos es mucho mejor que heredar forzadamente todos los métodos de la clase a heredar. 
+Por lo tanto la composición es la **clara vencedora**, ya que una implementación de métodos abstractos es mucho mejor que heredar forzadamente todos los métodos de la clase a heredar.
 
 :::tip
 
@@ -356,7 +351,7 @@ public class Coaccion {
     public static void main(String[] args) {
         System.out.println(Coaccion.multiplicaPorDos(5.5)); // Imprime 11.0
         System.out.println(Coaccion.multiplicaPorDos(5.0)); // Imprime 10.0
- 
+
         System.out.println(Coaccion.multiplicaPorDos(5)); // Imprime 10.0
     }
 }
@@ -364,7 +359,7 @@ public class Coaccion {
 
 :::note
 
-En Java se permite hacer conversiones **de tamaños más pequeños a tamaños más grandes**, _widening_ (`int` -> `double`) mientras que las conversiones **de un tamaño grande a uno pequeño**, _narrowing_ (`char` -> `int`) deben ser especificados **manualmente** (Ej: `(int) 'A'`). 
+En Java se permite hacer conversiones **de tamaños más pequeños a tamaños más grandes**, _widening_ (`int` -> `double`) mientras que las conversiones **de un tamaño grande a uno pequeño**, _narrowing_ (`char` -> `int`) deben ser especificados **manualmente** (Ej: `(int) 'A'`).
 
 :::
 
@@ -479,11 +474,11 @@ El polimorfismo **puede llevar a confusión** respecto a la clase del objeto con
 class Polimorfismo {
     public static void main(String[] args) {
         Perro p = new Perro(); // Perro hereda de Animal
-        // El operador instanceof devuelve si cierto 
+        // El operador instanceof devuelve si cierto
         // objeto es una instancia de cierta clase.
         if (p instanceof Perro) System.out.println("p es Perro");
         if (p instanceof Animal) System.out.println("p es Animal");
-        
+
         Animal a = new Perro();
         if (a instanceof Perro) System.out.println("a es Perro");
         if (a instanceof Animal) System.out.println("a es Animal");
@@ -505,14 +500,14 @@ Utilidades del polimorfismo de inclusión:
 
 - **Métodos de inclusión**: En Java y otros lenguajes Orientados a Objetos el polimorfismo de inclusión es utilizado para creación de métodos genéricos.
     - En Java cualquier objeto es un "hijo" de la superclase `Object`, con lo cual hereda sus métodos.
-- **Colecciones genéricas**: Podemos crear colecciones genéricas para cualquier tipo de objeto. 
+- **Colecciones genéricas**: Podemos crear colecciones genéricas para cualquier tipo de objeto.
     - Como `ArrayList`, que permitan crear listas de cualquier tipo.
 - **Clase envoltorio**: Cuando se necesite que un tipo primitivo (Ej: `int`) se comporte como un objeto se utilizan clases envoltorio para guardar los valores.
     - Esto se hace de manera automática en un proceso llamado _autoboxing_ y _autounboxing_.
 
 :::caution
 
-Al usar el polimorfismo de inclusión existe un problema: **La pérdida de identidad**. 
+Al usar el polimorfismo de inclusión existe un problema: **La pérdida de identidad**.
 
 Cuando se extrae un objeto de una colección genérica el método de obtención devuelve un objeto. Para solucionarlo debes usa un typecast.
 
@@ -635,17 +630,16 @@ class Perro extends Animal {
     public void ladra() { System.out.println("Guau"); }
     public static void main(String[] args) {
         Animal unAnimal = new Perro();
-        
+
         unAnimal.ladra();
-        
+
         Perro unPerro = new Perro();
-        
+
         unPerro.ladra();
     }
 }
 ```
 
-<Mermaid>
 ```mermaid
 ---
 title: Representación gráfica
@@ -667,7 +661,6 @@ flowchart TB
     Compilador -. NO .-> Animal
     Compilador -. SI .-> 1
 ```
-</Mermaid>
 
 Esto es conocido como el **principio del tipado del pato** (_Duck Typing_): La comprobación de tipos se encarga de comprobar que el objeto en cuestión tiene los aspectos deseados (camina, nada, grazna) y no de qué tipo de objeto se trata.
 

@@ -3,7 +3,6 @@ title: Bloque 1 - Conceptos Básicos
 description: Algoritmos, lenguajes de programación, programas y sus elementos, tipos de datos y operadores, entrada y salida (printf / scanf), conceptos básicos de macros e introducción a los punteros.
 ---
 
-import Mermaid from "@components/Mermaid.astro";
 
 > Algoritmos, lenguajes de programación, programas y sus elementos, tipos de datos y operadores, entrada y salida (printf / scanf), conceptos básicos de macros e introducción a los punteros.
 
@@ -272,10 +271,10 @@ Tabla ASCII de 7 bits:
 delimitadores, operadores y otros elementos sintácticos.
 
 ```
-special-symbol ::= '+' | '-' | '*' | '/' | '=' | '<' | '>' 
-    | '{'  | '}' | '&' | ',' | ':' | ';' | '^' | '(' | ')' 
-    | '[' | '' | '<=' | '>=' | '==' | '..' | '!=' 
-    | word-symbol . 
+special-symbol ::= '+' | '-' | '*' | '/' | '=' | '<' | '>'
+    | '{'  | '}' | '&' | ',' | ':' | ';' | '^' | '(' | ')'
+    | '[' | '' | '<=' | '>=' | '==' | '..' | '!='
+    | word-symbol .
 ```
 
 #### Palabras reservadas
@@ -547,7 +546,7 @@ printf("i = %d, j = %d, x = %f, y = %f \n", i, j, x, y);
 Salida:
 
 ```
-i = 10, j = 20, x = 12.345600, y = 1234.000000 
+i = 10, j = 20, x = 12.345600, y = 1234.000000
 ```
 
 #### Consideraciones de conversión
@@ -723,7 +722,6 @@ Las direcciones se pueden almacenar en variables de puntero especiales.
 - Cuando se almacena la dirección de una variable en una variable de puntero se dice que la variable puntero apunta a la
   otra variable.
 
-<Mermaid>
 ```mermaid
 flowchart LR
     subgraph Puntero
@@ -734,7 +732,6 @@ flowchart LR
     end
     Dirección --> Variable
 ```
-</Mermaid>
 
 ### Declaración de punteros
 
@@ -786,7 +783,6 @@ También es posible inicializar una variable de puntero en el momento en que se 
 int i, *p = &i;
 ```
 
-<Mermaid>
 ```mermaid
 flowchart LR
     subgraph p
@@ -797,7 +793,6 @@ flowchart LR
     end
     &i --> i
 ```
-</Mermaid>
 
 Una vez que una variable de puntero apunta a un objeto, se puede usar el operador `*` (indirección) para acceder a lo
 que está almacenado en el objeto.

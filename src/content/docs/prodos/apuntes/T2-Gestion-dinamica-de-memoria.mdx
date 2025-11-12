@@ -3,7 +3,6 @@ title: Tema 2 - Gestión dinámica de memoria
 description: Punteros en profundidad, las variables dinámicas, direcciones de memoria y la gestión de la memoria (pila (stack) y montículo (heap)).
 ---
 
-import Mermaid from "@components/Mermaid.astro";
 import { ShowcaseProfile } from 'starlight-showcases';
 
 > Punteros en profundidad, las variables dinámicas, direcciones de memoria y la gestión de la memoria (pila (stack) y montículo (heap)).
@@ -37,7 +36,7 @@ typedef tipoApuntado* tipoPuntero
 typedef int* tPEntero
 // tPEntero es un puntero a int
 tPEntero P
-// Has declarado un puntero P 
+// Has declarado un puntero P
 // que no apunta a nada todavía
 ```
 
@@ -83,7 +82,6 @@ P = malloc(sizeof(int));
 // Memoria suficiente para un entero
 ```
 
-<Mermaid>
 ```mermaid
 flowchart TB
     subgraph Memoria
@@ -102,7 +100,6 @@ flowchart TB
 
     Dirección --> Variable
 ```
-</Mermaid>
 
 
 :::caution
@@ -123,7 +120,6 @@ accesible.
 free(P);
 ```
 
-<Mermaid>
 ```mermaid
 flowchart TB
     subgraph Memoria
@@ -142,7 +138,6 @@ flowchart TB
 
     Dirección -- X --> Variable
 ```
-</Mermaid>
 
 #### Acceso a una variable dinámica
 
@@ -161,7 +156,7 @@ i = 5;
 
 // Lectura
 j = i;
-j = *p; 
+j = *p;
 ```
 
 ## Asignación y comparación de punteros
@@ -182,7 +177,6 @@ printf("%d",*Q); // Resultado: 11
 Es decir ahora ```P``` **no** tiene la dirección de memoria que se le asignó al liberar la memoria, **tiene la
 de ```Q```**. Visualmente:
 
-<Mermaid>
 ```mermaid
 ---
 title: P = NULL;
@@ -198,9 +192,7 @@ flowchart LR
 
     Q --> 11
 ```
-</Mermaid>
 
-<Mermaid>
 ```mermaid
 ---
 title: "P = malloc(...);"
@@ -218,9 +210,7 @@ flowchart LR
     P --> __[ ]
     Q --> 11
 ```
-</Mermaid>
 
-<Mermaid>
 ```mermaid
 ---
 title: "*P = 3;"
@@ -238,9 +228,7 @@ flowchart LR
     P --> 3
     Q --> 4
 ```
-</Mermaid>
 
-<Mermaid>
 ```mermaid
 ---
 title: P = Q;
@@ -258,9 +246,7 @@ flowchart LR
     P --> 4
     Q --> 4
 ```
-</Mermaid>
 
-<Mermaid>
 ```mermaid
 ---
 title: "*P = 11;"
@@ -278,7 +264,6 @@ flowchart LR
     P --> 11
     Q --> 11
 ```
-</Mermaid>
 
 :::caution
 
@@ -296,7 +281,6 @@ printf(P == Q); // Solo si tienen la misma dirección de memoria
 printf(*P == *Q); // Solo si su contenido es el mismo
 ```
 
-<Mermaid>
 ```mermaid
 ---
 title: Identidad
@@ -315,9 +299,7 @@ flowchart LR
     dirP & dirQ --> valor
 
 ```
-</Mermaid>
 
-<Mermaid>
 ```mermaid
 ---
 title: Igualdad
@@ -339,7 +321,6 @@ flowchart LR
     dirP --> valorP
     dirQ --> valorQ
 ```
-</Mermaid>
 
 ## Resumen sobre el uso de punteros y variables dinámicas
 
@@ -410,7 +391,7 @@ int IsNull (tPInteger p) {
 // Función Swap que intercambia las direcciones de memoria de dos punteros
 void Swap (tPInteger* p, tPInteger* q) {
   tPInteger t;
-  
+
   if (!IsNull(*p) && !IsNull(*q)) {
     t = *p;
     *p = *q;
@@ -496,10 +477,10 @@ void readInteger (int* m) {
   typedef int* tPos;
   tPos p, q;
   ...
-  p = malloc(sizeof(int)); 
+  p = malloc(sizeof(int));
   *p = ...
   // O bien
-  q = malloc(sizeof(int)); 
+  q = malloc(sizeof(int));
   p = q;
   *p = ...
   ```

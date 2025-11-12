@@ -3,7 +3,6 @@ title: "Tema 2: Elementos básicos"
 description: "Análisis de los elementos fundamentales de la orientación a objetos, incluyendo clases, objetos, identidad, estado y comportamiento, con un enfoque práctico en la implementación en Java mediante el uso de atributos, métodos y constructores."
 ---
 
-import Mermaid from "@components/Mermaid.astro";
 import { ShowcaseProfile } from 'starlight-showcases';
 
 Análisis de los elementos fundamentales de la orientación a objetos, incluyendo clases, objetos, identidad, estado y comportamiento, con un enfoque práctico en la implementación en Java mediante el uso de atributos, métodos y constructores.
@@ -23,8 +22,8 @@ Una clase es una _plantilla_ que describe la **estructura** y el **comportamient
 tipo de objeto y permite la **creación** de los mismos.
 
 ```java
-[Modificadores] class Nombre [extends clase] [implements interfaz, ...] { 
-    // Atributos // Métodos 
+[Modificadores] class Nombre [extends clase] [implements interfaz, ...] {
+    // Atributos // Métodos
 }
 ```
 
@@ -45,7 +44,7 @@ A lo largo del tema se utilizará esta clase ``Caja`` como ejemplo.
 public class Caja {
     // Atributos - Estado
     private int valor;
-    
+
     // Métodos - Comportamiento
     public void setValor (int v) {
         valor = v;
@@ -98,7 +97,7 @@ Si quieres comprobar lo aprendido añade a tu clase `Caja` un método `main`, es
 public class Caja {
     // Atributos - Estado
     private int valor;
-    
+
     // Métodos - Comportamiento
     public void setValor (int v) {
         valor = v;
@@ -159,7 +158,6 @@ Caja y = x;
 y.setValor(11);
 ```
 
-<Mermaid>
 ```mermaid
 flowchart LR
 x
@@ -169,7 +167,6 @@ subgraph Caja
 end
 x & y --> Caja
 ```
-</Mermaid>
 
 **Igualdad**: Dos objetos se consideran iguales si, a pesar de ser objetos distintos (con distinto OID), sus atributos son idénticos.
 
@@ -182,7 +179,6 @@ Caja y = new Caja();
 y.setValor(11);
 ```
 
-<Mermaid>
 ```mermaid
 flowchart LR
 x
@@ -196,7 +192,6 @@ end
 x --> Caja1
 y --> Caja2
 ```
-</Mermaid>
 
 :::caution
 
@@ -229,7 +224,7 @@ Para crear un método equals correcto debemos cumplir el siguiente contrato:
 - **Consistencia**: Si no se modifica el estado de los objetos que se usa para la comparación repetidas llamadas a ``x.equals(y)`` deberían responder siempre lo mismo.
 - **Uso de nulos**: ``x.equals(null)`` debe devolver ``false`` para cualquier valor x no nulo.
 
-Vamos a **redefinir** mediante `@Override` (`this` es el objeto que realiza la comparación): 
+Vamos a **redefinir** mediante `@Override` (`this` es el objeto que realiza la comparación):
 
 ```java title="Caja.java" collapse={2-20,38-47} {"Si los objetos son idénticos entonces son iguales.":23-24} {"Si obj es nulo la comparación es falsa.":26-27} {"Si la clase de obj no es igual a la clase actual (Caja) la comparación es falsa.":29-32} {"Si la clase de obj no es igual a la clase actual (Caja) la comparación es falsa.":34-36}
 public class Caja {
@@ -302,7 +297,7 @@ Si dos objetos son **iguales**, de acuerdo con el método `equals(Object)`, ento
 
 :::caution
 
-Por defecto `hashCode()` devuelve la **dirección de memoria del objeto**. Por lo tanto debemos redefinir `hashCode` y `equals` para que funcionen de forma **coordinada**. 
+Por defecto `hashCode()` devuelve la **dirección de memoria del objeto**. Por lo tanto debemos redefinir `hashCode` y `equals` para que funcionen de forma **coordinada**.
 
 :::
 
@@ -346,7 +341,7 @@ public class CajaExtendida {
 
 :::tip
 
-Puedes añadir a la clase **`Caja`** que hemos estado usando de ejemplo hasta ahora este método para utilizar `hashCode()`: 
+Puedes añadir a la clase **`Caja`** que hemos estado usando de ejemplo hasta ahora este método para utilizar `hashCode()`:
 
 ```java title="Caja.java" ins={1-4}
 @Override
@@ -405,7 +400,7 @@ class Clase {
     public int getValor() { // Método de lectura
         return valor;
     }
-        
+
     public void setValor(int valor) { // Método de escritura
         this.valor=valor;
     }
@@ -482,7 +477,6 @@ System.out.println("Saldo de Juan = " + cJuan.getCuenta().getBalance());
 ```txt frame="terminal" title="Salida por pantalla"
 Saldo de Juan = 0
 ```
-<Mermaid>
 ```mermaid
 flowchart LR
     subgraph Cliente
@@ -493,7 +487,6 @@ flowchart LR
     Cuenta --> Saldo
     c --> Saldo
 ```
-</Mermaid>
 Dos soluciones: **Uso de clones** o **Objetos inmutables**.
 :::
 
@@ -587,7 +580,7 @@ class Cuenta {
             Persona p1 = new Persona();
 
             System.out.println("Edad de voto = " + Persona.edadVoto);
-            
+
             System.out.println("Edad de voto = " + p1.edadVoto);
         }
     }
@@ -615,7 +608,7 @@ class Cuenta {
 
         // El valor debe asignarse en el constructor
         public Persona(String identificador) {
-            
+
             DNI = identificador;
         }
     }
@@ -638,7 +631,7 @@ class Cuenta {
 
 En Java **todos los parámetros** se pasan por valor. Es decir el valor de los parámetros se **copia** al parámetro formal.
 
-Ya que los objetos son punteros, una copia de una dirección de memoria **sigue apuntando al mismo sitio que el objeto original**. 
+Ya que los objetos son punteros, una copia de una dirección de memoria **sigue apuntando al mismo sitio que el objeto original**.
 
 Un ejercicio para ver este comportamiento es este:
 
@@ -661,7 +654,6 @@ public class Parametros {
 ```txt title="Salida por pantalla" frame="terminal"
 Saldo = 1500
 ```
-<Mermaid>
 ```mermaid
 ---
 title: "Tras realizar c1.ingreso(500)"
@@ -670,8 +662,6 @@ flowchart LR
     c --> 1500
     c1 --> 1500
 ```
-</Mermaid>
-<Mermaid>
 ```mermaid
 ---
 title: "Tras realizar c1 = c2"
@@ -681,7 +671,6 @@ flowchart LR
     c1 --> 500
     c2 --> 500
 ```
-</Mermaid>
 </details>
 
 Poner `final` en `public static void manipularCuenta(final Cuenta c1)` **no es una solución** al problema, solo provoca un **error de compilación** en `c1 = c2`
@@ -828,7 +817,7 @@ public class Calificacion {
     public static void main(String[] args) {
         Calificacion.introduceCalificacion(Calificacion.MATRICULA);
         Calificacion.introduceCalificacion(Calificacion.APROBADO);
-        
+
         Calificacion.introduceCalificacion(257); // WTF
         Calificacion.introduceCalificacion(7);
     }
@@ -850,7 +839,7 @@ enum Calificacion {
 
     private int valor;
     public int getValor() { return valor; }
-    
+
     Calificacion(int valor) { this.valor = valor; }
 }
 ```
@@ -916,7 +905,7 @@ public record Registro(int valor) {
     public static void main(String[] args) {
         Registro r1 = new Registro("1");
         System.out.println("r1 = " + r1); // r1 = Registro[valor=1]
-        
+
         Registro r2 = new Registro(-3); // throws IllegalArgumentException
     }
 }
@@ -930,11 +919,11 @@ Es posible añadir a los registros **atributos estáticos** (no de instancia) y 
 public record Registro(int valor) {
 
     public static final int sentidoVida = 69;
-    
+
     public int valorAlCuadrado() { return valor * valor; }
-    
+
     public static int getSentidoVida() { return sentidoVida; }
-    
+
     public int valor() { return valor * 2; }
     public static void main(String[] args) {
         Registro c = new Registro(5);
