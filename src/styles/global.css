@@ -20,3 +20,8 @@
   --color-gray-800: #24272f;
   --color-gray-900: #17181c;
 }
+
+/* Añadir scroll suave para anclas internas */
+html {
+  scroll-behavior: smooth;
+}
