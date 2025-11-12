@@ -130,6 +130,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/200401233?v=4",
       "profile": "https://github.com/QuantikIsa",
       "contributions": ["code"]
+    },
+    {
+      "login": "josebaute",
+      "name": "JoseBaute",
+      "avatar_url": "https://avatars.githubusercontent.com/u/118210853?v=4",
+      "profile": "https://github.com/josebaute",
+      "contributions": ["design"]
     }
   ],
   "linkToUsage": true
