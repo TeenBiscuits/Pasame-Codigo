@@ -1,4 +1,4 @@
 User-agent: *
-Allow: /
+Disallow: /cdn-cgi/
 
 Sitemap: https://pc.pablopl.dev/sitemap-index.xml
