@@ -14,25 +14,25 @@
     "contributors:generate": "all-contributors generate"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.5",
-    "@astrojs/starlight": "^0.36.2",
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/starlight": "^0.37.0",
     "@astrojs/starlight-docsearch": "^0.6.1",
     "@astrojs/starlight-tailwind": "^4.0.2",
-    "@astrojs/vercel": "^9.0.1",
+    "@astrojs/vercel": "^9.0.2",
     "@expressive-code/core": "^0.41.3",
     "@expressive-code/plugin-collapsible-sections": "^0.41.3",
     "@tailwindcss/vite": "^4.1.17",
-    "@vercel/analytics": "^1.5.0",
-    "@vercel/speed-insights": "^1.2.0",
-    "astro": "^5.16.0",
+    "@vercel/analytics": "^1.6.1",
+    "@vercel/speed-insights": "^1.3.1",
+    "astro": "^5.16.4",
     "astro-mermaid": "^1.2.0",
     "dotenv": "^17.2.3",
-    "mermaid": "^11.12.1",
+    "mermaid": "^11.12.2",
     "rehype-mathjax": "^7.1.0",
     "remark-math": "^6.0.0",
     "sharp": "^0.34.5",
     "starlight-heading-badges": "^0.6.1",
-    "starlight-links-validator": "^0.19.1",
+    "starlight-links-validator": "^0.19.2",
     "starlight-showcases": "^0.3.1",
     "starlight-sidebar-topics": "^0.6.2",
     "tailwindcss": "^4.1.17",
@@ -40,8 +40,8 @@
   },
   "devDependencies": {
     "all-contributors-cli": "^6.26.1",
-    "prettier": "^3.6.2",
+    "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.1"
+    "prettier-plugin-tailwindcss": "^0.7.2"
   }
 }
