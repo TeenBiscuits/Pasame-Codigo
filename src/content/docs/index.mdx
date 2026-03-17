@@ -24,6 +24,7 @@ hero:
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import Asignaturas from '@components/Asignaturas.astro';
 import AboutMe from '@components/AboutMe.astro';
+import { AllContributors } from "astro-contributors"
 import GitStar from '@components/GitStar.astro';
 
 
@@ -55,6 +56,10 @@ import GitStar from '@components/GitStar.astro';
     Esta web se encuentra bajo desarrollo activo, muchos más cosas están por venir.
   </Card>
 </CardGrid>
+
+## Nuestros/as colaboradores/as
+
+<AllContributors />
 
 <GitStar/>
 
