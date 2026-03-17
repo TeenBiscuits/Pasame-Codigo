@@ -70,7 +70,7 @@ Para más información: [Especificación de un TAD](/prodos/apuntes/t1-tipos-abs
 
 ```mermaid
 flowchart LR
-    LISTA --&gt; NULL
+    LISTA --> NULL
 ```
 
 <details>
@@ -115,9 +115,9 @@ flowchart LR
         CONTENIDO3[INFORMACIÓN]
         SIGUIENTE3[SIGUIENTE]
     end
-    LISTA --&gt; NODO1
-    SIGUIENTE1 --&gt; NODO3
-    SIGUIENTE3 --&gt; NULL
+    LISTA --> NODO1
+    SIGUIENTE1 --> NODO3
+    SIGUIENTE3 --> NULL
 ```
 ```mermaid
 flowchart LR
@@ -134,10 +134,10 @@ flowchart LR
         CONTENIDO3[INFORMACIÓN]
         SIGUIENTE3[SIGUIENTE]
     end
-    LISTA --&gt; NODO1
-    SIGUIENTE1 -.-&gt; NODO2
-    SIGUIENTE2 -.-&gt; NODO3
-    SIGUIENTE3 --&gt; NULL
+    LISTA --> NODO1
+    SIGUIENTE1 -.-> NODO2
+    SIGUIENTE2 -.-> NODO3
+    SIGUIENTE3 --> NULL
 ```
 
 <details>
@@ -197,31 +197,31 @@ Precondición: La lista origen está inicializada
 
 ```mermaid
 flowchart LR
-    LISTA1[LISTA 1] --&gt; NODO1 --&gt; NODO2 --&gt; NULL
+    LISTA1[LISTA 1] --> NODO1 --> NODO2 --> NULL
     LISTA2[LISTA 2]
 ```
 ```mermaid
 flowchart LR
-    LISTA1[LISTA 1] --&gt; NODO1[NODO 1] --&gt; NODO2[NODO 2] --&gt; NULL
-    LISTA2[LISTA 2] --&gt; NODO21[NUEVO NODO]
-    LISTA2 -. X .-&gt; NODO1[NODO 1]
+    LISTA1[LISTA 1] --> NODO1[NODO 1] --> NODO2[NODO 2] --> NULL
+    LISTA2[LISTA 2] --> NODO21[NUEVO NODO]
+    LISTA2 -. X .-> NODO1[NODO 1]
 ```
 ```mermaid
 flowchart LR
-    LISTA1[LISTA 1] --&gt; NODO1[NODO 1] --&gt; NODO2[NODO 2] --&gt; NULL
-    LISTA2[LISTA 2] --&gt; NODO21[NODO 1]
-    NODO1 == copiar ==&gt; NODO21[NODO 1]
+    LISTA1[LISTA 1] --> NODO1[NODO 1] --> NODO2[NODO 2] --> NULL
+    LISTA2[LISTA 2] --> NODO21[NODO 1]
+    NODO1 == copiar ==> NODO21[NODO 1]
 ```
 ```mermaid
 flowchart LR
-    LISTA1[LISTA 1] --&gt; NODO1[NODO 1] --&gt; NODO2[NODO 2] --&gt; NULL
-    LISTA2[LISTA 2] --&gt; NODO21[NODO 1] --&gt; NODO22[NUEVO NODO]
-    NODO2 == copiar ==&gt; NODO22[NUEVO NODO]
+    LISTA1[LISTA 1] --> NODO1[NODO 1] --> NODO2[NODO 2] --> NULL
+    LISTA2[LISTA 2] --> NODO21[NODO 1] --> NODO22[NUEVO NODO]
+    NODO2 == copiar ==> NODO22[NUEVO NODO]
 ```
 ```mermaid
 flowchart LR
-    LISTA1[LISTA 1] --&gt; NODO1[NODO 1] --&gt; NODO2[NODO 2] --&gt; NULL
-    LISTA2[LISTA 2] --&gt; NODO21[NODO 1] --&gt; NODO22[NODO 2] --&gt; NULL
+    LISTA1[LISTA 1] --> NODO1[NODO 1] --> NODO2[NODO 2] --> NULL
+    LISTA2[LISTA 2] --> NODO21[NODO 1] --> NODO22[NODO 2] --> NULL
 ```
 
 <details>
@@ -294,12 +294,12 @@ flowchart LR
         INFO[NUEVA INFORMACIÓN]
         POS[POSICIÓN A MODIFICAR]
     end
-    LISTA --&gt; NODO1
-    SIGUIENTE1 --&gt; NODO2
-    SIGUIENTE2 --&gt; NODO3
-    SIGUIENTE3 --&gt; NULL
-    INFO -.-&gt; CONTENIDO3
-    POS --&gt; NODO3
+    LISTA --> NODO1
+    SIGUIENTE1 --> NODO2
+    SIGUIENTE2 --> NODO3
+    SIGUIENTE3 --> NULL
+    INFO -.-> CONTENIDO3
+    POS --> NODO3
 ```
 
 <details>
@@ -348,11 +348,11 @@ flowchart TB
         CONTENIDO3[INFORMACIÓN]
         SIGUIENTE3[SIGUIENTE]
     end
-    LISTA --&gt; NODO1
-    SIGUIENTE1 -.-&gt; NODO2
-    SIGUIENTE1 --&gt; NODO3
-    SIGUIENTE2 -.-&gt; NODO3
-    SIGUIENTE3 --&gt; NULL
+    LISTA --> NODO1
+    SIGUIENTE1 -.-> NODO2
+    SIGUIENTE1 --> NODO3
+    SIGUIENTE2 -.-> NODO3
+    SIGUIENTE3 --> NULL
 ```
 ```mermaid
 flowchart TB
@@ -365,9 +365,9 @@ flowchart TB
         CONTENIDO3[INFORMACIÓN]
         SIGUIENTE3[SIGUIENTE]
     end
-    LISTA --&gt; NODO1
-    SIGUIENTE1 --&gt; NODO3
-    SIGUIENTE3 --&gt; NULL
+    LISTA --> NODO1
+    SIGUIENTE1 --> NODO3
+    SIGUIENTE3 --> NULL
 ```
 
 <details>
@@ -415,11 +415,11 @@ flowchart TB
         CONTENIDO3[INFORMACIÓN]
         SIGUIENTE3[SIGUIENTE]
     end
-    LISTA --&gt; NODO1
-    SIGUIENTE1 --&gt; NODO2
-    SIGUIENTE2 --&gt; NODO3
-    SIGUIENTE3 -.-&gt; NULL
-    DELETE["FREE ()"] ==&gt; NODO3
+    LISTA --> NODO1
+    SIGUIENTE1 --> NODO2
+    SIGUIENTE2 --> NODO3
+    SIGUIENTE3 -.-> NULL
+    DELETE["FREE ()"] ==> NODO3
 ```
 ```mermaid
 flowchart TB
@@ -432,11 +432,11 @@ flowchart TB
         CONTENIDO2[INFORMACIÓN]
         SIGUIENTE2[SIGUIENTE]
     end
-    LISTA --&gt; NODO1
-    SIGUIENTE1 --&gt; NODO2
-    SIGUIENTE2 -.-&gt; NODO3[ANTIGUA DIRECCIÓN DE NODO 3]
+    LISTA --> NODO1
+    SIGUIENTE1 --> NODO2
+    SIGUIENTE2 -.-> NODO3[ANTIGUA DIRECCIÓN DE NODO 3]
     NULL
-    DELETE["FREE ()"] ==&gt; NODO2
+    DELETE["FREE ()"] ==> NODO2
 ```
 ```mermaid
 flowchart TB
@@ -445,14 +445,14 @@ flowchart TB
         CONTENIDO1[INFORMACIÓN]
         SIGUIENTE1[SIGUIENTE]
     end
-    LISTA --&gt; NODO1
-    SIGUIENTE1 -.-&gt; NODO2[ANTIGUA DIRECCIÓN DE NODO 2]
+    LISTA --> NODO1
+    SIGUIENTE1 -.-> NODO2[ANTIGUA DIRECCIÓN DE NODO 2]
     NULL
-    DELETE["FREE ()"] ==&gt; NODO1
+    DELETE["FREE ()"] ==> NODO1
 ```
 ```mermaid
 flowchart LR
-    LISTA --&gt; NULL
+    LISTA --> NULL
 ```
 
 <details>
@@ -501,11 +501,11 @@ flowchart TB
         CONTENIDO3[USUARIO 3]
         SIGUIENTE3[SIGUIENTE]
     end
-    LISTA --&gt; NODO1
-    SIGUIENTE1 --&gt; NODO2
-    SIGUIENTE2 --&gt; NODO3
-    SIGUIENTE3 --&gt; NULL
-    FIND["¿ERES EL USUARIO3?"] -- NO --&gt; NODO1
+    LISTA --> NODO1
+    SIGUIENTE1 --> NODO2
+    SIGUIENTE2 --> NODO3
+    SIGUIENTE3 --> NULL
+    FIND["¿ERES EL USUARIO3?"] -- NO --> NODO1
 ```
 ```mermaid
 flowchart TB
@@ -522,11 +522,11 @@ flowchart TB
         CONTENIDO3[USUARIO 3]
         SIGUIENTE3[SIGUIENTE]
     end
-    LISTA --&gt; NODO1
-    SIGUIENTE1 --&gt; NODO2
-    SIGUIENTE2 --&gt; NODO3
-    SIGUIENTE3 --&gt; NULL
-    FIND["¿ERES EL USUARIO3?"] -- NO --&gt; NODO2
+    LISTA --> NODO1
+    SIGUIENTE1 --> NODO2
+    SIGUIENTE2 --> NODO3
+    SIGUIENTE3 --> NULL
+    FIND["¿ERES EL USUARIO3?"] -- NO --> NODO2
 ```
 ```mermaid
 flowchart TB
@@ -543,11 +543,11 @@ flowchart TB
         CONTENIDO3[USUARIO 3]
         SIGUIENTE3[SIGUIENTE]
     end
-    LISTA --&gt; NODO1
-    SIGUIENTE1 --&gt; NODO2
-    SIGUIENTE2 --&gt; NODO3
-    SIGUIENTE3 --&gt; NULL
-    FIND["¿ERES EL USUARIO3?"] -- SI --&gt; NODO3
+    LISTA --> NODO1
+    SIGUIENTE1 --> NODO2
+    SIGUIENTE2 --> NODO3
+    SIGUIENTE3 --> NULL
+    FIND["¿ERES EL USUARIO3?"] -- SI --> NODO3
 ```
 
 <details>
@@ -788,10 +788,10 @@ flowchart TB
         CONTENIDO4[CCC]
         SIGUIENTE4[SIGUIENTE]
     end
-    LISTA --&gt; NODO1
-    SIGUIENTE1 --&gt; NODO2
-    SIGUIENTE2 --&gt; NODO3
-    SIGUIENTE3 --&gt; NULL
+    LISTA --> NODO1
+    SIGUIENTE1 --> NODO2
+    SIGUIENTE2 --> NODO3
+    SIGUIENTE3 --> NULL
 ```
 ```mermaid
 flowchart TB
@@ -812,11 +812,11 @@ flowchart TB
         CONTENIDO4[CCC]
         SIGUIENTE4[SIGUIENTE]
     end
-    LISTA --&gt; NODO1
-    SIGUIENTE1 --&gt; NODO2
-    SIGUIENTE2 -.-&gt; NODO4
-    SIGUIENTE4 -.-&gt; NODO3
-    SIGUIENTE3 --&gt; NULL
+    LISTA --> NODO1
+    SIGUIENTE1 --> NODO2
+    SIGUIENTE2 -.-> NODO4
+    SIGUIENTE4 -.-> NODO3
+    SIGUIENTE3 --> NULL
 ```
 
 <details>
