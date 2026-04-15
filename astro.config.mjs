@@ -239,11 +239,6 @@ export default defineConfig({
             icon: "seti:c",
             items: [
               {
-                label: "Apuntes",
-                badge: { text: "Descontinuados", variant: "caution" },
-                autogenerate: { directory: "prodos/apuntes" },
-              },
-              {
                 label: "Código y más",
                 items: [
                   {
@@ -257,6 +252,11 @@ export default defineConfig({
                     badge: { text: "GitHub", variant: "tip" },
                   },
                 ],
+              },
+              {
+                label: "Apuntes",
+                badge: { text: "Descontinuados", variant: "caution" },
+                autogenerate: { directory: "prodos/apuntes" },
               },
             ],
           },
