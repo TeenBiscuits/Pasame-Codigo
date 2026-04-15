@@ -18,6 +18,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](./LICENSES/GPL-3.0-only.txt)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](./LICENSE.md)
 [![Stars](https://img.shields.io/github/stars/TeenBiscuits/Pasame-Codigo.svg)](https://github.com/TeenBiscuits/Pasame-Codigo)
+[![listed on awesome-galicia](https://img.shields.io/badge/listed%20on-awesome--galicia-FFD700?logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNCAxNCI+PGcgZmlsbD0iI0ZGRDcwMCI+PHJlY3QgeD0iNiIgeT0iMCIgd2lkdGg9IjIiIGhlaWdodD0iMiIvPjxyZWN0IHg9IjQiIHk9IjIiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiLz48cmVjdCB4PSI4IiB5PSIyIiB3aWR0aD0iMiIgaGVpZ2h0PSIyIi8+PHJlY3QgeD0iMiIgeT0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMiIvPjxyZWN0IHg9IjYiIHk9IjQiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiLz48cmVjdCB4PSIxMCIgeT0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMiIvPjxyZWN0IHg9IjEiIHk9IjYiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiLz48cmVjdCB4PSI1IiB5PSI2IiB3aWR0aD0iNCIgaGVpZ2h0PSIyIi8+PHJlY3QgeD0iMTEiIHk9IjYiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiLz48cmVjdCB4PSIwIiB5PSI4IiB3aWR0aD0iMTQiIGhlaWdodD0iMiIvPjxyZWN0IHg9IjEiIHk9IjEwIiB3aWR0aD0iMTIiIGhlaWdodD0iMiIvPjxyZWN0IHg9IjMiIHk9IjEyIiB3aWR0aD0iOCIgaGVpZ2h0PSIyIi8+PC9nPjwvc3ZnPg==&labelColor=0096FF)](https://github.com/GeiserX/awesome-galicia#readme)
 
 </div>
 
