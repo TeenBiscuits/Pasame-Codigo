@@ -209,12 +209,12 @@ export default defineConfig({
               "intro/code_of_conduct",
               {
                 label: "Licencias",
-                autogenerate: { directory: "intro/licencias" },
+                items: [{ autogenerate: { directory: "intro/licencias" } }],
                 collapsed: true,
               },
               {
                 label: "Privacidad",
-                autogenerate: { directory: "intro/legal" },
+                items: [{ autogenerate: { directory: "intro/legal" } }],
               },
             ],
           },
@@ -225,11 +225,11 @@ export default defineConfig({
             items: [
               {
                 label: "Apuntes",
-                autogenerate: { directory: "prouno/apuntes" },
+                items: [{ autogenerate: { directory: "prouno/apuntes" } }],
               },
               {
                 label: "Boletines",
-                autogenerate: { directory: "prouno/boletines" },
+                items: [{ autogenerate: { directory: "prouno/boletines" } }],
               },
             ],
           },
@@ -256,7 +256,7 @@ export default defineConfig({
               {
                 label: "Apuntes",
                 badge: { text: "Descontinuados", variant: "caution" },
-                autogenerate: { directory: "prodos/apuntes" },
+                items: [{ autogenerate: { directory: "prodos/apuntes" } }],
               },
             ],
           },
@@ -267,7 +267,7 @@ export default defineConfig({
             items: [
               {
                 label: "Implementaciones",
-                autogenerate: { directory: "algo/implementaciones" },
+                items: [{ autogenerate: { directory: "algo/implementaciones" } }],
               },
               {
                 label: "Prácticas y Exámenes",
@@ -308,7 +308,7 @@ export default defineConfig({
             items: [
               {
                 label: "Apuntes",
-                autogenerate: { directory: "deese/apuntes" },
+                items: [{ autogenerate: { directory: "deese/apuntes" } }],
               },
               {
                 label: "Ejercicios Resueltos",
@@ -329,7 +329,7 @@ export default defineConfig({
             items: [
               {
                 label: "Apuntes",
-                autogenerate: { directory: "pepe/apuntes" },
+                items: [{ autogenerate: { directory: "pepe/apuntes" } }],
               },
               {
                 label: "Código en OCamel",
@@ -375,7 +375,7 @@ export default defineConfig({
             items: [
               {
                 label: "Apuntes",
-                autogenerate: { directory: "bede/apuntes" },
+                items: [{ autogenerate: { directory: "bede/apuntes" } }],
               },
               {
                 label: "Otros apuntes y demás",
@@ -411,12 +411,12 @@ export default defineConfig({
             items: [
               {
                 label: "Tutorial Git",
-                autogenerate: { directory: "/opensource/git" },
+                items: [{ autogenerate: { directory: "/opensource/git" } }],
                 badge: { text: "WIP", variant: "danger" },
               },
               {
                 label: "Check this repos!",
-                autogenerate: { directory: "" },
+                items: [{ autogenerate: { directory: "" } }],
                 badge: { text: "WIP", variant: "danger" },
               },
               {
