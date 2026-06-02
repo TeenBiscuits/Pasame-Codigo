@@ -34,7 +34,7 @@ jobs:
         # Bojie Yang
         # MIT
         # https://github.com/bojieyang/indexnow-action
-        uses: bojieyang/indexnow-action@v2.1.0
+        uses: bojieyang/indexnow-action@v3.0.0
         with:
           sitemap-location: "https://pc.pablopl.dev/sitemap-index.xml"
           key: ${{ secrets.INDEXNOW_KEY }}
