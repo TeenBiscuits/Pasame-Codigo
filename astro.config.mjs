@@ -163,13 +163,15 @@ export default defineConfig({
             crossorigin: "",
           },
         },
-        // Self Hosted Rybbit Analytics
+        // Self Hosted Umami Analytics
         {
           tag: "script",
           attrs: {
             defer: true,
-            "data-site-id": "b7f2449e7877",
-            src: "https://analytics.pablopl.dev/api/script.js",
+            "data-website-id": "6a0d1093-b07e-4519-af78-e2c5ba69021b",
+            "data-domains": "pc.pablopl.dev",
+            "data-performance": "true",
+            src: "https://analytics.pablopl.dev/script.js",
           },
         },
       ],
