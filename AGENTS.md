@@ -20,7 +20,7 @@
 
 ## Content (MDX)
 - All content, docs, comments, commits, and PRs in **Spanish**
-- Content lives in `src/content/docs/`, organized by subject: `prouno`, `prodos`, `algo`, `deese`, `pepe`, `bede`, `eseo`, `intro`, `opensource`
+- Content lives in `src/content/docs/`, organized by subject: `prouno`, `prodos`, `algo`, `deese`, `pepe`, `bede`, `eseo`, `intro`
 - Frontmatter: `title` and `description` fields are standard
 - Supports MathJax (`remark-math` / `rehype-mathjax`) and Mermaid diagrams
 - Docs license: CC BY 4.0; individual code examples may have their own license (check file headers for `@license` / `SPDX-License-Identifier`)
