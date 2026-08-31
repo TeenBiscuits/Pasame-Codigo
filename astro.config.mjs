@@ -408,6 +408,9 @@ export default defineConfig({
             ],
           },
           {
+            label: "Pásame Exámenes",
+            link: "https://pe.pablopl.dev?utm_source=pasame-codigo&utm_medium=toc&utm_campaign=pasame-examenes",
+            icon: "approve-check-circle",
           },
         ]),
       ],
