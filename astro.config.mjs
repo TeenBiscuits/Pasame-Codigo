@@ -21,6 +21,7 @@ import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-s
 // Support for MathJax
 import remarkMath from "remark-math";
 import rehypeMathJax from "rehype-mathjax";
+import { unified } from "@astrojs/markdown-remark";
 
 // Vercel Adapter
 import vercel from "@astrojs/vercel";
@@ -417,13 +418,20 @@ export default defineConfig({
       components: {
         SkipLink: "./src/components/SkipLink.astro",
       },
+      disable404Route: true,
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeMathJax],
+    processor: unified({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeMathJax],
+    }),
   },
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      // Mermaid.js genera intencionadamente un chunk grande y se carga bajo demanda.
+      chunkSizeWarningLimit: 700,
+    },
   },
 });
